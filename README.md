@@ -16,7 +16,7 @@ Every number in the manuscript comes from `outputs/manuscript_numbers.json`, whi
 
 ```
 data/raw/                     BIS, IMF and World Bank downloads; vintage_202610/ holds the IMF IRFCL reserve extension
-data/raw/historylab/          original regression datasets (Wind exports; licensed, not in the public repository) + SHA256SUMS.txt
+data/raw/historylab/          original regression datasets (compiled from Wind on 2023-06-13; licensed, not in the public repository) + SHA256SUMS.txt
 data/processed/               panel_pseudo_realtime.csv (country x month, publication lags applied), 2010-01 to 2026-08
 src/                          pipeline (see below); common.py holds shared settings, splits and metrics
 outputs/tables/               all result tables (CSV)
@@ -73,8 +73,7 @@ Every process runs single-threaded (`OMP_NUM_THREADS=1` etc.); parallelism is ac
 
 ## Placeholders to complete before submission
 
-- Wind series codes and export date (manuscript Section 3.1, data availability, title page).
-- Title and date of the original working paper; author names, affiliations, CRediT roles, funding and acknowledgements (`Title_Page.docx`).
+- Title and date of the original working paper; CRediT roles, funding and acknowledgements (`Title_Page.docx`).
 - `elsarticle.cls` was not installed on the build server; `ESWA_Manuscript_anonymized_preview.pdf` was compiled with the article class to check the LaTeX source.
 
 ## Data integrity

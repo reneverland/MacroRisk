@@ -686,6 +686,30 @@
 | retro | CI decomposed withinxIQ | M1 EBM + CI x IQ | 0.351 | 0.359 | 0.134 | 58.3 |
 | retro | CI decomposed betweenxIQ | M1 EBM + CI x IQ | 0.351 | 0.349 | 0.135 | 61.6 |
 
+**Table S15. Variables of the original regression datasets (compiled from Wind on 13 June 2023).**
+
+| Column name(s) | Content | Use in this study |
+|---|---|---|
+| 货币 | Currency | identifier |
+| date | Month | identifier |
+| 国家 / country | Country | identifier |
+| SWIFT交易份额 | Share of the currency in SWIFT payments (%) | CI, Panel A |
+| 本国货币外汇衍生品交易额 | Domestic-currency FX-derivatives turnover (share) | CI, Panel B |
+| 未偿余额 | Outstanding balance (literal translation) | not used |
+| 公布发行额 | Announced issuance amount (literal translation) | not used |
+| 对外贷款 | External lending (literal translation) | not used |
+| 外汇储备总额 | Total FX reserves | not used |
+| 新兴国家 / 收入组别 | Emerging-market flag / income group | not used |
+| cpi_vol, fxr_vol, consump_volnew, real_ex_vol, credit_gdp_gap, unemp | Risk indicators CPI_Vol, FX_Vol, CE_Vol, ER_Vol, CG_Gap, Unemp | dependent variables / other risks |
+| consump_vol, ex_vol | Alternative CE_Vol and ER_Vol series | specification search |
+| *_lag1 | Six-month lagged risk indicators | lagged dependent variable |
+| pergdp_ppp, gdp_grow, pop, stockvalue_gdp, fin_open1, tra | GDP per capita (PPP), GDP growth, population, financial depth, financial openness, trade openness | controls |
+| gdp_gvol, cpi, tra_ad, ka_open, IFS_Code, year | Other macro series and identifiers | not used |
+| VoiceandAccountability ... ControlofCorruption | Six WGI dimensions | threshold variable (single dimensions) |
+| ins_quality | Mean of the six WGI dimensions (IQ) | threshold variable |
+
+*Note:* Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata. The original Wind series codes were not retained.
+
 ![Fig. S1. Training-weight schemes: development-fold mean AP and retrospective AP.](figures/FigS1.png){width=100%}
 
 ## Post-freeze change log of the confirmation protocol

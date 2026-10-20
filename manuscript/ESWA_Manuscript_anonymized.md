@@ -51,7 +51,7 @@ Explainable boosting machines (EBMs) are generalized additive models with option
 
 ### 3.1. Original study and data
 
-The replication uses the two regression datasets of the authors' earlier working paper, which was circulated internally and never submitted. The CI series and macro controls were exported from the Wind Economic Database [WIND SERIES CODES AND EXPORT DATE TO BE INSERTED BY THE AUTHORS]; SHA-256 checksums of the files are recorded in the replication package. Panel A measures CI by the currency's share of SWIFT payments for China, Hungary, Mexico, Poland, the Russian Federation and South Africa (2012-08 to 2021-12, N = 678). Panel B measures CI by the domestic currency's share of FX-turnover and adds Brazil, India and Korea (2012-01 to 2022-12, N = 1,188). IQ is the mean of the six WGI dimensions. The six risk indicators are CPI volatility (CPI_Vol), FX-reserve volatility (FX_Vol), consumption volatility (CE_Vol), real exchange-rate volatility (ER_Vol), the credit-to-GDP gap (CG_Gap) and unemployment (Unemp). The Panel B ER_Vol series is available for only 8 of the nine countries, so that regression uses N = 1056. Table 1 summarises the samples.
+The replication uses the two regression datasets of the authors' earlier working paper, which was circulated internally and never submitted. The CI series and macro controls were exported from the Wind Economic Database and compiled into the regression datasets on 13 June 2023; the original Wind series codes were not retained, so Supplementary Table S15 documents the variables by their dataset column names; SHA-256 checksums of the files are recorded in the replication package. Panel A measures CI by the currency's share of SWIFT payments for China, Hungary, Mexico, Poland, the Russian Federation and South Africa (2012-08 to 2021-12, N = 678). Panel B measures CI by the domestic currency's share of FX-turnover and adds Brazil, India and Korea (2012-01 to 2022-12, N = 1,188). IQ is the mean of the six WGI dimensions. The six risk indicators are CPI volatility (CPI_Vol), FX-reserve volatility (FX_Vol), consumption volatility (CE_Vol), real exchange-rate volatility (ER_Vol), the credit-to-GDP gap (CG_Gap) and unemployment (Unemp). The Panel B ER_Vol series is available for only 8 of the nine countries, so that regression uses N = 1056. Table 1 summarises the samples.
 
 **Table 1. Samples.**
 
@@ -380,7 +380,7 @@ We traced an institution-conditioned currency-internationalization hypothesis fr
 
 ## Data availability
 
-BIS, IMF and World Bank data are public; the Wind exports are licensed and cannot be redistributed, but series codes and export dates are listed in the replication package. Code, split definitions, the confirmation protocol and all row-level predictions are provided in the replication package [repository link withheld for double-anonymous review].
+BIS, IMF and World Bank data are public; the Wind-based regression datasets (compiled on 13 June 2023) are licensed and cannot be redistributed, but their variables are documented in Supplementary Table S15 and their SHA-256 checksums are included in the replication package. Code, split definitions, the confirmation protocol and all row-level predictions are provided in the replication package [repository link withheld for double-anonymous review].
 
 
 ## References

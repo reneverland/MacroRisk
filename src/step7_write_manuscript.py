@@ -187,7 +187,8 @@ P("Explainable boosting machines (EBMs) are generalized additive models with opt
 H1("Data and replication design")
 H2("Original study and data")
 P("The replication uses the two regression datasets of the authors' earlier working paper, which was circulated internally and never submitted. "
-  "The CI series and macro controls were exported from the Wind Economic Database [WIND SERIES CODES AND EXPORT DATE TO BE INSERTED BY THE AUTHORS]; "
+  "The CI series and macro controls were exported from the Wind Economic Database and compiled into the regression datasets on 13 June 2023; the original Wind series codes were not "
+  "retained, so Supplementary Table S15 documents the variables by their dataset column names; "
   "SHA-256 checksums of the files are recorded in the replication package. Panel A measures CI by the currency's share of SWIFT payments for "
   "China, Hungary, Mexico, Poland, the Russian Federation and South Africa (2012-08 to 2021-12, N = 678). Panel B measures CI by the domestic "
   "currency's share of FX-turnover and adds Brazil, India and Korea (2012-01 to 2022-12, N = 1,188). IQ is the mean of the six WGI dimensions. The "
@@ -604,6 +605,24 @@ SUPP["S13"] = dict(caption="Hyperparameter grids, seeds and software.", header=[
 dc = rd("table14_e20_ci_decomposition.csv")
 SUPP["S14"] = dict(caption="Within/between decomposition of the FX share.", header=["Window", "Variant", "Model", "AP pooled", "AP fold mean", "Brier", "Cost"],
                    rows=[["all" if r.evaluation_window == WA else "retro", r.variant.replace("_", " "), MLAB.get(r.model, r.model), f3(r.AP), f3(r.AP_fold_mean), f3(r.Brier), f1(r.Cost_C5_per100)] for r in dc.itertuples()], notes="")
+WIND_COLS = [
+    ("货币", "Currency", "identifier"), ("date", "Month", "identifier"), ("国家 / country", "Country", "identifier"),
+    ("SWIFT交易份额", "Share of the currency in SWIFT payments (%)", "CI, Panel A"),
+    ("本国货币外汇衍生品交易额", "Domestic-currency FX-derivatives turnover (share)", "CI, Panel B"),
+    ("未偿余额", "Outstanding balance (literal translation)", "not used"), ("公布发行额", "Announced issuance amount (literal translation)", "not used"),
+    ("对外贷款", "External lending (literal translation)", "not used"), ("外汇储备总额", "Total FX reserves", "not used"),
+    ("新兴国家 / 收入组别", "Emerging-market flag / income group", "not used"),
+    ("cpi_vol, fxr_vol, consump_volnew, real_ex_vol, credit_gdp_gap, unemp", "Risk indicators CPI_Vol, FX_Vol, CE_Vol, ER_Vol, CG_Gap, Unemp", "dependent variables / other risks"),
+    ("consump_vol, ex_vol", "Alternative CE_Vol and ER_Vol series", "specification search"),
+    ("*_lag1", "Six-month lagged risk indicators", "lagged dependent variable"),
+    ("pergdp_ppp, gdp_grow, pop, stockvalue_gdp, fin_open1, tra", "GDP per capita (PPP), GDP growth, population, financial depth, financial openness, trade openness", "controls"),
+    ("gdp_gvol, cpi, tra_ad, ka_open, IFS_Code, year", "Other macro series and identifiers", "not used"),
+    ("VoiceandAccountability ... ControlofCorruption", "Six WGI dimensions", "threshold variable (single dimensions)"),
+    ("ins_quality", "Mean of the six WGI dimensions (IQ)", "threshold variable"),
+]
+SUPP["S15"] = dict(caption="Variables of the original regression datasets (compiled from Wind on 13 June 2023).", header=["Column name(s)", "Content", "Use in this study"],
+                   rows=[list(r) for r in WIND_COLS],
+                   notes="Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata. The original Wind series codes were not retained.")
 SUPP_FIGS = {"S1": ("fig6_e14_adaptive_weighting", "Training-weight schemes: development-fold mean AP and retrospective AP.")}
 
 FIGS = {
@@ -739,7 +758,7 @@ def build_tex(preview=False):
             L.append(f"\\begin{{figure*}}[!htbp]\\centering\\includegraphics[width=\\textwidth]{{figures/Fig{FIG_NUM[it[1]]}.pdf}}"
                      f"\\caption{{{to_tex(cap)}}}\\label{{fig:{it[1]}}}\\end{{figure*}}")
     L.append(r"\section*{Data availability}")
-    L.append(tex_text("BIS, IMF and World Bank data are public; the Wind exports are licensed and cannot be redistributed, but series codes and export dates are listed in the replication package. Code, split definitions, the confirmation protocol and all row-level predictions are provided in the replication package [repository link withheld for double-anonymous review]."))
+    L.append(tex_text("BIS, IMF and World Bank data are public; the Wind-based regression datasets (compiled on 13 June 2023) are licensed and cannot be redistributed, but their variables are documented in Supplementary Table S15 and their SHA-256 checksums are included in the replication package. Code, split definitions, the confirmation protocol and all row-level predictions are provided in the replication package [repository link withheld for double-anonymous review]."))
     L.append(r"\begin{thebibliography}{99}")
     for k in used:
         au, yr = REFS[k][0].rsplit(",", 1)
@@ -770,7 +789,7 @@ def build_md():
         elif k == "fig":
             fn, cap = FIGS[it[1]]
             out.append(f"![Fig. {FIG_NUM[it[1]]}. {to_md(cap)}](figures/Fig{FIG_NUM[it[1]]}.png){{width=100%}}\n")
-    out += ["\n## Data availability\n", "BIS, IMF and World Bank data are public; the Wind exports are licensed and cannot be redistributed, but series codes and export dates are listed in the replication package. Code, split definitions, the confirmation protocol and all row-level predictions are provided in the replication package [repository link withheld for double-anonymous review].\n", "\n## References\n"]
+    out += ["\n## Data availability\n", "BIS, IMF and World Bank data are public; the Wind-based regression datasets (compiled on 13 June 2023) are licensed and cannot be redistributed, but their variables are documented in Supplementary Table S15 and their SHA-256 checksums are included in the replication package. Code, split definitions, the confirmation protocol and all row-level predictions are provided in the replication package [repository link withheld for double-anonymous review].\n", "\n## References\n"]
     out += [REFS[k][1] + "\n" for k in used_refs()]
     return "\n".join(out)
 
@@ -801,7 +820,7 @@ def title_page_md():
                       "**Declaration of competing interest.** The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.", "",
                       "**Funding.** [To be completed by the authors.]", "",
                       "**Acknowledgements.** [To be completed by the authors.]", "",
-                      "**Data availability.** BIS, IMF and World Bank data are public. The CI series and macro controls of the original working paper were exported from the Wind Economic Database [series codes and export date to be inserted]; Wind data are licensed and cannot be redistributed. Code, split definitions, the frozen confirmation protocol and all row-level predictions are available at https://github.com/reneverland/MacroRisk.", "",
+                      "**Data availability.** BIS, IMF and World Bank data are public. The CI series and macro controls of the original working paper were exported from the Wind Economic Database and compiled into the regression datasets on 13 June 2023 (variables documented by column name in Supplementary Table S15; the original Wind series codes were not retained); Wind data are licensed and cannot be redistributed. Code, split definitions, the frozen confirmation protocol and all row-level predictions are available at https://github.com/reneverland/MacroRisk.", "",
                       "**Original study.** The threshold estimates replicated in this paper come from the authors' earlier working paper [title, year], which was not submitted for publication.", "",
                       "**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this work the authors used an AI coding and writing assistant to write analysis scripts and draft parts of the text. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.", ""])
 
