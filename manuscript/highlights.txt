@@ -1,4 +1,4 @@
-Published panel threshold F statistics are reproduced exactly from the original data
+Reported panel threshold F statistics are reproduced exactly from the original data
 Threshold effects weaken under standard trimming and publication lags
 Currency and institution features do not add detectable forecast value
 No learned model beats a persistence rule by a meaningful margin

@@ -2,9 +2,9 @@
 
 *Do institutional thresholds improve exchange-rate stress early warning? A replication-to-deployment evaluation with a pre-specified confirmation period*
 
-**Table S1. Regime coefficients: published versus replicated.**
+**Table S1. Regime coefficients: reported versus replicated.**
 
-| Panel | Risk | Regime | Published (t) | Replicated | t cluster | t conv. | Classification |
+| Panel | Risk | Regime | Reported (t) | Replicated | t cluster | t conv. | Classification |
 |---|---|---|---|---|---|---|---|
 | A | CPI_Vol | low IQ | 49.0647 (12.37) | 49.0648 | 12.38 | 21.08 | reproduced |
 | A | FX_Vol | low IQ | 0.0060 (1.68) | 0.0060 | 1.22 | 1.68 | reproduced |
@@ -31,11 +31,11 @@
 | B | CG_Gap | high IQ | 3.9821 (1.26) | 33.9821 | 3.26 | 6.45 | suspected transcription error (digit/sign) |
 | B | Unemp | high IQ | -7.6749 (-2.36) | -7.9710 | -3.49 | -4.30 | not reproduced |
 
-*Note:* 'suspected transcription error': the published value differs from the replicated one by a digit or a sign; other causes cannot be ruled out without the original code.
+*Note:* 'suspected transcription error': the reported value differs from the replicated one by a digit or a sign; other causes cannot be ruled out without the original code.
 
-**Table S2. Specification search scored against the published values.**
+**Table S2. Specification search scored against the reported values.**
 
-| Panel | Risk | Series | Other risks | Trim | N | F T(N-1) | F publ. | gamma | gamma publ. |
+| Panel | Risk | Series | Other risks | Trim | N | F T(N-1) | F rep. | gamma | gamma rep. |
 |---|---|---|---|---|---|---|---|---|---|
 | A | CPI_Vol | cpi_vol | none | 0.01 | 678 | 590.79 | 400.68 | -0.7870 | -0.7870 |
 | A | FX_Vol | fxr_vol | none | 0.01 | 678 | 103.91 | 54.62 | -0.7870 | 0.4481 |

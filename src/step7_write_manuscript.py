@@ -49,8 +49,8 @@ TITLE = "Do institutional thresholds improve exchange-rate stress early warning?
 ABSTRACT = fill(
     "Panel threshold regressions suggest that the macroeconomic effects of currency internationalization (CI) depend on institutional "
     "quality (IQ). We test whether such evidence improves early warning of exchange-rate stress. A replication-to-deployment framework links "
-    "a forensic replication of published threshold estimates to a publication-lag-aware pseudo-real-time backtest and a decision layer. "
-    "With data for nine emerging economies, all {n_f_exact} published threshold F statistics are reproduced once a degrees-of-freedom "
+    "a forensic replication of reported threshold estimates to a publication-lag-aware pseudo-real-time backtest and a decision layer. "
+    "With data for nine emerging economies, all {n_f_exact} reported threshold F statistics are reproduced once a degrees-of-freedom "
     "convention is identified, but {n_lost15} of {n_sig1} significant threshold effects disappear under 15% trimming. In a retrospective "
     "out-of-time evaluation (2017-2022, {n_pos_all} high-risk windows), adding CI never raised average precision (AP) by the smallest effect "
     "of interest ({sesoi}), and a CI x IQ interaction did not differ from an additive model (Delta AP = {bt_m1m0_all_L12}, 95% "
@@ -64,7 +64,7 @@ KEYWORDS = ["Early warning system", "Explainable boosting machine", "Panel thres
             "Pseudo-real-time evaluation", "Selective prediction"]
 
 HIGHLIGHTS = [
-    "Published panel threshold F statistics are reproduced exactly from the original data",
+    "Reported panel threshold F statistics are reproduced exactly from the original data",
     "Threshold effects weaken under standard trimming and publication lags",
     "Currency and institution features do not add detectable forecast value",
     "No learned model beats a persistence rule by a meaningful margin",
@@ -135,24 +135,24 @@ P("Early-warning systems for exchange-rate and balance-of-payments stress are de
   "panel threshold regressions [hansen1999].")
 P("This paper asks whether such threshold evidence survives the move from a regression table to an early-warning system. We organise the study "
   "around three questions.")
-BUL(["RQ1 (replication): Can the published threshold estimates be reproduced from the original data, and how sensitive are they to estimation "
+BUL(["RQ1 (replication): Can the reported threshold estimates be reproduced from the original data, and how sensitive are they to estimation "
      "choices that are rarely reported, such as the trimming of the threshold grid and the timing of information?",
      "RQ2 (forecast value): When every input is restricted to what was published at the forecast date, do CI, IQ and their interaction improve the "
      "detection of future exchange-rate stress over persistence, country-identity and macro-only benchmarks by at least a pre-specified smallest "
      "effect of interest?",
      "RQ3 (decision value): Which decision rules, covering model choice, calibration, analyst routing and fallback, minimise expected cost, and do "
      "they hold in a confirmation period that was scored only after the protocol had been frozen?"])
-P("We answer these questions with the data behind an earlier, unsubmitted working paper by the authors on CI, IQ and six macroeconomic risks in "
+P("We answer these questions with the data behind an earlier, unpublished working paper co-authored by one of us on CI, IQ and six macroeconomic risks in "
   "emerging economies: a SWIFT-share panel of six countries and an FX-turnover-share panel of nine countries. The first stage is a forensic "
-  "replication of the published threshold tests and regime coefficients. The second stage embeds the same information in a "
+  "replication of the reported threshold tests and regime coefficients. The second stage embeds the same information in a "
   "publication-lag-aware pseudo-real-time backtest for three-month real-effective-exchange-rate (REER) stress. Because the period 2021-2022 had "
   "been examined while the study was designed, we treat it as a retrospective out-of-time evaluation and add a confirmation period, 2023-2025, "
   "that was scored once under a protocol whose SHA-256 hash was recorded beforehand.")
-P("The answers are largely negative, and we report them as such. The published F statistics are reproduced exactly once an unusual "
+P("The answers are largely negative, and we report them as such. The reported F statistics are reproduced exactly once an unusual "
   "degrees-of-freedom convention is recognised, but several thresholds sit at the edge of the data and lose significance under conventional "
   "trimming. CI and IQ do not add detectable forecast value, an institution-conditioned interaction is indistinguishable from an additive model, "
   "and a persistence rule is as good as or better than the learned models out of time. The contributions are:")
-BUL(["A replication-to-deployment framework that connects a scored replication audit of published panel threshold estimates to a leakage-checked "
+BUL(["A replication-to-deployment framework that connects a scored replication audit of reported panel threshold estimates to a leakage-checked "
      "forecasting and decision layer, with every number regenerated from row-level predictions and cross-checked by an automated audit.",
      "Evidence on the three questions above, including equivalence tests against a smallest effect of interest, event-level and onset "
      "evaluation, country-identity baselines and a within/between decomposition of the CI signal.",
@@ -186,7 +186,7 @@ P("Explainable boosting machines (EBMs) are generalized additive models with opt
 
 H1("Data and replication design")
 H2("Original study and data")
-P("The replication uses the two regression datasets of the authors' earlier working paper, which was circulated internally and never submitted. "
+P("The replication uses the two regression datasets of that earlier working paper, which has not been published. "
   "The CI series and macro controls were exported from the Wind Economic Database and compiled into the regression datasets on 13 June 2023; the original Wind series codes were not "
   "retained, so Supplementary Table S15 documents the variables by their dataset column names; "
   "SHA-256 checksums of the files are recorded in the replication package. Panel A measures CI by the currency's share of SWIFT payments for "
@@ -207,7 +207,7 @@ P("where $S_0$ and $S_1$ are the residual sums of squares without and with the t
 EQ(r"\hat p = \frac{1 + \#\{b : F^{*}_b \ge F\}}{B + 1}", "eq:p")
 P("so the smallest attainable value is {p_min} [davison1997]; Monte Carlo standard errors are reported in the replication package. Three choices "
   "are not stated in the original paper: the dataset columns behind CE_Vol and ER_Vol, the timing of the other-risk controls and the trimming "
-  "fraction. We resolve them with a fully reported specification search that scores every candidate against the published F statistics, "
+  "fraction. We resolve them with a fully reported specification search that scores every candidate against the reported F statistics, "
   "thresholds and regime t statistics (Supplementary Table S2) and apply the selected option to all twelve regressions: full-coverage series, "
   "contemporaneous other risks and 1% trimming, the default of a widely used Stata implementation [wang2015].")
 H2("Publication-lag-aware pseudo-real-time panel")
@@ -238,7 +238,7 @@ FIGR("fig2")
 H1("Forecasting and decision framework")
 H2("System architecture")
 P("The framework runs as scripts in a fixed order. (i) A vintage-aware data module applies each publication lag, holds the last release forward "
-  "and records data age. (ii) A replication auditor re-estimates the published regressions and classifies each discrepancy as a convention, a "
+  "and records data age. (ii) A replication auditor re-estimates the reported regressions and classifies each discrepancy as a convention, a "
   "suspected transcription error or a non-reproduction. (iii) A forecasting module fits all models on frozen splits and writes row-level "
   "predictions to a single prediction store. (iv) A decision module converts probabilities into alerts, review decisions and fallback choices. "
   "An audit script recomputes every reported metric from the prediction store and blocks the manuscript build on any mismatch.")
@@ -299,10 +299,10 @@ P("Before any outcome after 2022 was evaluated we froze a protocol (SHA-256 {pro
 
 H1("Results")
 H2("Replication of the threshold evidence")
-P("[[tab:thresh]] compares the replicated threshold tests with the published values. With Hansen's residual variance the replicated F statistics "
-  "exceed the published ones by a constant factor within each panel (published/replicated = {ratio_A} in Panel A and {ratio_B} in Panel B). "
-  "Dividing instead by $T(N-1)$ reproduces {n_f_exact} of the 12 published F statistics to two decimals, which identifies the convention used. "
-  "{n_thr_exact} of 12 thresholds are reproduced to four decimals. Of the {n_cells} published regime coefficients, {n_repro} are reproduced in "
+P("[[tab:thresh]] compares the replicated threshold tests with the reported values. With Hansen's residual variance the replicated F statistics "
+  "exceed the reported ones by a constant factor within each panel (reported/replicated = {ratio_A} in Panel A and {ratio_B} in Panel B). "
+  "Dividing instead by $T(N-1)$ reproduces {n_f_exact} of the 12 reported F statistics to two decimals, which identifies the convention used. "
+  "{n_thr_exact} of 12 thresholds are reproduced to four decimals. Of the {n_cells} reported regime coefficients, {n_repro} are reproduced in "
   "coefficient and t statistic, {n_tdiff} in the coefficient only and {n_notrep} are not reproduced; {n_trans} differ from our estimates only by a "
   "digit or a sign and are classified as suspected transcription errors, although we cannot rule out other causes without the original code "
   "(Supplementary Table S1).")
@@ -415,8 +415,8 @@ P("The panels are small: nine countries and eleven years in the main evaluation,
   "the original specification for replication. The review experiment uses stylised costs and reviewer accuracies.")
 
 H1("Conclusion")
-P("We traced an institution-conditioned currency-internationalization hypothesis from published threshold estimates to an operational "
-  "early-warning task. The published tests are reproducible but fragile, and the information they encode does not improve the out-of-sample "
+P("We traced an institution-conditioned currency-internationalization hypothesis from reported threshold estimates to an operational "
+  "early-warning task. The reported tests are reproducible but fragile, and the information they encode does not improve the out-of-sample "
   "detection of exchange-rate stress once publication lags, persistence and country identity are taken into account. A pre-specified "
   "confirmation period supports this conclusion for the institutional variables, while showing that flexible learners can beat persistence "
   "in some samples, which is why a monitored fallback rule is preferable to a fixed model choice. The framework, including its decision rules and consistency audit, can be reused to vet other "
@@ -465,8 +465,8 @@ for r in t2a.itertuples():
     pr = prt[(prt.panel == r.panel) & (prt.risk == r.risk)]["p_boot"].iloc[0]
     rows.append(["A" if r.panel == "A_SWIFT" else "B", r.risk, str(r.n_obs), f"{r.f_published:.2f}", f"{r.f_stat_tn1_convention:.2f}", f"{r.f_stat:.2f}",
                  f"{r.p_boot:.4f}", f"{r.threshold_published:.4f}", f"{r.threshold:.4f}", f"{100 * r.share_obs_regime1:.1f}", f"{p15:.4f}", f"{pr:.4f}"])
-TABLES["thresh"] = dict(caption="Replication of the published threshold tests (threshold variable: IQ).",
-                        header=["Panel", "Risk", "N", "F publ.", "F T(N-1)", "F Hansen", "p", "Thr. publ.", "Thr. repl.", "Low regime %", "p 15% trim", "p real-time"],
+TABLES["thresh"] = dict(caption="Replication of the reported threshold tests (threshold variable: IQ).",
+                        header=["Panel", "Risk", "N", "F rep.", "F T(N-1)", "F Hansen", "p", "Thr. rep.", "Thr. repl.", "Low regime %", "p 15% trim", "p real-time"],
                         rows=rows, notes=f"p-values from {V['n_boot_thresh']} country-block bootstraps, (1 + k)/(B + 1). Main specification: 1% trimming, contemporaneous other risks.")
 
 t3 = rd("table3_e03_benchmark_comparison.csv")
@@ -554,12 +554,12 @@ TABLES["rules"] = dict(caption="Decision rules derived from the evidence.", head
 
 # Supplementary tables
 t2c = rd("table2c_published_vs_replicated.csv")
-SUPP["S1"] = dict(caption="Regime coefficients: published versus replicated.", header=["Panel", "Risk", "Regime", "Published (t)", "Replicated", "t cluster", "t conv.", "Classification"],
+SUPP["S1"] = dict(caption="Regime coefficients: reported versus replicated.", header=["Panel", "Risk", "Regime", "Reported (t)", "Replicated", "t cluster", "t conv.", "Classification"],
                   rows=[["A" if r.panel == "A_SWIFT" else "B", r.risk, "low IQ" if r.term == "ci_regime1" else "high IQ", f"{r.coef_published:.4f} ({r.t_published:.2f})",
                          f"{r.coef_replicated:.4f}", f"{r.t_cluster:.2f}", f"{r.t_conventional:.2f}", r.status] for r in t2c.itertuples()],
-                  notes="'suspected transcription error': the published value differs from the replicated one by a digit or a sign; other causes cannot be ruled out without the original code.")
+                  notes="'suspected transcription error': the reported value differs from the replicated one by a digit or a sign; other causes cannot be ruled out without the original code.")
 ss = rd("e01b_specification_search.csv")
-SUPP["S2"] = dict(caption="Specification search scored against the published values.", header=["Panel", "Risk", "Series", "Other risks", "Trim", "N", "F T(N-1)", "F publ.", "gamma", "gamma publ."],
+SUPP["S2"] = dict(caption="Specification search scored against the reported values.", header=["Panel", "Risk", "Series", "Other risks", "Trim", "N", "F T(N-1)", "F rep.", "gamma", "gamma rep."],
                   rows=[[r.panel[0], r.risk, r.y_col, r.other_risks, f"{r.trim:.2f}", str(r.n_obs), f"{r.f_stat_tn1_convention:.2f}", f"{r.f_published:.2f}", f"{r.gamma:.4f}", f"{r.gamma_published:.4f}"] for r in ss.itertuples()], notes="")
 SUPP["S3"] = dict(caption="Threshold tests by trimming fraction.", header=["Panel", "Risk", "Trim", "N", "F Hansen", "p", "Threshold", "Low regime %"],
                   rows=[[r.panel[0], r.risk, f"{r.trim:.2f}", str(r.n_obs), f"{r.f_stat:.2f}", f"{r.p_boot:.4f}", f"{r.threshold:.4f}", f"{100 * r.share_obs_regime1:.1f}"] for r in trim.itertuples()], notes="")
@@ -628,7 +628,7 @@ SUPP_FIGS = {"S1": ("fig6_e14_adaptive_weighting", "Training-weight schemes: dev
 FIGS = {
     "fig1": ("fig1_timeline_protocol", "Information set at the forecast origin (a) and expanding-window folds (b)."),
     "fig2": ("fig2_data_coverage_stress_windows", "High-risk windows in the Core-9 panel (a) and pseudo-real-time institutional quality (b). In the test years the evaluation labels of each fold are shown; before 2017 the first-fold threshold is used for illustration."),
-    "fig8": ("fig8_threshold_replication", "Replicated versus published threshold F statistics (a) and bootstrap p-values under 1% trimming, 15% trimming and the pseudo-real-time specification (b)."),
+    "fig8": ("fig8_threshold_replication", "Replicated versus reported threshold F statistics (a) and bootstrap p-values under 1% trimming, 15% trimming and the pseudo-real-time specification (b)."),
     "fig3": ("fig3_model_comparison_bootstrap_ci", "(a) Pooled AP in the development and retrospective folds with fold-mean AP marked; dotted lines give the base rates. (b) Pooled AP over six folds by feature set. (c) Paired block-bootstrap intervals (L = 12) for M1 against each benchmark over six folds; the shaded band is the smallest effect of interest."),
     "fig5": ("fig5_ci_iq_interaction_explainability", "EBM CI x IQ surface with sparse cells masked (a), CI response at three IQ levels with fold variability (b) and raw M1 probabilities with high-risk labels for four countries (c)."),
     "fig4": ("fig4_calibration_and_decision_cost", "Reliability of M1 under three calibration schemes and of B0 in the retrospective test (a), expected cost under asymmetric losses over six folds (b) and recall under monthly review quotas over six folds (c)."),
@@ -821,7 +821,7 @@ def title_page_md():
                       "**Funding.** [To be completed by the authors.]", "",
                       "**Acknowledgements.** [To be completed by the authors.]", "",
                       "**Data availability.** BIS, IMF and World Bank data are public. The CI series and macro controls of the original working paper were exported from the Wind Economic Database and compiled into the regression datasets on 13 June 2023 (variables documented by column name in Supplementary Table S15; the original Wind series codes were not retained); Wind data are licensed and cannot be redistributed. Code, split definitions, the frozen confirmation protocol and all row-level predictions are available at https://github.com/reneverland/MacroRisk.", "",
-                      "**Original study.** The threshold estimates replicated in this paper come from the authors' earlier working paper [title, year], which was not submitted for publication.", "",
+                      "**Original study.** The threshold estimates replicated in this paper come from an unpublished working paper by M. Xu and X. Niu, 'Does Currency Internationalization increase Macro Risk in Emerging Markets? Nonlinear Evidence from Institutional Quality' (drafts dated November 2023 to July 2025).", "",
                       "**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this work the authors used an AI coding and writing assistant to write analysis scripts and draft parts of the text. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.", ""])
 
 

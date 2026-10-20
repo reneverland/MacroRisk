@@ -461,7 +461,7 @@ def threshold_figure():
     lim = [10, 600]
     ax.plot(lim, lim, "k--", linewidth=1)
     ax.set_xscale("log"); ax.set_yscale("log"); ax.set_xlim(lim); ax.set_ylim(lim)
-    ax.set_xlabel("Published F statistic"); ax.set_ylabel("Replicated F statistic")
+    ax.set_xlabel("Reported F statistic"); ax.set_ylabel("Replicated F statistic")
     ax.set_title("(a) Threshold F statistics", fontweight="bold")
     ax.legend(fontsize=7, loc="upper left"); ax.grid(True, linestyle=":", alpha=0.5)
 
