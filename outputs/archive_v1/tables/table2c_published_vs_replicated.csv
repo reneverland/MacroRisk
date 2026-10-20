@@ -1,0 +1,25 @@
+panel,risk,term,coef_published,t_published,coef_replicated,t_conventional,t_cluster,t_matches,status
+A_SWIFT,CPI_Vol,ci_regime1,49.0647,12.37,49.0648,21.08,12.38,cluster,reproduced
+A_SWIFT,FX_Vol,ci_regime1,0.006,1.68,0.006,1.68,1.22,conventional,reproduced
+A_SWIFT,CE_Vol,ci_regime1,0.0455,9.1,0.0455,9.1,12.34,conventional,reproduced
+A_SWIFT,ER_Vol,ci_regime1,0.3396,0.39,1.0462,4.12,3.97,none,not reproduced
+A_SWIFT,CG_Gap,ci_regime1,0.5579,0.94,0.6183,1.04,0.36,none,not reproduced
+A_SWIFT,Unemp,ci_regime1,-0.1582,-0.88,-0.1582,-0.99,-0.89,cluster,reproduced
+A_SWIFT,CPI_Vol,ci_regime2,-1.0075,-3.13,-1.0075,-3.61,-3.13,cluster,reproduced
+A_SWIFT,FX_Vol,ci_regime2,-0.1116,-7.16,-0.1116,-7.61,-1.96,none,coefficient reproduced; t differs
+A_SWIFT,CE_Vol,ci_regime2,-0.0201,-8.15,-0.0201,-8.15,-4.38,conventional,reproduced
+A_SWIFT,ER_Vol,ci_regime2,0.0863,0.25,0.0305,0.17,0.1,none,not reproduced
+A_SWIFT,CG_Gap,ci_regime2,-2.595,-4.27,-2.6012,-4.3,-1.43,none,coefficient reproduced; t differs
+A_SWIFT,Unemp,ci_regime2,-6.0032,-1.2,-6.0032,-11.65,-2.5,none,coefficient reproduced; t differs
+B_FX,CPI_Vol,ci_regime1,84.6554,2.19,112.8207,9.87,9.56,none,not reproduced
+B_FX,FX_Vol,ci_regime1,1.595,9.89,1.595,9.52,9.9,cluster,reproduced
+B_FX,CE_Vol,ci_regime1,1.5209,14.5,1.5209,16.0,14.51,cluster,reproduced
+B_FX,ER_Vol,ci_regime1,4.207,9.96,74.207,11.04,9.96,cluster,suspected transcription error (digit/sign)
+B_FX,CG_Gap,ci_regime1,14.5626,2.15,14.5626,4.2,2.15,cluster,reproduced
+B_FX,Unemp,ci_regime1,1.2196,3.53,1.1276,0.91,0.5,none,not reproduced
+B_FX,CPI_Vol,ci_regime2,52.132,2.23,-24.9266,-1.9,-1.95,none,not reproduced
+B_FX,FX_Vol,ci_regime2,0.0335,1.12,0.0335,1.79,1.12,cluster,reproduced
+B_FX,CE_Vol,ci_regime2,0.0297,1.86,0.0297,1.94,1.86,cluster,reproduced
+B_FX,ER_Vol,ci_regime2,-1.1321,2.42,1.1321,0.9,0.42,none,suspected transcription error (digit/sign)
+B_FX,CG_Gap,ci_regime2,3.9821,1.26,33.9821,6.45,3.26,none,suspected transcription error (digit/sign)
+B_FX,Unemp,ci_regime2,-7.6749,-2.36,-7.971,-4.3,-3.49,none,not reproduced

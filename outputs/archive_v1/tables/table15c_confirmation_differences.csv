@@ -1,0 +1,17 @@
+countries,model_A,model_B,metric,Delta,CI95_Low,CI95_High
+All 15 countries,B1_Regularized_Linear,B0_Historical_Rule,AP,-0.1219,-0.2273,0.15
+All 15 countries,B1_Regularized_Linear,B0_Historical_Rule,Cost_C5_per100,1.6667,-22.963,29.8194
+All 15 countries,M0_EBM_Additive,B0_Historical_Rule,AP,-0.0821,-0.182,0.1693
+All 15 countries,M0_EBM_Additive,B0_Historical_Rule,Cost_C5_per100,-4.6296,-24.4444,15.5556
+All 15 countries,B4_XGBoost,B0_Historical_Rule,AP,0.0543,0.0,0.1799
+All 15 countries,B4_XGBoost,B0_Historical_Rule,Cost_C5_per100,-12.037,-31.1111,2.4074
+All 15 countries,Fallback_policy,B0_Historical_Rule,AP,0.0,0.0,0.0
+All 15 countries,Fallback_policy,B0_Historical_Rule,Cost_C5_per100,0.0,0.0,0.0
+Core-9,B1_Regularized_Linear,B0_Historical_Rule,AP,0.0343,-0.1593,0.3859
+Core-9,B1_Regularized_Linear,B0_Historical_Rule,Cost_C5_per100,-10.1852,-33.0324,9.8765
+Core-9,M0_EBM_Additive,B0_Historical_Rule,AP,0.0235,-0.1624,0.3598
+Core-9,M0_EBM_Additive,B0_Historical_Rule,Cost_C5_per100,-12.3457,-36.4198,5.2469
+Core-9,B4_XGBoost,B0_Historical_Rule,AP,0.1676,0.0629,0.3117
+Core-9,B4_XGBoost,B0_Historical_Rule,Cost_C5_per100,-15.4321,-44.159,1.2346
+Core-9,Fallback_policy,B0_Historical_Rule,AP,0.0,0.0,0.0
+Core-9,Fallback_policy,B0_Historical_Rule,Cost_C5_per100,0.0,0.0,0.0

@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 # Wind exports are licensed and not redistributed; checksums are in SHA256SUMS.txt
 data/raw/historylab/*.xlsx
+# anonymized review archive, rebuilt from the repository
+manuscript/*.zip

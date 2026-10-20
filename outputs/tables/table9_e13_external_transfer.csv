@@ -1,82 +1,82 @@
 evaluation_window,regime,target,model,N,N_pos,Pos_Rate,AP,ROC_AUC,Brier,LogLoss,Cost_C5_per100,MAE,RMSE,AP_fold_mean,Brier_raw,Brier_platt_8m,Brier_platt_expanding,cal_scheme
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B0_Historical_Rule,432,101,0.2338,0.53,0.7709,0.149,0.4703,60.648,1.1478,1.868,0.4968,0.149,0.1546,0.1607,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B0_Historical_Rule,144,44,0.3056,0.7436,0.8618,0.1585,0.4775,41.667,1.1284,1.8459,0.7292,0.1585,0.1679,0.1731,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B0_Historical_Rule,288,57,0.1979,0.4045,0.706,0.1442,0.4667,70.139,1.1575,1.879,0.3806,0.1442,0.1479,0.1545,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B1_Regularized_Linear,432,101,0.2338,0.5714,0.7901,0.1434,0.4692,53.009,0.9105,1.4461,0.581,0.1434,0.1722,0.151,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B1_Regularized_Linear,144,44,0.3056,0.6372,0.7534,0.1678,0.5946,61.111,0.9941,1.4624,0.6602,0.1678,0.2422,0.1729,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B1_Regularized_Linear,288,57,0.1979,0.5423,0.8142,0.1313,0.4065,48.958,0.8687,1.4379,0.5414,0.1313,0.1371,0.1401,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B3_Random_Forest,432,101,0.2338,0.5589,0.8133,0.1371,0.4224,44.444,0.8833,1.392,0.5629,0.1371,0.1633,0.1446,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B3_Random_Forest,144,44,0.3056,0.6772,0.8525,0.1512,0.4529,38.194,0.8627,1.3028,0.6913,0.1512,0.2003,0.1552,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B3_Random_Forest,288,57,0.1979,0.4834,0.7864,0.1301,0.4071,47.569,0.8935,1.4346,0.4987,0.1301,0.1448,0.1393,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B4_XGBoost,432,101,0.2338,0.538,0.8011,0.1466,0.4457,52.546,0.8879,1.4124,0.5398,0.1466,0.1721,0.1527,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B4_XGBoost,144,44,0.3056,0.7313,0.8666,0.1548,0.4626,43.75,0.8849,1.3455,0.7161,0.1548,0.2056,0.1523,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B4_XGBoost,288,57,0.1979,0.3822,0.7581,0.1425,0.4372,56.944,0.8894,1.4446,0.4516,0.1425,0.1554,0.1529,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,M0_EBM_Additive,432,101,0.2338,0.5434,0.7611,0.1493,0.4738,61.111,0.9005,1.4651,0.5395,0.1493,0.1628,0.1507,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,M0_EBM_Additive,144,44,0.3056,0.6044,0.7361,0.1875,0.6076,70.833,0.9781,1.5305,0.62,0.1875,0.2128,0.1824,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,M0_EBM_Additive,288,57,0.1979,0.5078,0.7974,0.1302,0.4069,56.25,0.8618,1.4313,0.4993,0.1302,0.1378,0.1348,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B1_Regularized_Linear,432,106,0.2454,0.4542,0.7158,0.1726,0.5437,68.981,2.6534,4.9287,0.4578,0.1726,0.2068,0.1844,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B1_Regularized_Linear,144,51,0.3542,0.5488,0.7274,0.2443,0.7174,63.889,3.4822,6.2287,0.5268,0.2443,0.2942,0.2567,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,B1_Regularized_Linear,288,55,0.191,0.4235,0.6854,0.1367,0.4568,71.528,2.239,4.128,0.4233,0.1367,0.1632,0.1483,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B3_Random_Forest,432,106,0.2454,0.557,0.7589,0.1605,0.4896,58.333,2.3548,4.1117,0.4976,0.1605,0.1775,0.1594,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B3_Random_Forest,144,51,0.3542,0.6686,0.7628,0.2061,0.5931,54.167,2.7231,3.9965,0.6793,0.2061,0.2187,0.1899,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,B3_Random_Forest,288,55,0.191,0.4415,0.7334,0.1377,0.4379,60.417,2.1706,4.1681,0.4068,0.1377,0.1568,0.1441,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B4_XGBoost,432,106,0.2454,0.5477,0.7391,0.1656,0.5019,67.593,2.2972,4.1272,0.552,0.1656,0.1854,0.1646,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B4_XGBoost,144,51,0.3542,0.6294,0.7451,0.2219,0.6319,75.694,2.6291,3.9579,0.6199,0.2219,0.2387,0.2053,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,B4_XGBoost,288,55,0.191,0.5019,0.7192,0.1375,0.4368,63.542,2.1313,4.2092,0.518,0.1375,0.1587,0.1442,raw
-All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,M0_EBM_Additive,432,106,0.2454,0.258,0.5042,0.1924,0.5852,91.204,2.4946,4.4056,0.4002,0.1924,0.2128,0.2025,raw
-Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,M0_EBM_Additive,144,51,0.3542,0.3321,0.4721,0.2752,0.8034,129.167,2.8874,4.3616,0.4058,0.2752,0.2831,0.2742,raw
-Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,M0_EBM_Additive,288,55,0.191,0.2672,0.6122,0.151,0.4761,72.222,2.2983,4.4274,0.3974,0.151,0.1776,0.1666,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B0_Historical_Rule,432,89,0.206,0.4916,0.7579,0.137,0.4428,55.324,1.1478,1.868,0.4766,0.137,0.1453,0.1487,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B0_Historical_Rule,144,38,0.2639,0.7214,0.861,0.1411,0.436,45.139,1.1284,1.8459,0.7052,0.1411,0.1552,0.1596,raw
-Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B0_Historical_Rule,288,51,0.1771,0.3675,0.6902,0.135,0.4462,60.417,1.1575,1.879,0.3623,0.135,0.1403,0.1433,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B1_Regularized_Linear,432,89,0.206,0.5248,0.7701,0.1352,0.4618,52.083,0.9105,1.4461,0.5516,0.1352,0.164,0.1415,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B1_Regularized_Linear,144,38,0.2639,0.5821,0.7334,0.1568,0.5936,56.944,0.9941,1.4624,0.6127,0.1568,0.225,0.1625,raw
-Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B1_Regularized_Linear,288,51,0.1771,0.5165,0.7999,0.1244,0.3959,49.653,0.8687,1.4379,0.5211,0.1244,0.1334,0.131,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B3_Random_Forest,432,89,0.206,0.5533,0.825,0.1245,0.3916,49.769,0.8869,1.3994,0.5507,0.1245,0.1524,0.1329,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B3_Random_Forest,144,38,0.2639,0.6974,0.8987,0.1283,0.3926,37.5,0.8664,1.3222,0.703,0.1283,0.1728,0.1359,raw
-Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B3_Random_Forest,288,51,0.1771,0.4587,0.7828,0.1227,0.3911,55.903,0.8972,1.4364,0.4745,0.1227,0.1423,0.1315,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B4_XGBoost,432,89,0.206,0.4846,0.7918,0.136,0.4215,46.991,0.8929,1.4255,0.5073,0.136,0.1629,0.1451,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B4_XGBoost,144,38,0.2639,0.7086,0.8889,0.1338,0.4062,31.25,0.8955,1.3744,0.6971,0.1338,0.1843,0.1418,raw
-Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B4_XGBoost,288,51,0.1771,0.2987,0.7202,0.1371,0.4292,54.861,0.8916,1.4504,0.4124,0.1371,0.1522,0.1467,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,M0_EBM_Additive,432,89,0.206,0.5617,0.7939,0.1325,0.4178,54.63,0.9036,1.4637,0.5398,0.1325,0.1534,0.1337,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,M0_EBM_Additive,144,38,0.2639,0.6674,0.7912,0.1527,0.4808,65.972,0.9681,1.5282,0.664,0.1527,0.1887,0.1478,raw
-Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,M0_EBM_Additive,288,51,0.1771,0.4591,0.7999,0.1223,0.3863,48.958,0.8714,1.4304,0.4777,0.1223,0.1357,0.1267,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,B1_Regularized_Linear,432,120,0.2778,0.4898,0.7157,0.1881,0.5779,70.37,2.6534,4.9287,0.4677,0.1881,0.232,0.2047,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,B1_Regularized_Linear,144,56,0.3889,0.5909,0.7616,0.2463,0.7144,59.028,3.4822,6.2287,0.5594,0.2463,0.312,0.2643,raw
-Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,B1_Regularized_Linear,288,64,0.2222,0.4157,0.6519,0.159,0.5096,76.042,2.239,4.128,0.4218,0.159,0.192,0.175,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,B3_Random_Forest,432,120,0.2778,0.6023,0.7562,0.1738,0.5221,63.426,2.3345,4.0865,0.5805,0.1738,0.1983,0.1727,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,B3_Random_Forest,144,56,0.3889,0.7139,0.789,0.2111,0.6041,47.917,2.6815,3.9707,0.7975,0.2111,0.2344,0.1878,raw
-Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,B3_Random_Forest,288,64,0.2222,0.4814,0.7102,0.1551,0.4811,71.181,2.161,4.1432,0.4721,0.1551,0.1802,0.1652,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,B4_XGBoost,432,120,0.2778,0.5979,0.7522,0.1804,0.5362,58.796,2.3083,4.168,0.5625,0.1804,0.2107,0.1792,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,B4_XGBoost,144,56,0.3889,0.712,0.7884,0.2258,0.6331,43.056,2.628,3.9595,0.6959,0.2258,0.2524,0.1999,raw
-Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,B4_XGBoost,288,64,0.2222,0.4885,0.6955,0.1577,0.4877,66.667,2.1484,4.2685,0.4958,0.1577,0.1898,0.1688,raw
-All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,M0_EBM_Additive,432,120,0.2778,0.3465,0.559,0.2018,0.5936,70.602,2.4796,4.3958,0.417,0.2018,0.2326,0.212,raw
-Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,M0_EBM_Additive,144,56,0.3889,0.4433,0.5412,0.2691,0.7519,81.25,2.8606,4.4087,0.5238,0.2691,0.3004,0.2707,raw
-Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,M0_EBM_Additive,288,64,0.2222,0.3169,0.593,0.1681,0.5145,65.278,2.2891,4.3893,0.3636,0.1681,0.1987,0.1826,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B0_Historical_Rule,432,89,0.206,0.5012,0.7619,0.135,0.4389,58.333,1.1478,1.868,0.4766,0.135,0.1549,0.1465,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B0_Historical_Rule,144,38,0.2639,0.7204,0.8582,0.1379,0.4288,45.833,1.1284,1.8459,0.7052,0.1379,0.1558,0.1572,raw
-Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B0_Historical_Rule,288,51,0.1771,0.3764,0.6951,0.1335,0.444,64.583,1.1575,1.879,0.3623,0.1335,0.1545,0.1411,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B1_Regularized_Linear,432,89,0.206,0.5467,0.7814,0.1436,0.4619,52.083,1.1,2.0319,0.5397,0.1436,0.1944,0.1358,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B1_Regularized_Linear,144,38,0.2639,0.6446,0.7579,0.1905,0.6259,65.972,1.5778,2.8784,0.6606,0.1905,0.2876,0.1514,raw
-Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B1_Regularized_Linear,288,51,0.1771,0.4821,0.8132,0.1202,0.3799,45.139,0.8611,1.4318,0.4793,0.1202,0.1478,0.128,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B3_Random_Forest,432,89,0.206,0.5206,0.7999,0.1295,0.4034,49.769,0.945,1.4112,0.52,0.1295,0.1951,0.1329,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B3_Random_Forest,144,38,0.2639,0.6746,0.8496,0.1414,0.432,50.694,0.9778,1.3517,0.6366,0.1414,0.2283,0.1429,raw
-Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B3_Random_Forest,288,51,0.1771,0.4395,0.7695,0.1236,0.3891,49.306,0.9287,1.4401,0.4617,0.1236,0.1785,0.1279,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B4_XGBoost,432,89,0.206,0.3626,0.7242,0.1516,0.4616,59.954,0.9496,1.3845,0.4342,0.1516,0.223,0.1566,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B4_XGBoost,144,38,0.2639,0.5065,0.7152,0.1759,0.5256,62.5,1.0235,1.3794,0.5228,0.1759,0.2796,0.1764,raw
-Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B4_XGBoost,288,51,0.1771,0.2858,0.7251,0.1395,0.4296,58.681,0.9127,1.387,0.3899,0.1395,0.1947,0.1467,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,M0_EBM_Additive,432,89,0.206,0.547,0.7517,0.1352,0.4544,53.704,0.94,1.4434,0.5708,0.1352,0.1773,0.1357,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,M0_EBM_Additive,144,38,0.2639,0.6102,0.7249,0.1644,0.5974,63.889,1.0424,1.4733,0.6294,0.1644,0.2225,0.1604,raw
-Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,M0_EBM_Additive,288,51,0.1771,0.4853,0.7975,0.1206,0.3829,48.611,0.8888,1.4282,0.5415,0.1206,0.1547,0.1233,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,B1_Regularized_Linear,432,120,0.2778,0.2728,0.4367,0.2335,0.782,120.37,2.807,4.6925,0.3254,0.2313,0.2335,0.2265,platt_8m
-Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,B1_Regularized_Linear,144,56,0.3889,0.3366,0.3172,0.3435,1.2064,194.444,3.0498,4.9376,0.4581,0.3106,0.3435,0.2873,platt_8m
-Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,B1_Regularized_Linear,288,64,0.2222,0.2608,0.5533,0.1786,0.5699,83.333,2.6856,4.5651,0.2591,0.1917,0.1786,0.1961,platt_8m
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,B3_Random_Forest,432,120,0.2778,0.3072,0.5619,0.2056,0.6066,92.593,2.516,4.5911,0.3597,0.2056,0.2201,0.2106,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,B3_Random_Forest,144,56,0.3889,0.4846,0.6394,0.2418,0.6814,71.528,2.8879,4.6166,0.5376,0.2418,0.2833,0.2418,raw
-Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,B3_Random_Forest,288,64,0.2222,0.2085,0.4852,0.1874,0.5692,103.125,2.3301,4.5783,0.2708,0.1874,0.1885,0.1949,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,B4_XGBoost,432,120,0.2778,0.2684,0.4805,0.2162,0.6389,100.463,2.5619,4.7012,0.3096,0.2162,0.2293,0.219,raw
-Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,B4_XGBoost,144,56,0.3889,0.436,0.5708,0.2711,0.7641,99.306,2.8856,4.6961,0.4323,0.2711,0.3084,0.2711,raw
-Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,B4_XGBoost,288,64,0.2222,0.2189,0.4408,0.1887,0.5762,101.042,2.4001,4.7037,0.2483,0.1887,0.1898,0.193,raw
-All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,M0_EBM_Additive,432,120,0.2778,0.2637,0.4777,0.2208,0.6649,119.676,2.5927,4.6754,0.3292,0.2118,0.2208,0.2144,platt_8m
-Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,M0_EBM_Additive,144,56,0.3889,0.3434,0.4071,0.3083,0.9088,172.222,2.8966,4.6663,0.4564,0.2683,0.3083,0.268,platt_8m
-Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,M0_EBM_Additive,288,64,0.2222,0.2445,0.5402,0.177,0.543,93.403,2.4407,4.6799,0.2656,0.1836,0.177,0.1876,platt_8m
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B0_Historical_Rule,432,101,0.2338,0.53,0.7709,0.149,0.4703,60.648,1.1478,1.868,0.4968,0.149,0.1546,0.1639,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B0_Historical_Rule,144,44,0.3056,0.7436,0.8618,0.1585,0.4775,41.667,1.1284,1.8459,0.7292,0.1585,0.1679,0.1776,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B0_Historical_Rule,288,57,0.1979,0.4045,0.706,0.1442,0.4667,70.139,1.1575,1.879,0.3806,0.1442,0.1479,0.157,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B1_Regularized_Linear,432,101,0.2338,0.5721,0.7924,0.1431,0.4661,53.472,0.9105,1.4461,0.5812,0.1431,0.1702,0.1536,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B1_Regularized_Linear,144,44,0.3056,0.637,0.7577,0.1667,0.5854,62.5,0.9941,1.4624,0.6608,0.1667,0.2364,0.1758,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B1_Regularized_Linear,288,57,0.1979,0.5423,0.8142,0.1313,0.4065,48.958,0.8687,1.4379,0.5414,0.1313,0.1371,0.1425,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B3_Random_Forest,432,101,0.2338,0.5577,0.817,0.1372,0.4193,42.13,0.892,1.3994,0.5537,0.1372,0.1631,0.1489,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B3_Random_Forest,144,44,0.3056,0.6638,0.8464,0.1515,0.4526,38.194,0.8694,1.3022,0.6837,0.1515,0.1998,0.158,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B3_Random_Forest,288,57,0.1979,0.4845,0.7918,0.1301,0.4027,44.097,0.9032,1.4455,0.4887,0.1301,0.1448,0.1443,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B4_XGBoost,432,101,0.2338,0.5438,0.8055,0.1453,0.4419,49.306,0.8871,1.4151,0.5512,0.1453,0.1701,0.1557,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,B4_XGBoost,144,44,0.3056,0.7328,0.8725,0.1532,0.4574,38.194,0.8868,1.346,0.7262,0.1532,0.2017,0.1561,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,B4_XGBoost,288,57,0.1979,0.4039,0.7624,0.1413,0.4341,54.861,0.8873,1.4484,0.4637,0.1413,0.1542,0.1555,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,M0_EBM_Additive,432,101,0.2338,0.5288,0.7587,0.1514,0.4792,62.5,0.8945,1.4489,0.5427,0.1514,0.1661,0.1567,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_reer_vol_3m,M0_EBM_Additive,144,44,0.3056,0.6058,0.7714,0.1889,0.6144,77.778,0.9637,1.4978,0.6172,0.1889,0.2181,0.1854,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_reer_vol_3m,M0_EBM_Additive,288,57,0.1979,0.4975,0.7903,0.1327,0.4116,54.861,0.8599,1.4238,0.5055,0.1327,0.1401,0.1424,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B1_Regularized_Linear,432,106,0.2454,0.4553,0.715,0.1725,0.5417,69.676,2.6534,4.9287,0.4589,0.1725,0.2067,0.1822,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B1_Regularized_Linear,144,51,0.3542,0.5488,0.7274,0.2443,0.7174,63.889,3.4822,6.2287,0.5268,0.2443,0.2942,0.2475,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,B1_Regularized_Linear,288,55,0.191,0.4231,0.6829,0.1366,0.4539,72.569,2.239,4.128,0.4249,0.1366,0.163,0.1495,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B3_Random_Forest,432,106,0.2454,0.5398,0.7569,0.162,0.4931,55.324,2.3478,4.0857,0.4955,0.162,0.1738,0.161,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B3_Random_Forest,144,51,0.3542,0.6447,0.7527,0.2117,0.6059,54.167,2.7088,3.9479,0.6653,0.2117,0.229,0.1945,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,B3_Random_Forest,288,55,0.191,0.4409,0.7316,0.1371,0.4366,55.903,2.1672,4.1529,0.4106,0.1371,0.1462,0.1443,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B4_XGBoost,432,106,0.2454,0.5234,0.7347,0.1673,0.5055,66.898,2.3119,4.1689,0.5239,0.1673,0.1864,0.1647,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,B4_XGBoost,144,51,0.3542,0.6159,0.7356,0.2226,0.6317,63.889,2.6679,4.0032,0.6089,0.2226,0.2408,0.2008,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,B4_XGBoost,288,55,0.191,0.4549,0.7096,0.1396,0.4424,68.403,2.1338,4.2493,0.4815,0.1396,0.1592,0.1466,raw
+All six out-of-time folds 2017-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,M0_EBM_Additive,432,106,0.2454,0.2716,0.5179,0.1916,0.5828,90.741,2.5057,4.4235,0.4167,0.1916,0.2113,0.2028,raw
+Retrospective test 2021-2022,Pooled_pool_specific_threshold,target_res_drawdown_3m,M0_EBM_Additive,144,51,0.3542,0.3315,0.4704,0.2763,0.8074,131.944,2.8848,4.3558,0.4063,0.2763,0.2831,0.278,raw
+Development folds 2017-2020,Pooled_pool_specific_threshold,target_res_drawdown_3m,M0_EBM_Additive,288,55,0.191,0.2931,0.6528,0.1493,0.4705,70.139,2.3161,4.457,0.4219,0.1493,0.1753,0.1652,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B0_Historical_Rule,432,89,0.206,0.4916,0.7579,0.137,0.4428,55.324,1.1478,1.868,0.4766,0.137,0.1453,0.1519,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B0_Historical_Rule,144,38,0.2639,0.7214,0.861,0.1411,0.436,45.139,1.1284,1.8459,0.7052,0.1411,0.1552,0.1606,raw
+Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B0_Historical_Rule,288,51,0.1771,0.3675,0.6902,0.135,0.4462,60.417,1.1575,1.879,0.3623,0.135,0.1403,0.1476,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B1_Regularized_Linear,432,89,0.206,0.5311,0.7732,0.1347,0.4568,52.315,0.9105,1.4461,0.5558,0.1347,0.1617,0.1449,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B1_Regularized_Linear,144,38,0.2639,0.5902,0.7381,0.1554,0.5787,57.639,0.9941,1.4624,0.6252,0.1554,0.2183,0.1627,raw
+Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B1_Regularized_Linear,288,51,0.1771,0.5165,0.7999,0.1244,0.3959,49.653,0.8687,1.4379,0.5211,0.1244,0.1334,0.1359,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B3_Random_Forest,432,89,0.206,0.5462,0.824,0.1246,0.3913,50.0,0.8891,1.3978,0.5568,0.1246,0.1521,0.1386,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B3_Random_Forest,144,38,0.2639,0.7069,0.9007,0.1271,0.3916,38.889,0.8654,1.311,0.7006,0.1271,0.1725,0.1363,raw
+Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B3_Random_Forest,288,51,0.1771,0.4412,0.7774,0.1234,0.3911,55.556,0.901,1.4392,0.4848,0.1234,0.1419,0.1398,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,B4_XGBoost,432,89,0.206,0.4922,0.7965,0.1348,0.4177,45.37,0.8886,1.4095,0.5165,0.1348,0.1625,0.1486,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,B4_XGBoost,144,38,0.2639,0.7062,0.8896,0.1329,0.4034,29.861,0.8936,1.353,0.6939,0.1329,0.1855,0.145,raw
+Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,B4_XGBoost,288,51,0.1771,0.313,0.7281,0.1358,0.4248,53.125,0.886,1.4369,0.4278,0.1358,0.1511,0.1504,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_reer_vol_3m,M0_EBM_Additive,432,89,0.206,0.5688,0.8153,0.1308,0.4076,51.62,0.8908,1.4528,0.5402,0.1308,0.1514,0.1352,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_reer_vol_3m,M0_EBM_Additive,144,38,0.2639,0.6863,0.8344,0.1476,0.4502,56.944,0.9296,1.4966,0.6651,0.1476,0.1829,0.1421,raw
+Development folds 2017-2020,Pooled_with_target_history,target_reer_vol_3m,M0_EBM_Additive,288,51,0.1771,0.4591,0.7999,0.1223,0.3863,48.958,0.8714,1.4304,0.4777,0.1223,0.1357,0.1317,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,B1_Regularized_Linear,432,120,0.2778,0.4927,0.7181,0.1877,0.5775,69.444,2.6534,4.9287,0.4701,0.1877,0.2307,0.2027,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,B1_Regularized_Linear,144,56,0.3889,0.5909,0.7616,0.2463,0.7144,59.028,3.4822,6.2287,0.5594,0.2463,0.312,0.2562,raw
+Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,B1_Regularized_Linear,288,64,0.2222,0.4187,0.6557,0.1584,0.509,74.653,2.239,4.128,0.4254,0.1584,0.1901,0.1759,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,B3_Random_Forest,432,120,0.2778,0.5919,0.7545,0.1773,0.5295,57.87,2.3513,4.0889,0.574,0.1773,0.1981,0.1768,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,B3_Random_Forest,144,56,0.3889,0.7307,0.8062,0.2184,0.6186,44.444,2.6949,3.9088,0.7981,0.2184,0.2451,0.1909,raw
+Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,B3_Random_Forest,288,64,0.2222,0.4493,0.6936,0.1568,0.485,64.583,2.1795,4.176,0.462,0.1568,0.1745,0.1697,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,B4_XGBoost,432,120,0.2778,0.5967,0.7558,0.1799,0.5344,62.963,2.3159,4.1828,0.5478,0.1799,0.2111,0.1801,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,B4_XGBoost,144,56,0.3889,0.7168,0.7995,0.2239,0.6266,44.444,2.6529,3.9942,0.6669,0.2239,0.2516,0.1944,raw
+Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,B4_XGBoost,288,64,0.2222,0.483,0.689,0.158,0.4883,72.222,2.1474,4.274,0.4883,0.158,0.1908,0.173,raw
+All six out-of-time folds 2017-2022,Pooled_with_target_history,target_res_drawdown_3m,M0_EBM_Additive,432,120,0.2778,0.3818,0.605,0.198,0.5819,58.796,2.4776,4.4038,0.4485,0.198,0.2306,0.2073,raw
+Retrospective test 2021-2022,Pooled_with_target_history,target_res_drawdown_3m,M0_EBM_Additive,144,56,0.3889,0.5116,0.6011,0.2612,0.7265,53.472,2.8304,4.3915,0.5427,0.2612,0.294,0.2535,raw
+Development folds 2017-2020,Pooled_with_target_history,target_res_drawdown_3m,M0_EBM_Additive,288,64,0.2222,0.3375,0.6258,0.1664,0.5096,61.458,2.3012,4.4099,0.4014,0.1664,0.199,0.1842,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B0_Historical_Rule,432,89,0.206,0.5012,0.7619,0.135,0.4389,58.333,1.1478,1.868,0.4766,0.135,0.1549,0.1493,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B0_Historical_Rule,144,38,0.2639,0.7204,0.8582,0.1379,0.4288,45.833,1.1284,1.8459,0.7052,0.1379,0.1558,0.1579,raw
+Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B0_Historical_Rule,288,51,0.1771,0.3764,0.6951,0.1335,0.444,64.583,1.1575,1.879,0.3623,0.1335,0.1545,0.145,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B1_Regularized_Linear,432,89,0.206,0.5484,0.781,0.1421,0.459,52.315,1.1,2.0319,0.5401,0.1421,0.1927,0.1374,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B1_Regularized_Linear,144,38,0.2639,0.6446,0.7579,0.1905,0.6259,65.972,1.5778,2.8784,0.6606,0.1905,0.2876,0.1521,raw
+Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B1_Regularized_Linear,288,51,0.1771,0.4889,0.8128,0.1179,0.3756,45.486,0.8611,1.4318,0.4799,0.1179,0.1452,0.1301,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B3_Random_Forest,432,89,0.206,0.5242,0.7968,0.1296,0.4066,51.62,0.9368,1.3954,0.5007,0.1296,0.1953,0.1374,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B3_Random_Forest,144,38,0.2639,0.6637,0.8458,0.1417,0.4338,50.694,0.9583,1.3314,0.6239,0.1417,0.2316,0.145,raw
+Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B3_Random_Forest,288,51,0.1771,0.4376,0.7606,0.1236,0.3931,52.083,0.926,1.4263,0.4391,0.1236,0.1771,0.1335,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,B4_XGBoost,432,89,0.206,0.3663,0.7205,0.1523,0.4647,61.806,0.951,1.3923,0.4371,0.1523,0.2234,0.1603,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,B4_XGBoost,144,38,0.2639,0.5037,0.7073,0.1762,0.529,66.667,1.0314,1.3971,0.5304,0.1762,0.2765,0.1774,raw
+Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,B4_XGBoost,288,51,0.1771,0.2858,0.7236,0.1404,0.4325,59.375,0.9109,1.3899,0.3905,0.1404,0.1968,0.1518,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_reer_vol_3m,M0_EBM_Additive,432,89,0.206,0.5171,0.7418,0.1367,0.4744,54.63,0.9698,1.4717,0.517,0.1367,0.177,0.1406,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_reer_vol_3m,M0_EBM_Additive,144,38,0.2639,0.5767,0.6999,0.1685,0.6575,62.5,1.1456,1.5671,0.614,0.1685,0.2268,0.1663,raw
+Development folds 2017-2020,Transfer_Core9_only,target_reer_vol_3m,M0_EBM_Additive,288,51,0.1771,0.4709,0.7999,0.1208,0.3828,50.694,0.882,1.4217,0.4686,0.1208,0.1521,0.1278,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,B1_Regularized_Linear,432,120,0.2778,0.2699,0.4405,0.233,0.7737,120.139,2.807,4.6925,0.3249,0.2283,0.233,0.2235,platt_8m
+Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,B1_Regularized_Linear,144,56,0.3889,0.3349,0.3259,0.3414,1.181,195.833,3.0498,4.9376,0.4566,0.3085,0.3414,0.2791,platt_8m
+Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,B1_Regularized_Linear,288,64,0.2222,0.2581,0.5559,0.1788,0.57,82.292,2.6856,4.5651,0.259,0.1882,0.1788,0.1956,platt_8m
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,B3_Random_Forest,432,120,0.2778,0.32,0.5732,0.2051,0.604,83.333,2.5315,4.5958,0.3583,0.2051,0.2186,0.2124,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,B3_Random_Forest,144,56,0.3889,0.4544,0.6205,0.2472,0.6936,71.528,2.9357,4.6425,0.5316,0.2472,0.2852,0.2472,raw
+Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,B3_Random_Forest,288,64,0.2222,0.2116,0.4944,0.184,0.5593,89.236,2.3294,4.5722,0.2716,0.184,0.1853,0.195,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,B4_XGBoost,432,120,0.2778,0.2603,0.4663,0.2179,0.6438,101.852,2.593,4.7135,0.3035,0.2179,0.2293,0.2216,raw
+Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,B4_XGBoost,144,56,0.3889,0.4153,0.5513,0.2731,0.7695,104.167,2.906,4.7253,0.4062,0.2731,0.3062,0.2731,raw
+Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,B4_XGBoost,288,64,0.2222,0.2132,0.4276,0.1902,0.5809,100.694,2.4365,4.7075,0.2521,0.1902,0.1909,0.1959,raw
+All six out-of-time folds 2017-2022,Transfer_Core9_only,target_res_drawdown_3m,M0_EBM_Additive,432,120,0.2778,0.2678,0.4759,0.221,0.6658,118.75,2.6168,4.6896,0.3336,0.2123,0.221,0.2133,platt_8m
+Retrospective test 2021-2022,Transfer_Core9_only,target_res_drawdown_3m,M0_EBM_Additive,144,56,0.3889,0.3434,0.4071,0.3083,0.9088,172.222,2.8966,4.6663,0.4564,0.2683,0.3083,0.2588,platt_8m
+Development folds 2017-2020,Transfer_Core9_only,target_res_drawdown_3m,M0_EBM_Additive,288,64,0.2222,0.2539,0.5399,0.1774,0.5442,92.014,2.4769,4.7011,0.2723,0.1843,0.1774,0.1906,platt_8m

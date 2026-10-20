@@ -1,0 +1,100 @@
+countries,comparison,model_A,model_B,metric,N,N_pos,Delta,CI95_Low,CI95_High
+All 15 countries,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,AP,540,84,0.0291,0.0018,0.0417
+All 15 countries,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,Brier,540,84,-0.0036,-0.0068,-0.0004
+All 15 countries,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,Cost_C5_per100,540,84,-0.3704,-3.338,2.5926
+All 15 countries,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,AP,540,84,-0.0115,-0.0398,0.0157
+All 15 countries,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,Brier,540,84,0.0005,-0.0007,0.0015
+All 15 countries,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,Cost_C5_per100,540,84,0.5556,-0.9259,2.7778
+All 15 countries,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,540,84,0.0276,-0.0325,0.1418
+All 15 countries,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,540,84,-0.0061,-0.0221,0.0039
+All 15 countries,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,540,84,-11.2963,-27.5926,3.3426
+All 15 countries,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,540,84,-0.0592,-0.1394,0.1201
+All 15 countries,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,540,84,-0.0002,-0.0208,0.0148
+All 15 countries,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,540,84,-7.963,-25.7407,12.5972
+All 15 countries,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,540,84,-0.0431,-0.1096,0.0563
+All 15 countries,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,540,84,0.0034,-0.0163,0.0198
+All 15 countries,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,540,84,-7.7778,-27.7824,13.1481
+All 15 countries,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,AP,540,84,-0.0821,-0.1965,0.1627
+All 15 countries,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,Brier,540,84,0.0044,-0.0228,0.028
+All 15 countries,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,Cost_C5_per100,540,84,-4.6296,-23.338,17.7778
+All 15 countries,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,AP,540,84,0.0543,-0.0049,0.1754
+All 15 countries,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,Brier,540,84,-0.0066,-0.0212,0.0032
+All 15 countries,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,Cost_C5_per100,540,84,-12.037,-29.6343,3.338
+All 15 countries,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,AP,540,84,-0.1219,-0.2395,0.1393
+All 15 countries,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,Brier,540,84,0.0403,0.0023,0.0673
+All 15 countries,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,Cost_C5_per100,540,84,1.6667,-21.8565,31.1204
+All 15 countries,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,AP,540,84,0.0,0.0,0.0
+All 15 countries,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,Brier,540,84,0.0,0.0,0.0
+All 15 countries,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,Cost_C5_per100,540,84,0.0,0.0,0.0
+All 15 countries,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,AP,540,84,0.0004,-0.0287,0.0574
+All 15 countries,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,Brier,540,84,0.0009,-0.0059,0.0048
+All 15 countries,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,540,84,0.5556,-6.1111,4.0741
+All 15 countries,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,AP,540,84,-0.0272,-0.1242,0.0519
+All 15 countries,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,Brier,540,84,0.007,-0.0023,0.0181
+All 15 countries,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,Cost_C5_per100,540,84,11.8519,-2.7824,25.9259
+Core-9,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,AP,324,47,0.0392,-0.0098,0.0536
+Core-9,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,Brier,324,47,-0.0019,-0.0039,0.0006
+Core-9,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,Cost_C5_per100,324,47,-1.2346,-5.8642,2.1605
+Core-9,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,AP,324,47,0.0023,-0.0211,0.0217
+Core-9,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,Brier,324,47,-0.0004,-0.0013,0.0003
+Core-9,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,Cost_C5_per100,324,47,1.2346,-0.9259,4.6296
+Core-9,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,324,47,0.1672,0.064,0.3166
+Core-9,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,324,47,-0.019,-0.0389,-0.0057
+Core-9,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,324,47,-14.8148,-40.4398,2.7778
+Core-9,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,324,47,0.0478,-0.0819,0.2809
+Core-9,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,324,47,-0.0094,-0.0337,0.0087
+Core-9,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,324,47,-12.963,-36.4275,5.8642
+Core-9,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,324,47,-0.0097,-0.0714,0.0876
+Core-9,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,324,47,-0.0009,-0.0257,0.0189
+Core-9,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,324,47,-13.5802,-38.588,4.6296
+Core-9,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,AP,324,47,0.0235,-0.1576,0.3491
+Core-9,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,Brier,324,47,-0.0086,-0.0382,0.0134
+Core-9,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,Cost_C5_per100,324,47,-12.3457,-34.2593,7.4074
+Core-9,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,AP,324,47,0.1676,0.0658,0.3116
+Core-9,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,Brier,324,47,-0.0189,-0.0384,-0.0061
+Core-9,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,Cost_C5_per100,324,47,-15.4321,-41.0571,3.3951
+Core-9,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,AP,324,47,0.0343,-0.1495,0.3802
+Core-9,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,Brier,324,47,-0.0015,-0.0363,0.0224
+Core-9,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,Cost_C5_per100,324,47,-10.1852,-31.7901,12.037
+Core-9,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,AP,324,47,0.0,0.0,0.0
+Core-9,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,Brier,324,47,0.0,0.0,0.0
+Core-9,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,Cost_C5_per100,324,47,0.0,0.0,0.0
+Core-9,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,AP,324,47,0.0732,0.0,0.1642
+Core-9,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,Brier,324,47,-0.0074,-0.0196,0.0
+Core-9,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,324,47,2.4691,-0.9336,4.6296
+Core-9,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,AP,324,47,-0.0941,-0.2762,0.0374
+Core-9,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,Brier,324,47,0.0116,-0.0022,0.032
+Core-9,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,Cost_C5_per100,324,47,17.284,-1.2346,41.358
+External-6,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,AP,216,37,0.0248,0.0012,0.042
+External-6,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,Brier,216,37,-0.0061,-0.0123,0.0006
+External-6,Macro+IQ vs macro (EBM),M0_EBM_Additive|Macro+IQ,M0_EBM_Additive|Macro,Cost_C5_per100,216,37,0.9259,-4.1667,8.7963
+External-6,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,AP,216,37,-0.0296,-0.045,0.0023
+External-6,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,Brier,216,37,0.0017,-0.0012,0.0039
+External-6,Macro+IQ vs macro (XGBoost),B4_XGBoost|Macro+IQ,B4_XGBoost|Macro,Cost_C5_per100,216,37,-0.463,-1.3889,0.0
+External-6,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,216,37,-0.1509,-0.3164,0.0164
+External-6,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,216,37,0.0132,-0.0116,0.037
+External-6,XGBoost vs B0 (corrected tuning),B4_XGBoost|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,216,37,-6.0185,-32.4074,18.9931
+External-6,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,216,37,-0.1624,-0.3285,0.027
+External-6,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,216,37,0.0137,-0.0087,0.0346
+External-6,Macro EBM vs B0 (corrected tuning),M0_EBM_Additive|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,216,37,-0.463,-27.3264,29.6296
+External-6,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,AP,216,37,-0.0959,-0.2849,0.0693
+External-6,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,Brier,216,37,0.0099,-0.0151,0.0371
+External-6,C1 vs B0,C1_Country_plus_Persistence|Macro+IQ,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,216,37,0.9259,-29.6412,35.6597
+External-6,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,AP,216,37,-0.205,-0.3525,-0.0133
+External-6,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,Brier,216,37,0.0238,-0.0005,0.0512
+External-6,Always macro EBM vs frozen fallback,FROZEN M0_EBM_Additive,FROZEN Fallback_policy,Cost_C5_per100,216,37,6.9444,-22.6852,38.4375
+External-6,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,AP,216,37,-0.1221,-0.3088,0.0245
+External-6,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,Brier,216,37,0.0118,-0.0103,0.0346
+External-6,Always XGBoost vs frozen fallback,FROZEN B4_XGBoost,FROZEN Fallback_policy,Cost_C5_per100,216,37,-6.9444,-33.7963,18.0556
+External-6,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,AP,216,37,-0.2124,-0.3673,0.0622
+External-6,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,Brier,216,37,0.1031,0.0439,0.1563
+External-6,Always B1 vs frozen fallback,FROZEN B1_Regularized_Linear,FROZEN Fallback_policy,Cost_C5_per100,216,37,19.4444,-19.4444,67.6042
+External-6,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,AP,216,37,0.0,0.0,0.0
+External-6,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,Brier,216,37,0.0,0.0,0.0
+External-6,Always B0 vs frozen fallback,FROZEN B0_Historical_Rule,FROZEN Fallback_policy,Cost_C5_per100,216,37,0.0,0.0,0.0
+External-6,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,AP,216,37,-0.0938,-0.2195,0.0047
+External-6,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,Brier,216,37,0.0132,0.0,0.0282
+External-6,Exploratory monitor vs B0 (corrected tuning),Exploratory multi-candidate monitor,B0_Historical_Rule|Macro+IQ,Cost_C5_per100,216,37,-2.3148,-15.7407,4.6412
+External-6,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,AP,216,37,0.0572,-0.0394,0.1911
+External-6,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,Brier,216,37,0.0,-0.0244,0.0167
+External-6,Exploratory monitor vs XGBoost (corrected tuning),Exploratory multi-candidate monitor,B4_XGBoost|Macro+IQ,Cost_C5_per100,216,37,3.7037,-19.9074,22.6852

@@ -1,0 +1,37 @@
+split_id,term,importance,share_of_total
+DEV_FOLD_2017,ci_within_rt,0.40305,0.042
+DEV_FOLD_2017,ci_between_rt,0.53409,0.0557
+DEV_FOLD_2017,fx_share_chg_12m_rt,0.19867,0.0207
+DEV_FOLD_2017,iq_mean_rt,0.17757,0.0185
+DEV_FOLD_2017,ci_within_rt & iq_mean_rt,0.11018,0.0115
+DEV_FOLD_2017,ci_between_rt & iq_mean_rt,0.13121,0.0137
+DEV_FOLD_2018,ci_within_rt,0.02353,0.0131
+DEV_FOLD_2018,ci_between_rt,0.10021,0.0559
+DEV_FOLD_2018,fx_share_chg_12m_rt,0.03448,0.0192
+DEV_FOLD_2018,iq_mean_rt,0.10075,0.0562
+DEV_FOLD_2018,ci_within_rt & iq_mean_rt,0.03072,0.0171
+DEV_FOLD_2018,ci_between_rt & iq_mean_rt,0.04587,0.0256
+DEV_FOLD_2019,ci_within_rt,0.02743,0.0157
+DEV_FOLD_2019,ci_between_rt,0.08126,0.0465
+DEV_FOLD_2019,fx_share_chg_12m_rt,0.02743,0.0157
+DEV_FOLD_2019,iq_mean_rt,0.10093,0.0577
+DEV_FOLD_2019,ci_within_rt & iq_mean_rt,0.02086,0.0119
+DEV_FOLD_2019,ci_between_rt & iq_mean_rt,0.03553,0.0203
+DEV_FOLD_2020,ci_within_rt,0.02872,0.0162
+DEV_FOLD_2020,ci_between_rt,0.07414,0.0419
+DEV_FOLD_2020,fx_share_chg_12m_rt,0.03085,0.0174
+DEV_FOLD_2020,iq_mean_rt,0.09772,0.0552
+DEV_FOLD_2020,ci_within_rt & iq_mean_rt,0.05491,0.031
+DEV_FOLD_2020,ci_between_rt & iq_mean_rt,0.08227,0.0465
+LOCKED_TEST_2021,ci_within_rt,0.20362,0.0217
+LOCKED_TEST_2021,ci_between_rt,0.41571,0.0443
+LOCKED_TEST_2021,fx_share_chg_12m_rt,0.30148,0.0321
+LOCKED_TEST_2021,iq_mean_rt,0.17183,0.0183
+LOCKED_TEST_2021,ci_within_rt & iq_mean_rt,0.36304,0.0387
+LOCKED_TEST_2021,ci_between_rt & iq_mean_rt,0.31917,0.034
+LOCKED_TEST_2022,ci_within_rt,0.11901,0.0143
+LOCKED_TEST_2022,ci_between_rt,0.73889,0.0888
+LOCKED_TEST_2022,fx_share_chg_12m_rt,0.28667,0.0345
+LOCKED_TEST_2022,iq_mean_rt,0.23747,0.0286
+LOCKED_TEST_2022,ci_within_rt & iq_mean_rt,0.14182,0.0171
+LOCKED_TEST_2022,ci_between_rt & iq_mean_rt,0.1741,0.0209

@@ -1,0 +1,39 @@
+[E13] External transfer (fixed Core-9 thresholds)...
+  - Saved table9_e13_external_transfer.csv
+[E14] Training-weight schemes...
+   learner                     scheme  Dev_AP_fold_mean  Test_AP  Selected_on_dev
+0      EBM              Equal_Country            0.4248   0.3034             True
+1      EBM                     Global            0.4248   0.3034            False
+2      EBM  IQ_Similarity_Regularized            0.4135   0.2800            False
+3      EBM             Time_Decay_H24            0.4118   0.2790            False
+4      EBM             Time_Decay_H48            0.4200   0.2687            False
+5  XGBoost              Equal_Country            0.4325   0.4354            False
+6  XGBoost                     Global            0.4325   0.4354            False
+7  XGBoost  IQ_Similarity_Regularized            0.4468   0.4060             True
+8  XGBoost             Time_Decay_H24            0.4341   0.4283            False
+9  XGBoost             Time_Decay_H48            0.4268   0.4323            False
+[E15] Selective-review scenario simulation...
+                      evaluation_window                          policy_A                                      policy_B  Delta_cost_per100  CI95_Low  CI95_High
+0   All six out-of-time folds 2017-2022  M1 + low-confidence review (k=2)              B0 + low-confidence review (k=2)             -8.333   -31.173      3.553
+1   All six out-of-time folds 2017-2022  M1 + low-confidence review (k=2)                                  B0 automated            -14.815   -42.442     -1.532
+2   All six out-of-time folds 2017-2022  M1 + low-confidence review (k=2)         Never alert + volatility review (k=2)            -21.914   -49.387     -2.311
+3   All six out-of-time folds 2017-2022  M1 + low-confidence review (k=2)                      M1 + random review (k=2)             -6.859   -14.472     -2.091
+4   All six out-of-time folds 2017-2022  M1 + low-confidence review (k=2)  Macro-only EBM + low-confidence review (k=2)              1.852    -6.177      5.247
+5   All six out-of-time folds 2017-2022                      M1 automated                                  B0 automated             -9.259   -35.957      6.485
+6   All six out-of-time folds 2017-2022             M1 Platt 8m automated                              M1 raw automated             27.623    15.278     57.562
+7   All six out-of-time folds 2017-2022  B0 + low-confidence review (k=2)                                  B0 automated             -6.481   -14.201     -0.305
+8   All six out-of-time folds 2017-2022  B0 + low-confidence review (k=2)         Never alert + volatility review (k=2)            -13.580   -23.773      4.167
+9   All six out-of-time folds 2017-2022                      B0 automated                                   Never alert            -39.969   -63.121    -13.885
+20         Retrospective test 2021-2022  M1 + low-confidence review (k=2)              B0 + low-confidence review (k=2)             18.519    -2.778     34.259
+21         Retrospective test 2021-2022  M1 + low-confidence review (k=2)                                  B0 automated             13.426    -3.241     24.537
+22         Retrospective test 2021-2022  M1 + low-confidence review (k=2)         Never alert + volatility review (k=2)             11.111   -12.512     26.389
+23         Retrospective test 2021-2022  M1 + low-confidence review (k=2)                      M1 + random review (k=2)            -10.134   -19.137     -2.675
+24         Retrospective test 2021-2022  M1 + low-confidence review (k=2)  Macro-only EBM + low-confidence review (k=2)              7.870    -3.704     18.519
+25         Retrospective test 2021-2022                      M1 automated                                  B0 automated             27.778     2.315     41.204
+26         Retrospective test 2021-2022             M1 Platt 8m automated                              M1 raw automated              9.722     3.229     23.611
+27         Retrospective test 2021-2022  B0 + low-confidence review (k=2)                                  B0 automated             -5.093   -15.741      1.852
+28         Retrospective test 2021-2022  B0 + low-confidence review (k=2)         Never alert + volatility review (k=2)             -7.407   -32.407     12.037
+29         Retrospective test 2021-2022                      B0 automated                                   Never alert            -42.130   -78.241     -5.556
+[E23] Review assumptions: reviewer error models and expected-loss routing...
+  - Saved table11c_e23_review_assumptions.csv (128 rows)
+DONE: Step 6 (E13-E15) completed successfully.

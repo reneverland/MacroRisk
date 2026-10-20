@@ -1,0 +1,38 @@
+           countries                                         comparison                               model_A                      model_B metric    N  N_pos   Delta  CI95_Low  CI95_High
+0   All 15 countries                            Macro+IQ vs macro (EBM)              M0_EBM_Additive|Macro+IQ        M0_EBM_Additive|Macro     AP  540     84  0.0291    0.0018     0.0417
+3   All 15 countries                        Macro+IQ vs macro (XGBoost)                   B4_XGBoost|Macro+IQ             B4_XGBoost|Macro     AP  540     84 -0.0115   -0.0398     0.0157
+6   All 15 countries                   XGBoost vs B0 (corrected tuning)                   B4_XGBoost|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  540     84  0.0276   -0.0325     0.1418
+9   All 15 countries                 Macro EBM vs B0 (corrected tuning)              M0_EBM_Additive|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  540     84 -0.0592   -0.1394     0.1201
+12  All 15 countries                                           C1 vs B0  C1_Country_plus_Persistence|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  540     84 -0.0431   -0.1096     0.0563
+15  All 15 countries                Always macro EBM vs frozen fallback                FROZEN M0_EBM_Additive       FROZEN Fallback_policy     AP  540     84 -0.0821   -0.1965     0.1627
+18  All 15 countries                  Always XGBoost vs frozen fallback                     FROZEN B4_XGBoost       FROZEN Fallback_policy     AP  540     84  0.0543   -0.0049     0.1754
+21  All 15 countries                       Always B1 vs frozen fallback          FROZEN B1_Regularized_Linear       FROZEN Fallback_policy     AP  540     84 -0.1219   -0.2395     0.1393
+24  All 15 countries                       Always B0 vs frozen fallback             FROZEN B0_Historical_Rule       FROZEN Fallback_policy     AP  540     84  0.0000    0.0000     0.0000
+27  All 15 countries       Exploratory monitor vs B0 (corrected tuning)   Exploratory multi-candidate monitor  B0_Historical_Rule|Macro+IQ     AP  540     84  0.0004   -0.0287     0.0574
+30  All 15 countries  Exploratory monitor vs XGBoost (corrected tuning)   Exploratory multi-candidate monitor          B4_XGBoost|Macro+IQ     AP  540     84 -0.0272   -0.1242     0.0519
+33            Core-9                            Macro+IQ vs macro (EBM)              M0_EBM_Additive|Macro+IQ        M0_EBM_Additive|Macro     AP  324     47  0.0392   -0.0098     0.0536
+36            Core-9                        Macro+IQ vs macro (XGBoost)                   B4_XGBoost|Macro+IQ             B4_XGBoost|Macro     AP  324     47  0.0023   -0.0211     0.0217
+39            Core-9                   XGBoost vs B0 (corrected tuning)                   B4_XGBoost|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  324     47  0.1672    0.0640     0.3166
+42            Core-9                 Macro EBM vs B0 (corrected tuning)              M0_EBM_Additive|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  324     47  0.0478   -0.0819     0.2809
+45            Core-9                                           C1 vs B0  C1_Country_plus_Persistence|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  324     47 -0.0097   -0.0714     0.0876
+48            Core-9                Always macro EBM vs frozen fallback                FROZEN M0_EBM_Additive       FROZEN Fallback_policy     AP  324     47  0.0235   -0.1576     0.3491
+51            Core-9                  Always XGBoost vs frozen fallback                     FROZEN B4_XGBoost       FROZEN Fallback_policy     AP  324     47  0.1676    0.0658     0.3116
+54            Core-9                       Always B1 vs frozen fallback          FROZEN B1_Regularized_Linear       FROZEN Fallback_policy     AP  324     47  0.0343   -0.1495     0.3802
+57            Core-9                       Always B0 vs frozen fallback             FROZEN B0_Historical_Rule       FROZEN Fallback_policy     AP  324     47  0.0000    0.0000     0.0000
+60            Core-9       Exploratory monitor vs B0 (corrected tuning)   Exploratory multi-candidate monitor  B0_Historical_Rule|Macro+IQ     AP  324     47  0.0732    0.0000     0.1642
+63            Core-9  Exploratory monitor vs XGBoost (corrected tuning)   Exploratory multi-candidate monitor          B4_XGBoost|Macro+IQ     AP  324     47 -0.0941   -0.2762     0.0374
+66        External-6                            Macro+IQ vs macro (EBM)              M0_EBM_Additive|Macro+IQ        M0_EBM_Additive|Macro     AP  216     37  0.0248    0.0012     0.0420
+69        External-6                        Macro+IQ vs macro (XGBoost)                   B4_XGBoost|Macro+IQ             B4_XGBoost|Macro     AP  216     37 -0.0296   -0.0450     0.0023
+72        External-6                   XGBoost vs B0 (corrected tuning)                   B4_XGBoost|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  216     37 -0.1509   -0.3164     0.0164
+75        External-6                 Macro EBM vs B0 (corrected tuning)              M0_EBM_Additive|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  216     37 -0.1624   -0.3285     0.0270
+78        External-6                                           C1 vs B0  C1_Country_plus_Persistence|Macro+IQ  B0_Historical_Rule|Macro+IQ     AP  216     37 -0.0959   -0.2849     0.0693
+81        External-6                Always macro EBM vs frozen fallback                FROZEN M0_EBM_Additive       FROZEN Fallback_policy     AP  216     37 -0.2050   -0.3525    -0.0133
+84        External-6                  Always XGBoost vs frozen fallback                     FROZEN B4_XGBoost       FROZEN Fallback_policy     AP  216     37 -0.1221   -0.3088     0.0245
+87        External-6                       Always B1 vs frozen fallback          FROZEN B1_Regularized_Linear       FROZEN Fallback_policy     AP  216     37 -0.2124   -0.3673     0.0622
+90        External-6                       Always B0 vs frozen fallback             FROZEN B0_Historical_Rule       FROZEN Fallback_policy     AP  216     37  0.0000    0.0000     0.0000
+93        External-6       Exploratory monitor vs B0 (corrected tuning)   Exploratory multi-candidate monitor  B0_Historical_Rule|Macro+IQ     AP  216     37 -0.0938   -0.2195     0.0047
+96        External-6  Exploratory monitor vs XGBoost (corrected tuning)   Exploratory multi-candidate monitor          B4_XGBoost|Macro+IQ     AP  216     37  0.0572   -0.0394     0.1911
+   test_year       fallback_rule_deployed  fallback_gain monitor_deployed (exploratory)  monitor_gain
+0       2023  B0_Historical_Rule|Macro+IQ        -0.2746    B0_Historical_Rule|Macro+IQ           NaN
+1       2024  B0_Historical_Rule|Macro+IQ        -0.2434    B0_Historical_Rule|Macro+IQ           NaN
+2       2025  B0_Historical_Rule|Macro+IQ        -0.0222            B4_XGBoost|Macro+IQ        0.0952

@@ -1,0 +1,161 @@
+evaluation_window,block_length_months,error_model,automated_policy,routing_A,routing_B,k_per_month,c_review,cost_A_per100,cost_B_per100,Delta_cost_per100,CI95_Low,CI95_High
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B0 persistence,Expected loss reduction,Low confidence first,2,0.5,44.29,46.914,-2.623,-5.401,-0.772
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B0 persistence,Expected loss reduction,Random,2,0.5,44.29,52.641,-8.35,-13.873,-4.595
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B0 persistence,Low confidence first,Random,2,0.5,46.914,52.641,-5.727,-10.994,-0.48
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B0 persistence,Low confidence first,None,2,0.5,46.914,53.395,-6.481,-14.201,-0.305
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,42.67,38.58,4.09,-2.623,11.188
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,42.67,45.439,-2.769,-7.057,-0.411
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),M1 EBM (locked scheme),Low confidence first,Random,2,0.5,38.58,45.439,-6.859,-14.472,-2.091
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),M1 EBM (locked scheme),Low confidence first,None,2,0.5,38.58,44.136,-5.556,-13.738,2.315
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,37.654,36.728,0.926,-3.704,4.475
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),Macro-only EBM,Expected loss reduction,Random,2,0.5,37.654,42.678,-5.024,-7.03,-3.875
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),Macro-only EBM,Low confidence first,Random,2,0.5,36.728,42.678,-5.95,-9.345,-2.349
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),Macro-only EBM,Low confidence first,None,2,0.5,36.728,40.586,-3.858,-8.951,2.315
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,36.96,36.728,0.231,-3.549,3.243
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B4 XGBoost,Expected loss reduction,Random,2,0.5,36.96,44.839,-7.879,-15.57,-3.069
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B4 XGBoost,Low confidence first,Random,2,0.5,36.728,44.839,-8.11,-15.347,-2.708
+All six out-of-time folds 2017-2022,12,Perfect reviewer (upper bound),B4 XGBoost,Low confidence first,None,2,0.5,36.728,43.364,-6.636,-14.352,-0.772
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B0 persistence,Expected loss reduction,Low confidence first,2,0.5,53.395,54.198,-0.802,-5.896,5.685
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B0 persistence,Expected loss reduction,Random,2,0.5,53.395,60.405,-7.01,-9.609,-3.709
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B0 persistence,Low confidence first,Random,2,0.5,54.198,60.405,-6.207,-10.631,-1.903
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B0 persistence,Low confidence first,None,2,0.5,54.198,53.395,0.802,-5.685,5.896
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,44.136,46.235,-2.099,-10.067,5.371
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,44.136,53.203,-9.067,-12.943,-6.426
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Low confidence first,Random,2,0.5,46.235,53.203,-6.968,-14.109,-1.625
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Low confidence first,None,2,0.5,46.235,44.136,2.099,-5.371,10.067
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,40.586,46.111,-5.525,-12.316,-0.062
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",Macro-only EBM,Expected loss reduction,Random,2,0.5,40.586,50.442,-9.856,-12.997,-7.716
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",Macro-only EBM,Low confidence first,Random,2,0.5,46.111,50.442,-4.331,-7.979,-0.14
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",Macro-only EBM,Low confidence first,None,2,0.5,46.111,40.586,5.525,0.062,12.316
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,43.364,45.123,-1.759,-6.883,5.062
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B4 XGBoost,Expected loss reduction,Random,2,0.5,43.364,52.603,-9.239,-11.428,-7.73
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B4 XGBoost,Low confidence first,Random,2,0.5,45.123,52.603,-7.479,-14.171,-2.864
+All six out-of-time folds 2017-2022,12,"Symmetric, accuracy 0.8",B4 XGBoost,Low confidence first,None,2,0.5,45.123,43.364,1.759,-5.062,6.883
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Expected loss reduction,Low confidence first,2,0.5,53.395,54.105,-0.71,-5.032,5.187
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Expected loss reduction,Random,2,0.5,53.395,60.672,-7.277,-9.794,-4.135
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Low confidence first,Random,2,0.5,54.105,60.672,-6.567,-10.36,-2.771
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Low confidence first,None,2,0.5,54.105,53.395,0.71,-5.188,5.032
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,44.136,46.42,-2.284,-10.62,4.908
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,44.136,53.471,-9.335,-13.759,-6.495
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Low confidence first,Random,2,0.5,46.42,53.471,-7.051,-13.656,-1.356
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Low confidence first,None,2,0.5,46.42,44.136,2.284,-4.908,10.62
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,40.586,47.593,-7.006,-14.785,-1.14
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Expected loss reduction,Random,2,0.5,40.586,50.71,-10.123,-13.814,-7.736
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Low confidence first,Random,2,0.5,47.593,50.71,-3.117,-7.397,1.761
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Low confidence first,None,2,0.5,47.593,40.586,7.006,1.14,14.785
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,43.364,45.864,-2.5,-7.532,4.477
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Expected loss reduction,Random,2,0.5,43.364,52.87,-9.506,-12.148,-7.496
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Low confidence first,Random,2,0.5,45.864,52.87,-7.006,-13.457,-2.692
+All six out-of-time folds 2017-2022,12,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Low confidence first,None,2,0.5,45.864,43.364,2.5,-4.477,7.532
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Expected loss reduction,Low confidence first,2,0.5,53.395,54.29,-0.895,-6.793,6.578
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Expected loss reduction,Random,2,0.5,53.395,60.137,-6.742,-9.733,-2.99
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Low confidence first,Random,2,0.5,54.29,60.137,-5.847,-10.726,-0.878
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Low confidence first,None,2,0.5,54.29,53.395,0.895,-6.578,6.793
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,44.136,46.049,-1.914,-9.662,6.08
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,44.136,52.936,-8.8,-12.216,-6.172
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Low confidence first,Random,2,0.5,46.049,52.936,-6.886,-14.357,-1.982
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Low confidence first,None,2,0.5,46.049,44.136,1.914,-6.08,9.662
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,40.586,44.63,-4.043,-10.343,0.992
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Expected loss reduction,Random,2,0.5,40.586,50.175,-9.588,-12.407,-7.618
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Low confidence first,Random,2,0.5,44.63,50.175,-5.545,-9.006,-1.919
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Low confidence first,None,2,0.5,44.63,40.586,4.043,-0.992,10.343
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,43.364,44.383,-1.019,-6.698,6.297
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Expected loss reduction,Random,2,0.5,43.364,52.335,-8.971,-10.947,-7.62
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Low confidence first,Random,2,0.5,44.383,52.335,-7.953,-14.967,-2.751
+All six out-of-time folds 2017-2022,12,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Low confidence first,None,2,0.5,44.383,43.364,1.019,-6.297,6.698
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B0 persistence,Expected loss reduction,Low confidence first,2,0.5,53.395,59.639,-6.244,-10.617,0.01
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B0 persistence,Expected loss reduction,Random,2,0.5,53.395,61.66,-8.265,-10.742,-4.608
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B0 persistence,Low confidence first,Random,2,0.5,59.639,61.66,-2.021,-5.653,1.538
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B0 persistence,Low confidence first,None,2,0.5,59.639,53.395,6.244,-0.01,10.617
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,44.136,48.886,-4.75,-12.915,2.137
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,44.136,51.361,-7.225,-11.811,-4.001
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Low confidence first,Random,2,0.5,48.886,51.361,-2.475,-8.61,2.214
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Low confidence first,None,2,0.5,48.886,44.136,4.75,-2.137,12.915
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,40.586,49.227,-8.641,-15.967,-3.16
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Expected loss reduction,Random,2,0.5,40.586,49.031,-8.444,-12.052,-5.866
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Low confidence first,Random,2,0.5,49.227,49.031,0.196,-3.052,4.413
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Low confidence first,None,2,0.5,49.227,40.586,8.641,3.16,15.967
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,43.364,48.925,-5.561,-9.882,1.233
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Expected loss reduction,Random,2,0.5,43.364,51.753,-8.389,-9.931,-6.837
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Low confidence first,Random,2,0.5,48.925,51.753,-2.829,-9.724,1.748
+All six out-of-time folds 2017-2022,12,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Low confidence first,None,2,0.5,48.925,43.364,5.561,-1.233,9.882
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B0 persistence,Expected loss reduction,Low confidence first,2,0.5,32.87,36.111,-3.241,-5.556,-1.852
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B0 persistence,Expected loss reduction,Random,2,0.5,32.87,43.158,-10.288,-17.955,-6.327
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B0 persistence,Low confidence first,Random,2,0.5,36.111,43.158,-7.047,-16.052,-1.542
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B0 persistence,Low confidence first,None,2,0.5,36.111,41.204,-5.093,-15.741,1.852
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,65.972,54.63,11.343,0.926,20.631
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,65.972,64.763,1.209,-5.453,6.61
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),M1 EBM (locked scheme),Low confidence first,Random,2,0.5,54.63,64.763,-10.134,-19.137,-2.675
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),M1 EBM (locked scheme),Low confidence first,None,2,0.5,54.63,68.981,-14.352,-25.0,-3.241
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,51.852,46.759,5.093,-2.315,10.648
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),Macro-only EBM,Expected loss reduction,Random,2,0.5,51.852,55.761,-3.909,-8.079,0.051
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),Macro-only EBM,Low confidence first,Random,2,0.5,46.759,55.761,-9.002,-15.433,-1.336
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),Macro-only EBM,Low confidence first,None,2,0.5,46.759,57.407,-10.648,-20.382,1.4
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,47.222,48.148,-0.926,-6.019,2.315
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B4 XGBoost,Expected loss reduction,Random,2,0.5,47.222,49.64,-2.418,-7.047,1.133
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B4 XGBoost,Low confidence first,Random,2,0.5,48.148,49.64,-1.492,-4.785,4.733
+Retrospective test 2021-2022,6,Perfect reviewer (upper bound),B4 XGBoost,Low confidence first,None,2,0.5,48.148,49.537,-1.389,-5.093,4.63
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B0 persistence,Expected loss reduction,Low confidence first,2,0.5,41.204,44.63,-3.426,-8.519,4.722
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B0 persistence,Expected loss reduction,Random,2,0.5,41.204,50.566,-9.362,-10.391,-7.735
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B0 persistence,Low confidence first,Random,2,0.5,44.63,50.566,-5.936,-13.766,-1.017
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B0 persistence,Low confidence first,None,2,0.5,44.63,41.204,3.426,-4.722,8.519
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,68.981,62.037,6.944,-2.315,16.021
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,68.981,72.171,-3.189,-8.951,1.132
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Low confidence first,Random,2,0.5,62.037,72.171,-10.134,-18.81,-3.188
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",M1 EBM (locked scheme),Low confidence first,None,2,0.5,62.037,68.981,-6.944,-16.021,2.315
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,57.407,55.648,1.759,-9.444,10.926
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",Macro-only EBM,Expected loss reduction,Random,2,0.5,57.407,63.169,-5.761,-10.473,-2.2
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",Macro-only EBM,Low confidence first,Random,2,0.5,55.648,63.169,-7.521,-14.983,-0.328
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",Macro-only EBM,Low confidence first,None,2,0.5,55.648,57.407,-1.759,-10.926,9.444
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,49.537,55.185,-5.648,-10.836,-2.683
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B4 XGBoost,Expected loss reduction,Random,2,0.5,49.537,57.047,-7.51,-10.721,-5.102
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B4 XGBoost,Low confidence first,Random,2,0.5,55.185,57.047,-1.862,-5.062,3.581
+Retrospective test 2021-2022,6,"Symmetric, accuracy 0.8",B4 XGBoost,Low confidence first,None,2,0.5,55.185,49.537,5.648,2.683,10.836
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Expected loss reduction,Low confidence first,2,0.5,41.204,45.463,-4.259,-7.963,1.852
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Expected loss reduction,Random,2,0.5,41.204,50.566,-9.362,-10.762,-7.345
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Low confidence first,Random,2,0.5,45.463,50.566,-5.103,-12.078,-0.277
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B0 persistence,Low confidence first,None,2,0.5,45.463,41.204,4.259,-1.852,7.963
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,68.981,62.037,6.944,-0.743,14.815
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,68.981,72.171,-3.189,-8.025,0.68
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Low confidence first,Random,2,0.5,62.037,72.171,-10.134,-18.472,-3.435
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",M1 EBM (locked scheme),Low confidence first,None,2,0.5,62.037,68.981,-6.944,-14.815,0.743
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,57.407,56.759,0.648,-9.815,9.63
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Expected loss reduction,Random,2,0.5,57.407,63.169,-5.761,-10.022,-2.469
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Low confidence first,Random,2,0.5,56.759,63.169,-6.409,-14.591,0.494
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",Macro-only EBM,Low confidence first,None,2,0.5,56.759,57.407,-0.648,-9.63,9.815
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,49.537,54.907,-5.37,-10.463,-2.5
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Expected loss reduction,Random,2,0.5,49.537,57.047,-7.51,-11.132,-4.65
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Low confidence first,Random,2,0.5,54.907,57.047,-2.14,-6.08,3.159
+Retrospective test 2021-2022,6,"Misses events more often (FN 0.3, FP 0.1)",B4 XGBoost,Low confidence first,None,2,0.5,54.907,49.537,5.37,2.5,10.463
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Expected loss reduction,Low confidence first,2,0.5,41.204,43.796,-2.593,-9.074,7.407
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Expected loss reduction,Random,2,0.5,41.204,50.566,-9.362,-11.009,-7.243
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Low confidence first,Random,2,0.5,43.796,50.566,-6.77,-15.454,-1.573
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B0 persistence,Low confidence first,None,2,0.5,43.796,41.204,2.593,-7.407,9.074
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,68.981,62.037,6.944,-3.704,17.042
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,68.981,72.171,-3.189,-9.898,1.605
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Low confidence first,Random,2,0.5,62.037,72.171,-10.134,-19.085,-2.788
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",M1 EBM (locked scheme),Low confidence first,None,2,0.5,62.037,68.981,-6.944,-17.042,3.704
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,57.407,54.537,2.87,-8.984,12.421
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Expected loss reduction,Random,2,0.5,57.407,63.169,-5.761,-11.05,-1.749
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Low confidence first,Random,2,0.5,54.537,63.169,-8.632,-15.309,-1.152
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",Macro-only EBM,Low confidence first,None,2,0.5,54.537,57.407,-2.87,-12.421,8.984
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,49.537,55.463,-5.926,-11.667,-2.5
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Expected loss reduction,Random,2,0.5,49.537,57.047,-7.51,-10.741,-5.041
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Low confidence first,Random,2,0.5,55.463,57.047,-1.584,-4.774,4.353
+Retrospective test 2021-2022,6,"False alarms more often (FN 0.1, FP 0.3)",B4 XGBoost,Low confidence first,None,2,0.5,55.463,49.537,5.926,2.5,11.667
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B0 persistence,Expected loss reduction,Low confidence first,2,0.5,41.204,51.36,-10.157,-13.842,-4.185
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B0 persistence,Expected loss reduction,Random,2,0.5,41.204,52.289,-11.086,-12.715,-8.751
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B0 persistence,Low confidence first,Random,2,0.5,51.36,52.289,-0.929,-6.79,2.719
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B0 persistence,Low confidence first,None,2,0.5,51.36,41.204,10.157,4.185,13.842
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Expected loss reduction,Low confidence first,2,0.5,68.981,63.746,5.236,-4.112,14.037
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Expected loss reduction,Random,2,0.5,68.981,68.785,0.196,-6.483,5.283
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Low confidence first,Random,2,0.5,63.746,68.785,-5.04,-13.337,1.526
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),M1 EBM (locked scheme),Low confidence first,None,2,0.5,63.746,68.981,-5.236,-14.037,4.112
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Expected loss reduction,Low confidence first,2,0.5,57.407,58.724,-1.316,-12.451,8.144
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Expected loss reduction,Random,2,0.5,57.407,60.628,-3.221,-8.167,0.638
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Low confidence first,Random,2,0.5,58.724,60.628,-1.904,-8.827,5.07
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),Macro-only EBM,Low confidence first,None,2,0.5,58.724,57.407,1.316,-8.144,12.451
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Expected loss reduction,Low confidence first,2,0.5,49.537,59.758,-10.221,-14.827,-7.314
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Expected loss reduction,Random,2,0.5,49.537,56.224,-6.687,-8.703,-4.903
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Low confidence first,Random,2,0.5,59.758,56.224,3.534,-0.315,9.019
+Retrospective test 2021-2022,6,Confidence-dependent (0.4 at the boundary),B4 XGBoost,Low confidence first,None,2,0.5,59.758,49.537,10.221,7.314,14.827

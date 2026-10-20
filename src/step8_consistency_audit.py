@@ -10,6 +10,7 @@ Step 8: single-source consistency audit
 """
 
 import os
+import re
 import json
 import numpy as np
 import pandas as pd
@@ -127,6 +128,29 @@ def audit_tables():
             m = summarize(g)
             for col in ["AP", "Brier", "Cost_C5_per100", "N_pos"]:
                 check(f"table15 {r['countries']} {r['model']} {col}", r[col], m[col], 0 if col == "N_pos" else 2e-4)
+    # timing audit: every stage outside the frozen (disclosed) scope must satisfy origin + h + lag < first evaluated month
+    ta = rd("tableS16_timing_audit.csv")
+    for r in ta[~ta["scope"].str.startswith("Frozen")].itertuples():
+        check(f"timing {r.scope} {r.split_id} h={r.h} {r.stage}", 1, int(bool(r.published_before)), 0)
+    # post-hoc 2023-2025 table recomputed from its predictions
+    ph = load_predictions("posthoc_2023_2025")
+    ph = ph[ph["role"] == "confirmation"].dropna(axis=1, how="all")
+    t15d = rd("table15d_posthoc_confirmation.csv")
+    for _, r in t15d[(t15d["window"] == "2023-2025") & ~t15d["model"].str.startswith("FROZEN")].iterrows():
+        g = ph[ph["model_key"] == r["model"]]
+        g = g if r["countries"] == "All 15 countries" else g[g["group"] == r["countries"]]
+        m = summarize(g)
+        for col in ["AP", "Brier", "Cost_C5_per100", "N_pos"]:
+            check(f"table15d {r['countries']} {r['model']} {col}", r[col], m[col], 0 if col == "N_pos" else 2e-4)
+    # one E21 interval recomputed from scratch
+    e21 = rd("table16_e21_paired_intervals.csv")
+    lab, fn = WINDOWS["all"]
+    w = e45[fn(e45)]
+    rr = paired_bootstrap(w[(w["model"] == "M0_EBM_Additive") & (w["variant"] == "F1_Macro_plus_CI")],
+                          w[(w["model"] == "M0_EBM_Additive") & (w["variant"] == "F0_Macro_Only")], 12)
+    row = e21[(e21.evaluation_window == lab) & (e21.model == "M0_EBM_Additive") & (e21.comparison == "+CI vs macro")].iloc[0]
+    for k in ["Delta_AP_Point", "Delta_AP_CI95_Low", "Delta_AP_CI95_High"]:
+        check(f"e21 M0 +CI vs macro {k}", row[k], rr[k], 1e-6)
     # one bootstrap interval recomputed from scratch
     bt = rd("e12_moving_block_bootstrap.csv")
     for wkey in ["all", "locked"]:
@@ -319,6 +343,12 @@ def build_numbers():
     for spec, t in [("Core-6 matched: SWIFT share", "sw"), ("Core-6 matched: FX share", "fx"), ("Core-6 matched: both CI", "both"), ("Core-6 matched: no CI", "noci")]:
         V[f"c6_{t}_m1_all"] = rv(spec, "M1_EBM_CIxIQ")
     V["c6_b0_all"] = rv("Core-6 matched: no CI", "B0_Historical_Rule")
+    V["q90_npos_all"] = int(rob.loc[(A[0], "Threshold q90 (pooled)", "B0_Historical_Rule"), "N_pos"])
+    V["cty_npos_all"] = int(rob.loc[(A[0], "Threshold q80 (country-specific)", "B0_Historical_Rule"), "N_pos"])
+    V["c6_npos_all"] = int(rob.loc[(A[0], "Core-6 matched: no CI", "B0_Historical_Rule"), "N_pos"])
+    V["c6_n_all"] = int(rob.loc[(A[0], "Core-6 matched: no CI", "B0_Historical_Rule"), "N"])
+    for m in ["B0_Historical_Rule", "B4_XGBoost", "M1_EBM_CIxIQ"]:
+        V[f"cty_{short[m]}_all"] = rv("Threshold q80 (country-specific)", m)
 
     # E13 transfer
     e13 = rd("table9_e13_external_transfer.csv").set_index(["evaluation_window", "regime", "target", "model"])
@@ -412,7 +442,140 @@ def build_numbers():
     retro = proto["fallback_policy"]["single_evaluation_on_retrospective_test"]
     V["fb_retro"] = "; ".join(f"{r['test_year']}: {'B0' if r['deployed'].startswith('B0') else r['deployed']}" for r in retro)
     V["sesoi"] = f"{SESOI_AP:.2f}"
+
+    # per-panel F ratios (Panel B ER_Vol has 8 countries)
+    rb = t2a[t2a.panel == "B_FX"].assign(r=lambda d: d.f_published / d.f_stat)
+    V["ratio_B_other"] = f3(rb[rb.risk != "ER_Vol"]["r"].median())
+    V["ratio_B_er"] = f3(rb[rb.risk == "ER_Vol"]["r"].iloc[0])
+    V["ratio_A_min"], V["ratio_A_max"] = f3((t2a[t2a.panel == "A_SWIFT"]["f_published"] / t2a[t2a.panel == "A_SWIFT"]["f_stat"]).min()), \
+        f3((t2a[t2a.panel == "A_SWIFT"]["f_published"] / t2a[t2a.panel == "A_SWIFT"]["f_stat"]).max())
+
+    # timing audit (Table S16)
+    ta = rd("tableS16_timing_audit.csv")
+    fz = ta["scope"].str.startswith("Frozen")
+    V["timing_n_checked"] = int((~fz).sum())
+    V["timing_n_pass"] = int(ta.loc[~fz, "published_before"].sum())
+    V["timing_frozen_fail"] = int((~ta.loc[fz, "published_before"].astype(bool)).sum())
+    V["timing_frozen_stages"] = ", ".join(sorted(ta.loc[fz & ~ta["published_before"].astype(bool), "stage"].unique())) or "none"
+
+    # E21 paired intervals
+    e21 = rd("table16_e21_paired_intervals.csv")
+    fa = e21[e21.family == "Feature ablation"]
+    V["e21_n_abl"] = len(fa)
+    V["e21_n_excl_plus"] = int(fa["AP_CI95_excludes_plus_SESOI"].sum())
+    V["e21_n_tost"] = int(fa["AP_equivalent_TOST_90"].sum())
+    V["e21_n_excl0"] = int(fa["AP_CI95_excludes_zero"].sum())
+    V["e21_n_not_excl_plus"] = V["e21_n_abl"] - V["e21_n_excl_plus"]
+    V["e21_n_excl0_neg"] = int((fa["Delta_AP_CI95_High"] < 0).sum())
+    nm = {"B1_Regularized_Linear": "B1", "B4_XGBoost": "B4", "M0_EBM_Additive": "M0", "M1_EBM_CIxIQ": "M1"}
+    wl = {A[0]: "all folds", L[0]: "retrospective test"}
+    V["e21_not_excl_list"] = "; ".join(f"{nm[r.model]} {r.comparison} ({wl[r.evaluation_window]}; upper limit {r.Delta_AP_CI95_High:.3f})"
+                                       for r in fa[~fa["AP_CI95_excludes_plus_SESOI"]].itertuples()) or "none"
+    V["e21_max_hi"] = f3(fa["Delta_AP_CI95_High"].max())
+    for r in fa.itertuples():
+        k = f"e21_{nm[r.model].lower()}_{r.comparison.split(' ')[0].replace('+', '').lower()}_{'all' if r.evaluation_window == A[0] else 'lock'}"
+        V[k], V[k + "_lo"], V[k + "_hi"] = f3(r.Delta_AP_Point), f3(r.Delta_AP_CI95_Low), f3(r.Delta_AP_CI95_High)
+    c6 = e21[(e21.family == "Core-6 CI measure") & (e21.evaluation_window == A[0])]
+    for r in c6.itertuples():
+        k = f"e21_c6_{nm[r.model].lower()}_{r.comparison.split(' ')[0].lower()}"
+        V[k], V[k + "_lo"], V[k + "_hi"] = f3(r.Delta_AP_Point), f3(r.Delta_AP_CI95_Low), f3(r.Delta_AP_CI95_High)
+    V["e21_c6_n"], V["e21_c6_n_excl0"] = len(c6), int(c6["AP_CI95_excludes_zero"].sum())
+    rp = e21[(e21.family == "Robustness vs persistence") & (e21.evaluation_window == A[0])]
+    V["e21_rob_n"] = len(rp)
+    V["e21_rob_n_pos"] = int((rp["Delta_AP_CI95_Low"] > 0).sum())
+    V["e21_rob_n_neg"] = int((rp["Delta_AP_CI95_High"] < 0).sum())
+    V["e21_rob_pos_list"] = "; ".join(f"{nm[r.model]} under {r.comparison.split(': model vs B0')[0]} ({r.Delta_AP_Point:+.3f} [{r.Delta_AP_CI95_Low:.3f}, {r.Delta_AP_CI95_High:.3f}])"
+                                      for r in rp[rp["Delta_AP_CI95_Low"] > 0].itertuples()) or "none"
+
+    # E22 strict early warning
+    e22 = rd("table13b_e22_strict_early_warning.csv").set_index(["evaluation_window", "model", "alert_rule"])
+    for wtag, w in [("all", A), ("lock", L)]:
+        V[f"e22_n_el_{wtag}"] = int(e22.loc[(w[0], "B0_Historical_Rule", "threshold tau = 1/6"), "eligible_episodes"])
+        for m in ["B0_Historical_Rule", "B1_Regularized_Linear", "B4_XGBoost", "M1_EBM_CIxIQ", "C1_Country_plus_Persistence"]:
+            for rule, rt in [("threshold tau = 1/6", "tau"), ("top-2 countries per month", "top2")]:
+                r = e22.loc[(w[0], m, rule)]
+                k = f"e22_{short.get(m, 'c1')}_{rt}_{wtag}"
+                V[k], V[k + "_det"] = f"{100 * r.strict_detection_rate:.0f}", int(r.detected_before_start)
+                V[k + "_fa"], V[k + "_lead"] = f"{r.false_alarms_per_country_year:.2f}", f1(r.median_lead_months)
+
+    # E23 review assumptions
+    e23 = pd.read_csv(os.path.join(TAB_DIR, "table11c_e23_review_assumptions.csv"), keep_default_na=False)
+    em = {"Perfect reviewer (upper bound)": "perf", "Symmetric, accuracy 0.8": "sym", "Misses events more often (FN 0.3, FP 0.1)": "fn", "False alarms more often (FN 0.1, FP 0.3)": "fp",
+          "Confidence-dependent (0.4 at the boundary)": "conf"}
+    rt = {("Expected loss reduction", "Low confidence first"): "el_lc", ("Expected loss reduction", "Random"): "el_rand",
+          ("Low confidence first", "Random"): "lc_rand", ("Low confidence first", "None"): "lc_none"}
+    pt_ = {"B0 persistence": "b0", "M1 EBM (locked scheme)": "m1", "Macro-only EBM": "macro", "B4 XGBoost": "b4"}
+    for r in e23.itertuples():
+        k = f"e23_{'all' if r.evaluation_window == A[0] else 'lock'}_{em[r.error_model]}_{pt_[r.automated_policy]}_{rt[(r.routing_A, r.routing_B)]}"
+        V[k], V[k + "_lo"], V[k + "_hi"] = f1(r.Delta_cost_per100), f1(r.CI95_Low), f1(r.CI95_High)
+    ea = e23[(e23.evaluation_window == A[0]) & (e23.error_model != "Perfect reviewer (upper bound)")]
+    for c, tag in rt.items():
+        s = ea[(ea.routing_A == c[0]) & (ea.routing_B == c[1])]
+        V[f"e23_n_{tag}"], V[f"e23_n_{tag}_better"], V[f"e23_n_{tag}_worse"] = len(s), int((s.CI95_High < 0).sum()), int((s.CI95_Low > 0).sum())
+        V[f"e23_n_{tag}_equal"] = int((s.Delta_cost_per100.abs() < 1e-9).sum())
+    g = ea.pivot_table(index=["error_model", "automated_policy"], columns=["routing_A", "routing_B"], values="cost_A_per100")
+    gb = ea.pivot_table(index=["error_model", "automated_policy"], columns=["routing_A", "routing_B"], values="cost_B_per100")
+    V["e23_n_el_eq_none"] = int((np.abs(g[("Expected loss reduction", "Random")] - gb[("Low confidence first", "None")]) < 1e-9).sum())
+    pf = e23[e23.error_model == "Perfect reviewer (upper bound)"]
+    for c, tag in rt.items():
+        s = pf[(pf.routing_A == c[0]) & (pf.routing_B == c[1])]
+        V[f"e23_perf_n_{tag}"], V[f"e23_perf_n_{tag}_better"], V[f"e23_perf_n_{tag}_worse"] = len(s), int((s.CI95_High < 0).sum()), int((s.CI95_Low > 0).sum())
+
+    # Step 10 post-hoc 2023-2025 (exploratory)
+    pd_ = rd("table15d_posthoc_confirmation.csv")
+    pd_ = pd_[pd_.window == "2023-2025"].set_index(["countries", "model"])
+    pk = {"B0_Historical_Rule|Macro+IQ": "b0", "C1_Country_plus_Persistence|Macro+IQ": "c1", "B1_Regularized_Linear|Macro+IQ": "b1",
+          "M0_EBM_Additive|Macro": "m0mac", "M0_EBM_Additive|Macro+IQ": "m0", "B4_XGBoost|Macro": "b4mac", "B4_XGBoost|Macro+IQ": "b4",
+          "Exploratory multi-candidate monitor": "mon", "Post-hoc fallback rule (frozen settings)": "fb"}
+    for g, gt in [("All 15 countries", "all15"), ("Core-9", "core9"), ("External-6", "ext6")]:
+        for m, t in pk.items():
+            V[f"ph_{gt}_{t}"] = f3(pd_.loc[(g, m), "AP"])
+            V[f"ph_{gt}_{t}_cost"] = f1(pd_.loc[(g, m), "Cost_C5_per100"])
+            V[f"ph_{gt}_{t}_brier"] = f3(pd_.loc[(g, m), "Brier"])
+    pe = rd("table15e_posthoc_differences.csv")
+    ck = {"Macro+IQ vs macro (EBM)": "iq_m0", "Macro+IQ vs macro (XGBoost)": "iq_b4", "XGBoost vs B0 (corrected tuning)": "b4_b0",
+          "Macro EBM vs B0 (corrected tuning)": "m0_b0", "C1 vs B0": "c1_b0", "Always macro EBM vs frozen fallback": "alw_m0",
+          "Always XGBoost vs frozen fallback": "alw_b4", "Always B1 vs frozen fallback": "alw_b1", "Always B0 vs frozen fallback": "alw_b0",
+          "Exploratory monitor vs B0 (corrected tuning)": "mon_b0", "Exploratory monitor vs XGBoost (corrected tuning)": "mon_b4"}
+    gk = {"All 15 countries": "all15", "Core-9": "core9", "External-6": "ext6"}
+    mk = {"AP": "ap", "Brier": "brier", "Cost_C5_per100": "cost"}
+    for r in pe.itertuples():
+        fmt = f1 if r.metric == "Cost_C5_per100" else f3
+        k = f"pd_{gk[r.countries]}_{ck[r.comparison]}_{mk[r.metric]}"
+        V[k], V[k + "_lo"], V[k + "_hi"] = fmt(r.Delta), fmt(r.CI95_Low), fmt(r.CI95_High)
+    tr = rd("table15f_posthoc_fallback_triggers.csv")
+    short_k = lambda s: s.split("|")[0].split("_")[0] + (" (macro only)" if s.endswith("|Macro") else "")
+    V["ph_fb_deployed"] = ", ".join(f"{r.test_year}: {short_k(r.fallback_rule_deployed)}" for r in tr.itertuples())
+    V["ph_fb_gains"] = ", ".join(f"{r.test_year}: {r.fallback_gain:+.3f}" for r in tr.itertuples())
+    V["ph_mon_deployed"] = ", ".join(f"{r['test_year']}: {short_k(r['monitor_deployed (exploratory)'])}" for _, r in tr.iterrows())
+    V["ph_hist_b4_ap"] = ", ".join(f"{r['test_year']}: {r['histAP_B4_XGBoost|Macro+IQ']:.3f}" for _, r in tr.iterrows())
+    V["ph_hist_b0_ap"] = ", ".join(f"{r['test_year']}: {r['histAP_B0_Historical_Rule|Macro+IQ']:.3f}" for _, r in tr.iterrows())
     return V
+
+
+def change_table(V):
+    """Every numeric audited number of version 1 (outputs/archive_v1) next to its version 2 value."""
+    v1_path = os.path.join(OUT_DIR, "archive_v1", "manuscript_numbers.json")
+    if not os.path.exists(v1_path):
+        return
+    v1 = json.load(open(v1_path))
+    num = lambda x: float(x) if isinstance(x, (int, float)) or (isinstance(x, str) and x.lstrip("+-").replace(".", "", 1).isdigit()) else None
+    rows = []
+    for k in sorted(set(v1) & set(V)):
+        a, b = num(v1[k]), num(V[k])
+        if a is not None and b is not None:
+            rows.append({"key": k, "v1": v1[k], "v2": V[k], "delta": round(b - a, 4), "changed": a != b})
+    df = pd.DataFrame(rows)
+    df.to_csv(os.path.join(TAB_DIR, "table_change_v1_v2.csv"), index=False)
+    V["chg_n_keys"], V["chg_n_changed"] = len(df), int(df["changed"].sum())
+    for k in ["bt_m1m0_lock_L6", "bt_m1m0_lock_L6_lo90", "bt_m1m0_lock_L6_hi90", "bt_m1m0_all_L12_hi", "bt_b3b0_all_L12", "bt_b3b0_all_L12_lo",
+              "bt_b3b0_all_L12_hi", "e15_m1auto_b0auto_lock", "e15_m1auto_b0auto_lock_lo", "e15_m1auto_b0auto_lock_hi", "n_ci_neg"]:
+        V[f"v1_{k}"] = v1[k]
+    base = [k for k in df["key"] if re.match(r"^(b0|c[01])_(all|lock|dev)$", k)]
+    V["chg_n_base_changed"] = int(df[df["key"].isin(base)]["changed"].sum())
+    ap = df[df["key"].str.match(r"^(b[0-4]|m[01]|c[01])_(all|lock|dev)$")]
+    V["chg_ap_max_abs"] = f3(ap["delta"].abs().max())
+    V["chg_ap_key_max"] = ap.loc[ap["delta"].abs().idxmax(), "key"]
 
 
 if __name__ == "__main__":
@@ -420,6 +583,7 @@ if __name__ == "__main__":
     print(f"predictions_master.parquet: {len(allp):,} rows, experiments: {sorted(allp['experiment'].dropna().unique())}")
     audit_tables()
     V = build_numbers()
+    change_table(V)
     with open(os.path.join(OUT_DIR, "manuscript_numbers.json"), "w") as f:
         json.dump({k: (v.item() if hasattr(v, "item") else v) for k, v in V.items()}, f, indent=1, sort_keys=True)
     pd.DataFrame(checks).to_csv(os.path.join(OUT_DIR, "consistency_audit_checks.csv"), index=False)

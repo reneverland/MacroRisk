@@ -29,12 +29,13 @@ import matplotlib.pyplot as plt
 from common import (OUT_DIR, TAB_DIR, N_JOBS, TAU_C5, WINDOWS, MAIN_END, fold_frames, seeds_for, platt_calibrate, summarize,
                     add_expanding_calibration, lock_calibration, save_predictions, load_predictions, load_panel, load_splits)
 from step3_e03_e05_benchmarks_and_ablations import (MACRO_COLS, CI_COLS_CORE9, IQ_COLS, EBM_FIXED, build_feature_matrix,
-                                                    inner_temporal_tune_and_fit, make_inner_splits, select_ebm_config, core9_sample)
+                                                    inner_temporal_tune_and_fit, make_inner_folds, select_ebm_config, core9_sample)
 from step5_e09_e12_explain_robust_figs import block_indices
 
 warnings.filterwarnings("ignore")
 FIG_DIR = os.path.join(OUT_DIR, "figures")
 EXT6 = ["TUR", "IDN", "THA", "MYS", "CHL", "COL"]
+CORE9 = ["BRA", "CHN", "HUN", "IND", "KOR", "MEX", "POL", "RUS", "ZAF"]
 plt.rcParams.update({"font.size": 11, "axes.titlesize": 12, "axes.labelsize": 11, "legend.fontsize": 9.5,
                      "xtick.labelsize": 10, "ytick.labelsize": 10})
 
@@ -148,7 +149,7 @@ def _e14_task(sp, scheme, learner, core9, fcols, seed):
     X_tr, imp, scl = build_feature_matrix(tr, fcols)
     X_cal, _, _ = build_feature_matrix(cal, fcols, imp, scl)
     X_te, _, _ = build_feature_matrix(te, fcols, imp, scl)
-    ebm_cfg = select_ebm_config(X_tr, y_tr, make_inner_splits(tr), 0, 42) if learner == "EBM" else None
+    ebm_cfg = select_ebm_config(y_tr, make_inner_folds(tr, fcols), 0, 42) if learner == "EBM" else None
     out = []
     targets = [None] if scheme != "IQ_Similarity_Regularized" else sorted(te["country"].unique())
     iq_bw = 0.5 * float(tr["iq_mean_rt"].std())
@@ -310,6 +311,90 @@ def run_e15(panel):
     return df
 
 
+ERROR_MODELS = {
+    "Perfect reviewer (upper bound)": lambda p, y: np.zeros(len(y)),
+    "Symmetric, accuracy 0.8": lambda p, y: np.full(len(y), 0.2),
+    "Misses events more often (FN 0.3, FP 0.1)": lambda p, y: np.where(y == 1, 0.3, 0.1),
+    "False alarms more often (FN 0.1, FP 0.3)": lambda p, y: np.where(y == 1, 0.1, 0.3),
+    "Confidence-dependent (0.4 at the boundary)": lambda p, y: 0.4 * np.exp(-np.abs(logit(p) - logit(TAU_C5))),
+}
+
+
+def review_costs(base, p, routing, k, c_review, err_name, c_fn=5.0, c_fp=1.0):
+    """Per-case cost when k cases per month are reviewed. Reviewer error rates follow the named error model;
+    for the confidence-dependent model the error rate is evaluated at the automated policy's probability.
+    'Expected loss reduction' reviews the k cases with the largest positive model-implied gain of review,
+    computed with the same error model; random routing is the exact expectation over uniform selection."""
+    y = base["y_true_bin"].values
+    q = np.full(len(y), TAU_C5) if p is None else np.clip(p, 1e-5, 1 - 1e-5)
+    alert = np.zeros(len(y), bool) if p is None else q >= TAU_C5
+    auto = np.where(alert & (y == 0), c_fp, 0.0) + np.where(~alert & (y == 1), c_fn, 0.0)
+    err = ERROR_MODELS[err_name](q, y)
+    rev = c_review + err * np.where(y == 1, c_fn, c_fp)
+    if routing == "None":
+        return auto
+    if routing == "Random":
+        share = np.minimum(1.0, k / base.groupby("ym")["country"].transform("size").values)
+        return share * rev + (1 - share) * auto
+    if routing == "Low confidence first":
+        key = -np.abs(logit(q) - logit(TAU_C5))
+        eligible = np.ones(len(y), bool)
+    else:
+        e1, e0 = ERROR_MODELS[err_name](q, np.ones(len(y))), ERROR_MODELS[err_name](q, np.zeros(len(y)))
+        el_auto = np.where(alert, (1 - q) * c_fp, q * c_fn)
+        el_rev = c_review + q * e1 * c_fn + (1 - q) * e0 * c_fp
+        key = el_auto - el_rev
+        eligible = key > 0
+    rank = pd.Series(np.where(eligible, key, -np.inf)).groupby(base["ym"].values).rank(method="first", ascending=False).values
+    reviewed = (rank <= k) & eligible
+    return np.where(reviewed, rev, auto)
+
+
+def run_e23(panel):
+    print("[E23] Review assumptions: reviewer error models and expected-loss routing...")
+    base_all, probs_all = e15_bases(panel)
+    rows = []
+    for wkey in ["all", "locked"]:
+        label, fn = WINDOWS[wkey]
+        msk = fn(base_all).values
+        base = base_all[msk].reset_index(drop=True)
+        L = 12 if wkey == "all" else 6
+        for err_name in ERROR_MODELS:
+            for pol in ["B0 persistence", "M1 EBM (locked scheme)", "Macro-only EBM", "B4 XGBoost"]:
+                p = probs_all[pol][msk]
+                C = {r: review_costs(base, p, r, 2, 0.5, err_name) for r in ["None", "Random", "Low confidence first", "Expected loss reduction"]}
+                for ra, rb in [("Expected loss reduction", "Low confidence first"), ("Expected loss reduction", "Random"),
+                               ("Low confidence first", "Random"), ("Low confidence first", "None")]:
+                    pt, lo, hi = boot_mean_diff(base, C[ra], C[rb], L=L)
+                    rows.append({"evaluation_window": label, "block_length_months": L, "error_model": err_name, "automated_policy": pol,
+                                 "routing_A": ra, "routing_B": rb, "k_per_month": 2, "c_review": 0.5,
+                                 "cost_A_per100": round(100 * C[ra].mean(), 3), "cost_B_per100": round(100 * C[rb].mean(), 3),
+                                 "Delta_cost_per100": round(pt, 3), "CI95_Low": round(lo, 3), "CI95_High": round(hi, 3)})
+    pd.DataFrame(rows).to_csv(os.path.join(TAB_DIR, "table11c_e23_review_assumptions.csv"), index=False)
+    print(f"  - Saved table11c_e23_review_assumptions.csv ({len(rows)} rows)")
+
+
+def country_table(splits):
+    """Countries and origin ranges used for training, calibration and testing in every design (Table S17)."""
+    from common import confirmation_splits, maturity_cap
+    c9, e6 = " ".join(CORE9), " ".join(EXT6)
+    designs = [("Main evaluation (E03-E12, E16-E22)", splits, c9, c9, c9, "Core-9 threshold"),
+               ("E13 Transfer_Core9_only", splits, c9, c9, e6, "Core-9 threshold"),
+               ("E13 Pooled_with_target_history", splits, c9 + " " + e6, c9 + " " + e6, e6, "Core-9 threshold"),
+               ("E13 Pooled_pool_specific_threshold", splits, c9 + " " + e6, c9 + " " + e6, e6, "pooled 15-country threshold"),
+               ("E06 leave-one-country-out", splits, "Core-9 minus held-out country", "Core-9 minus held-out country", "held-out country", "threshold of the training countries"),
+               ("Frozen confirmation and post-hoc rerun 2023-2025", confirmation_splits(2023, 2025), c9 + " " + e6, c9 + " " + e6, c9 + " " + e6, "pooled 15-country threshold")]
+    rows = []
+    for name, sps, trc, calc, tec, thr in designs:
+        for _, sp in sps.iterrows():
+            cap = maturity_cap(sp["test_start"], 3)
+            rows.append({"design": name, "split_id": sp["split_id"], "train_countries": trc,
+                         "train_origins": f"{sp['train_start']}..{min(sp['train_end_origin'], cap)}", "calibration_countries": calc,
+                         "calibration_origins": f"{sp['calib_start']}..{min(sp['calib_end_origin'], cap)}", "test_countries": tec,
+                         "test_origins": f"{sp['test_start']}..{sp['test_end']}", "threshold": thr})
+    pd.DataFrame(rows).to_csv(os.path.join(TAB_DIR, "tableS17_countries_by_fold.csv"), index=False)
+
+
 def make_figures(tab14, df15):
     fig, axes = plt.subplots(1, 2, figsize=(12.5, 4.6))
     for ax, learner in zip(axes, ["EBM", "XGBoost"]):
@@ -348,13 +433,17 @@ def make_figures(tab14, df15):
 if __name__ == "__main__":
     import sys
     panel, splits = load_panel(), load_splits()
-    parts = sys.argv[1:] or ["e13", "e14", "e15", "figs"]
+    parts = sys.argv[1:] or ["e13", "e14", "e15", "e23", "s17", "figs"]
     if "e13" in parts:
         run_e13(panel, splits)
     if "e14" in parts:
         run_e14(panel, splits)
     if "e15" in parts:
         run_e15(panel)
+    if "e23" in parts:
+        run_e23(panel)
+    if "s17" in parts:
+        country_table(splits)
     if "figs" in parts:
         make_figures(pd.read_csv(os.path.join(TAB_DIR, "table10_e14_adaptive_weighting.csv")),
                      pd.read_csv(os.path.join(TAB_DIR, "table11_e15_selective_review.csv")))

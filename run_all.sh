@@ -20,6 +20,8 @@ run step6b_event_level.py
 # The confirmation protocol is frozen once and scored once; both commands refuse to run again.
 [ -f outputs/confirmation/confirmation_protocol.sha256 ] || run step9_confirmation.py protocol
 [ -f outputs/confirmation/SCORED.lock ] || run step9_confirmation.py score
+# Post-hoc (exploratory) rerun of 2023-2025 with the corrected tuning; reads but never rescores the frozen result.
+run step10_posthoc_confirmation.py
 
 run step8_consistency_audit.py
 run step7_write_manuscript.py

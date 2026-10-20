@@ -1,0 +1,73 @@
+evaluation_window,model,alert_rule,eligible_episodes,detected_before_start,strict_detection_rate,lead_1,lead_2,lead_3,median_lead_months,alerts_per_country_year,false_alarms_per_country_year
+All six out-of-time folds 2017-2022,B0_Historical_Rule,threshold tau = 1/6,28,23,0.8214,1,2,20,3.0,4.759,2.167
+All six out-of-time folds 2017-2022,B0_Historical_Rule,top-1 countries per month,28,15,0.5357,2,2,11,3.0,1.333,0.333
+All six out-of-time folds 2017-2022,B0_Historical_Rule,top-2 countries per month,28,21,0.75,1,3,17,3.0,2.667,0.87
+All six out-of-time folds 2017-2022,B0_Historical_Rule,top-3 countries per month,28,24,0.8571,0,2,22,3.0,4.0,1.444
+All six out-of-time folds 2017-2022,B1_Regularized_Linear,threshold tau = 1/6,28,26,0.9286,2,0,24,3.0,4.833,1.796
+All six out-of-time folds 2017-2022,B1_Regularized_Linear,top-1 countries per month,28,10,0.3571,1,2,7,3.0,1.333,0.5
+All six out-of-time folds 2017-2022,B1_Regularized_Linear,top-2 countries per month,28,17,0.6071,2,2,13,3.0,2.667,0.87
+All six out-of-time folds 2017-2022,B1_Regularized_Linear,top-3 countries per month,28,21,0.75,3,0,18,3.0,4.0,1.444
+All six out-of-time folds 2017-2022,B2_Threshold_Model,threshold tau = 1/6,28,26,0.9286,2,1,23,3.0,5.148,2.111
+All six out-of-time folds 2017-2022,B2_Threshold_Model,top-1 countries per month,28,9,0.3214,1,1,7,3.0,1.333,0.389
+All six out-of-time folds 2017-2022,B2_Threshold_Model,top-2 countries per month,28,14,0.5,1,2,11,3.0,2.667,0.944
+All six out-of-time folds 2017-2022,B2_Threshold_Model,top-3 countries per month,28,19,0.6786,1,0,18,3.0,4.0,1.389
+All six out-of-time folds 2017-2022,B3_Random_Forest,threshold tau = 1/6,28,25,0.8929,0,1,24,3.0,5.852,2.593
+All six out-of-time folds 2017-2022,B3_Random_Forest,top-1 countries per month,28,13,0.4643,1,2,10,3.0,1.333,0.407
+All six out-of-time folds 2017-2022,B3_Random_Forest,top-2 countries per month,28,17,0.6071,1,2,14,3.0,2.667,0.907
+All six out-of-time folds 2017-2022,B3_Random_Forest,top-3 countries per month,28,22,0.7857,1,1,20,3.0,4.0,1.37
+All six out-of-time folds 2017-2022,B4_XGBoost,threshold tau = 1/6,28,25,0.8929,0,1,24,3.0,5.111,2.074
+All six out-of-time folds 2017-2022,B4_XGBoost,top-1 countries per month,28,10,0.3571,3,2,5,2.5,1.333,0.407
+All six out-of-time folds 2017-2022,B4_XGBoost,top-2 countries per month,28,15,0.5357,1,1,13,3.0,2.667,0.852
+All six out-of-time folds 2017-2022,B4_XGBoost,top-3 countries per month,28,22,0.7857,2,0,20,3.0,4.0,1.296
+All six out-of-time folds 2017-2022,M0_EBM_Additive,threshold tau = 1/6,28,24,0.8571,0,1,23,3.0,4.63,1.741
+All six out-of-time folds 2017-2022,M0_EBM_Additive,top-1 countries per month,28,13,0.4643,3,3,7,3.0,1.333,0.389
+All six out-of-time folds 2017-2022,M0_EBM_Additive,top-2 countries per month,28,19,0.6786,0,5,14,3.0,2.667,0.926
+All six out-of-time folds 2017-2022,M0_EBM_Additive,top-3 countries per month,28,21,0.75,0,2,19,3.0,4.0,1.574
+All six out-of-time folds 2017-2022,M1_EBM_CIxIQ,threshold tau = 1/6,28,24,0.8571,0,1,23,3.0,4.759,1.833
+All six out-of-time folds 2017-2022,M1_EBM_CIxIQ,top-1 countries per month,28,11,0.3929,2,4,5,2.0,1.333,0.37
+All six out-of-time folds 2017-2022,M1_EBM_CIxIQ,top-2 countries per month,28,19,0.6786,0,4,15,3.0,2.667,0.926
+All six out-of-time folds 2017-2022,M1_EBM_CIxIQ,top-3 countries per month,28,21,0.75,0,3,18,3.0,4.0,1.537
+All six out-of-time folds 2017-2022,C0_Country_Dummies,threshold tau = 1/6,28,25,0.8929,0,0,25,3.0,5.333,2.056
+All six out-of-time folds 2017-2022,C0_Country_Dummies,top-1 countries per month,28,6,0.2143,1,0,5,3.0,1.333,0.463
+All six out-of-time folds 2017-2022,C0_Country_Dummies,top-2 countries per month,28,12,0.4286,0,0,12,3.0,2.667,0.907
+All six out-of-time folds 2017-2022,C0_Country_Dummies,top-3 countries per month,28,20,0.7143,0,1,19,3.0,4.0,1.481
+All six out-of-time folds 2017-2022,C1_Country_plus_Persistence,threshold tau = 1/6,28,25,0.8929,0,0,25,3.0,5.333,2.056
+All six out-of-time folds 2017-2022,C1_Country_plus_Persistence,top-1 countries per month,28,11,0.3929,1,4,6,3.0,1.333,0.352
+All six out-of-time folds 2017-2022,C1_Country_plus_Persistence,top-2 countries per month,28,19,0.6786,3,2,14,3.0,2.667,0.815
+All six out-of-time folds 2017-2022,C1_Country_plus_Persistence,top-3 countries per month,28,24,0.8571,0,2,22,3.0,4.0,1.296
+Retrospective test 2021-2022,B0_Historical_Rule,threshold tau = 1/6,7,6,0.8571,1,1,4,3.0,5.278,2.944
+Retrospective test 2021-2022,B0_Historical_Rule,top-1 countries per month,7,3,0.4286,0,0,3,3.0,1.333,0.333
+Retrospective test 2021-2022,B0_Historical_Rule,top-2 countries per month,7,5,0.7143,1,1,3,3.0,2.667,0.944
+Retrospective test 2021-2022,B0_Historical_Rule,top-3 countries per month,7,6,0.8571,0,1,5,3.0,4.0,1.833
+Retrospective test 2021-2022,B1_Regularized_Linear,threshold tau = 1/6,7,6,0.8571,0,0,6,3.0,5.278,2.833
+Retrospective test 2021-2022,B1_Regularized_Linear,top-1 countries per month,7,2,0.2857,0,0,2,3.0,1.333,0.444
+Retrospective test 2021-2022,B1_Regularized_Linear,top-2 countries per month,7,4,0.5714,2,0,2,2.0,2.667,1.222
+Retrospective test 2021-2022,B1_Regularized_Linear,top-3 countries per month,7,5,0.7143,1,0,4,3.0,4.0,2.0
+Retrospective test 2021-2022,B2_Threshold_Model,threshold tau = 1/6,7,7,1.0,1,0,6,3.0,6.944,4.111
+Retrospective test 2021-2022,B2_Threshold_Model,top-1 countries per month,7,2,0.2857,0,0,2,3.0,1.333,0.556
+Retrospective test 2021-2022,B2_Threshold_Model,top-2 countries per month,7,3,0.4286,1,0,2,3.0,2.667,1.333
+Retrospective test 2021-2022,B2_Threshold_Model,top-3 countries per month,7,3,0.4286,1,0,2,3.0,4.0,2.111
+Retrospective test 2021-2022,B3_Random_Forest,threshold tau = 1/6,7,6,0.8571,0,1,5,3.0,6.889,4.222
+Retrospective test 2021-2022,B3_Random_Forest,top-1 countries per month,7,3,0.4286,0,0,3,3.0,1.333,0.556
+Retrospective test 2021-2022,B3_Random_Forest,top-2 countries per month,7,3,0.4286,0,0,3,3.0,2.667,1.5
+Retrospective test 2021-2022,B3_Random_Forest,top-3 countries per month,7,4,0.5714,0,0,4,3.0,4.0,2.056
+Retrospective test 2021-2022,B4_XGBoost,threshold tau = 1/6,7,6,0.8571,0,0,6,3.0,5.278,2.889
+Retrospective test 2021-2022,B4_XGBoost,top-1 countries per month,7,1,0.1429,0,1,0,2.0,1.333,0.833
+Retrospective test 2021-2022,B4_XGBoost,top-2 countries per month,7,3,0.4286,0,1,2,3.0,2.667,1.389
+Retrospective test 2021-2022,B4_XGBoost,top-3 countries per month,7,4,0.5714,0,0,4,3.0,4.0,2.0
+Retrospective test 2021-2022,M0_EBM_Additive,threshold tau = 1/6,7,4,0.5714,0,1,3,3.0,3.667,2.222
+Retrospective test 2021-2022,M0_EBM_Additive,top-1 countries per month,7,2,0.2857,0,2,0,2.0,1.333,0.667
+Retrospective test 2021-2022,M0_EBM_Additive,top-2 countries per month,7,3,0.4286,0,2,1,2.0,2.667,1.667
+Retrospective test 2021-2022,M0_EBM_Additive,top-3 countries per month,7,4,0.5714,0,1,3,3.0,4.0,2.667
+Retrospective test 2021-2022,M1_EBM_CIxIQ,threshold tau = 1/6,7,4,0.5714,0,1,3,3.0,3.944,2.444
+Retrospective test 2021-2022,M1_EBM_CIxIQ,top-1 countries per month,7,2,0.2857,0,2,0,2.0,1.333,0.611
+Retrospective test 2021-2022,M1_EBM_CIxIQ,top-2 countries per month,7,3,0.4286,0,2,1,2.0,2.667,1.667
+Retrospective test 2021-2022,M1_EBM_CIxIQ,top-3 countries per month,7,4,0.5714,0,2,2,2.5,4.0,2.611
+Retrospective test 2021-2022,C0_Country_Dummies,threshold tau = 1/6,7,5,0.7143,0,0,5,3.0,5.333,3.056
+Retrospective test 2021-2022,C0_Country_Dummies,top-1 countries per month,7,1,0.1429,0,0,1,3.0,1.333,0.444
+Retrospective test 2021-2022,C0_Country_Dummies,top-2 countries per month,7,3,0.4286,0,0,3,3.0,2.667,0.889
+Retrospective test 2021-2022,C0_Country_Dummies,top-3 countries per month,7,5,0.7143,0,0,5,3.0,4.0,1.722
+Retrospective test 2021-2022,C1_Country_plus_Persistence,threshold tau = 1/6,7,5,0.7143,0,0,5,3.0,5.333,3.056
+Retrospective test 2021-2022,C1_Country_plus_Persistence,top-1 countries per month,7,3,0.4286,0,1,2,3.0,1.333,0.278
+Retrospective test 2021-2022,C1_Country_plus_Persistence,top-2 countries per month,7,4,0.5714,1,0,3,3.0,2.667,0.944
+Retrospective test 2021-2022,C1_Country_plus_Persistence,top-3 countries per month,7,5,0.7143,0,0,5,3.0,4.0,1.722

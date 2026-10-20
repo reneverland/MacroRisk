@@ -21,7 +21,7 @@ import matplotlib.patches as mpatches
 from common import (OUT_DIR, TAB_DIR, PRED_DIR, N_JOBS, SEEDS, SESOI_AP, WINDOWS, fold_frames, summarize, compute_metrics,
                     expected_cost, save_predictions, load_predictions, load_panel, load_splits)
 from step3_e03_e05_benchmarks_and_ablations import (MACRO_COLS, CI_COLS_CORE9, SWIFT_COLS, IQ_COLS, build_feature_matrix,
-                                                    EBM_FIXED, make_inner_splits, select_ebm_config, run_grid, core9_sample)
+                                                    EBM_FIXED, make_inner_folds, select_ebm_config, run_grid, core9_sample)
 from interpret.glassbox import ExplainableBoostingClassifier
 
 warnings.filterwarnings("ignore")
@@ -57,7 +57,7 @@ def run_e09_explainability_and_stability(panel, splits):
         y = (tr["target_reer_vol_3m"].values >= tr["target_reer_vol_3m"].quantile(0.80)).astype(int)
         X, _, _ = build_feature_matrix(tr, full)
         inter = [("fx_share_rt", "iq_mean_rt")]
-        cfg = select_ebm_config(X, y, make_inner_splits(tr), inter, 42)
+        cfg = select_ebm_config(y, make_inner_folds(tr, full), inter, 42)
         ebm = ExplainableBoostingClassifier(interactions=inter, random_state=42, **EBM_FIXED, **cfg).fit(X, y)
         imps.append({**dict(zip(ebm.term_names_, ebm.term_importances())), "split_id": sp["split_id"]})
         grid = pd.DataFrame([{**{c: 0.0 for c in full}, "fx_share_rt": a, "iq_mean_rt": b} for a in ci_grid for b in iq_grid])[list(X.columns)]
@@ -240,6 +240,45 @@ def run_e12_moving_block_bootstrap():
     with open(os.path.join(OUT_DIR, "experiment_config.yaml"), "w", encoding="utf-8") as f:
         yaml.dump(cfg, f, sort_keys=False, allow_unicode=True)
     print("  - Saved e12_moving_block_bootstrap.csv and experiment_config.yaml")
+
+
+def run_e21_paired_intervals():
+    """Paired block-bootstrap intervals for every feature-set increment (Table 5), the matched Core-6 CI
+    comparisons and the model-versus-persistence gaps of each robustness specification."""
+    print("[E21] Paired intervals for ablation increments and robustness exceptions...")
+    e45, e11 = load_predictions("e04_e05"), load_predictions("e11_robustness")
+    jobs = []
+    for wkey, L in [("all", 12), ("locked", 6)]:
+        label, fn = WINDOWS[wkey]
+        w = e45[fn(e45)]
+        for m in ["B1_Regularized_Linear", "B4_XGBoost", "M0_EBM_Additive"]:
+            base = w[(w["model"] == m) & (w["variant"] == "F0_Macro_Only")]
+            for f, tag in [("F1_Macro_plus_CI", "+CI"), ("F2_Macro_plus_IQ", "+IQ"), ("F3_Macro_plus_CI_plus_IQ", "+CI+IQ")]:
+                jobs.append(((label, L, "Feature ablation", m, f"{tag} vs macro"), w[(w["model"] == m) & (w["variant"] == f)], base))
+        r = e11[fn(e11)]
+        for m in ["B1_Regularized_Linear", "M0_EBM_Additive", "M1_EBM_CIxIQ"]:
+            nb = r[(r["model"] == m) & (r["variant"] == "Core-6 matched: no CI")]
+            for v in ["Core-6 matched: SWIFT share", "Core-6 matched: FX share", "Core-6 matched: both CI"]:
+                jobs.append(((label, L, "Core-6 CI measure", m, f"{v.split(': ')[1]} vs no CI"), r[(r["model"] == m) & (r["variant"] == v)], nb))
+        for v in r["variant"].unique():
+            b0 = r[(r["variant"] == v) & (r["model"] == "B0_Historical_Rule")]
+            if b0.empty:
+                continue
+            for m in ["B4_XGBoost", "M0_EBM_Additive", "M1_EBM_CIxIQ"]:
+                a = r[(r["variant"] == v) & (r["model"] == m)]
+                if len(a) == len(b0):
+                    jobs.append(((label, L, "Robustness vs persistence", m, f"{v}: model vs B0"), a, b0))
+    res = Parallel(n_jobs=min(N_JOBS, len(jobs)), backend="loky")(delayed(paired_bootstrap)(a, b, L) for (_, L, *_), a, b in jobs)
+    rows = []
+    for ((label, L, fam, m, comp), a, _), r in zip(jobs, res):
+        rows.append({"evaluation_window": label, "block_length_months": L, "family": fam, "model": m, "comparison": comp,
+                     "N": len(a), "N_pos": int(a["y_true_bin"].sum()), **r,
+                     "AP_CI95_excludes_plus_SESOI": bool(r["Delta_AP_CI95_High"] < SESOI_AP),
+                     "AP_CI95_excludes_minus_SESOI": bool(r["Delta_AP_CI95_Low"] > -SESOI_AP),
+                     "AP_CI95_excludes_zero": bool(r["Delta_AP_CI95_Low"] > 0 or r["Delta_AP_CI95_High"] < 0),
+                     "AP_equivalent_TOST_90": bool(r["Delta_AP_CI90_Low"] > -SESOI_AP and r["Delta_AP_CI90_High"] < SESOI_AP)})
+    pd.DataFrame(rows).to_csv(os.path.join(TAB_DIR, "table16_e21_paired_intervals.csv"), index=False)
+    print(f"  - Saved table16_e21_paired_intervals.csv ({len(rows)} comparisons)")
 
 
 # ------------------------------------------------------------------------------------------------
@@ -439,7 +478,7 @@ def generate_all_figures(panel, splits):
 if __name__ == "__main__":
     import sys
     panel, splits = load_panel(), load_splits()
-    parts = sys.argv[1:] or ["e09", "e10", "e11", "e12", "figs"]
+    parts = sys.argv[1:] or ["e09", "e10", "e11", "e12", "e21", "figs"]
     if "e09" in parts:
         run_e09_explainability_and_stability(panel, splits)
     if "e10" in parts:
@@ -448,6 +487,8 @@ if __name__ == "__main__":
         run_e11_robustness_matrix(panel, splits)
     if "e12" in parts:
         run_e12_moving_block_bootstrap()
+    if "e21" in parts:
+        run_e21_paired_intervals()
     if "figs" in parts:
         generate_all_figures(panel, splits)
     print("DONE: Step 5 completed successfully.")

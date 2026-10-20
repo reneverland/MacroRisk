@@ -44,6 +44,24 @@ def assert_no_target_overlap(frames, test_start, h, lag=REER_RELEASE_LAG):
             assert ym_add(last, h + lag) < test_start, f"target of origin {last} (h={h}) not published before {test_start}"
 
 
+def inner_fold_months(yms, h=3, lag=REER_RELEASE_LAG, n_folds=3, val_len=8):
+    """Three expanding inner folds inside a training window (sorted list of origins). Inner training origins
+    end so that their h-month targets are published before the first inner validation origin."""
+    yms = sorted(yms)
+    n = len(yms)
+    folds = []
+    for k in range(n_folds):
+        cut = int(n * (0.55 + 0.12 * k))
+        va = yms[cut:min(n - 1, cut + val_len)]
+        if not va:
+            continue
+        tr = [y for y in yms if y <= maturity_cap(va[0], h, lag)]
+        if len(tr) >= 12:
+            assert ym_add(tr[-1], h + lag) < va[0]
+            folds.append((tr, va))
+    return folds
+
+
 def seeds_for(model):
     return SEEDS if model in STOCHASTIC else [42]
 
@@ -82,19 +100,30 @@ def platt_calibrate(probs_calib, y_calib, probs_test):
 
 def add_expanding_calibration(pred, splits, h=3, keys=("experiment", "variant", "model")):
     """prob_cal_exp: Platt scaling fitted on all earlier out-of-sample predictions of the same model whose
-    targets were published before the fold's first test month (raw probabilities in the first fold)."""
+    targets were published before the fold's first test month (raw probabilities in the first fold).
+    The earlier outcomes are relabelled with the current fold's threshold, so the calibration targets share
+    the event definition of the predictions being calibrated."""
     pred = pred.copy()
     pred["prob_cal_exp"] = pred["prob_raw"]
+    pred["cal_hist_n"], pred["cal_hist_pos"] = 0, 0
     order = splits.sort_values("test_start")
     keys = [k for k in keys if k in pred.columns]
+    relabel = "y_true_cont" in pred.columns and "threshold" in pred.columns
     for _, g in pred.groupby(keys, sort=False):
         for _, sp in order.iterrows():
             te = g.index[g["split_id"] == sp["split_id"]]
             if len(te) == 0:
                 continue
             hist = g[(g["ym"] < sp["test_start"]) & (g["ym"] <= maturity_cap(sp["test_start"], h))]
-            if len(hist):
-                pred.loc[te, "prob_cal_exp"] = platt_calibrate(hist["prob_raw"], hist["y_true_bin"], g.loc[te, "prob_raw"])[0]
+            if not len(hist):
+                continue
+            if relabel:
+                thr = g.loc[te].groupby("country")["threshold"].first()
+                y_hist = (hist["y_true_cont"].values >= hist["country"].map(thr).fillna(float(thr.median())).values).astype(int)
+            else:
+                y_hist = hist["y_true_bin"].values
+            pred.loc[te, "prob_cal_exp"] = platt_calibrate(hist["prob_raw"], y_hist, g.loc[te, "prob_raw"])[0]
+            pred.loc[te, "cal_hist_n"], pred.loc[te, "cal_hist_pos"] = len(hist), int(y_hist.sum())
     return pred
 
 
@@ -196,3 +225,44 @@ def load_panel():
 
 def load_splits():
     return pd.read_csv(os.path.join(OUT_DIR, "split_manifest.csv"))
+
+
+def confirmation_splits(first=2021, last=2025):
+    return pd.DataFrame([{"split_id": f"CONF_{T}", "role": "warmup" if T <= 2022 else "confirmation", "train_start": "2012-01",
+                          "train_end_origin": f"{T - 2}-08", "calib_start": f"{T - 1}-01", "calib_end_origin": f"{T - 1}-08",
+                          "test_start": f"{T}-01", "test_end": f"{T}-12"} for T in range(first, last + 1)])
+
+
+def _months(a, b):
+    return [p.strftime("%Y-%m") for p in pd.period_range(a, b, freq="M")]
+
+
+def timing_audit():
+    """One row per scope x fold x horizon x stage: last origin used, publication month of its target, first month
+    it is evaluated against, and whether the target was published before that month. The frozen 2023-2025
+    confirmation used the original inner folds (fixed three-month gap); its rows are kept for disclosure."""
+    rows = []
+    scopes = [("Main evaluation 2017-2022", load_splits(), (3, 6), "corrected"),
+              ("Post-hoc rerun 2023-2025", confirmation_splits(), (3,), "corrected"),
+              ("Frozen confirmation 2023-2025 (original code, disclosed)", confirmation_splits(), (3,), "original")]
+    for scope, splits, hs, rule in scopes:
+        for _, sp in splits.iterrows():
+            for h in hs:
+                cap = maturity_cap(sp["test_start"], h)
+                tr_end, cal_end = min(sp["train_end_origin"], cap), min(sp["calib_end_origin"], cap)
+                stages = [("outer training", tr_end, sp["test_start"]), ("calibration", cal_end, sp["test_start"]),
+                          ("expanding-calibration history", cap, sp["test_start"])]
+                yms = _months(sp["train_start"], tr_end)
+                if rule == "corrected":
+                    inner = [(tr[-1], va[0]) for tr, va in inner_fold_months(yms, h)]
+                else:
+                    n = len(yms)
+                    inner = [(yms[max(12, int(n * (0.55 + 0.12 * k)) - 3) - 1], yms[int(n * (0.55 + 0.12 * k))]) for k in range(3)]
+                stages += [(f"inner fold {k + 1}", a, b) for k, (a, b) in enumerate(inner)]
+                for stage, last, first_eval in stages:
+                    pub = ym_add(last, h + REER_RELEASE_LAG)
+                    rows.append({"scope": scope, "split_id": sp["split_id"], "h": h, "stage": stage, "last_origin": last,
+                                 "target_published": pub, "first_evaluated_month": first_eval, "published_before": pub < first_eval})
+    df = pd.DataFrame(rows)
+    df.to_csv(os.path.join(TAB_DIR, "tableS16_timing_audit.csv"), index=False)
+    return df
