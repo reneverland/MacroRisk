@@ -1,0 +1,15 @@
+[E13] External transfer (fixed Core-9 thresholds)...
+  - Saved table9_e13_external_transfer.csv
+[E14] Training-weight schemes...
+   learner                     scheme  Dev_AP_fold_mean  Test_AP  Selected_on_dev
+0      EBM              Equal_Country            0.4248   0.2927             True
+1      EBM                     Global            0.4248   0.2927            False
+2      EBM  IQ_Similarity_Regularized            0.4135   0.2852            False
+3      EBM             Time_Decay_H24            0.4118   0.2842            False
+4      EBM             Time_Decay_H48            0.4200   0.2653            False
+5  XGBoost              Equal_Country            0.4325   0.4354            False
+6  XGBoost                     Global            0.4325   0.4354            False
+7  XGBoost  IQ_Similarity_Regularized            0.4468   0.4060             True
+8  XGBoost             Time_Decay_H24            0.4341   0.4283            False
+9  XGBoost             Time_Decay_H48            0.4268   0.4323            False
+DONE: Step 6 (E13-E15) completed successfully.

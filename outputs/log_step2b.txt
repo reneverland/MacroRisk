@@ -1,0 +1,30 @@
+[2b] A_SWIFT: 678 rows, 6 countries, 2012-08..2021-12
+[2b] B_FX: 1188 rows, 9 countries, 2012-01..2022-12
+[2b] Mean replication score by (other_risks, trim):
+ other_risks     trim
+others_contemp  0.01    0.603
+                0.05    0.978
+others_lag      0.05    1.141
+                0.01    1.169
+none            0.01    1.241
+                0.05    1.244
+others_contemp  0.15    1.772
+others_lag      0.15    1.885
+none            0.15    2.260
+[2b] Chosen: other_risks=others_contemp, trim=0.01, y_map={('A_SWIFT', 'CE_Vol'): 'consump_volnew', ('A_SWIFT', 'CG_Gap'): 'credit_gdp_gap', ('A_SWIFT', 'CPI_Vol'): 'cpi_vol', ('A_SWIFT', 'ER_Vol'): 'real_ex_vol', ('A_SWIFT', 'FX_Vol'): 'fxr_vol', ('A_SWIFT', 'Unemp'): 'unemp', ('B_FX', 'CE_Vol'): 'consump_volnew', ('B_FX', 'CG_Gap'): 'credit_gdp_gap', ('B_FX', 'CPI_Vol'): 'cpi_vol', ('B_FX', 'ER_Vol'): 'real_ex_vol', ('B_FX', 'FX_Vol'): 'fxr_vol', ('B_FX', 'Unemp'): 'unemp'}
+      panel     risk  n_obs  f_stat  f_stat_tn1_convention  f_published  p_boot  threshold  threshold_published  share_obs_regime1
+0   A_SWIFT  CPI_Vol    678  476.56                 400.68       400.68  0.0005    -0.7870              -0.7870              0.018
+1   A_SWIFT   FX_Vol    678   64.97                  54.62        54.62  0.0195     0.4481               0.4481              0.684
+2   A_SWIFT   CE_Vol    678  143.49                 120.64       120.64  0.0180    -0.7116              -0.7116              0.078
+3   A_SWIFT   ER_Vol    678   32.40                  27.24        27.24  0.8885    -0.4764              -0.4764              0.227
+4   A_SWIFT   CG_Gap    678   98.86                  83.12        83.12  0.0375    -0.3692              -0.3692              0.333
+5   A_SWIFT    Unemp    678  123.27                 103.64       103.64  0.0005     0.0240               0.0240              0.518
+6      B_FX  CPI_Vol   1188  308.79                 276.57       276.57  0.0450    -0.2560              -0.2560              0.354
+7      B_FX   FX_Vol   1188   88.55                  79.31        79.31  0.0295    -0.7870              -0.7541              0.010
+8      B_FX   CE_Vol   1188  245.25                 219.67       219.67  0.0005    -0.7116              -0.7234              0.051
+9      B_FX   ER_Vol   1056  118.28                 104.28       104.28  0.0605    -0.7039              -0.7039              0.080
+10     B_FX   CG_Gap   1188   38.64                  34.61        34.61  0.6500    -0.1554              -0.1554              0.444
+11     B_FX    Unemp   1188   60.67                  54.34        54.34  0.1325    -0.1416              -0.1416              0.465
+[2b] main tables done (40s)
+[2b] trimming + pseudo-real-time done (165s)
+DONE: Step 2b completed in 334s

@@ -1,0 +1,59 @@
+project: Replication-to-deployment evaluation of institution-conditioned exchange-rate
+  stress early warning
+target_journal: Expert Systems with Applications
+primary_target: 'target_reer_vol_3m: RMS of monthly REER log changes over t+1..t+3
+  (forward rolling window)'
+secondary_target: 'target_res_drawdown_3m: maximum FX-reserve drawdown over t+1..t+3'
+high_risk_threshold_rule: 80th percentile of the training targets of each fold (q75,
+  q90 and country-specific q80 in E11)
+publication_lag_rules:
+  bis_reer_and_us_neer: +1 month (features use months up to t-1; month-t versions
+    only in the E11 timing sensitivity)
+  monthly_cpi_reserves: +1 month
+  monthly_ci_swift_fx_share: +1 month in the main specification; 3, 6 and 12 months
+    and a frozen-CI variant in E11
+  quarterly_bis_credit: +2 months after quarter end
+  annual_worldbank_wgi_macro: year Y from September of Y+1 (current WGI vintage; historical
+    revisions not reconstructed)
+  policy_rates: 0 months (announced rates)
+temporal_protocol:
+  sample_origins: 2012-01 to 2022-12 (Core-9, 132 months); confirmation origins 2023-01
+    to 2025-12 (step 9)
+  development_folds:
+  - '2017'
+  - '2018'
+  - '2019'
+  - '2020'
+  retrospective_test_folds:
+  - '2021'
+  - '2022'
+  maturity_rule: training and calibration origins satisfy origin + h + 1 < first test
+    month (asserted)
+  calibration_window_months: 8
+  calibration_schemes:
+  - raw
+  - platt_8m
+  - platt_expanding
+  calibration_lock: per model, lowest pooled Brier score on the development folds
+random_seeds:
+- 42
+- 1024
+- 2024
+- 3407
+- 7777
+moving_block_bootstrap:
+  block_lengths:
+  - 6
+  - 12
+  - 18
+  replications: 1000
+smallest_effect_size_of_interest_AP: 0.02
+threshold_regression:
+  bootstrap_replications: 1999
+  p_value: (1 + k) / (B + 1)
+  trim_main: 0.01
+  trim_sensitivity:
+  - 0.01
+  - 0.05
+  - 0.1
+  - 0.15

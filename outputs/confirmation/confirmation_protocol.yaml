@@ -1,0 +1,165 @@
+title: Confirmation protocol, frozen before any 2023-2025 outcome is evaluated
+frozen_at_utc: '2026-10-20T02:28:12'
+forecast_origins: 2023-01 to 2025-12 (test years 2023, 2024, 2025); 2021-2022 are warm-up folds that only supply history for
+  the fallback rule
+countries:
+  core9:
+  - BRA
+  - CHN
+  - HUN
+  - IND
+  - KOR
+  - MEX
+  - POL
+  - RUS
+  - ZAF
+  external6:
+  - TUR
+  - IDN
+  - THA
+  - MYS
+  - CHL
+  - COL
+features:
+- reer_vol_hist_3m
+- reer_vol_hist_6m
+- reer_vol_hist_12m
+- reer_ret_cum_3m
+- cpi_yoy_lag1
+- cpi_vol_rt
+- fx_res_vol_rt
+- fx_res_yoy_rt
+- cg_gap_rt
+- fin_depth_rt
+- ln_gdp_pc_rt
+- gdp_growth_rate_rt
+- ln_pop_rt
+- trade_openness_wb_rt
+- fin_openness_proxy_rt
+- unemp_rate_wb_rt
+- policy_rate_diff_us
+- usd_neer_ret_1m
+- usd_neer_vol_3m
+- iq_mean_rt
+- iq_data_age_m
+feature_note: 'FX-share (CI) features excluded: the CI export ends before 2023'
+target: target_reer_vol_3m; high-risk if >= 80th percentile of the pooled training targets of the fold
+folds:
+- split_id: CONF_2021
+  role: warmup
+  train_start: 2012-01
+  train_end_origin: 2019-08
+  calib_start: 2020-01
+  calib_end_origin: 2020-08
+  test_start: 2021-01
+  test_end: 2021-12
+- split_id: CONF_2022
+  role: warmup
+  train_start: 2012-01
+  train_end_origin: 2020-08
+  calib_start: 2021-01
+  calib_end_origin: 2021-08
+  test_start: 2022-01
+  test_end: 2022-12
+- split_id: CONF_2023
+  role: confirmation
+  train_start: 2012-01
+  train_end_origin: 2021-08
+  calib_start: 2022-01
+  calib_end_origin: 2022-08
+  test_start: 2023-01
+  test_end: 2023-12
+- split_id: CONF_2024
+  role: confirmation
+  train_start: 2012-01
+  train_end_origin: 2022-08
+  calib_start: 2023-01
+  calib_end_origin: 2023-08
+  test_start: 2024-01
+  test_end: 2024-12
+- split_id: CONF_2025
+  role: confirmation
+  train_start: 2012-01
+  train_end_origin: 2023-08
+  calib_start: 2024-01
+  calib_end_origin: 2024-08
+  test_start: 2025-01
+  test_end: 2025-12
+maturity_rule: training and calibration origins satisfy origin + h + 1 < first test month (h = 3)
+models:
+- B0_Historical_Rule
+- B1_Regularized_Linear
+- M0_EBM_Additive (macro + IQ)
+- B4_XGBoost
+seeds:
+- 42
+- 1024
+- 2024
+- 3407
+- 7777
+probabilities: raw (the calibration scheme locked for B0, B1, B4, M0 in the main study)
+decision_threshold:
+  C_FN: 5
+  C_FP: 1
+  tau: 0.16666666666666666
+review_budget_k_per_month: 2
+fallback_policy:
+  learned_model: M0_EBM_Additive
+  learned_model_choice: 'highest development-fold mean AP among [''B1_Regularized_Linear'', ''B4_XGBoost'', ''M0_EBM_Additive'']
+    with macro + IQ features: {''B1_Regularized_Linear'': 0.438, ''B4_XGBoost'': 0.4397, ''M0_EBM_Additive'': 0.4405}'
+  rule: for test year T, compute AP gain over B0 and ECE of the learned model on the latest 12 matured origins (origins up
+    to August of T-1); deploy the learned model only if gain >= delta and ECE <= cap, otherwise deploy B0
+  delta: 0.02
+  ece_cap: 0.11
+  ece_cap_choice: maximum per-fold ECE of B0 on the development folds 2017-2020, rounded up to 0.01
+  single_evaluation_on_retrospective_test:
+  - test_year: 2021
+    deployed: B0_Historical_Rule
+    hist_AP_gain: 0.1346
+    hist_ECE: 0.1612
+    cost_C5_per100: !!python/object/apply:numpy.core.multiarray.scalar
+    - &id001 !!python/object/apply:numpy.dtype
+      args:
+      - f8
+      - false
+      - true
+      state: !!python/tuple
+      - 3
+      - <
+      - null
+      - null
+      - null
+      - -1
+      - -1
+      - 0
+    - !!binary |
+      TmIQWDm0PEA=
+  - test_year: 2022
+    deployed: B0_Historical_Rule
+    hist_AP_gain: -0.0363
+    hist_ECE: 0.0544
+    cost_C5_per100: !!python/object/apply:numpy.core.multiarray.scalar
+    - *id001
+    - !!binary |
+      JzEIrBzaSkA=
+primary_comparisons:
+- fallback policy vs B0 (cost C_FN=5)
+- learned model vs B0 (AP, Brier, cost)
+- every model vs never-alert
+inference: paired moving-block bootstrap over months, L = 6, 1000 replications
+reporting: all models, all years and both country groups are reported regardless of outcome
+data_vintage_sha256:
+  bis_reer.csv: 39ed0de866811f2603d1784c23df608c1af681eedc9efe3c279e9c1e32413c0f
+  bis_neer_us.csv: 98beaf0144b307cdf0239100bca90bb8819c613c408ba2174d1d2f01d6fc363d
+  bis_cpi.csv: 0666942ba35bdf3301543a7fe53906230cec82ed4a6b7494564723dd49c396be
+  bis_cbpol.csv: 67469fd77cc4c6f52a6163f37b7fa9cbe473392d3aefe77d2839f7f9a02dd768
+  bis_credit_tc.csv: 1e68a1c1fd39158cf792a4b3f87ca8d43f10951a671acb3d7ab9352bedea7a45
+  bis_credit_gap.csv: 943427e49908e94496c83ad46eeefc9a52e5d9995b958a83600edfd38b12010d
+  imf_ifs_reserves_monthly.csv: 745e78036b9e35c74fa92ff3797c520e2a52532d15ef2adfa7e9255d2b480598
+  vintage_202610/imf_irfcl_reserves_monthly.csv: 6b98b736f65bd65c350dea20ff18018e32a648554bc741095dac930fb179a96c
+  worldbank_annual.csv: 3e5c03bfb0e13ed39e57647419fe6d9c84d20ed3289f2b18b83ee0d963d06c33
+panel_sha256: 14629d64bdd93d0b821dbed13688ddb7f9c8d6f158f3778520e72c8b93074590
+code_sha256:
+  step9_confirmation.py: c8a3a52f75d9bb9b9ece8c252adca88ac2311bf7b7638c8c2ab074d6e1b4cdc3
+  common.py: 314ea5126ebc52c4a96f5c103be3ab9e2ab2b987b0accc81ba1bb43f3c47bd0b
+  step3_e03_e05_benchmarks_and_ablations.py: 7165018c11114d3832d4b8b9caf500fc955b376c57a9bedff877216148286786

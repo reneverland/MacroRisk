@@ -1,0 +1,4 @@
+test_year,history_origins,deployed,hist_AP_gain,hist_ECE
+2023,2021-09..2022-08,B0_Historical_Rule,-0.2816,0.1822
+2024,2022-09..2023-08,B0_Historical_Rule,-0.2648,0.2027
+2025,2023-09..2024-08,B0_Historical_Rule,-0.0136,0.0214

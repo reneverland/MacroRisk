@@ -1,0 +1,13 @@
+panel,ci_indicator,risk,y_col,n_obs,n_countries,f_stat,f_stat_tn1_convention,p_boot,k_exceed,p_mc_se,p_stars,threshold,ci95_low,ci95_high,share_obs_regime1,f_published,threshold_published,trim,other_risks,n_boot
+A_SWIFT,Swift Share,CPI_Vol,cpi_vol,678,6,476.56,400.68,0.0005,0,0.0005,***,-0.787,-0.787,-0.787,0.018,400.68,-0.787,0.01,others_contemp,1999
+A_SWIFT,Swift Share,FX_Vol,fxr_vol,678,6,64.97,54.62,0.0195,38,0.0031,**,0.4481,0.4481,0.5883,0.684,54.62,0.4481,0.01,others_contemp,1999
+A_SWIFT,Swift Share,CE_Vol,consump_volnew,678,6,143.49,120.64,0.018,35,0.003,**,-0.7116,-0.7116,-0.7116,0.078,120.64,-0.7116,0.01,others_contemp,1999
+A_SWIFT,Swift Share,ER_Vol,real_ex_vol,678,6,32.4,27.24,0.8885,1776,0.007,,-0.4764,-0.4764,0.2068,0.227,27.24,-0.4764,0.01,others_contemp,1999
+A_SWIFT,Swift Share,CG_Gap,credit_gdp_gap,678,6,98.86,83.12,0.0375,74,0.0042,**,-0.3692,-0.3981,-0.2684,0.333,83.12,-0.3692,0.01,others_contemp,1999
+A_SWIFT,Swift Share,Unemp,unemp,678,6,123.27,103.64,0.0005,0,0.0005,***,0.024,0.024,0.024,0.518,103.64,0.024,0.01,others_contemp,1999
+B_FX,FX Share,CPI_Vol,cpi_vol,1188,9,308.79,276.57,0.045,89,0.0046,**,-0.256,-0.256,-0.2504,0.354,276.57,-0.256,0.01,others_contemp,1999
+B_FX,FX Share,FX_Vol,fxr_vol,1188,9,88.55,79.31,0.0295,58,0.0038,**,-0.787,-0.787,-0.787,0.01,79.31,-0.7541,0.01,others_contemp,1999
+B_FX,FX Share,CE_Vol,consump_volnew,1188,9,245.25,219.67,0.0005,0,0.0005,***,-0.7116,-0.7116,-0.7116,0.051,219.67,-0.7234,0.01,others_contemp,1999
+B_FX,FX Share,ER_Vol,real_ex_vol,1056,8,118.28,104.28,0.0605,120,0.0053,*,-0.7039,-0.7039,-0.7039,0.08,104.28,-0.7039,0.01,others_contemp,1999
+B_FX,FX Share,CG_Gap,credit_gdp_gap,1188,9,38.64,34.61,0.65,1299,0.0107,,-0.1554,-0.1554,-0.1554,0.444,34.61,-0.1554,0.01,others_contemp,1999
+B_FX,FX Share,Unemp,unemp,1188,9,60.67,54.34,0.1325,264,0.0076,,-0.1416,-0.1448,-0.1114,0.465,54.34,-0.1416,0.01,others_contemp,1999

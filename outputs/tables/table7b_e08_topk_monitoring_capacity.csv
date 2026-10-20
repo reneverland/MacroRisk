@@ -1,0 +1,43 @@
+evaluation_window,monthly_quota_k,model,Precision_at_k,Recall_at_k,Lift_over_Random,True_Alerts_per_Year,Missed_Stress_per_Year
+All six out-of-time folds 2017-2022,1,B0_Historical_Rule,0.375,0.2231,2.008,4.5,15.67
+All six out-of-time folds 2017-2022,1,B1_Regularized_Linear,0.2639,0.157,1.413,3.17,17.0
+All six out-of-time folds 2017-2022,1,B2_Threshold_Model,0.4167,0.2479,2.231,5.0,15.17
+All six out-of-time folds 2017-2022,1,B3_Random_Forest,0.4583,0.2727,2.455,5.5,14.67
+All six out-of-time folds 2017-2022,1,B4_XGBoost,0.4583,0.2727,2.455,5.5,14.67
+All six out-of-time folds 2017-2022,1,M0_EBM_Additive,0.4167,0.2479,2.231,5.0,15.17
+All six out-of-time folds 2017-2022,1,M1_EBM_CIxIQ,0.4444,0.2645,2.38,5.33,14.83
+All six out-of-time folds 2017-2022,2,B0_Historical_Rule,0.3958,0.4711,2.12,9.5,10.67
+All six out-of-time folds 2017-2022,2,B1_Regularized_Linear,0.3889,0.4628,2.083,9.33,10.83
+All six out-of-time folds 2017-2022,2,B2_Threshold_Model,0.4167,0.4959,2.231,10.0,10.17
+All six out-of-time folds 2017-2022,2,B3_Random_Forest,0.4306,0.5124,2.306,10.33,9.83
+All six out-of-time folds 2017-2022,2,B4_XGBoost,0.4444,0.5289,2.38,10.67,9.5
+All six out-of-time folds 2017-2022,2,M0_EBM_Additive,0.375,0.4463,2.008,9.0,11.17
+All six out-of-time folds 2017-2022,2,M1_EBM_CIxIQ,0.3542,0.4215,1.897,8.5,11.67
+All six out-of-time folds 2017-2022,3,B0_Historical_Rule,0.375,0.6694,2.008,13.5,6.67
+All six out-of-time folds 2017-2022,3,B1_Regularized_Linear,0.3981,0.7107,2.132,14.33,5.83
+All six out-of-time folds 2017-2022,3,B2_Threshold_Model,0.4306,0.7686,2.306,15.5,4.67
+All six out-of-time folds 2017-2022,3,B3_Random_Forest,0.412,0.7355,2.207,14.83,5.33
+All six out-of-time folds 2017-2022,3,B4_XGBoost,0.4306,0.7686,2.306,15.5,4.67
+All six out-of-time folds 2017-2022,3,M0_EBM_Additive,0.3565,0.6364,1.909,12.83,7.33
+All six out-of-time folds 2017-2022,3,M1_EBM_CIxIQ,0.3611,0.6446,1.934,13.0,7.17
+Retrospective test 2021-2022,1,B0_Historical_Rule,0.5,0.3333,3.0,6.0,12.0
+Retrospective test 2021-2022,1,B1_Regularized_Linear,0.2917,0.1944,1.75,3.5,14.5
+Retrospective test 2021-2022,1,B2_Threshold_Model,0.2917,0.1944,1.75,3.5,14.5
+Retrospective test 2021-2022,1,B3_Random_Forest,0.5,0.3333,3.0,6.0,12.0
+Retrospective test 2021-2022,1,B4_XGBoost,0.3333,0.2222,2.0,4.0,14.0
+Retrospective test 2021-2022,1,M0_EBM_Additive,0.3333,0.2222,2.0,4.0,14.0
+Retrospective test 2021-2022,1,M1_EBM_CIxIQ,0.375,0.25,2.25,4.5,13.5
+Retrospective test 2021-2022,2,B0_Historical_Rule,0.4583,0.6111,2.75,11.0,7.0
+Retrospective test 2021-2022,2,B1_Regularized_Linear,0.3542,0.4722,2.125,8.5,9.5
+Retrospective test 2021-2022,2,B2_Threshold_Model,0.3333,0.4444,2.0,8.0,10.0
+Retrospective test 2021-2022,2,B3_Random_Forest,0.3958,0.5278,2.375,9.5,8.5
+Retrospective test 2021-2022,2,B4_XGBoost,0.3333,0.4444,2.0,8.0,10.0
+Retrospective test 2021-2022,2,M0_EBM_Additive,0.25,0.3333,1.5,6.0,12.0
+Retrospective test 2021-2022,2,M1_EBM_CIxIQ,0.25,0.3333,1.5,6.0,12.0
+Retrospective test 2021-2022,3,B0_Historical_Rule,0.3611,0.7222,2.167,13.0,5.0
+Retrospective test 2021-2022,3,B1_Regularized_Linear,0.3333,0.6667,2.0,12.0,6.0
+Retrospective test 2021-2022,3,B2_Threshold_Model,0.3472,0.6944,2.083,12.5,5.5
+Retrospective test 2021-2022,3,B3_Random_Forest,0.3611,0.7222,2.167,13.0,5.0
+Retrospective test 2021-2022,3,B4_XGBoost,0.3611,0.7222,2.167,13.0,5.0
+Retrospective test 2021-2022,3,M0_EBM_Additive,0.2083,0.4167,1.25,7.5,10.5
+Retrospective test 2021-2022,3,M1_EBM_CIxIQ,0.2083,0.4167,1.25,7.5,10.5

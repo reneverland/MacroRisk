@@ -1,0 +1,39 @@
+series_id,source,native_frequency,unit,publication_lag_rule,description
+reer_index,BIS WS_EER (M.R.B.*),Monthly,Index (2020=100),+1 month (features use REER up to t-1),Real Effective Exchange Rate (Broad 64-economy basket)
+reer_vol_hist_3m,Derived from BIS WS_EER,Monthly,Percentage points (%),+1 month,RMS of monthly REER log changes over months t-3..t-1 (input of the persistence rule B0)
+reer_vol_hist_6m,Derived from BIS WS_EER,Monthly,Percentage points (%),+1 month,RMS of monthly REER log changes over months t-6..t-1
+reer_vol_hist_12m,Derived from BIS WS_EER,Monthly,Percentage points (%),+1 month,RMS of monthly REER log changes over months t-12..t-1
+reer_ret_cum_3m,Derived from BIS WS_EER,Monthly,Percentage points (%),+1 month,Cumulative REER log change from t-4 to t-1
+target_reer_chg_3m,Derived from BIS WS_EER,Monthly,Percentage points (%),+3m target completion (+4m release),Signed REER log change from t to t+3 (negative = real depreciation)
+target_reer_vol_3m,Derived from BIS WS_EER,Monthly,Percentage points (%),+3m target completion (+4m release),Primary continuous target: RMS of monthly REER log changes over next h=3 months
+target_reer_vol_6m,Derived from BIS WS_EER,Monthly,Percentage points (%),+6m target completion (+7m release),Robustness target: RMS of monthly REER log changes over next h=6 months
+fx_reserves_usd_m,IMF IFS via DBnomics (M.*.RAXG_USD),Monthly,USD Millions,+1 month,Official Reserve Assets excluding Gold
+target_res_drawdown_3m,Derived from IMF IFS RAXG_USD,Monthly,Percentage (%),+3m target completion (+4m release),Secondary continuous target: Max percentage drawdown of FX reserves over next h=3 months
+swift_share_rt,Authors' earlier dataset exported from the Wind Financial Terminal (SWIFT payment share),Monthly,Percentage (%),+1 month; held forward after 2021-12 with swift_share_age_m,"Currency share in global SWIFT payments, Core-6 only"
+fx_share_rt,Authors' earlier dataset exported from the Wind Financial Terminal (FX derivatives turnover share),Monthly,Share (as in source),+1 month; held forward after 2022-12 with fx_share_age_m,"Domestic-currency FX derivatives turnover share, Core-9"
+fx_share_chg_12m_rt,Derived from fx_share_rt,Monthly,Share change,+1 month,12-month change in the released FX share
+iq_mean_rt,World Bank WGI (6 dimensions),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Mean of 6 Worldwide Governance Indicators available at forecast origin
+wgi_va_rt,World Bank WGI (VA.EST),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Voice and Accountability
+wgi_pv_rt,World Bank WGI (PV.EST),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Political Stability and Absence of Violence/Terrorism
+wgi_ge_rt,World Bank WGI (GE.EST),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Government Effectiveness
+wgi_rq_rt,World Bank WGI (RQ.EST),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Regulatory Quality
+wgi_rl_rt,World Bank WGI (RL.EST),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Rule of Law
+wgi_cc_rt,World Bank WGI (CC.EST),Annual (Step-held),"Index [-2.5, 2.5]",Sept of year Y+1 (+9m lag),Control of Corruption
+cpi_yoy_lag1,BIS WS_LONG_CPI (M.*.628),Monthly,Percentage (%),+1 month,Year-over-year Consumer Price Index inflation rate
+cpi_vol_rt,Derived from BIS WS_LONG_CPI,Monthly,Percentage points (%),+1 month,12-month rolling std of YoY CPI inflation
+fx_res_vol_rt,Derived from IMF IFS RAXG_USD,Monthly,Log-return std,+1 month,12-month rolling std of monthly log FX reserve changes
+fin_depth_rt,BIS WS_TC / World Bank,Quarterly / Annual,% of GDP,+2 months after quarter-end,Total private credit to non-financial sector (% of GDP)
+cg_gap_rt,BIS WS_CREDIT_GAP,Quarterly,% of GDP,+2 months after quarter-end,Credit-to-GDP gap (deviation from long-run trend)
+ln_gdp_pc_rt,World Bank (NY.GDP.PCAP.KD),Annual (Step-held),Log constant 2015 USD,Sept of year Y+1,Logarithm of real GDP per capita
+gdp_growth_rate_rt,World Bank (NY.GDP.MKTP.KD.ZG),Annual (Step-held),Decimal ratio,Sept of year Y+1,Real GDP annual growth rate
+ln_pop_rt,World Bank (SP.POP.TOTL),Annual (Step-held),Log population,Sept of year Y+1,Logarithm of total population
+trade_openness_wb_rt,World Bank (NE.TRD.GNFS.ZS),Annual (Step-held),% of GDP,Sept of year Y+1,Imports plus exports of goods and services (% of GDP)
+fin_openness_proxy_rt,World Bank / IMF IFS,Annual (Step-held),% of GDP,Sept of year Y+1,External financial openness index (% of GDP)
+unemp_rate_wb_rt,World Bank (SL.UEM.TOTL.ZS),Annual (Step-held),Percentage (%),Sept of year Y+1,Total unemployment rate (% of labor force)
+policy_rate_diff_us,BIS WS_CBPOL,Monthly,Percentage points (%),0m (Real-time),Domestic central bank policy rate minus US Fed policy rate
+usd_neer_ret_1m,BIS WS_EER (M.N.B.US),Monthly,Percentage points (%),+1 month,Global common shock: US Broad Dollar NEER log return in month t-1
+usd_neer_vol_3m,BIS WS_EER (M.N.B.US),Monthly,Percentage points (%),+1 month,Std of US Broad Dollar NEER log returns over t-3..t-1
+fx_res_yoy_rt,IMF IFS RAXG_USD,Monthly,Percentage (%),+1 month,"Year-over-year change of FX reserves, month t-1"
+policy_rate_chg_3m,BIS WS_CBPOL,Monthly,Percentage points,0m (announced rates),Three-month change of the policy rate
+iq_data_age_m,Derived,Monthly,Months,-,Months since the end of the WGI reference year available at origin t
+fx_share_age_m,Derived,Monthly,Months,-,Months since the FX-share observation used at origin t

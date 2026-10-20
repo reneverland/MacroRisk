@@ -1,0 +1,4 @@
+2026-10-20T02:28Z protocol frozen (SHA-256 910490582b8dc40cfef8880dfcbc67bfa0786ea3867fead9de8d8ccf3718f65d).
+2026-10-20T02:28Z first `score` call stopped while loading the protocol (yaml.safe_load cannot read the numpy scalar tags in the frozen file); no model was fitted and no outcome was read.
+2026-10-20T02:37Z step9_confirmation.py edited: yaml.safe_load -> yaml.load(..., Loader=yaml.UnsafeLoader). No other change. Protocol file unchanged; hash verified at scoring time.
+2026-10-20T02:43Z confirmation scored once (SCORED.lock).

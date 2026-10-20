@@ -1,0 +1,41 @@
+evaluation_window,block_length_months,reviewer_acc,c_review,policy_A,policy_B,cost_A_per100,cost_B_per100,Delta_cost_per100,CI95_Low,CI95_High
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 + low-confidence review (k=2),B0 + low-confidence review (k=2),37.037,46.914,-9.877,-30.864,0.467
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 + low-confidence review (k=2),B0 automated,37.037,53.395,-16.358,-42.747,-3.395
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 + low-confidence review (k=2),Never alert + volatility review (k=2),37.037,60.494,-23.457,-49.383,-3.549
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 + low-confidence review (k=2),M1 + random review (k=2),37.037,44.839,-7.802,-16.512,-0.326
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 + low-confidence review (k=2),Macro-only EBM + low-confidence review (k=2),37.037,36.42,0.617,-8.642,3.549
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 automated,B0 automated,43.364,53.395,-10.031,-36.269,4.942
+All six out-of-time folds 2017-2022,12,1.0,0.5,M1 Platt 8m automated,M1 raw automated,70.525,43.364,27.16,13.885,57.882
+All six out-of-time folds 2017-2022,12,1.0,0.5,B0 + low-confidence review (k=2),B0 automated,46.914,53.395,-6.481,-14.201,-0.305
+All six out-of-time folds 2017-2022,12,1.0,0.5,B0 + low-confidence review (k=2),Never alert + volatility review (k=2),46.914,60.494,-13.58,-23.773,4.167
+All six out-of-time folds 2017-2022,12,1.0,0.5,B0 automated,Never alert,53.395,93.364,-39.969,-63.121,-13.885
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 + low-confidence review (k=2),B0 + low-confidence review (k=2),45.062,54.198,-9.136,-29.079,0.807
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 + low-confidence review (k=2),B0 automated,45.062,53.395,-8.333,-33.275,3.528
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 + low-confidence review (k=2),Never alert + volatility review (k=2),45.062,71.975,-26.914,-53.706,-6.633
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 + low-confidence review (k=2),M1 + random review (k=2),45.062,52.603,-7.541,-15.432,-0.226
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 + low-confidence review (k=2),Macro-only EBM + low-confidence review (k=2),45.062,45.802,-0.741,-9.259,2.253
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 automated,B0 automated,43.364,53.395,-10.031,-36.269,4.942
+All six out-of-time folds 2017-2022,12,0.8,0.5,M1 Platt 8m automated,M1 raw automated,70.525,43.364,27.16,13.885,57.882
+All six out-of-time folds 2017-2022,12,0.8,0.5,B0 + low-confidence review (k=2),B0 automated,54.198,53.395,0.802,-5.685,5.896
+All six out-of-time folds 2017-2022,12,0.8,0.5,B0 + low-confidence review (k=2),Never alert + volatility review (k=2),54.198,71.975,-17.778,-29.384,0.407
+All six out-of-time folds 2017-2022,12,0.8,0.5,B0 automated,Never alert,53.395,93.364,-39.969,-63.121,-13.885
+Retrospective test 2021-2022,6,1.0,0.5,M1 + low-confidence review (k=2),B0 + low-confidence review (k=2),50.0,36.111,13.889,-4.63,22.234
+Retrospective test 2021-2022,6,1.0,0.5,M1 + low-confidence review (k=2),B0 automated,50.0,41.204,8.796,-9.271,14.815
+Retrospective test 2021-2022,6,1.0,0.5,M1 + low-confidence review (k=2),Never alert + volatility review (k=2),50.0,43.519,6.481,-22.222,18.056
+Retrospective test 2021-2022,6,1.0,0.5,M1 + low-confidence review (k=2),M1 + random review (k=2),50.0,62.963,-12.963,-30.045,-3.286
+Retrospective test 2021-2022,6,1.0,0.5,M1 + low-confidence review (k=2),Macro-only EBM + low-confidence review (k=2),50.0,44.444,5.556,-4.167,10.648
+Retrospective test 2021-2022,6,1.0,0.5,M1 automated,B0 automated,66.667,41.204,25.463,-1.389,40.289
+Retrospective test 2021-2022,6,1.0,0.5,M1 Platt 8m automated,M1 raw automated,74.074,66.667,7.407,-2.778,24.086
+Retrospective test 2021-2022,6,1.0,0.5,B0 + low-confidence review (k=2),B0 automated,36.111,41.204,-5.093,-15.741,1.852
+Retrospective test 2021-2022,6,1.0,0.5,B0 + low-confidence review (k=2),Never alert + volatility review (k=2),36.111,43.519,-7.407,-32.407,12.037
+Retrospective test 2021-2022,6,1.0,0.5,B0 automated,Never alert,41.204,83.333,-42.13,-78.241,-5.556
+Retrospective test 2021-2022,6,0.8,0.5,M1 + low-confidence review (k=2),B0 + low-confidence review (k=2),58.519,44.63,13.889,-3.799,22.315
+Retrospective test 2021-2022,6,0.8,0.5,M1 + low-confidence review (k=2),B0 automated,58.519,41.204,17.315,0.278,23.15
+Retrospective test 2021-2022,6,0.8,0.5,M1 + low-confidence review (k=2),Never alert + volatility review (k=2),58.519,56.111,2.407,-27.229,14.634
+Retrospective test 2021-2022,6,0.8,0.5,M1 + low-confidence review (k=2),M1 + random review (k=2),58.519,70.37,-11.852,-27.995,-2.105
+Retrospective test 2021-2022,6,0.8,0.5,M1 + low-confidence review (k=2),Macro-only EBM + low-confidence review (k=2),58.519,54.444,4.074,-4.907,8.796
+Retrospective test 2021-2022,6,0.8,0.5,M1 automated,B0 automated,66.667,41.204,25.463,-1.389,40.289
+Retrospective test 2021-2022,6,0.8,0.5,M1 Platt 8m automated,M1 raw automated,74.074,66.667,7.407,-2.778,24.086
+Retrospective test 2021-2022,6,0.8,0.5,B0 + low-confidence review (k=2),B0 automated,44.63,41.204,3.426,-4.722,8.519
+Retrospective test 2021-2022,6,0.8,0.5,B0 + low-confidence review (k=2),Never alert + volatility review (k=2),44.63,56.111,-11.481,-36.481,8.898
+Retrospective test 2021-2022,6,0.8,0.5,B0 automated,Never alert,41.204,83.333,-42.13,-78.241,-5.556
