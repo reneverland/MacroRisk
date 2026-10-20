@@ -57,7 +57,7 @@ def run_e09_explainability_and_stability(panel, splits):
         y = (tr["target_reer_vol_3m"].values >= tr["target_reer_vol_3m"].quantile(0.80)).astype(int)
         X, _, _ = build_feature_matrix(tr, full)
         inter = [("fx_share_rt", "iq_mean_rt")]
-        cfg = select_ebm_config(y, make_inner_folds(tr, full), inter, 42)
+        cfg = select_ebm_config(make_inner_folds(tr, full, y_cont=tr["target_reer_vol_3m"].values), inter, 42)
         ebm = ExplainableBoostingClassifier(interactions=inter, random_state=42, **EBM_FIXED, **cfg).fit(X, y)
         imps.append({**dict(zip(ebm.term_names_, ebm.term_importances())), "split_id": sp["split_id"]})
         grid = pd.DataFrame([{**{c: 0.0 for c in full}, "fx_share_rt": a, "iq_mean_rt": b} for a in ci_grid for b in iq_grid])[list(X.columns)]
@@ -177,11 +177,11 @@ def paired_bootstrap(a, b, block_len, n_boot=1000, seed=20261017, prob="prob_dec
     d = np.array(draws)
     out = {"n_valid_draws": len(d)}
     for j, k in enumerate(["AP", "Brier", "CostC5"]):
-        out[f"Delta_{k}_Point"] = round(float(point[j]), 4)
-        out[f"Delta_{k}_CI95_Low"] = round(float(np.percentile(d[:, j], 2.5)), 4)
-        out[f"Delta_{k}_CI95_High"] = round(float(np.percentile(d[:, j], 97.5)), 4)
-    out["Delta_AP_CI90_Low"] = round(float(np.percentile(d[:, 0], 5)), 4)
-    out["Delta_AP_CI90_High"] = round(float(np.percentile(d[:, 0], 95)), 4)
+        out[f"Delta_{k}_Point"] = round(float(point[j]), 8)
+        out[f"Delta_{k}_CI95_Low"] = round(float(np.percentile(d[:, j], 2.5)), 8)
+        out[f"Delta_{k}_CI95_High"] = round(float(np.percentile(d[:, j], 97.5)), 8)
+    out["Delta_AP_CI90_Low"] = round(float(np.percentile(d[:, 0], 5)), 8)
+    out["Delta_AP_CI90_High"] = round(float(np.percentile(d[:, 0], 95)), 8)
     return out
 
 
@@ -373,7 +373,8 @@ def fig3_models():
         ax1.axvline(w["Pos_Rate"].iloc[0], color=col, linestyle=":", linewidth=1.2)
     ax1.set_yticks(y); ax1.set_yticklabels([SHORT[m] for m in E03_MODELS]); ax1.invert_yaxis()
     ax1.set_xlabel("Average precision"); ax1.set_title("(a) Benchmark (E03)", fontweight="bold")
-    ax1.legend(loc="lower right", fontsize=8.5); ax1.grid(axis="x", linestyle=":", alpha=0.5)
+    ax1.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=1, fontsize=10.5, frameon=False)
+    ax1.grid(axis="x", linestyle=":", alpha=0.5)
 
     a = t4[t4["evaluation_window"] == WINDOWS["all"][0]]
     fl = ["F0_Macro_Only", "F1_Macro_plus_CI", "F2_Macro_plus_IQ", "F3_Macro_plus_CI_plus_IQ"]
@@ -392,7 +393,7 @@ def fig3_models():
     ax3.axvline(0, color="black", linestyle="--", linewidth=1)
     ax3.set_yticks(yy); ax3.set_yticklabels([f"M1 vs {SHORT[m].split()[0]}" for m in b["model_B"]])
     ax3.set_xlabel("$\\Delta$AP, 95% block-bootstrap interval"); ax3.set_title("(c) Paired bootstrap, $L=12$ (E12)", fontweight="bold")
-    ax3.legend(fontsize=8.5, loc="lower left"); ax3.grid(True, linestyle=":", alpha=0.5)
+    ax3.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), fontsize=10.5, frameon=False); ax3.grid(True, linestyle=":", alpha=0.5)
     save_fig(fig, "fig3_model_comparison_bootstrap_ci")
 
 

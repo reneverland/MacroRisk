@@ -58,9 +58,10 @@ def _e13_task(sp, regime, target, m_code, core9, ext6, fcols, seed):
         tr_c, cal_c = pd.concat([tr_c, tr_e]), pd.concat([cal_c, cal_e])
     thr = float(tr_c[target].quantile(0.80)) if regime == "Pooled_pool_specific_threshold" else thr_core
     y_tr = tr_c[target].values
+    ref = None if regime == "Pooled_pool_specific_threshold" else tr_c["country"].isin(core9["country"].unique()).values
     c_te, p_raw, p_cal, _ = inner_temporal_tune_and_fit(
         m_code, tr_c, y_tr, (y_tr >= thr).astype(int), cal_c, (cal_c[target].values >= thr).astype(int),
-        te_e, fcols, ci_col="__none__", iq_col="iq_mean_rt", seed=seed)
+        te_e, fcols, ci_col="__none__", iq_col="iq_mean_rt", seed=seed, label_rule={"ref": ref})
     return pd.DataFrame({"split_id": sp["split_id"], "role": sp["role"], "variant": f"{regime}|{target}", "regime": regime,
                          "target": target, "model": m_code, "seed": seed, "country": te_e["country"].values, "ym": te_e["ym"].values,
                          "threshold": thr, "y_true_cont": te_e[target].values, "y_true_bin": (te_e[target].values >= thr).astype(int),
@@ -149,7 +150,7 @@ def _e14_task(sp, scheme, learner, core9, fcols, seed):
     X_tr, imp, scl = build_feature_matrix(tr, fcols)
     X_cal, _, _ = build_feature_matrix(cal, fcols, imp, scl)
     X_te, _, _ = build_feature_matrix(te, fcols, imp, scl)
-    ebm_cfg = select_ebm_config(y_tr, make_inner_folds(tr, fcols), 0, 42) if learner == "EBM" else None
+    ebm_cfg = select_ebm_config(make_inner_folds(tr, fcols, y_cont=tr["target_reer_vol_3m"].values), 0, 42) if learner == "EBM" else None
     out = []
     targets = [None] if scheme != "IQ_Similarity_Regularized" else sorted(te["country"].unique())
     iq_bw = 0.5 * float(tr["iq_mean_rt"].std())
@@ -303,7 +304,7 @@ def run_e15(panel):
                 pt, lo, hi = boot_mean_diff(base, ca, cb, L=12 if wkey == "all" else 6)
                 comps.append({"evaluation_window": label, "block_length_months": 12 if wkey == "all" else 6, "reviewer_acc": acc, "c_review": 0.5, "policy_A": na, "policy_B": nb,
                               "cost_A_per100": round(100 * ca.mean(), 3), "cost_B_per100": round(100 * cb.mean(), 3),
-                              "Delta_cost_per100": round(pt, 3), "CI95_Low": round(lo, 3), "CI95_High": round(hi, 3)})
+                              "Delta_cost_per100": round(pt, 8), "CI95_Low": round(lo, 8), "CI95_High": round(hi, 8)})
     df = pd.DataFrame(grid)
     df.to_csv(os.path.join(TAB_DIR, "table11_e15_selective_review.csv"), index=False)
     pd.DataFrame(comps).to_csv(os.path.join(TAB_DIR, "table11b_e15_cost_differences.csv"), index=False)
@@ -369,7 +370,7 @@ def run_e23(panel):
                     rows.append({"evaluation_window": label, "block_length_months": L, "error_model": err_name, "automated_policy": pol,
                                  "routing_A": ra, "routing_B": rb, "k_per_month": 2, "c_review": 0.5,
                                  "cost_A_per100": round(100 * C[ra].mean(), 3), "cost_B_per100": round(100 * C[rb].mean(), 3),
-                                 "Delta_cost_per100": round(pt, 3), "CI95_Low": round(lo, 3), "CI95_High": round(hi, 3)})
+                                 "Delta_cost_per100": round(pt, 8), "CI95_Low": round(lo, 8), "CI95_High": round(hi, 8)})
     pd.DataFrame(rows).to_csv(os.path.join(TAB_DIR, "table11c_e23_review_assumptions.csv"), index=False)
     print(f"  - Saved table11c_e23_review_assumptions.csv ({len(rows)} rows)")
 

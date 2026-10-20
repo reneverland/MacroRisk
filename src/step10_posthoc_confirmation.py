@@ -56,8 +56,8 @@ def boot(a, b, L=6, n_boot=1000, seed=20261020):
     idx = [np.concatenate([rows_of[j] for j in block_indices(months, L, rng)]) for _ in range(n_boot)]
     idx = [i for i in idx if y[i].min() != y[i].max()]
     full = np.arange(len(a))
-    return {k: (round(float(f(full)), 4), round(float(np.percentile([f(i) for i in idx], 2.5)), 4),
-                round(float(np.percentile([f(i) for i in idx], 97.5)), 4)) for k, f in fns.items()}
+    return {k: (round(float(f(full)), 8), round(float(np.percentile([f(i) for i in idx], 2.5)), 8),
+                round(float(np.percentile([f(i) for i in idx], 97.5)), 8)) for k, f in fns.items()}
 
 
 def monitor_decision(hist, candidates, delta, ece_cap):
@@ -148,7 +148,9 @@ def main():
         w = conf[conf["country"].isin(cs)] if cs else conf
         for lab, ka, kb in comps:
             a, b = w[w["model_key"] == ka], w[w["model_key"] == kb]
-            r = boot(a, b)
+            # comparisons of frozen predictions reuse the seed of the frozen scoring (step 9), so their
+            # intervals reproduce table15c
+            r = boot(a, b, seed=20261019 if ka.startswith("FROZEN") else 20261020)
             for metric, (pt, lo_, hi_) in r.items():
                 out.append({"countries": gname, "comparison": lab, "model_A": ka, "model_B": kb, "metric": metric, "N": len(a),
                             "N_pos": int(a["y_true_bin"].sum()), "Delta": pt, "CI95_Low": lo_, "CI95_High": hi_})

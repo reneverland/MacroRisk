@@ -341,171 +341,171 @@
 | Window | Specification | Model | N | Pos. | AP pooled | AP fold mean | Brier | Cost |
 |---|---|---|---|---|---|---|---|---|
 | all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B0 Persistence | 648 | 121 | 0.440 | 0.377 | 0.133 | 53.4 |
-| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B1 Ridge / logistic | 648 | 121 | 0.380 | 0.410 | 0.147 | 42.0 |
-| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B4 XGBoost | 648 | 121 | 0.450 | 0.412 | 0.124 | 43.4 |
-| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M0 EBM additive | 648 | 121 | 0.388 | 0.410 | 0.132 | 44.0 |
-| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M1 EBM + CI x IQ | 648 | 121 | 0.382 | 0.410 | 0.133 | 44.1 |
+| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B1 Ridge / logistic | 648 | 121 | 0.372 | 0.399 | 0.152 | 43.4 |
+| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B4 XGBoost | 648 | 121 | 0.448 | 0.417 | 0.124 | 45.1 |
+| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M0 EBM additive | 648 | 121 | 0.406 | 0.420 | 0.128 | 41.4 |
+| all | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M1 EBM + CI x IQ | 648 | 121 | 0.396 | 0.432 | 0.130 | 43.7 |
 | all | Threshold q75 (pooled) | B0 Persistence | 648 | 167 | 0.541 | 0.509 | 0.161 | 62.0 |
-| all | Threshold q75 (pooled) | B1 Ridge / logistic | 648 | 167 | 0.523 | 0.526 | 0.160 | 42.9 |
-| all | Threshold q75 (pooled) | B4 XGBoost | 648 | 167 | 0.583 | 0.571 | 0.146 | 45.8 |
-| all | Threshold q75 (pooled) | M0 EBM additive | 648 | 167 | 0.514 | 0.540 | 0.149 | 38.9 |
-| all | Threshold q75 (pooled) | M1 EBM + CI x IQ | 648 | 167 | 0.522 | 0.541 | 0.147 | 39.8 |
+| all | Threshold q75 (pooled) | B1 Ridge / logistic | 648 | 167 | 0.508 | 0.522 | 0.163 | 46.0 |
+| all | Threshold q75 (pooled) | B4 XGBoost | 648 | 167 | 0.562 | 0.557 | 0.148 | 46.1 |
+| all | Threshold q75 (pooled) | M0 EBM additive | 648 | 167 | 0.496 | 0.544 | 0.151 | 41.5 |
+| all | Threshold q75 (pooled) | M1 EBM + CI x IQ | 648 | 167 | 0.489 | 0.537 | 0.153 | 39.5 |
 | all | Threshold q90 (pooled) | B0 Persistence | 648 | 70 | 0.150 | 0.210 | 0.100 | 56.5 |
-| all | Threshold q90 (pooled) | B1 Ridge / logistic | 648 | 70 | 0.236 | 0.294 | 0.095 | 48.9 |
-| all | Threshold q90 (pooled) | B4 XGBoost | 648 | 70 | 0.227 | 0.299 | 0.092 | 49.1 |
-| all | Threshold q90 (pooled) | M0 EBM additive | 648 | 70 | 0.281 | 0.320 | 0.090 | 47.1 |
-| all | Threshold q90 (pooled) | M1 EBM + CI x IQ | 648 | 70 | 0.271 | 0.328 | 0.090 | 48.1 |
+| all | Threshold q90 (pooled) | B1 Ridge / logistic | 648 | 70 | 0.255 | 0.291 | 0.095 | 48.1 |
+| all | Threshold q90 (pooled) | B4 XGBoost | 648 | 70 | 0.225 | 0.289 | 0.092 | 49.1 |
+| all | Threshold q90 (pooled) | M0 EBM additive | 648 | 70 | 0.286 | 0.346 | 0.089 | 47.5 |
+| all | Threshold q90 (pooled) | M1 EBM + CI x IQ | 648 | 70 | 0.272 | 0.337 | 0.090 | 46.9 |
 | all | Threshold q80 (country-specific) | B0 Persistence | 648 | 156 | 0.248 | 0.241 | 0.191 | 87.2 |
-| all | Threshold q80 (country-specific) | B1 Ridge / logistic | 648 | 156 | 0.303 | 0.337 | 0.189 | 85.0 |
-| all | Threshold q80 (country-specific) | B4 XGBoost | 648 | 156 | 0.393 | 0.296 | 0.178 | 82.4 |
-| all | Threshold q80 (country-specific) | M0 EBM additive | 648 | 156 | 0.378 | 0.327 | 0.177 | 82.3 |
-| all | Threshold q80 (country-specific) | M1 EBM + CI x IQ | 648 | 156 | 0.381 | 0.327 | 0.178 | 89.4 |
+| all | Threshold q80 (country-specific) | B1 Ridge / logistic | 648 | 156 | 0.324 | 0.373 | 0.184 | 83.0 |
+| all | Threshold q80 (country-specific) | B4 XGBoost | 648 | 156 | 0.405 | 0.299 | 0.177 | 83.8 |
+| all | Threshold q80 (country-specific) | M0 EBM additive | 648 | 156 | 0.423 | 0.342 | 0.174 | 74.8 |
+| all | Threshold q80 (country-specific) | M1 EBM + CI x IQ | 648 | 156 | 0.395 | 0.333 | 0.175 | 77.6 |
 | all | Horizon h=6 | B0 Persistence | 648 | 140 | 0.493 | 0.472 | 0.145 | 56.9 |
-| all | Horizon h=6 | B1 Ridge / logistic | 648 | 140 | 0.423 | 0.466 | 0.170 | 58.2 |
-| all | Horizon h=6 | B4 XGBoost | 648 | 140 | 0.438 | 0.472 | 0.145 | 46.8 |
-| all | Horizon h=6 | M0 EBM additive | 648 | 140 | 0.380 | 0.458 | 0.157 | 46.8 |
-| all | Horizon h=6 | M1 EBM + CI x IQ | 648 | 140 | 0.386 | 0.463 | 0.157 | 46.6 |
+| all | Horizon h=6 | B1 Ridge / logistic | 648 | 140 | 0.421 | 0.473 | 0.166 | 55.9 |
+| all | Horizon h=6 | B4 XGBoost | 648 | 140 | 0.390 | 0.456 | 0.161 | 57.7 |
+| all | Horizon h=6 | M0 EBM additive | 648 | 140 | 0.396 | 0.461 | 0.149 | 43.4 |
+| all | Horizon h=6 | M1 EBM + CI x IQ | 648 | 140 | 0.402 | 0.464 | 0.148 | 41.2 |
 | all | Reserve drawdown target (h=3) | B0 Persistence | 648 | 117 | 0.198 | 0.276 | 0.153 | 88.0 |
-| all | Reserve drawdown target (h=3) | B1 Ridge / logistic | 648 | 117 | 0.294 | 0.316 | 0.150 | 75.2 |
+| all | Reserve drawdown target (h=3) | B1 Ridge / logistic | 648 | 117 | 0.291 | 0.321 | 0.150 | 74.2 |
 | all | Reserve drawdown target (h=3) | B2 Threshold model | 648 | 117 | 0.276 | 0.322 | 0.155 | 73.0 |
-| all | Reserve drawdown target (h=3) | B4 XGBoost | 648 | 117 | 0.253 | 0.312 | 0.151 | 75.9 |
-| all | Reserve drawdown target (h=3) | M0 EBM additive | 648 | 117 | 0.230 | 0.295 | 0.151 | 77.2 |
-| all | Reserve drawdown target (h=3) | M1 EBM + CI x IQ | 648 | 117 | 0.228 | 0.285 | 0.152 | 77.3 |
-| all | WGI dimension PV in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.382 | 0.402 | 0.134 | 45.1 |
-| all | WGI dimension RQ in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.379 | 0.402 | 0.135 | 43.2 |
-| all | WGI dimension GE in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.385 | 0.403 | 0.131 | 40.7 |
-| all | WGI dimension RL in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.359 | 0.373 | 0.134 | 43.4 |
-| all | WGI dimension CC in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.369 | 0.387 | 0.134 | 41.8 |
-| all | WGI dimension VA in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.381 | 0.391 | 0.136 | 46.5 |
+| all | Reserve drawdown target (h=3) | B4 XGBoost | 648 | 117 | 0.255 | 0.305 | 0.152 | 77.5 |
+| all | Reserve drawdown target (h=3) | M0 EBM additive | 648 | 117 | 0.225 | 0.273 | 0.153 | 78.1 |
+| all | Reserve drawdown target (h=3) | M1 EBM + CI x IQ | 648 | 117 | 0.224 | 0.254 | 0.153 | 80.6 |
+| all | WGI dimension PV in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.388 | 0.436 | 0.131 | 43.4 |
+| all | WGI dimension RQ in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.400 | 0.442 | 0.129 | 41.7 |
+| all | WGI dimension GE in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.393 | 0.440 | 0.130 | 43.2 |
+| all | WGI dimension RL in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.377 | 0.396 | 0.132 | 42.6 |
+| all | WGI dimension CC in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.409 | 0.443 | 0.128 | 43.2 |
+| all | WGI dimension VA in M1 | M1 EBM + CI x IQ | 648 | 121 | 0.407 | 0.423 | 0.129 | 42.1 |
 | all | Core-6 matched: SWIFT share | B0 Persistence | 432 | 84 | 0.409 | 0.352 | 0.144 | 58.1 |
-| all | Core-6 matched: SWIFT share | B1 Ridge / logistic | 432 | 84 | 0.321 | 0.377 | 0.199 | 50.9 |
-| all | Core-6 matched: SWIFT share | M0 EBM additive | 432 | 84 | 0.426 | 0.449 | 0.130 | 42.8 |
-| all | Core-6 matched: SWIFT share | M1 EBM + CI x IQ | 432 | 84 | 0.420 | 0.448 | 0.131 | 41.9 |
+| all | Core-6 matched: SWIFT share | B1 Ridge / logistic | 432 | 84 | 0.338 | 0.416 | 0.165 | 54.6 |
+| all | Core-6 matched: SWIFT share | M0 EBM additive | 432 | 84 | 0.431 | 0.460 | 0.130 | 41.4 |
+| all | Core-6 matched: SWIFT share | M1 EBM + CI x IQ | 432 | 84 | 0.434 | 0.445 | 0.130 | 41.4 |
 | all | Core-6 matched: FX share | B0 Persistence | 432 | 84 | 0.409 | 0.352 | 0.144 | 58.1 |
-| all | Core-6 matched: FX share | B1 Ridge / logistic | 432 | 84 | 0.321 | 0.387 | 0.176 | 48.1 |
-| all | Core-6 matched: FX share | M0 EBM additive | 432 | 84 | 0.379 | 0.436 | 0.141 | 51.9 |
-| all | Core-6 matched: FX share | M1 EBM + CI x IQ | 432 | 84 | 0.371 | 0.439 | 0.143 | 52.3 |
+| all | Core-6 matched: FX share | B1 Ridge / logistic | 432 | 84 | 0.322 | 0.385 | 0.175 | 48.1 |
+| all | Core-6 matched: FX share | M0 EBM additive | 432 | 84 | 0.394 | 0.439 | 0.139 | 50.5 |
+| all | Core-6 matched: FX share | M1 EBM + CI x IQ | 432 | 84 | 0.380 | 0.445 | 0.142 | 51.2 |
 | all | Core-6 matched: both CI | B0 Persistence | 432 | 84 | 0.409 | 0.352 | 0.144 | 58.1 |
-| all | Core-6 matched: both CI | B1 Ridge / logistic | 432 | 84 | 0.332 | 0.393 | 0.175 | 48.4 |
-| all | Core-6 matched: both CI | M0 EBM additive | 432 | 84 | 0.410 | 0.468 | 0.136 | 51.6 |
-| all | Core-6 matched: both CI | M1 EBM + CI x IQ | 432 | 84 | 0.433 | 0.471 | 0.135 | 47.9 |
+| all | Core-6 matched: both CI | B1 Ridge / logistic | 432 | 84 | 0.325 | 0.408 | 0.189 | 50.5 |
+| all | Core-6 matched: both CI | M0 EBM additive | 432 | 84 | 0.441 | 0.473 | 0.134 | 50.9 |
+| all | Core-6 matched: both CI | M1 EBM + CI x IQ | 432 | 84 | 0.450 | 0.471 | 0.131 | 46.3 |
 | all | Core-6 matched: no CI | B0 Persistence | 432 | 84 | 0.409 | 0.352 | 0.144 | 58.1 |
-| all | Core-6 matched: no CI | B1 Ridge / logistic | 432 | 84 | 0.303 | 0.362 | 0.197 | 48.4 |
-| all | Core-6 matched: no CI | M0 EBM additive | 432 | 84 | 0.398 | 0.433 | 0.140 | 47.5 |
-| all | Core-6 matched: no CI | M1 EBM + CI x IQ | 432 | 84 | 0.398 | 0.433 | 0.140 | 47.5 |
-| all | Timing: month-t REER in features (not real-time) | B0 Persistence | 648 | 121 | 0.481 | 0.397 | 0.129 | 50.8 |
-| all | Timing: month-t REER in features (not real-time) | B1 Ridge / logistic | 648 | 121 | 0.380 | 0.402 | 0.144 | 41.4 |
-| all | Timing: month-t REER in features (not real-time) | B4 XGBoost | 648 | 121 | 0.456 | 0.426 | 0.124 | 44.8 |
-| all | Timing: month-t REER in features (not real-time) | M0 EBM additive | 648 | 121 | 0.462 | 0.442 | 0.125 | 42.3 |
-| all | Timing: month-t REER in features (not real-time) | M1 EBM + CI x IQ | 648 | 121 | 0.472 | 0.445 | 0.124 | 42.1 |
-| all | Timing: CI release lag 3 months | M0 EBM additive | 648 | 121 | 0.402 | 0.420 | 0.130 | 42.3 |
-| all | Timing: CI release lag 3 months | M1 EBM + CI x IQ | 648 | 121 | 0.402 | 0.417 | 0.129 | 42.9 |
-| all | Timing: CI release lag 6 months | M0 EBM additive | 648 | 121 | 0.380 | 0.400 | 0.133 | 39.7 |
-| all | Timing: CI release lag 6 months | M1 EBM + CI x IQ | 648 | 121 | 0.375 | 0.393 | 0.133 | 41.0 |
-| all | Timing: CI release lag 12 months | M0 EBM additive | 648 | 121 | 0.391 | 0.408 | 0.130 | 41.0 |
-| all | Timing: CI release lag 12 months | M1 EBM + CI x IQ | 648 | 121 | 0.396 | 0.417 | 0.130 | 40.0 |
-| all | Timing: CI frozen at training cut-off | M0 EBM additive | 648 | 121 | 0.378 | 0.395 | 0.132 | 41.5 |
-| all | Timing: CI frozen at training cut-off | M1 EBM + CI x IQ | 648 | 121 | 0.369 | 0.401 | 0.134 | 42.3 |
+| all | Core-6 matched: no CI | B1 Ridge / logistic | 432 | 84 | 0.321 | 0.351 | 0.184 | 50.7 |
+| all | Core-6 matched: no CI | M0 EBM additive | 432 | 84 | 0.402 | 0.458 | 0.137 | 50.9 |
+| all | Core-6 matched: no CI | M1 EBM + CI x IQ | 432 | 84 | 0.402 | 0.458 | 0.137 | 50.9 |
+| all | Timing: month-t REER in features (not real-time) | B0 Persistence | 648 | 121 | 0.481 | 0.396 | 0.129 | 50.8 |
+| all | Timing: month-t REER in features (not real-time) | B1 Ridge / logistic | 648 | 121 | 0.372 | 0.402 | 0.148 | 41.0 |
+| all | Timing: month-t REER in features (not real-time) | B4 XGBoost | 648 | 121 | 0.461 | 0.434 | 0.123 | 44.1 |
+| all | Timing: month-t REER in features (not real-time) | M0 EBM additive | 648 | 121 | 0.433 | 0.433 | 0.126 | 40.6 |
+| all | Timing: month-t REER in features (not real-time) | M1 EBM + CI x IQ | 648 | 121 | 0.445 | 0.451 | 0.125 | 41.7 |
+| all | Timing: CI release lag 3 months | M0 EBM additive | 648 | 121 | 0.421 | 0.452 | 0.126 | 41.7 |
+| all | Timing: CI release lag 3 months | M1 EBM + CI x IQ | 648 | 121 | 0.425 | 0.455 | 0.125 | 41.7 |
+| all | Timing: CI release lag 6 months | M0 EBM additive | 648 | 121 | 0.386 | 0.415 | 0.131 | 39.7 |
+| all | Timing: CI release lag 6 months | M1 EBM + CI x IQ | 648 | 121 | 0.386 | 0.423 | 0.131 | 39.0 |
+| all | Timing: CI release lag 12 months | M0 EBM additive | 648 | 121 | 0.404 | 0.422 | 0.127 | 40.1 |
+| all | Timing: CI release lag 12 months | M1 EBM + CI x IQ | 648 | 121 | 0.409 | 0.422 | 0.128 | 41.4 |
+| all | Timing: CI frozen at training cut-off | M0 EBM additive | 648 | 121 | 0.398 | 0.407 | 0.128 | 39.0 |
+| all | Timing: CI frozen at training cut-off | M1 EBM + CI x IQ | 648 | 121 | 0.379 | 0.419 | 0.131 | 42.0 |
 | retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B0 Persistence | 216 | 36 | 0.535 | 0.475 | 0.111 | 41.2 |
-| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B1 Ridge / logistic | 216 | 36 | 0.354 | 0.387 | 0.182 | 52.3 |
-| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B4 XGBoost | 216 | 36 | 0.421 | 0.370 | 0.121 | 49.5 |
-| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M0 EBM additive | 216 | 36 | 0.317 | 0.360 | 0.147 | 66.7 |
-| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M1 EBM + CI x IQ | 216 | 36 | 0.322 | 0.380 | 0.148 | 69.0 |
+| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B1 Ridge / logistic | 216 | 36 | 0.349 | 0.349 | 0.193 | 54.2 |
+| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | B4 XGBoost | 216 | 36 | 0.425 | 0.376 | 0.121 | 55.1 |
+| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M0 EBM additive | 216 | 36 | 0.330 | 0.364 | 0.140 | 59.7 |
+| retro | Main (q80 pooled, h=3, CI lag 1, REER t-1) | M1 EBM + CI x IQ | 216 | 36 | 0.332 | 0.380 | 0.144 | 69.4 |
 | retro | Threshold q75 (pooled) | B0 Persistence | 216 | 58 | 0.615 | 0.641 | 0.159 | 47.7 |
-| retro | Threshold q75 (pooled) | B1 Ridge / logistic | 216 | 58 | 0.471 | 0.484 | 0.218 | 65.7 |
-| retro | Threshold q75 (pooled) | B4 XGBoost | 216 | 58 | 0.568 | 0.619 | 0.161 | 62.0 |
-| retro | Threshold q75 (pooled) | M0 EBM additive | 216 | 58 | 0.498 | 0.517 | 0.171 | 53.2 |
-| retro | Threshold q75 (pooled) | M1 EBM + CI x IQ | 216 | 58 | 0.513 | 0.528 | 0.168 | 55.6 |
+| retro | Threshold q75 (pooled) | B1 Ridge / logistic | 216 | 58 | 0.458 | 0.488 | 0.220 | 72.2 |
+| retro | Threshold q75 (pooled) | B4 XGBoost | 216 | 58 | 0.564 | 0.609 | 0.161 | 63.0 |
+| retro | Threshold q75 (pooled) | M0 EBM additive | 216 | 58 | 0.490 | 0.521 | 0.170 | 55.1 |
+| retro | Threshold q75 (pooled) | M1 EBM + CI x IQ | 216 | 58 | 0.480 | 0.506 | 0.174 | 52.3 |
 | retro | Threshold q90 (pooled) | B0 Persistence | 216 | 23 | 0.292 | 0.297 | 0.094 | 47.7 |
-| retro | Threshold q90 (pooled) | B1 Ridge / logistic | 216 | 23 | 0.369 | 0.387 | 0.088 | 43.1 |
-| retro | Threshold q90 (pooled) | B4 XGBoost | 216 | 23 | 0.331 | 0.381 | 0.087 | 46.3 |
-| retro | Threshold q90 (pooled) | M0 EBM additive | 216 | 23 | 0.335 | 0.436 | 0.084 | 37.5 |
-| retro | Threshold q90 (pooled) | M1 EBM + CI x IQ | 216 | 23 | 0.315 | 0.408 | 0.085 | 38.4 |
-| retro | Threshold q80 (country-specific) | B0 Persistence | 216 | 75 | 0.394 | 0.364 | 0.252 | 75.0 |
-| retro | Threshold q80 (country-specific) | B1 Ridge / logistic | 216 | 75 | 0.562 | 0.587 | 0.238 | 73.6 |
-| retro | Threshold q80 (country-specific) | B4 XGBoost | 216 | 75 | 0.610 | 0.518 | 0.219 | 74.5 |
-| retro | Threshold q80 (country-specific) | M0 EBM additive | 216 | 75 | 0.622 | 0.564 | 0.215 | 87.0 |
-| retro | Threshold q80 (country-specific) | M1 EBM + CI x IQ | 216 | 75 | 0.583 | 0.551 | 0.220 | 100.0 |
+| retro | Threshold q90 (pooled) | B1 Ridge / logistic | 216 | 23 | 0.382 | 0.387 | 0.091 | 42.6 |
+| retro | Threshold q90 (pooled) | B4 XGBoost | 216 | 23 | 0.334 | 0.368 | 0.088 | 48.1 |
+| retro | Threshold q90 (pooled) | M0 EBM additive | 216 | 23 | 0.355 | 0.469 | 0.083 | 36.1 |
+| retro | Threshold q90 (pooled) | M1 EBM + CI x IQ | 216 | 23 | 0.303 | 0.436 | 0.086 | 37.0 |
+| retro | Threshold q80 (country-specific) | B0 Persistence | 216 | 75 | 0.394 | 0.365 | 0.252 | 75.0 |
+| retro | Threshold q80 (country-specific) | B1 Ridge / logistic | 216 | 75 | 0.595 | 0.627 | 0.236 | 72.2 |
+| retro | Threshold q80 (country-specific) | B4 XGBoost | 216 | 75 | 0.625 | 0.517 | 0.217 | 77.8 |
+| retro | Threshold q80 (country-specific) | M0 EBM additive | 216 | 75 | 0.657 | 0.583 | 0.221 | 73.6 |
+| retro | Threshold q80 (country-specific) | M1 EBM + CI x IQ | 216 | 75 | 0.655 | 0.573 | 0.221 | 72.7 |
 | retro | Horizon h=6 | B0 Persistence | 216 | 45 | 0.598 | 0.558 | 0.126 | 58.3 |
-| retro | Horizon h=6 | B1 Ridge / logistic | 216 | 45 | 0.341 | 0.356 | 0.221 | 87.0 |
-| retro | Horizon h=6 | B4 XGBoost | 216 | 45 | 0.352 | 0.319 | 0.164 | 65.7 |
-| retro | Horizon h=6 | M0 EBM additive | 216 | 45 | 0.291 | 0.374 | 0.203 | 79.6 |
-| retro | Horizon h=6 | M1 EBM + CI x IQ | 216 | 45 | 0.283 | 0.382 | 0.202 | 83.3 |
+| retro | Horizon h=6 | B1 Ridge / logistic | 216 | 45 | 0.325 | 0.345 | 0.223 | 88.0 |
+| retro | Horizon h=6 | B4 XGBoost | 216 | 45 | 0.306 | 0.304 | 0.210 | 69.4 |
+| retro | Horizon h=6 | M0 EBM additive | 216 | 45 | 0.298 | 0.379 | 0.179 | 67.1 |
+| retro | Horizon h=6 | M1 EBM + CI x IQ | 216 | 45 | 0.300 | 0.386 | 0.177 | 64.8 |
 | retro | Reserve drawdown target (h=3) | B0 Persistence | 216 | 64 | 0.274 | 0.466 | 0.250 | 143.1 |
-| retro | Reserve drawdown target (h=3) | B1 Ridge / logistic | 216 | 64 | 0.351 | 0.432 | 0.248 | 127.8 |
+| retro | Reserve drawdown target (h=3) | B1 Ridge / logistic | 216 | 64 | 0.341 | 0.418 | 0.248 | 125.5 |
 | retro | Reserve drawdown target (h=3) | B2 Threshold model | 216 | 64 | 0.351 | 0.437 | 0.250 | 121.8 |
-| retro | Reserve drawdown target (h=3) | B4 XGBoost | 216 | 64 | 0.363 | 0.475 | 0.246 | 118.1 |
-| retro | Reserve drawdown target (h=3) | M0 EBM additive | 216 | 64 | 0.344 | 0.454 | 0.242 | 123.1 |
-| retro | Reserve drawdown target (h=3) | M1 EBM + CI x IQ | 216 | 64 | 0.342 | 0.441 | 0.242 | 119.9 |
-| retro | WGI dimension PV in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.315 | 0.348 | 0.152 | 69.4 |
-| retro | WGI dimension RQ in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.304 | 0.345 | 0.157 | 63.9 |
-| retro | WGI dimension GE in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.331 | 0.361 | 0.144 | 61.6 |
-| retro | WGI dimension RL in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.297 | 0.314 | 0.149 | 66.7 |
-| retro | WGI dimension CC in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.300 | 0.347 | 0.150 | 63.4 |
-| retro | WGI dimension VA in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.320 | 0.345 | 0.149 | 68.5 |
+| retro | Reserve drawdown target (h=3) | B4 XGBoost | 216 | 64 | 0.344 | 0.443 | 0.246 | 121.3 |
+| retro | Reserve drawdown target (h=3) | M0 EBM additive | 216 | 64 | 0.331 | 0.434 | 0.243 | 123.6 |
+| retro | Reserve drawdown target (h=3) | M1 EBM + CI x IQ | 216 | 64 | 0.306 | 0.380 | 0.245 | 125.9 |
+| retro | WGI dimension PV in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.316 | 0.360 | 0.144 | 65.7 |
+| retro | WGI dimension RQ in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.335 | 0.364 | 0.142 | 59.7 |
+| retro | WGI dimension GE in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.336 | 0.377 | 0.145 | 67.1 |
+| retro | WGI dimension RL in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.301 | 0.317 | 0.148 | 66.7 |
+| retro | WGI dimension CC in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.328 | 0.376 | 0.143 | 67.1 |
+| retro | WGI dimension VA in M1 | M1 EBM + CI x IQ | 216 | 36 | 0.323 | 0.364 | 0.142 | 64.8 |
 | retro | Core-6 matched: SWIFT share | B0 Persistence | 144 | 23 | 0.491 | 0.409 | 0.111 | 49.3 |
-| retro | Core-6 matched: SWIFT share | B1 Ridge / logistic | 144 | 23 | 0.306 | 0.289 | 0.324 | 67.4 |
-| retro | Core-6 matched: SWIFT share | M0 EBM additive | 144 | 23 | 0.489 | 0.525 | 0.119 | 47.2 |
-| retro | Core-6 matched: SWIFT share | M1 EBM + CI x IQ | 144 | 23 | 0.495 | 0.519 | 0.118 | 48.6 |
+| retro | Core-6 matched: SWIFT share | B1 Ridge / logistic | 144 | 23 | 0.284 | 0.361 | 0.203 | 74.3 |
+| retro | Core-6 matched: SWIFT share | M0 EBM additive | 144 | 23 | 0.488 | 0.480 | 0.121 | 50.0 |
+| retro | Core-6 matched: SWIFT share | M1 EBM + CI x IQ | 144 | 23 | 0.504 | 0.532 | 0.119 | 52.8 |
 | retro | Core-6 matched: FX share | B0 Persistence | 144 | 23 | 0.491 | 0.409 | 0.111 | 49.3 |
 | retro | Core-6 matched: FX share | B1 Ridge / logistic | 144 | 23 | 0.250 | 0.228 | 0.256 | 66.7 |
-| retro | Core-6 matched: FX share | M0 EBM additive | 144 | 23 | 0.292 | 0.396 | 0.160 | 75.0 |
-| retro | Core-6 matched: FX share | M1 EBM + CI x IQ | 144 | 23 | 0.302 | 0.465 | 0.165 | 82.6 |
+| retro | Core-6 matched: FX share | M0 EBM additive | 144 | 23 | 0.289 | 0.374 | 0.159 | 72.9 |
+| retro | Core-6 matched: FX share | M1 EBM + CI x IQ | 144 | 23 | 0.275 | 0.373 | 0.170 | 79.9 |
 | retro | Core-6 matched: both CI | B0 Persistence | 144 | 23 | 0.491 | 0.409 | 0.111 | 49.3 |
-| retro | Core-6 matched: both CI | B1 Ridge / logistic | 144 | 23 | 0.299 | 0.254 | 0.257 | 68.1 |
-| retro | Core-6 matched: both CI | M0 EBM additive | 144 | 23 | 0.362 | 0.484 | 0.146 | 78.5 |
-| retro | Core-6 matched: both CI | M1 EBM + CI x IQ | 144 | 23 | 0.374 | 0.492 | 0.143 | 74.3 |
+| retro | Core-6 matched: both CI | B1 Ridge / logistic | 144 | 23 | 0.307 | 0.288 | 0.301 | 67.4 |
+| retro | Core-6 matched: both CI | M0 EBM additive | 144 | 23 | 0.365 | 0.463 | 0.146 | 75.0 |
+| retro | Core-6 matched: both CI | M1 EBM + CI x IQ | 144 | 23 | 0.368 | 0.436 | 0.144 | 68.8 |
 | retro | Core-6 matched: no CI | B0 Persistence | 144 | 23 | 0.491 | 0.409 | 0.111 | 49.3 |
-| retro | Core-6 matched: no CI | B1 Ridge / logistic | 144 | 23 | 0.232 | 0.265 | 0.310 | 61.8 |
-| retro | Core-6 matched: no CI | M0 EBM additive | 144 | 23 | 0.396 | 0.432 | 0.136 | 63.2 |
-| retro | Core-6 matched: no CI | M1 EBM + CI x IQ | 144 | 23 | 0.396 | 0.432 | 0.136 | 63.2 |
-| retro | Timing: month-t REER in features (not real-time) | B0 Persistence | 216 | 36 | 0.570 | 0.486 | 0.104 | 41.7 |
-| retro | Timing: month-t REER in features (not real-time) | B1 Ridge / logistic | 216 | 36 | 0.317 | 0.335 | 0.177 | 50.0 |
-| retro | Timing: month-t REER in features (not real-time) | B4 XGBoost | 216 | 36 | 0.458 | 0.414 | 0.118 | 53.2 |
-| retro | Timing: month-t REER in features (not real-time) | M0 EBM additive | 216 | 36 | 0.354 | 0.435 | 0.134 | 65.3 |
-| retro | Timing: month-t REER in features (not real-time) | M1 EBM + CI x IQ | 216 | 36 | 0.361 | 0.442 | 0.135 | 64.8 |
-| retro | Timing: CI release lag 3 months | M0 EBM additive | 216 | 36 | 0.382 | 0.407 | 0.137 | 63.0 |
-| retro | Timing: CI release lag 3 months | M1 EBM + CI x IQ | 216 | 36 | 0.365 | 0.406 | 0.136 | 64.4 |
-| retro | Timing: CI release lag 6 months | M0 EBM additive | 216 | 36 | 0.328 | 0.348 | 0.145 | 56.5 |
-| retro | Timing: CI release lag 6 months | M1 EBM + CI x IQ | 216 | 36 | 0.313 | 0.333 | 0.148 | 59.3 |
-| retro | Timing: CI release lag 12 months | M0 EBM additive | 216 | 36 | 0.354 | 0.380 | 0.136 | 56.9 |
-| retro | Timing: CI release lag 12 months | M1 EBM + CI x IQ | 216 | 36 | 0.359 | 0.409 | 0.139 | 58.3 |
-| retro | Timing: CI frozen at training cut-off | M0 EBM additive | 216 | 36 | 0.316 | 0.334 | 0.145 | 60.6 |
-| retro | Timing: CI frozen at training cut-off | M1 EBM + CI x IQ | 216 | 36 | 0.315 | 0.374 | 0.147 | 62.0 |
+| retro | Core-6 matched: no CI | B1 Ridge / logistic | 144 | 23 | 0.259 | 0.225 | 0.263 | 60.4 |
+| retro | Core-6 matched: no CI | M0 EBM additive | 144 | 23 | 0.396 | 0.433 | 0.136 | 63.2 |
+| retro | Core-6 matched: no CI | M1 EBM + CI x IQ | 144 | 23 | 0.396 | 0.433 | 0.136 | 63.2 |
+| retro | Timing: month-t REER in features (not real-time) | B0 Persistence | 216 | 36 | 0.570 | 0.486 | 0.105 | 41.7 |
+| retro | Timing: month-t REER in features (not real-time) | B1 Ridge / logistic | 216 | 36 | 0.307 | 0.332 | 0.189 | 48.6 |
+| retro | Timing: month-t REER in features (not real-time) | B4 XGBoost | 216 | 36 | 0.462 | 0.423 | 0.117 | 52.8 |
+| retro | Timing: month-t REER in features (not real-time) | M0 EBM additive | 216 | 36 | 0.330 | 0.375 | 0.136 | 61.1 |
+| retro | Timing: month-t REER in features (not real-time) | M1 EBM + CI x IQ | 216 | 36 | 0.327 | 0.377 | 0.138 | 64.8 |
+| retro | Timing: CI release lag 3 months | M0 EBM additive | 216 | 36 | 0.358 | 0.397 | 0.133 | 59.3 |
+| retro | Timing: CI release lag 3 months | M1 EBM + CI x IQ | 216 | 36 | 0.371 | 0.400 | 0.132 | 59.7 |
+| retro | Timing: CI release lag 6 months | M0 EBM additive | 216 | 36 | 0.336 | 0.351 | 0.141 | 56.9 |
+| retro | Timing: CI release lag 6 months | M1 EBM + CI x IQ | 216 | 36 | 0.314 | 0.337 | 0.146 | 56.5 |
+| retro | Timing: CI release lag 12 months | M0 EBM additive | 216 | 36 | 0.380 | 0.396 | 0.131 | 56.0 |
+| retro | Timing: CI release lag 12 months | M1 EBM + CI x IQ | 216 | 36 | 0.381 | 0.397 | 0.133 | 59.3 |
+| retro | Timing: CI frozen at training cut-off | M0 EBM additive | 216 | 36 | 0.332 | 0.345 | 0.137 | 56.5 |
+| retro | Timing: CI frozen at training cut-off | M1 EBM + CI x IQ | 216 | 36 | 0.327 | 0.375 | 0.141 | 63.0 |
 
 
 **Table S7. Sub-periods.**
 
 | Period | Model | N | Pos. | AP | Brier |
 |---|---|---|---|---|---|
-| P1 2017-2019 | B0 Persistence | 324 | 51 | 0.235 | 0.137 |
-| P1 2017-2019 | B1 Ridge / logistic | 324 | 51 | 0.354 | 0.116 |
+| P1 2017-2019 | B0 Persistence | 324 | 51 | 0.235 | 0.136 |
+| P1 2017-2019 | B1 Ridge / logistic | 324 | 51 | 0.351 | 0.116 |
 | P1 2017-2019 | B2 Threshold model | 324 | 51 | 0.331 | 0.148 |
-| P1 2017-2019 | B3 Random forest | 324 | 51 | 0.322 | 0.115 |
-| P1 2017-2019 | B4 XGBoost | 324 | 51 | 0.316 | 0.114 |
-| P1 2017-2019 | M0 EBM additive | 324 | 51 | 0.299 | 0.113 |
-| P1 2017-2019 | M1 EBM + CI x IQ | 324 | 51 | 0.302 | 0.113 |
+| P1 2017-2019 | B3 Random forest | 324 | 51 | 0.314 | 0.114 |
+| P1 2017-2019 | B4 XGBoost | 324 | 51 | 0.320 | 0.113 |
+| P1 2017-2019 | M0 EBM additive | 324 | 51 | 0.321 | 0.112 |
+| P1 2017-2019 | M1 EBM + CI x IQ | 324 | 51 | 0.353 | 0.110 |
 | P2 2020-2021 | B0 Persistence | 216 | 44 | 0.553 | 0.122 |
-| P2 2020-2021 | B1 Ridge / logistic | 216 | 44 | 0.441 | 0.149 |
+| P2 2020-2021 | B1 Ridge / logistic | 216 | 44 | 0.403 | 0.164 |
 | P2 2020-2021 | B2 Threshold model | 216 | 44 | 0.609 | 0.120 |
-| P2 2020-2021 | B3 Random forest | 216 | 44 | 0.621 | 0.117 |
-| P2 2020-2021 | B4 XGBoost | 216 | 44 | 0.589 | 0.122 |
-| P2 2020-2021 | M0 EBM additive | 216 | 44 | 0.563 | 0.119 |
-| P2 2020-2021 | M1 EBM + CI x IQ | 216 | 44 | 0.562 | 0.119 |
-| P3 2022 | B0 Persistence | 108 | 26 | 0.599 | 0.144 |
+| P2 2020-2021 | B3 Random forest | 216 | 44 | 0.649 | 0.115 |
+| P2 2020-2021 | B4 XGBoost | 216 | 44 | 0.588 | 0.121 |
+| P2 2020-2021 | M0 EBM additive | 216 | 44 | 0.564 | 0.119 |
+| P2 2020-2021 | M1 EBM + CI x IQ | 216 | 44 | 0.557 | 0.120 |
+| P3 2022 | B0 Persistence | 108 | 26 | 0.599 | 0.145 |
 | P3 2022 | B1 Ridge / logistic | 108 | 26 | 0.407 | 0.236 |
 | P3 2022 | B2 Threshold model | 108 | 26 | 0.406 | 0.176 |
-| P3 2022 | B3 Random forest | 108 | 26 | 0.574 | 0.149 |
-| P3 2022 | B4 XGBoost | 108 | 26 | 0.479 | 0.159 |
-| P3 2022 | M0 EBM additive | 108 | 26 | 0.359 | 0.211 |
-| P3 2022 | M1 EBM + CI x IQ | 108 | 26 | 0.360 | 0.218 |
+| P3 2022 | B3 Random forest | 108 | 26 | 0.591 | 0.145 |
+| P3 2022 | B4 XGBoost | 108 | 26 | 0.471 | 0.160 |
+| P3 2022 | M0 EBM additive | 108 | 26 | 0.380 | 0.195 |
+| P3 2022 | M1 EBM + CI x IQ | 108 | 26 | 0.369 | 0.209 |
 | P3 2022 excluding RUS | B0 Persistence | 96 | 15 | 0.458 | 0.114 |
 | P3 2022 excluding RUS | B1 Ridge / logistic | 96 | 15 | 0.446 | 0.180 |
 | P3 2022 excluding RUS | B2 Threshold model | 96 | 15 | 0.394 | 0.130 |
-| P3 2022 excluding RUS | B3 Random forest | 96 | 15 | 0.341 | 0.139 |
-| P3 2022 excluding RUS | B4 XGBoost | 96 | 15 | 0.374 | 0.128 |
-| P3 2022 excluding RUS | M0 EBM additive | 96 | 15 | 0.333 | 0.150 |
-| P3 2022 excluding RUS | M1 EBM + CI x IQ | 96 | 15 | 0.349 | 0.154 |
+| P3 2022 excluding RUS | B3 Random forest | 96 | 15 | 0.366 | 0.134 |
+| P3 2022 excluding RUS | B4 XGBoost | 96 | 15 | 0.370 | 0.129 |
+| P3 2022 excluding RUS | M0 EBM additive | 96 | 15 | 0.340 | 0.140 |
+| P3 2022 excluding RUS | M1 EBM + CI x IQ | 96 | 15 | 0.353 | 0.148 |
 
 
 **Table S8. External transfer to six economies without CI data.**
@@ -516,56 +516,56 @@
 | retro | Pooled pool specific threshold | REER | B0 Persistence | 144 | 44 | 0.744 | 0.729 | 0.159 |
 | all | Pooled pool specific threshold | REER | B1 Ridge / logistic | 432 | 101 | 0.572 | 0.581 | 0.143 |
 | retro | Pooled pool specific threshold | REER | B1 Ridge / logistic | 144 | 44 | 0.637 | 0.661 | 0.167 |
-| all | Pooled pool specific threshold | REER | B3 Random forest | 432 | 101 | 0.558 | 0.554 | 0.137 |
-| retro | Pooled pool specific threshold | REER | B3 Random forest | 144 | 44 | 0.664 | 0.684 | 0.151 |
-| all | Pooled pool specific threshold | REER | B4 XGBoost | 432 | 101 | 0.544 | 0.551 | 0.145 |
-| retro | Pooled pool specific threshold | REER | B4 XGBoost | 144 | 44 | 0.733 | 0.726 | 0.153 |
-| all | Pooled pool specific threshold | REER | M0 EBM additive | 432 | 101 | 0.529 | 0.543 | 0.151 |
-| retro | Pooled pool specific threshold | REER | M0 EBM additive | 144 | 44 | 0.606 | 0.617 | 0.189 |
-| all | Pooled pool specific threshold | reserves | B1 Ridge / logistic | 432 | 106 | 0.455 | 0.459 | 0.172 |
-| retro | Pooled pool specific threshold | reserves | B1 Ridge / logistic | 144 | 51 | 0.549 | 0.527 | 0.244 |
-| all | Pooled pool specific threshold | reserves | B3 Random forest | 432 | 106 | 0.540 | 0.495 | 0.162 |
-| retro | Pooled pool specific threshold | reserves | B3 Random forest | 144 | 51 | 0.645 | 0.665 | 0.212 |
-| all | Pooled pool specific threshold | reserves | B4 XGBoost | 432 | 106 | 0.523 | 0.524 | 0.167 |
-| retro | Pooled pool specific threshold | reserves | B4 XGBoost | 144 | 51 | 0.616 | 0.609 | 0.223 |
-| all | Pooled pool specific threshold | reserves | M0 EBM additive | 432 | 106 | 0.272 | 0.417 | 0.192 |
-| retro | Pooled pool specific threshold | reserves | M0 EBM additive | 144 | 51 | 0.332 | 0.406 | 0.276 |
+| all | Pooled pool specific threshold | REER | B3 Random forest | 432 | 101 | 0.558 | 0.553 | 0.138 |
+| retro | Pooled pool specific threshold | REER | B3 Random forest | 144 | 44 | 0.697 | 0.670 | 0.151 |
+| all | Pooled pool specific threshold | REER | B4 XGBoost | 432 | 101 | 0.533 | 0.538 | 0.147 |
+| retro | Pooled pool specific threshold | REER | B4 XGBoost | 144 | 44 | 0.722 | 0.714 | 0.153 |
+| all | Pooled pool specific threshold | REER | M0 EBM additive | 432 | 101 | 0.551 | 0.540 | 0.150 |
+| retro | Pooled pool specific threshold | REER | M0 EBM additive | 144 | 44 | 0.607 | 0.627 | 0.186 |
+| all | Pooled pool specific threshold | reserves | B1 Ridge / logistic | 432 | 106 | 0.453 | 0.457 | 0.173 |
+| retro | Pooled pool specific threshold | reserves | B1 Ridge / logistic | 144 | 51 | 0.543 | 0.524 | 0.246 |
+| all | Pooled pool specific threshold | reserves | B3 Random forest | 432 | 106 | 0.566 | 0.536 | 0.160 |
+| retro | Pooled pool specific threshold | reserves | B3 Random forest | 144 | 51 | 0.684 | 0.745 | 0.205 |
+| all | Pooled pool specific threshold | reserves | B4 XGBoost | 432 | 106 | 0.535 | 0.547 | 0.167 |
+| retro | Pooled pool specific threshold | reserves | B4 XGBoost | 144 | 51 | 0.631 | 0.625 | 0.223 |
+| all | Pooled pool specific threshold | reserves | M0 EBM additive | 432 | 106 | 0.307 | 0.412 | 0.188 |
+| retro | Pooled pool specific threshold | reserves | M0 EBM additive | 144 | 51 | 0.388 | 0.381 | 0.268 |
 | all | Pooled with target history | REER | B0 Persistence | 432 | 89 | 0.492 | 0.477 | 0.137 |
 | retro | Pooled with target history | REER | B0 Persistence | 144 | 38 | 0.721 | 0.705 | 0.141 |
-| all | Pooled with target history | REER | B1 Ridge / logistic | 432 | 89 | 0.531 | 0.556 | 0.135 |
-| retro | Pooled with target history | REER | B1 Ridge / logistic | 144 | 38 | 0.590 | 0.625 | 0.155 |
-| all | Pooled with target history | REER | B3 Random forest | 432 | 89 | 0.546 | 0.557 | 0.125 |
-| retro | Pooled with target history | REER | B3 Random forest | 144 | 38 | 0.707 | 0.701 | 0.127 |
-| all | Pooled with target history | REER | B4 XGBoost | 432 | 89 | 0.492 | 0.516 | 0.135 |
-| retro | Pooled with target history | REER | B4 XGBoost | 144 | 38 | 0.706 | 0.694 | 0.133 |
-| all | Pooled with target history | REER | M0 EBM additive | 432 | 89 | 0.569 | 0.540 | 0.131 |
-| retro | Pooled with target history | REER | M0 EBM additive | 144 | 38 | 0.686 | 0.665 | 0.148 |
-| all | Pooled with target history | reserves | B1 Ridge / logistic | 432 | 120 | 0.493 | 0.470 | 0.188 |
-| retro | Pooled with target history | reserves | B1 Ridge / logistic | 144 | 56 | 0.591 | 0.559 | 0.246 |
-| all | Pooled with target history | reserves | B3 Random forest | 432 | 120 | 0.592 | 0.574 | 0.177 |
-| retro | Pooled with target history | reserves | B3 Random forest | 144 | 56 | 0.731 | 0.798 | 0.218 |
-| all | Pooled with target history | reserves | B4 XGBoost | 432 | 120 | 0.597 | 0.548 | 0.180 |
-| retro | Pooled with target history | reserves | B4 XGBoost | 144 | 56 | 0.717 | 0.667 | 0.224 |
-| all | Pooled with target history | reserves | M0 EBM additive | 432 | 120 | 0.382 | 0.449 | 0.198 |
-| retro | Pooled with target history | reserves | M0 EBM additive | 144 | 56 | 0.512 | 0.543 | 0.261 |
+| all | Pooled with target history | REER | B1 Ridge / logistic | 432 | 89 | 0.526 | 0.551 | 0.136 |
+| retro | Pooled with target history | REER | B1 Ridge / logistic | 144 | 38 | 0.590 | 0.619 | 0.156 |
+| all | Pooled with target history | REER | B3 Random forest | 432 | 89 | 0.545 | 0.550 | 0.125 |
+| retro | Pooled with target history | REER | B3 Random forest | 144 | 38 | 0.701 | 0.698 | 0.128 |
+| all | Pooled with target history | REER | B4 XGBoost | 432 | 89 | 0.494 | 0.511 | 0.133 |
+| retro | Pooled with target history | REER | B4 XGBoost | 144 | 38 | 0.695 | 0.664 | 0.134 |
+| all | Pooled with target history | REER | M0 EBM additive | 432 | 89 | 0.548 | 0.537 | 0.135 |
+| retro | Pooled with target history | REER | M0 EBM additive | 144 | 38 | 0.674 | 0.665 | 0.152 |
+| all | Pooled with target history | reserves | B1 Ridge / logistic | 432 | 120 | 0.497 | 0.469 | 0.186 |
+| retro | Pooled with target history | reserves | B1 Ridge / logistic | 144 | 56 | 0.595 | 0.563 | 0.241 |
+| all | Pooled with target history | reserves | B3 Random forest | 432 | 120 | 0.593 | 0.593 | 0.178 |
+| retro | Pooled with target history | reserves | B3 Random forest | 144 | 56 | 0.710 | 0.784 | 0.218 |
+| all | Pooled with target history | reserves | B4 XGBoost | 432 | 120 | 0.600 | 0.569 | 0.179 |
+| retro | Pooled with target history | reserves | B4 XGBoost | 144 | 56 | 0.706 | 0.718 | 0.224 |
+| all | Pooled with target history | reserves | M0 EBM additive | 432 | 120 | 0.317 | 0.439 | 0.210 |
+| retro | Pooled with target history | reserves | M0 EBM additive | 144 | 56 | 0.416 | 0.538 | 0.291 |
 | all | Transfer Core9 only | REER | B0 Persistence | 432 | 89 | 0.501 | 0.477 | 0.135 |
 | retro | Transfer Core9 only | REER | B0 Persistence | 144 | 38 | 0.720 | 0.705 | 0.138 |
-| all | Transfer Core9 only | REER | B1 Ridge / logistic | 432 | 89 | 0.548 | 0.540 | 0.142 |
+| all | Transfer Core9 only | REER | B1 Ridge / logistic | 432 | 89 | 0.550 | 0.537 | 0.142 |
 | retro | Transfer Core9 only | REER | B1 Ridge / logistic | 144 | 38 | 0.645 | 0.661 | 0.191 |
-| all | Transfer Core9 only | REER | B3 Random forest | 432 | 89 | 0.524 | 0.501 | 0.130 |
-| retro | Transfer Core9 only | REER | B3 Random forest | 144 | 38 | 0.664 | 0.624 | 0.142 |
-| all | Transfer Core9 only | REER | B4 XGBoost | 432 | 89 | 0.366 | 0.437 | 0.152 |
-| retro | Transfer Core9 only | REER | B4 XGBoost | 144 | 38 | 0.504 | 0.530 | 0.176 |
-| all | Transfer Core9 only | REER | M0 EBM additive | 432 | 89 | 0.517 | 0.517 | 0.137 |
-| retro | Transfer Core9 only | REER | M0 EBM additive | 144 | 38 | 0.577 | 0.614 | 0.169 |
-| all | Transfer Core9 only | reserves | B1 Ridge / logistic | 432 | 120 | 0.270 | 0.325 | 0.233 |
-| retro | Transfer Core9 only | reserves | B1 Ridge / logistic | 144 | 56 | 0.335 | 0.457 | 0.341 |
-| all | Transfer Core9 only | reserves | B3 Random forest | 432 | 120 | 0.320 | 0.358 | 0.205 |
-| retro | Transfer Core9 only | reserves | B3 Random forest | 144 | 56 | 0.454 | 0.532 | 0.247 |
-| all | Transfer Core9 only | reserves | B4 XGBoost | 432 | 120 | 0.260 | 0.303 | 0.218 |
-| retro | Transfer Core9 only | reserves | B4 XGBoost | 144 | 56 | 0.415 | 0.406 | 0.273 |
-| all | Transfer Core9 only | reserves | M0 EBM additive | 432 | 120 | 0.268 | 0.334 | 0.221 |
-| retro | Transfer Core9 only | reserves | M0 EBM additive | 144 | 56 | 0.343 | 0.456 | 0.308 |
+| all | Transfer Core9 only | REER | B3 Random forest | 432 | 89 | 0.528 | 0.516 | 0.128 |
+| retro | Transfer Core9 only | REER | B3 Random forest | 144 | 38 | 0.673 | 0.633 | 0.140 |
+| all | Transfer Core9 only | REER | B4 XGBoost | 432 | 89 | 0.364 | 0.431 | 0.151 |
+| retro | Transfer Core9 only | REER | B4 XGBoost | 144 | 38 | 0.504 | 0.511 | 0.175 |
+| all | Transfer Core9 only | REER | M0 EBM additive | 432 | 89 | 0.514 | 0.555 | 0.139 |
+| retro | Transfer Core9 only | REER | M0 EBM additive | 144 | 38 | 0.606 | 0.625 | 0.165 |
+| all | Transfer Core9 only | reserves | B1 Ridge / logistic | 432 | 120 | 0.268 | 0.329 | 0.237 |
+| retro | Transfer Core9 only | reserves | B1 Ridge / logistic | 144 | 56 | 0.342 | 0.469 | 0.355 |
+| all | Transfer Core9 only | reserves | B3 Random forest | 432 | 120 | 0.318 | 0.352 | 0.205 |
+| retro | Transfer Core9 only | reserves | B3 Random forest | 144 | 56 | 0.478 | 0.545 | 0.242 |
+| all | Transfer Core9 only | reserves | B4 XGBoost | 432 | 120 | 0.264 | 0.306 | 0.217 |
+| retro | Transfer Core9 only | reserves | B4 XGBoost | 144 | 56 | 0.419 | 0.397 | 0.272 |
+| all | Transfer Core9 only | reserves | M0 EBM additive | 432 | 120 | 0.260 | 0.331 | 0.223 |
+| retro | Transfer Core9 only | reserves | M0 EBM additive | 144 | 56 | 0.339 | 0.450 | 0.308 |
 
 
 *Note:* Transfer and pooled regimes use the Core-9 training threshold, so they share labels; the pool-specific threshold regime is a sensitivity.
@@ -574,11 +574,11 @@
 
 | Learner | Scheme | Dev AP (fold mean) | Retro AP | Retro Brier | Selected |
 |---|---|---|---|---|---|
-| EBM | Equal Country | 0.425 | 0.303 | 0.154 | yes |
-| EBM | Global | 0.425 | 0.303 | 0.154 |  |
-| EBM | IQ Similarity Regularized | 0.413 | 0.280 | 0.157 |  |
-| EBM | Time Decay H24 | 0.412 | 0.279 | 0.171 |  |
-| EBM | Time Decay H48 | 0.420 | 0.269 | 0.168 |  |
+| EBM | Equal Country | 0.444 | 0.302 | 0.155 | yes |
+| EBM | Global | 0.444 | 0.302 | 0.155 |  |
+| EBM | IQ Similarity Regularized | 0.440 | 0.278 | 0.158 |  |
+| EBM | Time Decay H24 | 0.418 | 0.276 | 0.171 |  |
+| EBM | Time Decay H48 | 0.426 | 0.267 | 0.170 |  |
 | XGBoost | Equal Country | 0.432 | 0.435 | 0.120 |  |
 | XGBoost | Global | 0.432 | 0.435 | 0.120 |  |
 | XGBoost | IQ Similarity Regularized | 0.447 | 0.406 | 0.122 | yes |
@@ -593,26 +593,26 @@
 | Window | Model | Locked | Brier raw | Brier Platt 8m | Brier expanding | ECE raw | ECE Platt 8m | ECE expanding |
 |---|---|---|---|---|---|---|---|---|
 | All | B0 Persistence | raw | 0.133 | 0.158 | 0.138 | 0.030 | 0.093 | 0.022 |
-| All | B1 Ridge / logistic | raw | 0.147 | 0.197 | 0.149 | 0.089 | 0.150 | 0.092 |
+| All | B1 Ridge / logistic | raw | 0.152 | 0.202 | 0.152 | 0.105 | 0.158 | 0.106 |
 | All | B2 Threshold model | platt_expanding | 0.185 | 0.202 | 0.143 | 0.159 | 0.161 | 0.081 |
-| All | B3 Random forest | raw | 0.121 | 0.183 | 0.130 | 0.039 | 0.146 | 0.049 |
-| All | B4 XGBoost | raw | 0.124 | 0.206 | 0.133 | 0.038 | 0.177 | 0.045 |
-| All | M0 EBM additive | raw | 0.132 | 0.201 | 0.143 | 0.041 | 0.178 | 0.074 |
-| All | M1 EBM + CI x IQ | raw | 0.133 | 0.202 | 0.144 | 0.045 | 0.179 | 0.071 |
+| All | B3 Random forest | raw | 0.120 | 0.182 | 0.128 | 0.045 | 0.143 | 0.060 |
+| All | B4 XGBoost | raw | 0.124 | 0.204 | 0.132 | 0.047 | 0.178 | 0.049 |
+| All | M0 EBM additive | raw | 0.128 | 0.201 | 0.138 | 0.044 | 0.181 | 0.073 |
+| All | M1 EBM + CI x IQ | raw | 0.130 | 0.199 | 0.139 | 0.038 | 0.180 | 0.061 |
 | Retrospective | B0 Persistence | raw | 0.111 | 0.132 | 0.116 | 0.054 | 0.130 | 0.043 |
-| Retrospective | B1 Ridge / logistic | raw | 0.182 | 0.275 | 0.174 | 0.163 | 0.254 | 0.145 |
+| Retrospective | B1 Ridge / logistic | raw | 0.194 | 0.290 | 0.180 | 0.188 | 0.270 | 0.154 |
 | Retrospective | B2 Threshold model | platt_expanding | 0.263 | 0.273 | 0.138 | 0.279 | 0.272 | 0.087 |
-| Retrospective | B3 Random forest | raw | 0.121 | 0.196 | 0.128 | 0.091 | 0.161 | 0.091 |
-| Retrospective | B4 XGBoost | raw | 0.121 | 0.253 | 0.131 | 0.036 | 0.223 | 0.074 |
-| Retrospective | M0 EBM additive | raw | 0.147 | 0.260 | 0.163 | 0.119 | 0.259 | 0.162 |
-| Retrospective | M1 EBM + CI x IQ | raw | 0.148 | 0.261 | 0.163 | 0.129 | 0.264 | 0.152 |
+| Retrospective | B3 Random forest | raw | 0.119 | 0.192 | 0.124 | 0.071 | 0.157 | 0.082 |
+| Retrospective | B4 XGBoost | raw | 0.121 | 0.251 | 0.133 | 0.038 | 0.231 | 0.086 |
+| Retrospective | M0 EBM additive | raw | 0.140 | 0.261 | 0.149 | 0.091 | 0.254 | 0.113 |
+| Retrospective | M1 EBM + CI x IQ | raw | 0.143 | 0.262 | 0.152 | 0.104 | 0.265 | 0.130 |
 | Development | B0 Persistence | raw | 0.144 | 0.171 | 0.150 | 0.034 | 0.077 | 0.045 |
-| Development | B1 Ridge / logistic | raw | 0.130 | 0.158 | 0.137 | 0.075 | 0.104 | 0.074 |
+| Development | B1 Ridge / logistic | raw | 0.131 | 0.158 | 0.138 | 0.074 | 0.104 | 0.085 |
 | Development | B2 Threshold model | platt_expanding | 0.146 | 0.167 | 0.146 | 0.099 | 0.122 | 0.098 |
-| Development | B3 Random forest | raw | 0.121 | 0.177 | 0.131 | 0.051 | 0.139 | 0.059 |
-| Development | B4 XGBoost | raw | 0.126 | 0.182 | 0.133 | 0.059 | 0.154 | 0.062 |
-| Development | M0 EBM additive | raw | 0.124 | 0.172 | 0.133 | 0.072 | 0.138 | 0.067 |
-| Development | M1 EBM + CI x IQ | raw | 0.125 | 0.172 | 0.135 | 0.069 | 0.137 | 0.065 |
+| Development | B3 Random forest | raw | 0.120 | 0.177 | 0.130 | 0.048 | 0.137 | 0.073 |
+| Development | B4 XGBoost | raw | 0.125 | 0.180 | 0.132 | 0.066 | 0.152 | 0.057 |
+| Development | M0 EBM additive | raw | 0.122 | 0.171 | 0.132 | 0.069 | 0.144 | 0.072 |
+| Development | M1 EBM + CI x IQ | raw | 0.123 | 0.168 | 0.132 | 0.055 | 0.138 | 0.061 |
 
 
 **Table S11. Discrepancies identified in the original drafts.**
@@ -678,7 +678,7 @@
 | B3 | 100 trees; (depth, min leaf, max features) in {(3,12,sqrt), (4,8,sqrt), (5,6,0.5), (6,10,0.6)} |
 | B4 | Four configurations: depth 2-4, learning rate 0.03-0.05, 80-110 trees, subsample 0.75-0.85, lambda 5-12 |
 | M0/M1 | learning rate in {0.01, 0.02, 0.03}, rounds 50-600, min leaf 8-20, max leaves 2-3; 32 bins, 2 outer bags |
-| Tuning | AP on three inner expanding folds within the training window; each inner training range ends at least h + 1 months before its validation range; median imputation and scaling fitted on the inner training range |
+| Tuning | AP on three inner expanding folds within the training window; each inner training range ends at least h + 1 months before its validation range; median imputation and scaling fitted on the inner training range; inner event labels from the 80th percentile of the inner training targets |
 | Seeds | 42, 1024, 2024, 3407, 7777 (probabilities averaged for B3, B4 and EBMs) |
 | Bootstrap | threshold tests B = 1999; moving-block bootstrap 1,000 replications |
 | Software | Python 3.12, scikit-learn 1.9.1, xgboost 3.4.1, interpret 0.7.8, numpy 1.26.4, pandas 3.0.6, scipy 1.17.1 |
@@ -688,19 +688,19 @@
 
 | Window | Variant | Model | AP pooled | AP fold mean | Brier | Cost |
 |---|---|---|---|---|---|---|
-| all | FX share level (main) | M0 EBM additive | 0.388 | 0.410 | 0.132 | 44.0 |
-| all | FX share level (main) | M1 EBM + CI x IQ | 0.382 | 0.410 | 0.133 | 44.1 |
-| all | CI decomposed | M0 EBM additive | 0.410 | 0.420 | 0.127 | 41.8 |
-| all | CI decomposed withinxIQ | M1 EBM + CI x IQ | 0.405 | 0.424 | 0.127 | 40.4 |
-| all | CI decomposed betweenxIQ | M1 EBM + CI x IQ | 0.396 | 0.422 | 0.129 | 40.6 |
-| retro | FX share level (main) | M0 EBM additive | 0.317 | 0.360 | 0.147 | 66.7 |
-| retro | FX share level (main) | M1 EBM + CI x IQ | 0.322 | 0.380 | 0.148 | 69.0 |
-| retro | CI decomposed | M0 EBM additive | 0.368 | 0.384 | 0.133 | 59.7 |
-| retro | CI decomposed withinxIQ | M1 EBM + CI x IQ | 0.366 | 0.370 | 0.132 | 58.3 |
-| retro | CI decomposed betweenxIQ | M1 EBM + CI x IQ | 0.349 | 0.368 | 0.140 | 58.3 |
+| all | FX share level (main) | M0 EBM additive | 0.406 | 0.420 | 0.128 | 41.4 |
+| all | FX share level (main) | M1 EBM + CI x IQ | 0.396 | 0.432 | 0.130 | 43.7 |
+| all | CI decomposed | M0 EBM additive | 0.430 | 0.462 | 0.124 | 39.5 |
+| all | CI decomposed withinxIQ | M1 EBM + CI x IQ | 0.411 | 0.431 | 0.125 | 40.7 |
+| all | CI decomposed betweenxIQ | M1 EBM + CI x IQ | 0.415 | 0.451 | 0.125 | 39.5 |
+| retro | FX share level (main) | M0 EBM additive | 0.330 | 0.364 | 0.140 | 59.7 |
+| retro | FX share level (main) | M1 EBM + CI x IQ | 0.332 | 0.380 | 0.144 | 69.4 |
+| retro | CI decomposed | M0 EBM additive | 0.369 | 0.395 | 0.130 | 54.2 |
+| retro | CI decomposed withinxIQ | M1 EBM + CI x IQ | 0.361 | 0.370 | 0.130 | 58.8 |
+| retro | CI decomposed betweenxIQ | M1 EBM + CI x IQ | 0.359 | 0.373 | 0.133 | 56.0 |
 
 
-**Table S15. Variables of the original regression datasets (compiled from Wind on 13 June 2023).**
+**Table S15. Variables of the original regression datasets (compiled on 13 June 2023).**
 
 | Column name(s) | Content | Use in this study |
 |---|---|---|
@@ -723,147 +723,147 @@
 | ins_quality | Mean of the six WGI dimensions (IQ) | threshold variable |
 
 
-*Note:* Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata. The original Wind series codes were not retained.
+*Note:* Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata; SHA-256 checksums in the reproduction archive. Sources stated in the working-paper drafts: SWIFT monthly reports (SWIFT share), BIS and World Bank (FX-turnover share), World Bank and Wind (other macro series); quarterly GDP backward-filled to months. The Wind series codes, the definition of the turnover share and any interpolation were not retained, so the construction of the CI series cannot be verified. The Panel B CI column varies from month to month in every country (Russia has runs of zeros).
 
 **Table S16. Timing audit of every estimation stage.**
 
-| Scope | Fold | h | Stage | Last origin | Target published | First evaluated month | Passes |
-|---|---|---|---|---|---|---|---|
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | outer training | 2015-08 | 2015-12 | 2017-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | calibration | 2016-08 | 2016-12 | 2017-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | expanding-calibration history | 2016-08 | 2016-12 | 2017-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | inner fold 1 | 2013-08 | 2013-12 | 2014-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | inner fold 2 | 2014-01 | 2014-05 | 2014-06 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | inner fold 3 | 2014-06 | 2014-10 | 2014-11 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | outer training | 2015-08 | 2016-03 | 2017-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | calibration | 2016-05 | 2016-12 | 2017-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | expanding-calibration history | 2016-05 | 2016-12 | 2017-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | inner fold 1 | 2013-05 | 2013-12 | 2014-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | inner fold 2 | 2013-10 | 2014-05 | 2014-06 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | inner fold 3 | 2014-03 | 2014-10 | 2014-11 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | outer training | 2016-08 | 2016-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | calibration | 2017-08 | 2017-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | expanding-calibration history | 2017-08 | 2017-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | inner fold 1 | 2014-02 | 2014-06 | 2014-07 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | inner fold 2 | 2014-09 | 2015-01 | 2015-02 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | inner fold 3 | 2015-04 | 2015-08 | 2015-09 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | outer training | 2016-08 | 2017-03 | 2018-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | calibration | 2017-05 | 2017-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | expanding-calibration history | 2017-05 | 2017-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | inner fold 1 | 2013-11 | 2014-06 | 2014-07 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | inner fold 2 | 2014-06 | 2015-01 | 2015-02 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | inner fold 3 | 2015-01 | 2015-08 | 2015-09 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | outer training | 2017-08 | 2017-12 | 2019-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | calibration | 2018-08 | 2018-12 | 2019-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | expanding-calibration history | 2018-08 | 2018-12 | 2019-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | inner fold 1 | 2014-09 | 2015-01 | 2015-02 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | inner fold 2 | 2015-05 | 2015-09 | 2015-10 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | inner fold 3 | 2016-01 | 2016-05 | 2016-06 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | outer training | 2017-08 | 2018-03 | 2019-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | calibration | 2018-05 | 2018-12 | 2019-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | expanding-calibration history | 2018-05 | 2018-12 | 2019-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | inner fold 1 | 2014-06 | 2015-01 | 2015-02 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | inner fold 2 | 2015-02 | 2015-09 | 2015-10 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | inner fold 3 | 2015-10 | 2016-05 | 2016-06 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | outer training | 2018-08 | 2018-12 | 2020-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | calibration | 2019-08 | 2019-12 | 2020-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | expanding-calibration history | 2019-08 | 2019-12 | 2020-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | inner fold 1 | 2015-04 | 2015-08 | 2015-09 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | inner fold 2 | 2016-01 | 2016-05 | 2016-06 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | inner fold 3 | 2016-11 | 2017-03 | 2017-04 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | outer training | 2018-08 | 2019-03 | 2020-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | calibration | 2019-05 | 2019-12 | 2020-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | expanding-calibration history | 2019-05 | 2019-12 | 2020-01 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | inner fold 1 | 2015-01 | 2015-08 | 2015-09 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | inner fold 2 | 2015-10 | 2016-05 | 2016-06 | yes |
-| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | inner fold 3 | 2016-08 | 2017-03 | 2017-04 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | outer training | 2019-08 | 2019-12 | 2021-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | calibration | 2020-08 | 2020-12 | 2021-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | expanding-calibration history | 2020-08 | 2020-12 | 2021-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | inner fold 1 | 2015-10 | 2016-02 | 2016-03 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | inner fold 2 | 2016-09 | 2017-01 | 2017-02 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | inner fold 3 | 2017-08 | 2017-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | outer training | 2019-08 | 2020-03 | 2021-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | calibration | 2020-05 | 2020-12 | 2021-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | expanding-calibration history | 2020-05 | 2020-12 | 2021-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | inner fold 1 | 2015-07 | 2016-02 | 2016-03 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | inner fold 2 | 2016-06 | 2017-01 | 2017-02 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | inner fold 3 | 2017-05 | 2017-12 | 2018-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | outer training | 2020-08 | 2020-12 | 2022-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | calibration | 2021-08 | 2021-12 | 2022-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | expanding-calibration history | 2021-08 | 2021-12 | 2022-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | inner fold 1 | 2016-05 | 2016-09 | 2016-10 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | inner fold 2 | 2017-05 | 2017-09 | 2017-10 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | inner fold 3 | 2018-06 | 2018-10 | 2018-11 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | outer training | 2020-08 | 2021-03 | 2022-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | calibration | 2021-05 | 2021-12 | 2022-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | expanding-calibration history | 2021-05 | 2021-12 | 2022-01 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | inner fold 1 | 2016-02 | 2016-09 | 2016-10 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | inner fold 2 | 2017-02 | 2017-09 | 2017-10 | yes |
-| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | inner fold 3 | 2018-03 | 2018-10 | 2018-11 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | outer training | 2019-08 | 2019-12 | 2021-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | calibration | 2020-08 | 2020-12 | 2021-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | expanding-calibration history | 2020-08 | 2020-12 | 2021-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | inner fold 1 | 2015-10 | 2016-02 | 2016-03 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | inner fold 2 | 2016-09 | 2017-01 | 2017-02 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | inner fold 3 | 2017-08 | 2017-12 | 2018-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | outer training | 2020-08 | 2020-12 | 2022-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | calibration | 2021-08 | 2021-12 | 2022-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | expanding-calibration history | 2021-08 | 2021-12 | 2022-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | inner fold 1 | 2016-05 | 2016-09 | 2016-10 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | inner fold 2 | 2017-05 | 2017-09 | 2017-10 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | inner fold 3 | 2018-06 | 2018-10 | 2018-11 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | outer training | 2021-08 | 2021-12 | 2023-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | calibration | 2022-08 | 2022-12 | 2023-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | expanding-calibration history | 2022-08 | 2022-12 | 2023-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | inner fold 1 | 2016-11 | 2017-03 | 2017-04 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | inner fold 2 | 2018-01 | 2018-05 | 2018-06 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | inner fold 3 | 2019-03 | 2019-07 | 2019-08 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | outer training | 2022-08 | 2022-12 | 2024-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | calibration | 2023-08 | 2023-12 | 2024-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | expanding-calibration history | 2023-08 | 2023-12 | 2024-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | inner fold 1 | 2017-06 | 2017-10 | 2017-11 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | inner fold 2 | 2018-09 | 2019-01 | 2019-02 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | inner fold 3 | 2020-01 | 2020-05 | 2020-06 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | outer training | 2023-08 | 2023-12 | 2025-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | calibration | 2024-08 | 2024-12 | 2025-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | expanding-calibration history | 2024-08 | 2024-12 | 2025-01 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | inner fold 1 | 2018-01 | 2018-05 | 2018-06 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | inner fold 2 | 2019-05 | 2019-09 | 2019-10 | yes |
-| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | inner fold 3 | 2020-10 | 2021-02 | 2021-03 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | outer training | 2019-08 | 2019-12 | 2021-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | calibration | 2020-08 | 2020-12 | 2021-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | expanding-calibration history | 2020-08 | 2020-12 | 2021-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | inner fold 1 | 2015-11 | 2016-03 | 2016-03 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | inner fold 2 | 2016-10 | 2017-02 | 2017-02 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | inner fold 3 | 2017-09 | 2018-01 | 2018-01 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | outer training | 2020-08 | 2020-12 | 2022-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | calibration | 2021-08 | 2021-12 | 2022-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | expanding-calibration history | 2021-08 | 2021-12 | 2022-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | inner fold 1 | 2016-06 | 2016-10 | 2016-10 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | inner fold 2 | 2017-06 | 2017-10 | 2017-10 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | inner fold 3 | 2018-07 | 2018-11 | 2018-11 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | outer training | 2021-08 | 2021-12 | 2023-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | calibration | 2022-08 | 2022-12 | 2023-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | expanding-calibration history | 2022-08 | 2022-12 | 2023-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | inner fold 1 | 2016-12 | 2017-04 | 2017-04 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | inner fold 2 | 2018-02 | 2018-06 | 2018-06 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | inner fold 3 | 2019-04 | 2019-08 | 2019-08 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | outer training | 2022-08 | 2022-12 | 2024-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | calibration | 2023-08 | 2023-12 | 2024-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | expanding-calibration history | 2023-08 | 2023-12 | 2024-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | inner fold 1 | 2017-07 | 2017-11 | 2017-11 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | inner fold 2 | 2018-10 | 2019-02 | 2019-02 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | inner fold 3 | 2020-02 | 2020-06 | 2020-06 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | outer training | 2023-08 | 2023-12 | 2025-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | calibration | 2024-08 | 2024-12 | 2025-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | expanding-calibration history | 2024-08 | 2024-12 | 2025-01 | yes |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | inner fold 1 | 2018-02 | 2018-06 | 2018-06 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | inner fold 2 | 2019-06 | 2019-10 | 2019-10 | no |
-| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | inner fold 3 | 2020-11 | 2021-03 | 2021-03 | no |
+| Scope | Fold | h | Stage | Last origin | Target published | First evaluated month | Event threshold from | Passes |
+|---|---|---|---|---|---|---|---|---|
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | outer training | 2015-08 | 2015-12 | 2017-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | calibration | 2016-08 | 2016-12 | 2017-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | expanding-calibration history | 2016-08 | 2016-12 | 2017-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | inner fold 1 | 2013-08 | 2013-12 | 2014-01 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | inner fold 2 | 2014-01 | 2014-05 | 2014-06 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 3 | inner fold 3 | 2014-06 | 2014-10 | 2014-11 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | outer training | 2015-08 | 2016-03 | 2017-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | calibration | 2016-05 | 2016-12 | 2017-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | expanding-calibration history | 2016-05 | 2016-12 | 2017-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | inner fold 1 | 2013-05 | 2013-12 | 2014-01 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | inner fold 2 | 2013-10 | 2014-05 | 2014-06 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2017 | 6 | inner fold 3 | 2014-03 | 2014-10 | 2014-11 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | outer training | 2016-08 | 2016-12 | 2018-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | calibration | 2017-08 | 2017-12 | 2018-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | expanding-calibration history | 2017-08 | 2017-12 | 2018-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | inner fold 1 | 2014-02 | 2014-06 | 2014-07 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | inner fold 2 | 2014-09 | 2015-01 | 2015-02 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 3 | inner fold 3 | 2015-04 | 2015-08 | 2015-09 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | outer training | 2016-08 | 2017-03 | 2018-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | calibration | 2017-05 | 2017-12 | 2018-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | expanding-calibration history | 2017-05 | 2017-12 | 2018-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | inner fold 1 | 2013-11 | 2014-06 | 2014-07 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | inner fold 2 | 2014-06 | 2015-01 | 2015-02 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2018 | 6 | inner fold 3 | 2015-01 | 2015-08 | 2015-09 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | outer training | 2017-08 | 2017-12 | 2019-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | calibration | 2018-08 | 2018-12 | 2019-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | expanding-calibration history | 2018-08 | 2018-12 | 2019-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | inner fold 1 | 2014-09 | 2015-01 | 2015-02 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | inner fold 2 | 2015-05 | 2015-09 | 2015-10 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 3 | inner fold 3 | 2016-01 | 2016-05 | 2016-06 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | outer training | 2017-08 | 2018-03 | 2019-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | calibration | 2018-05 | 2018-12 | 2019-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | expanding-calibration history | 2018-05 | 2018-12 | 2019-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | inner fold 1 | 2014-06 | 2015-01 | 2015-02 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | inner fold 2 | 2015-02 | 2015-09 | 2015-10 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2019 | 6 | inner fold 3 | 2015-10 | 2016-05 | 2016-06 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | outer training | 2018-08 | 2018-12 | 2020-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | calibration | 2019-08 | 2019-12 | 2020-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | expanding-calibration history | 2019-08 | 2019-12 | 2020-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | inner fold 1 | 2015-04 | 2015-08 | 2015-09 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | inner fold 2 | 2016-01 | 2016-05 | 2016-06 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 3 | inner fold 3 | 2016-11 | 2017-03 | 2017-04 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | outer training | 2018-08 | 2019-03 | 2020-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | calibration | 2019-05 | 2019-12 | 2020-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | expanding-calibration history | 2019-05 | 2019-12 | 2020-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | inner fold 1 | 2015-01 | 2015-08 | 2015-09 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | inner fold 2 | 2015-10 | 2016-05 | 2016-06 | inner training targets | yes |
+| Main evaluation 2017-2022 | DEV_FOLD_2020 | 6 | inner fold 3 | 2016-08 | 2017-03 | 2017-04 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | outer training | 2019-08 | 2019-12 | 2021-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | calibration | 2020-08 | 2020-12 | 2021-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | expanding-calibration history | 2020-08 | 2020-12 | 2021-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | inner fold 1 | 2015-10 | 2016-02 | 2016-03 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | inner fold 2 | 2016-09 | 2017-01 | 2017-02 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 3 | inner fold 3 | 2017-08 | 2017-12 | 2018-01 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | outer training | 2019-08 | 2020-03 | 2021-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | calibration | 2020-05 | 2020-12 | 2021-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | expanding-calibration history | 2020-05 | 2020-12 | 2021-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | inner fold 1 | 2015-07 | 2016-02 | 2016-03 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | inner fold 2 | 2016-06 | 2017-01 | 2017-02 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2021 | 6 | inner fold 3 | 2017-05 | 2017-12 | 2018-01 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | outer training | 2020-08 | 2020-12 | 2022-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | calibration | 2021-08 | 2021-12 | 2022-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | expanding-calibration history | 2021-08 | 2021-12 | 2022-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | inner fold 1 | 2016-05 | 2016-09 | 2016-10 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | inner fold 2 | 2017-05 | 2017-09 | 2017-10 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 3 | inner fold 3 | 2018-06 | 2018-10 | 2018-11 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | outer training | 2020-08 | 2021-03 | 2022-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | calibration | 2021-05 | 2021-12 | 2022-01 | outer training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | expanding-calibration history | 2021-05 | 2021-12 | 2022-01 | current outer fold | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | inner fold 1 | 2016-02 | 2016-09 | 2016-10 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | inner fold 2 | 2017-02 | 2017-09 | 2017-10 | inner training targets | yes |
+| Main evaluation 2017-2022 | LOCKED_TEST_2022 | 6 | inner fold 3 | 2018-03 | 2018-10 | 2018-11 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | outer training | 2019-08 | 2019-12 | 2021-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | calibration | 2020-08 | 2020-12 | 2021-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | expanding-calibration history | 2020-08 | 2020-12 | 2021-01 | not used (raw probabilities) | yes |
+| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | inner fold 1 | 2015-10 | 2016-02 | 2016-03 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | inner fold 2 | 2016-09 | 2017-01 | 2017-02 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2021 | 3 | inner fold 3 | 2017-08 | 2017-12 | 2018-01 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | outer training | 2020-08 | 2020-12 | 2022-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | calibration | 2021-08 | 2021-12 | 2022-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | expanding-calibration history | 2021-08 | 2021-12 | 2022-01 | not used (raw probabilities) | yes |
+| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | inner fold 1 | 2016-05 | 2016-09 | 2016-10 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | inner fold 2 | 2017-05 | 2017-09 | 2017-10 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2022 | 3 | inner fold 3 | 2018-06 | 2018-10 | 2018-11 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | outer training | 2021-08 | 2021-12 | 2023-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | calibration | 2022-08 | 2022-12 | 2023-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | expanding-calibration history | 2022-08 | 2022-12 | 2023-01 | not used (raw probabilities) | yes |
+| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | inner fold 1 | 2016-11 | 2017-03 | 2017-04 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | inner fold 2 | 2018-01 | 2018-05 | 2018-06 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2023 | 3 | inner fold 3 | 2019-03 | 2019-07 | 2019-08 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | outer training | 2022-08 | 2022-12 | 2024-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | calibration | 2023-08 | 2023-12 | 2024-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | expanding-calibration history | 2023-08 | 2023-12 | 2024-01 | not used (raw probabilities) | yes |
+| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | inner fold 1 | 2017-06 | 2017-10 | 2017-11 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | inner fold 2 | 2018-09 | 2019-01 | 2019-02 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2024 | 3 | inner fold 3 | 2020-01 | 2020-05 | 2020-06 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | outer training | 2023-08 | 2023-12 | 2025-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | calibration | 2024-08 | 2024-12 | 2025-01 | outer training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | expanding-calibration history | 2024-08 | 2024-12 | 2025-01 | not used (raw probabilities) | yes |
+| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | inner fold 1 | 2018-01 | 2018-05 | 2018-06 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | inner fold 2 | 2019-05 | 2019-09 | 2019-10 | inner training targets | yes |
+| Post-hoc rerun 2023-2025 | CONF_2025 | 3 | inner fold 3 | 2020-10 | 2021-02 | 2021-03 | inner training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | outer training | 2019-08 | 2019-12 | 2021-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | calibration | 2020-08 | 2020-12 | 2021-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | expanding-calibration history | 2020-08 | 2020-12 | 2021-01 | not used (raw probabilities) | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | inner fold 1 | 2015-11 | 2016-03 | 2016-03 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | inner fold 2 | 2016-10 | 2017-02 | 2017-02 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2021 | 3 | inner fold 3 | 2017-09 | 2018-01 | 2018-01 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | outer training | 2020-08 | 2020-12 | 2022-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | calibration | 2021-08 | 2021-12 | 2022-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | expanding-calibration history | 2021-08 | 2021-12 | 2022-01 | not used (raw probabilities) | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | inner fold 1 | 2016-06 | 2016-10 | 2016-10 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | inner fold 2 | 2017-06 | 2017-10 | 2017-10 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2022 | 3 | inner fold 3 | 2018-07 | 2018-11 | 2018-11 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | outer training | 2021-08 | 2021-12 | 2023-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | calibration | 2022-08 | 2022-12 | 2023-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | expanding-calibration history | 2022-08 | 2022-12 | 2023-01 | not used (raw probabilities) | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | inner fold 1 | 2016-12 | 2017-04 | 2017-04 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | inner fold 2 | 2018-02 | 2018-06 | 2018-06 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2023 | 3 | inner fold 3 | 2019-04 | 2019-08 | 2019-08 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | outer training | 2022-08 | 2022-12 | 2024-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | calibration | 2023-08 | 2023-12 | 2024-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | expanding-calibration history | 2023-08 | 2023-12 | 2024-01 | not used (raw probabilities) | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | inner fold 1 | 2017-07 | 2017-11 | 2017-11 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | inner fold 2 | 2018-10 | 2019-02 | 2019-02 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2024 | 3 | inner fold 3 | 2020-02 | 2020-06 | 2020-06 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | outer training | 2023-08 | 2023-12 | 2025-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | calibration | 2024-08 | 2024-12 | 2025-01 | outer training targets | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | expanding-calibration history | 2024-08 | 2024-12 | 2025-01 | not used (raw probabilities) | yes |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | inner fold 1 | 2018-02 | 2018-06 | 2018-06 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | inner fold 2 | 2019-06 | 2019-10 | 2019-10 | outer training targets (incl. inner validation) | no |
+| Frozen confirmation 2023-2025 (original code, disclosed) | CONF_2025 | 3 | inner fold 3 | 2020-11 | 2021-03 | 2021-03 | outer training targets (incl. inner validation) | no |
 
 
-*Note:* A stage passes when the target of its last origin (origin + h + 1-month REER release lag) is published before the first month it is evaluated on. The frozen confirmation rows document the inner tuning folds of the original code (fixed three-month gap), which were corrected after scoring; the frozen result was not rescored (Section 4.5).
+*Note:* A stage passes when the target of its last origin (origin + h + 1-month REER release lag) is published before the first month it is evaluated on. 'Event threshold from' names the targets whose 80th percentile defines the labels of the stage. The frozen confirmation rows document the inner tuning folds of the original code (fixed three-month gap, outer-fold threshold), which were corrected after scoring; the original extension was not rescored (Section 4.5 and Appendix A).
 
 **Table S17. Training, calibration and test countries by design and fold.**
 
@@ -910,7 +910,7 @@
 
 ## Changes between the first draft and this version
 
-The inner tuning folds and the expanding calibration history were corrected after the first draft (Section 4.5 of the manuscript). Of 766 audited numbers, 452 changed; the persistence and country-identity baselines are unchanged. Every audited number of both versions is listed in table_change_v1_v2.csv of the replication package, and the first-draft outputs are archived in outputs/archive_v1.
+The inner tuning folds (maturity gap, preprocessing and event threshold) and the expanding calibration history were corrected after the first draft (Section 4.5 and Appendix A of the manuscript). Of 766 audited numbers, 468 changed; the persistence and country-identity baselines are unchanged. Every audited number of both versions is listed in table_change_v1_v2.csv of the replication package, and the first-draft outputs are archived in outputs/archive_v1.
 
 ## Post-freeze change log of the confirmation protocol
 

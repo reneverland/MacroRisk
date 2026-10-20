@@ -115,8 +115,25 @@ def make_inner_splits(df_train, h=3):
     return out
 
 
-def make_inner_folds(df_train, feature_cols, h=3, augment=None):
-    """Inner folds with features imputed and standardized on each inner training part only."""
+def inner_labels(df_train, y_cont, tr_m, q=0.80, cty=False, ref=None):
+    """Event labels of one inner fold: the outer labelling rule (quantile q, pooled or by country, optionally
+    estimated on a reference subset) applied to the inner training targets only."""
+    base = tr_m & ref if ref is not None else tr_m
+    if cty:
+        cc = df_train["country"].values
+        thr_map = pd.Series(y_cont[base]).groupby(cc[base]).quantile(q)
+        thr = pd.Series(cc).map(thr_map).values
+    else:
+        thr = float(np.quantile(y_cont[base], q))
+    return (y_cont >= thr).astype(int)
+
+
+def make_inner_folds(df_train, feature_cols, h=3, augment=None, y_cont=None, q=0.80, cty=False, ref=None):
+    """Inner folds with features imputed and standardized, and event thresholds estimated, on each inner
+    training part only. Each fold is (train mask, validation mask, X train, X validation, labels of all rows)."""
+    if y_cont is None:
+        raise ValueError("make_inner_folds needs the continuous training target to label the inner folds")
+    y_cont = np.asarray(y_cont, dtype=float)
     folds = []
     for tr_m, va_m in make_inner_splits(df_train, h):
         Xa, imp, scl = build_feature_matrix(df_train[tr_m], feature_cols)
@@ -124,7 +141,7 @@ def make_inner_folds(df_train, feature_cols, h=3, augment=None):
         if augment:
             augment(Xa)
             augment(Xb)
-        folds.append((tr_m, va_m, Xa, Xb))
+        folds.append((tr_m, va_m, Xa, Xb, inner_labels(df_train, y_cont, tr_m, q, cty, ref)))
     return folds
 
 
@@ -139,16 +156,16 @@ def ebm_interaction_spec(model_code, columns, ci_col="fx_share_rt", iq_col="iq_m
     return 0
 
 
-def select_ebm_config(y_bin_tr, inner_folds, inter_spec, seed):
+def select_ebm_config(inner_folds, inter_spec, seed):
     best_cfg, best_ap = EBM_GRID[0], -np.inf
     for cfg in EBM_GRID:
         aps = []
-        for tr_m, va_m, Xa, Xb in inner_folds:
-            if len(np.unique(y_bin_tr[tr_m])) < 2 or len(np.unique(y_bin_tr[va_m])) < 2:
+        for tr_m, va_m, Xa, Xb, yi in inner_folds:
+            if len(np.unique(yi[tr_m])) < 2 or len(np.unique(yi[va_m])) < 2:
                 continue
             c = ExplainableBoostingClassifier(interactions=inter_spec, random_state=seed, **EBM_FIXED, **cfg)
-            c.fit(Xa, y_bin_tr[tr_m])
-            aps.append(average_precision_score(y_bin_tr[va_m], c.predict_proba(Xb)[:, 1]))
+            c.fit(Xa, yi[tr_m])
+            aps.append(average_precision_score(yi[va_m], c.predict_proba(Xb)[:, 1]))
         if aps and np.mean(aps) > best_ap:
             best_ap, best_cfg = float(np.mean(aps)), cfg
     return best_cfg
@@ -199,10 +216,13 @@ def fit_predict_threshold_model(df_train, y_train_cont, y_train_bin, df_eval, fe
     return pred_cont, pred_prob, best_gamma
 
 
-def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_calib, y_bin_cal, df_test, feature_cols, ci_col="fx_share_rt", iq_col="iq_mean_rt", seed=42, h=3):
+def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_calib, y_bin_cal, df_test, feature_cols, ci_col="fx_share_rt", iq_col="iq_mean_rt", seed=42, h=3,
+                                label_rule=None):
     """
     Tune hyperparameters using 3 inner expanding temporal folds inside `df_train` (budget <= 30 trials),
     fit on `df_train`, calibrate probabilities on `df_calib`, and predict on `df_test`.
+    label_rule: keyword arguments of `inner_labels` (q, cty, ref) reproducing how `y_bin_tr` was derived from
+    `y_cont_tr`; the inner folds re-estimate that threshold on their own training part.
     """
     t0 = time.time()
 
@@ -258,7 +278,7 @@ def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_ca
             X_mat["iq_sq"] = X_mat[iq_col] ** 2
         for X_mat in (X_tr, X_cal, X_te):
             augment(X_mat)
-    inner_folds = make_inner_folds(df_train, feature_cols, h, augment)
+    inner_folds = make_inner_folds(df_train, feature_cols, h, augment, y_cont=y_cont_tr, **(label_rule or {}))
 
     # B1: Regularized Linear (ElasticNet/Ridge) & Logistic
     if model_code in ["B1_Regularized_Linear", "B1_Linear_CIxIQ"]:
@@ -267,7 +287,7 @@ def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_ca
         best_mae = np.inf
         for alpha in [0.5, 2.0, 5.0, 15.0, 50.0]:
             maes = []
-            for tr_m, va_m, Xa, Xb in inner_folds:
+            for tr_m, va_m, Xa, Xb, yi in inner_folds:
                 m = Ridge(alpha=alpha, random_state=seed).fit(Xa, y_cont_tr[tr_m])
                 maes.append(mean_absolute_error(y_cont_tr[va_m], m.predict(Xb)))
             if np.mean(maes) < best_mae:
@@ -281,12 +301,12 @@ def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_ca
         best_ap = -np.inf
         for C_val in [0.05, 0.1, 0.3, 1.0, 3.0]:
             aps = []
-            for tr_m, va_m, Xa, Xb in inner_folds:
-                if len(np.unique(y_bin_tr[tr_m])) < 2 or len(np.unique(y_bin_tr[va_m])) < 2:
+            for tr_m, va_m, Xa, Xb, yi in inner_folds:
+                if len(np.unique(yi[tr_m])) < 2 or len(np.unique(yi[va_m])) < 2:
                     continue
                 clf = LogisticRegression(C=C_val, penalty="l2", solver="lbfgs", max_iter=300, random_state=seed)
-                clf.fit(Xa, y_bin_tr[tr_m])
-                aps.append(average_precision_score(y_bin_tr[va_m], clf.predict_proba(Xb)[:, 1]))
+                clf.fit(Xa, yi[tr_m])
+                aps.append(average_precision_score(yi[va_m], clf.predict_proba(Xb)[:, 1]))
             if aps and np.mean(aps) > best_ap:
                 best_ap = np.mean(aps)
                 best_C = C_val
@@ -310,12 +330,12 @@ def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_ca
         best_ap = -np.inf
         for cfg in rf_grid:
             aps = []
-            for tr_m, va_m, Xa, Xb in inner_folds:
-                if len(np.unique(y_bin_tr[va_m])) < 2:
+            for tr_m, va_m, Xa, Xb, yi in inner_folds:
+                if len(np.unique(yi[va_m])) < 2:
                     continue
                 c = RandomForestClassifier(n_estimators=100, random_state=seed, n_jobs=1, **cfg)
-                c.fit(Xa, y_bin_tr[tr_m])
-                aps.append(average_precision_score(y_bin_tr[va_m], c.predict_proba(Xb)[:, 1]))
+                c.fit(Xa, yi[tr_m])
+                aps.append(average_precision_score(yi[va_m], c.predict_proba(Xb)[:, 1]))
             if aps and np.mean(aps) > best_ap:
                 best_ap = np.mean(aps)
                 best_cfg = cfg
@@ -341,12 +361,12 @@ def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_ca
         best_ap = -np.inf
         for cfg in xgb_grid:
             aps = []
-            for tr_m, va_m, Xa, Xb in inner_folds:
-                if len(np.unique(y_bin_tr[va_m])) < 2:
+            for tr_m, va_m, Xa, Xb, yi in inner_folds:
+                if len(np.unique(yi[va_m])) < 2:
                     continue
                 c = XGBClassifier(random_state=seed, eval_metric="logloss", verbosity=0, n_jobs=1, **cfg)
-                c.fit(Xa, y_bin_tr[tr_m])
-                aps.append(average_precision_score(y_bin_tr[va_m], c.predict_proba(Xb)[:, 1]))
+                c.fit(Xa, yi[tr_m])
+                aps.append(average_precision_score(yi[va_m], c.predict_proba(Xb)[:, 1]))
             if aps and np.mean(aps) > best_ap:
                 best_ap = np.mean(aps)
                 best_cfg = cfg
@@ -363,7 +383,7 @@ def inner_temporal_tune_and_fit(model_code, df_train, y_cont_tr, y_bin_tr, df_ca
     # M0 / M1 / E05 Explainable Boosting Machine (EBM) variants
     if model_code in EBM_MODELS:
         inter_spec = ebm_interaction_spec(model_code, list(X_tr.columns), ci_col, iq_col)
-        best_cfg = select_ebm_config(y_bin_tr, inner_folds, inter_spec, seed)
+        best_cfg = select_ebm_config(inner_folds, inter_spec, seed)
 
         reg = ExplainableBoostingRegressor(interactions=inter_spec, random_state=seed, **EBM_FIXED, **best_cfg)
         reg.fit(X_tr, y_cont_tr)
@@ -396,7 +416,7 @@ def _fit_task(sub, sp, variant, m_code, fcols, seed, h, target, ci_col, iq_col, 
     y_tr, y_cal, y_te = (d[target].values for d in (df_tr, df_cal, df_te))
     c_te, pr_te, pc_te, el = inner_temporal_tune_and_fit(
         m_code, df_tr, y_tr, (y_tr >= thr_tr).astype(int), df_cal, (y_cal >= thr_cal).astype(int), df_te, fcols,
-        ci_col=ci_col, iq_col=iq_col, seed=seed, h=h)
+        ci_col=ci_col, iq_col=iq_col, seed=seed, h=h, label_rule={"q": q, "cty": cty})
     meta = df_te[["country", "ym", "in_swift6", "in_core9", "feature_info_cutoff_ym"]].reset_index(drop=True)
     return dict(variant=variant, model=m_code, split_id=sp["split_id"], role=sp["role"], seed=seed, meta=meta,
                 threshold=np.broadcast_to(thr_te, len(df_te)).copy(), y_true_cont=y_te, pred_cont=c_te, prob_raw=pr_te,
@@ -503,9 +523,9 @@ def run_e04_e05_ablations(panel, splits, e03):
             for f in list(feature_sets) + ["F3_Macro_plus_CI_plus_IQ"]:
                 met = summarize(w[(w["model"] == m) & (w["variant"] == f)])
                 rows.append({"evaluation_window": label, "model": m, "feature_set": f, **met,
-                             "Delta_AP_vs_Macro": round(met["AP"] - base["AP"], 4),
-                             "Delta_AP_fold_mean_vs_Macro": round(met["AP_fold_mean"] - base["AP_fold_mean"], 4),
-                             "Delta_CostC5_vs_Macro": round(met["Cost_C5_per100"] - base["Cost_C5_per100"], 3)})
+                             "Delta_AP_vs_Macro": round(met["AP"] - base["AP"], 6),
+                             "Delta_AP_fold_mean_vs_Macro": round(met["AP_fold_mean"] - base["AP_fold_mean"], 6),
+                             "Delta_CostC5_vs_Macro": round(met["Cost_C5_per100"] - base["Cost_C5_per100"], 6)})
     pd.DataFrame(rows).to_csv(os.path.join(TAB_DIR, "table4a_e04_feature_ablation.csv"), index=False)
 
     inter = ["M0_EBM_Additive", "B1_Regularized_Linear", "B1_Linear_CIxIQ", "M_Placebo_MacroInter", "M_Unrestricted_EBM", "M1_EBM_CIxIQ"]
@@ -517,9 +537,9 @@ def run_e04_e05_ablations(panel, splits, e03):
         for m in inter:
             met = summarize(w[w["model"] == m])
             rows.append({"evaluation_window": label, "interaction_spec": m, **met,
-                         "Delta_AP_vs_M0": round(met["AP"] - m0["AP"], 4),
-                         "Delta_AP_fold_mean_vs_M0": round(met["AP_fold_mean"] - m0["AP_fold_mean"], 4),
-                         "Delta_CostC5_vs_M0": round(met["Cost_C5_per100"] - m0["Cost_C5_per100"], 3)})
+                         "Delta_AP_vs_M0": round(met["AP"] - m0["AP"], 6),
+                         "Delta_AP_fold_mean_vs_M0": round(met["AP_fold_mean"] - m0["AP_fold_mean"], 6),
+                         "Delta_CostC5_vs_M0": round(met["Cost_C5_per100"] - m0["Cost_C5_per100"], 6)})
     pd.DataFrame(rows).to_csv(os.path.join(TAB_DIR, "table4b_e05_interaction_ablation.csv"), index=False)
     print("  - Saved table4a_e04_feature_ablation.csv and table4b_e05_interaction_ablation.csv")
     return pred

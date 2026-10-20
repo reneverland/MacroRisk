@@ -15,7 +15,8 @@ import json
 import numpy as np
 import pandas as pd
 
-from common import (OUT_DIR, TAB_DIR, PRED_DIR, MASTER_DIR, WINDOWS, SESOI_AP, summarize, expected_cost, load_predictions, load_splits)
+from common import (timing_audit, OUT_DIR, TAB_DIR, PRED_DIR, MASTER_DIR, WINDOWS, SESOI_AP, summarize, expected_cost, load_predictions, load_splits,
+                    fmt_num)
 from step5_e09_e12_explain_robust_figs import paired_bootstrap
 
 CONF_PRED = os.path.join(OUT_DIR, "confirmation", "confirmation_predictions.parquet")
@@ -127,8 +128,10 @@ def audit_tables():
             g = g if r["countries"] == "All 15 countries" else g[g["group"] == r["countries"]]
             m = summarize(g)
             for col in ["AP", "Brier", "Cost_C5_per100", "N_pos"]:
-                check(f"table15 {r['countries']} {r['model']} {col}", r[col], m[col], 0 if col == "N_pos" else 2e-4)
+                # the locked scoring table stores three decimals
+                check(f"table15 {r['countries']} {r['model']} {col}", r[col], m[col], 0 if col == "N_pos" else 5.01e-4)
     # timing audit: every stage outside the frozen (disclosed) scope must satisfy origin + h + lag < first evaluated month
+    timing_audit()
     ta = rd("tableS16_timing_audit.csv")
     for r in ta[~ta["scope"].str.startswith("Frozen")].itertuples():
         check(f"timing {r.scope} {r.split_id} h={r.h} {r.stage}", 1, int(bool(r.published_before)), 0)
@@ -164,15 +167,19 @@ def audit_tables():
 
 # ----------------------------------------------------------------------------------------------
 def f3(x):
-    return f"{float(x):.3f}"
+    return fmt_num(x, 3)
 
 
 def f1(x):
-    return f"{float(x):.1f}"
+    return fmt_num(x, 1)
 
 
 def sgn(x, d=3):
-    return f"{float(x):+.{d}f}".replace("+", "+")
+    return fmt_num(x, d, sign=True)
+
+
+def s3(x):
+    return fmt_num(x, 3, sign=True)
 
 
 def build_numbers():
@@ -231,6 +238,7 @@ def build_numbers():
     V["n_test_dev"], V["n_pos_dev"] = int(dv["n_test"].sum()), int(dv["n_test_pos"].sum())
     V["n_pos_all"] = V["n_pos_lock"] + V["n_pos_dev"]
     V["pos_lock"] = f3(V["n_pos_lock"] / V["n_test_lock"])
+    V["base_all"] = f3(V["n_pos_all"] / (V["n_test_lock"] + V["n_test_dev"]))
     V["pos_2021"], V["pos_2022"] = int(tf.loc["LOCKED_TEST_2021", "n_test_pos"]), int(tf.loc["LOCKED_TEST_2022", "n_test_pos"])
     V["thr_min"], V["thr_max"] = f"{tf['threshold_q80'].min():.2f}", f"{tf['threshold_q80'].max():.2f}"
     V["cal_pos_2020"], V["cal_pos_2022"] = int(tf.loc["DEV_FOLD_2020", "n_calib_pos"]), int(tf.loc["LOCKED_TEST_2022", "n_calib_pos"])
@@ -469,7 +477,7 @@ def build_numbers():
     V["e21_n_excl0_neg"] = int((fa["Delta_AP_CI95_High"] < 0).sum())
     nm = {"B1_Regularized_Linear": "B1", "B4_XGBoost": "B4", "M0_EBM_Additive": "M0", "M1_EBM_CIxIQ": "M1"}
     wl = {A[0]: "all folds", L[0]: "retrospective test"}
-    V["e21_not_excl_list"] = "; ".join(f"{nm[r.model]} {r.comparison} ({wl[r.evaluation_window]}; upper limit {r.Delta_AP_CI95_High:.3f})"
+    V["e21_not_excl_list"] = "; ".join(f"{nm[r.model]} {r.comparison} ({wl[r.evaluation_window]}; upper limit {f3(r.Delta_AP_CI95_High)})"
                                        for r in fa[~fa["AP_CI95_excludes_plus_SESOI"]].itertuples()) or "none"
     V["e21_max_hi"] = f3(fa["Delta_AP_CI95_High"].max())
     for r in fa.itertuples():
@@ -484,7 +492,7 @@ def build_numbers():
     V["e21_rob_n"] = len(rp)
     V["e21_rob_n_pos"] = int((rp["Delta_AP_CI95_Low"] > 0).sum())
     V["e21_rob_n_neg"] = int((rp["Delta_AP_CI95_High"] < 0).sum())
-    V["e21_rob_pos_list"] = "; ".join(f"{nm[r.model]} under {r.comparison.split(': model vs B0')[0]} ({r.Delta_AP_Point:+.3f} [{r.Delta_AP_CI95_Low:.3f}, {r.Delta_AP_CI95_High:.3f}])"
+    V["e21_rob_pos_list"] = "; ".join(f"{nm[r.model]} under {r.comparison.split(': model vs B0')[0]} ({s3(r.Delta_AP_Point)} [{f3(r.Delta_AP_CI95_Low)}, {f3(r.Delta_AP_CI95_High)}])"
                                       for r in rp[rp["Delta_AP_CI95_Low"] > 0].itertuples()) or "none"
 
     # E22 strict early warning
@@ -546,10 +554,63 @@ def build_numbers():
     tr = rd("table15f_posthoc_fallback_triggers.csv")
     short_k = lambda s: s.split("|")[0].split("_")[0] + (" (macro only)" if s.endswith("|Macro") else "")
     V["ph_fb_deployed"] = ", ".join(f"{r.test_year}: {short_k(r.fallback_rule_deployed)}" for r in tr.itertuples())
-    V["ph_fb_gains"] = ", ".join(f"{r.test_year}: {r.fallback_gain:+.3f}" for r in tr.itertuples())
+    V["ph_fb_gains"] = ", ".join(f"{r.test_year}: {s3(r.fallback_gain)}" for r in tr.itertuples())
     V["ph_mon_deployed"] = ", ".join(f"{r['test_year']}: {short_k(r['monitor_deployed (exploratory)'])}" for _, r in tr.iterrows())
-    V["ph_hist_b4_ap"] = ", ".join(f"{r['test_year']}: {r['histAP_B4_XGBoost|Macro+IQ']:.3f}" for _, r in tr.iterrows())
-    V["ph_hist_b0_ap"] = ", ".join(f"{r['test_year']}: {r['histAP_B0_Historical_Rule|Macro+IQ']:.3f}" for _, r in tr.iterrows())
+    V["ph_hist_b4_ap"] = ", ".join(f"{r['test_year']}: {f3(r['histAP_B4_XGBoost|Macro+IQ'])}" for _, r in tr.iterrows())
+    V["ph_hist_b0_ap"] = ", ".join(f"{r['test_year']}: {f3(r['histAP_B0_Historical_Rule|Macro+IQ'])}" for _, r in tr.iterrows())
+    gains = [s3(r.fallback_gain) for r in tr.itertuples()]
+    V["ph_fb_gain_list"] = ", ".join(gains[:-1]) + " and " + gains[-1]
+    V["ph_fb_years"] = ", ".join(str(y) for y in tr["test_year"].iloc[:-1]) + " and " + str(tr["test_year"].iloc[-1])
+    long_k = lambda s: ("macro-only " if s.endswith("|Macro") else "macro+IQ ") + \
+        {"B4": "XGBoost", "M0": "EBM", "B1": "B1", "C1": "C1"}[s.split("|")[0].split("_")[0]]
+    sw = [(r["test_year"], long_k(r["monitor_deployed (exploratory)"])) for _, r in tr.iterrows()
+          if not r["monitor_deployed (exploratory)"].startswith("B0_")]
+    if not sw:
+        V["ph_mon_switch"] = "never leaves B0"
+    elif len({m for _, m in sw}) == 1:
+        V["ph_mon_switch"] = f"switches to {sw[0][1]} only in " + " and ".join(str(y) for y, _ in sw)
+    else:
+        V["ph_mon_switch"] = "deploys " + ", ".join(f"{m} in {y}" for y, m in sw)
+
+    # frozen comparisons in table15e reuse the bootstrap seed of the frozen scoring, so they must reproduce table15c
+    for g in ["All 15 countries", "Core-9"]:
+        for met_ in ["AP", "Cost_C5_per100"]:
+            a = pe[(pe.comparison == "Always XGBoost vs frozen fallback") & (pe.countries == g) & (pe.metric == met_)].iloc[0]
+            b = cc.loc[(g, "B4_XGBoost", met_)]
+            for ca, cb in [("Delta", "Delta"), ("CI95_Low", "CI95_Low"), ("CI95_High", "CI95_High")]:
+                check(f"table15e frozen XGBoost vs fallback = table15c {g} {met_} {ca}", b[cb], a[ca], 6e-5)
+
+    # episodes: Table 2 counts runs within each fold; the pooled event evaluation counts a run continuing across a
+    # year boundary once
+    V["n_ep_fold_sum"] = int(tf["test_episodes"].sum())
+    V["n_ep_cont"] = int(tf["episodes_continuing_previous_fold"].sum())
+    V["n_ep_fold_sum_lock"] = int(lk["test_episodes"].sum())
+    V["n_ep_cont_lock"] = int(lk["episodes_continuing_previous_fold"].iloc[1:].sum())
+    check("episodes: pooled = fold sum - continuations (six folds)", V["n_episodes_all"], V["n_ep_fold_sum"] - V["n_ep_cont"], 0)
+    check("episodes: pooled = fold sum - continuations (2021-2022)", V["n_episodes_lock"], V["n_ep_fold_sum_lock"] - V["n_ep_cont_lock"], 0)
+
+    # M1 - M0: Table 5 difference and bootstrap point estimate are the same original-sample estimand
+    t4b = rd("table4b_e05_interaction_ablation.csv").set_index(["evaluation_window", "interaction_spec"])
+    bt = rd("e12_moving_block_bootstrap.csv")
+    for w, L_ in [(A[0], 12), (L[0], 6)]:
+        b = bt[(bt.evaluation_window == w) & (bt.block_length_months == L_) & (bt.model_A == "M1_EBM_CIxIQ") & (bt.model_B == "M0_EBM_Additive")].iloc[0]
+        check(f"M1-M0 Table 5 = bootstrap point estimate ({w})", t4b.loc[(w, "M1_EBM_CIxIQ"), "Delta_AP_vs_M0"], b["Delta_AP_Point"], 2e-6)
+    V["m1m0_all_unrounded"] = f"{float(t4b.loc[(A[0], 'M1_EBM_CIxIQ'), 'Delta_AP_vs_M0']):.5f}"
+
+    # protocol: choice of the single monitored candidate
+    ch = re.search(r"\{(.*)\}", proto["fallback_policy"]["learned_model_choice"]).group(1)
+    dev = {k.strip(" '"): float(v) for k, v in (x.split(":") for x in ch.split(","))}
+    V["fb_dev_ap_m0"], V["fb_dev_ap_b4"], V["fb_dev_ap_b1"] = (f"{dev[k]:.4f}" for k in ["M0_EBM_Additive", "B4_XGBoost", "B1_Regularized_Linear"])
+    V["fb_dev_margin"] = f"{dev['M0_EBM_Additive'] - max(v for k, v in dev.items() if k != 'M0_EBM_Additive'):.4f}"
+
+    # data availability of the last forecast origin of the extension
+    panel = pd.read_csv(os.path.join(OUT_DIR, "..", "data", "processed", "panel_pseudo_realtime.csv"), low_memory=False,
+                        usecols=["country", "ym", "reer_index", "target_reer_vol_3m", "target_3m_release_ym"])
+    ext = ["BRA", "CHN", "HUN", "IND", "KOR", "MEX", "POL", "RUS", "ZAF", "CHL", "COL", "IDN", "MYS", "THA", "TUR"]
+    last = panel[panel.country.isin(ext) & (panel.ym == "2025-12")]
+    V["ext_last_origin"], V["ext_outcome_to"] = "2025-12", last["target_3m_release_ym"].max()
+    V["reer_last_obs"] = panel[panel.country.isin(ext) & panel.reer_index.notna()].groupby("country")["ym"].max().min()
+    check("all 15 targets of the last extension origin observed", int(last["target_reer_vol_3m"].notna().sum()), 15, 0)
     return V
 
 

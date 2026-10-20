@@ -198,7 +198,7 @@ def run_e20_ci_decomposition(panel, splits):
         y = (tr["target_reer_vol_3m"].values >= tr["target_reer_vol_3m"].quantile(0.80)).astype(int)
         X, _, _ = build_feature_matrix(tr, fc)
         inter = [("ci_within_rt", "iq_mean_rt"), ("ci_between_rt", "iq_mean_rt")]
-        cfg = select_ebm_config(y, make_inner_folds(tr, fc), inter, 42)
+        cfg = select_ebm_config(make_inner_folds(tr, fc, y_cont=tr["target_reer_vol_3m"].values), inter, 42)
         ebm = ExplainableBoostingClassifier(interactions=inter, random_state=42, **EBM_FIXED, **cfg).fit(X, y)
         imp = dict(zip(ebm.term_names_, ebm.term_importances()))
         total = sum(imp.values())

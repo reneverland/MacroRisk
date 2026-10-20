@@ -162,23 +162,35 @@ def compute_metrics(df_pred, prob_col="prob_dec", cont_col="pred_cont"):
     out = {
         "N": len(df_pred),
         "N_pos": int(y.sum()),
-        "Pos_Rate": round(float(np.mean(y)), 4),
-        "AP": round(float(average_precision_score(y, p)), 4) if two else np.nan,
-        "ROC_AUC": round(float(roc_auc_score(y, p)), 4) if two else np.nan,
-        "Brier": round(float(brier_score_loss(y, p)), 4),
-        "LogLoss": round(float(log_loss(y, p, labels=[0, 1])), 4),
-        "Cost_C5_per100": round(expected_cost(y, p), 3),
+        "Pos_Rate": round(float(np.mean(y)), 6),
+        "AP": round(float(average_precision_score(y, p)), 6) if two else np.nan,
+        "ROC_AUC": round(float(roc_auc_score(y, p)), 6) if two else np.nan,
+        "Brier": round(float(brier_score_loss(y, p)), 6),
+        "LogLoss": round(float(log_loss(y, p, labels=[0, 1])), 6),
+        "Cost_C5_per100": round(expected_cost(y, p), 6),
     }
     if cont_col in df_pred.columns and df_pred[cont_col].notna().all():
-        out["MAE"] = round(float(mean_absolute_error(df_pred["y_true_cont"], df_pred[cont_col])), 4)
-        out["RMSE"] = round(float(root_mean_squared_error(df_pred["y_true_cont"], df_pred[cont_col])), 4)
+        out["MAE"] = round(float(mean_absolute_error(df_pred["y_true_cont"], df_pred[cont_col])), 6)
+        out["RMSE"] = round(float(root_mean_squared_error(df_pred["y_true_cont"], df_pred[cont_col])), 6)
     return out
+
+
+def fmt_num(x, d=3, sign=False):
+    """Fixed-point text with d decimals; a nonzero value that would round to zero gets extra decimals
+    (up to 8), so that no interval limit is displayed as -0.000 or 0.000."""
+    x = float(x)
+    if x == 0:
+        return f"{0:.{d}f}"
+    dd = d
+    while round(abs(x), dd) == 0 and dd < 8:
+        dd += 1
+    return f"{x:+.{dd}f}" if sign else f"{x:.{dd}f}"
 
 
 def fold_mean_ap(df_pred, prob_col="prob_dec"):
     aps = [average_precision_score(g["y_true_bin"], g[prob_col]) for _, g in df_pred.groupby("split_id")
            if g["y_true_bin"].nunique() > 1]
-    return round(float(np.mean(aps)), 4) if aps else np.nan
+    return round(float(np.mean(aps)), 6) if aps else np.nan
 
 
 def summarize(df_pred, prob_col="prob_dec"):
@@ -189,7 +201,7 @@ def summarize(df_pred, prob_col="prob_dec"):
         y = df_pred["y_true_bin"]
         for k, c in CAL_SCHEMES.items():
             if c in df_pred.columns:
-                m[f"Brier_{k}"] = round(float(brier_score_loss(y, np.clip(df_pred[c], 1e-5, 1 - 1e-5))), 4)
+                m[f"Brier_{k}"] = round(float(brier_score_loss(y, np.clip(df_pred[c], 1e-5, 1 - 1e-5))), 6)
     return m
 
 
@@ -261,8 +273,15 @@ def timing_audit():
                 stages += [(f"inner fold {k + 1}", a, b) for k, (a, b) in enumerate(inner)]
                 for stage, last, first_eval in stages:
                     pub = ym_add(last, h + REER_RELEASE_LAG)
+                    if stage.startswith("inner fold"):
+                        thr_src = "inner training targets" if rule == "corrected" else "outer training targets (incl. inner validation)"
+                    elif stage == "expanding-calibration history":
+                        thr_src = "current outer fold" if scope.startswith("Main") else "not used (raw probabilities)"
+                    else:
+                        thr_src = "outer training targets"
                     rows.append({"scope": scope, "split_id": sp["split_id"], "h": h, "stage": stage, "last_origin": last,
-                                 "target_published": pub, "first_evaluated_month": first_eval, "published_before": pub < first_eval})
+                                 "target_published": pub, "first_evaluated_month": first_eval, "published_before": pub < first_eval,
+                                 "event_threshold_from": thr_src})
     df = pd.DataFrame(rows)
     df.to_csv(os.path.join(TAB_DIR, "tableS16_timing_audit.csv"), index=False)
     return df

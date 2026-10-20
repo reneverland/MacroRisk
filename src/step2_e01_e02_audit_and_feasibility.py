@@ -120,10 +120,11 @@ def run_e01_audit(panel):
     print("  - Saved table1_data_summary.csv, e01_manuscript_discrepancy_audit.csv")
 
 
-def count_contiguous_episodes(binary_series, cooldown=2):
+def count_contiguous_episodes(binary_series, cooldown=0):
     """
-    Count distinct high-risk stress episodes given a binary 0/1 series ordered in time.
-    Positive windows separated by <= cooldown months are merged into a single episode.
+    Count high-risk episodes in a binary 0/1 series ordered in time: runs of consecutive positive windows, the
+    definition used by the event-level evaluation (step 6b). Positive windows separated by <= cooldown months
+    would be merged; every call uses cooldown = 0.
     """
     vals = np.asarray(binary_series, dtype=int)
     n_episodes = 0
@@ -198,10 +199,10 @@ def run_e02_feasibility_and_splits(panel):
             "reer_stress_rate_pooled": round(float(y_pooled.mean()), 3),
             "reer_stress_windows_dev": int((g_dev["target_reer_vol_3m"] >= q80_reer_pooled).sum()),
             "reer_stress_windows_test24m": int((g_test["target_reer_vol_3m"] >= q80_reer_pooled).sum()),
-            "reer_distinct_episodes_pooled": count_contiguous_episodes(y_pooled, cooldown=2),
-            "reer_distinct_episodes_cty_thresh": count_contiguous_episodes(y_cty, cooldown=2),
+            "reer_distinct_episodes_pooled": count_contiguous_episodes(y_pooled, cooldown=0),
+            "reer_distinct_episodes_cty_thresh": count_contiguous_episodes(y_cty, cooldown=0),
             "res_stress_windows_pooled": int(y_res_pooled.sum()),
-            "res_distinct_episodes_pooled": count_contiguous_episodes(y_res_pooled, cooldown=2),
+            "res_distinct_episodes_pooled": count_contiguous_episodes(y_res_pooled, cooldown=0),
         })
 
     df_feas = pd.DataFrame(feas_rows).sort_values(["group", "country"]).reset_index(drop=True)
@@ -209,7 +210,7 @@ def run_e02_feasibility_and_splits(panel):
     # Evaluation labels per fold, built exactly as in the forecasting experiments (common.fold_frames)
     from common import fold_frames
     core9 = sub_all[sub_all["in_core9"] == 1]
-    fold_rows = []
+    fold_rows, prev_dec = [], {}
     for _, sp in df_splits.iterrows():
         tr, cal, te = fold_frames(core9, sp, h=3)
         thr = float(tr["target_reer_vol_3m"].quantile(0.80))
@@ -220,10 +221,14 @@ def run_e02_feasibility_and_splits(panel):
             "train_origins": f"{tr['ym'].min()} to {tr['ym'].max()}", "n_train": len(tr), "n_train_pos": int((tr["target_reer_vol_3m"] >= thr).sum()),
             "calib_origins": f"{cal['ym'].min()} to {cal['ym'].max()}", "n_calib": len(cal), "n_calib_pos": int((cal["target_reer_vol_3m"] >= thr).sum()),
             "test_origins": f"{te['ym'].min()} to {te['ym'].max()}", "n_test": len(te), "n_test_pos": int(te["y"].sum()),
-            "test_episodes": int(sum(count_contiguous_episodes(g["y"].values, cooldown=2) for _, g in te.groupby("country"))),
+            "test_episodes": int(sum(count_contiguous_episodes(g["y"].values, cooldown=0) for _, g in te.groupby("country"))),
+            # runs that start in January while the previous fold's December window was high-risk; the pooled
+            # event evaluation concatenates the folds and counts such a run once
+            "episodes_continuing_previous_fold": int(sum(int(g["y"].values[0] == 1 and prev_dec.get(c, 0) == 1) for c, g in te.groupby("country"))),
             "test_pos_by_country": "; ".join(f"{c} {int(v)}" for c, v in te.groupby("country")["y"].sum().sort_values(ascending=False).items() if v > 0),
             "outcome_data_needed_to": te["target_3m_release_ym"].max(),
         })
+        prev_dec = {c: int(g["y"].values[-1]) for c, g in te.groupby("country")}
     pd.DataFrame(fold_rows).to_csv(os.path.join(TAB_DIR, "table_folds_samples_events.csv"), index=False)
     df_feas.to_csv(os.path.join(TAB_DIR, "e02_stress_window_feasibility.csv"), index=False)
     print(f"  - Pooled 80% threshold (Core-9 Dev): REER V_3m = {q80_reer_pooled:.3f}%, Reserve Drawdown D_3m = {q80_res_pooled:.3f}%")

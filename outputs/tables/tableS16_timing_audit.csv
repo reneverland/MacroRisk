@@ -1,133 +1,133 @@
-scope,split_id,h,stage,last_origin,target_published,first_evaluated_month,published_before
-Main evaluation 2017-2022,DEV_FOLD_2017,3,outer training,2015-08,2015-12,2017-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,3,calibration,2016-08,2016-12,2017-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,3,expanding-calibration history,2016-08,2016-12,2017-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,3,inner fold 1,2013-08,2013-12,2014-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,3,inner fold 2,2014-01,2014-05,2014-06,True
-Main evaluation 2017-2022,DEV_FOLD_2017,3,inner fold 3,2014-06,2014-10,2014-11,True
-Main evaluation 2017-2022,DEV_FOLD_2017,6,outer training,2015-08,2016-03,2017-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,6,calibration,2016-05,2016-12,2017-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,6,expanding-calibration history,2016-05,2016-12,2017-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,6,inner fold 1,2013-05,2013-12,2014-01,True
-Main evaluation 2017-2022,DEV_FOLD_2017,6,inner fold 2,2013-10,2014-05,2014-06,True
-Main evaluation 2017-2022,DEV_FOLD_2017,6,inner fold 3,2014-03,2014-10,2014-11,True
-Main evaluation 2017-2022,DEV_FOLD_2018,3,outer training,2016-08,2016-12,2018-01,True
-Main evaluation 2017-2022,DEV_FOLD_2018,3,calibration,2017-08,2017-12,2018-01,True
-Main evaluation 2017-2022,DEV_FOLD_2018,3,expanding-calibration history,2017-08,2017-12,2018-01,True
-Main evaluation 2017-2022,DEV_FOLD_2018,3,inner fold 1,2014-02,2014-06,2014-07,True
-Main evaluation 2017-2022,DEV_FOLD_2018,3,inner fold 2,2014-09,2015-01,2015-02,True
-Main evaluation 2017-2022,DEV_FOLD_2018,3,inner fold 3,2015-04,2015-08,2015-09,True
-Main evaluation 2017-2022,DEV_FOLD_2018,6,outer training,2016-08,2017-03,2018-01,True
-Main evaluation 2017-2022,DEV_FOLD_2018,6,calibration,2017-05,2017-12,2018-01,True
-Main evaluation 2017-2022,DEV_FOLD_2018,6,expanding-calibration history,2017-05,2017-12,2018-01,True
-Main evaluation 2017-2022,DEV_FOLD_2018,6,inner fold 1,2013-11,2014-06,2014-07,True
-Main evaluation 2017-2022,DEV_FOLD_2018,6,inner fold 2,2014-06,2015-01,2015-02,True
-Main evaluation 2017-2022,DEV_FOLD_2018,6,inner fold 3,2015-01,2015-08,2015-09,True
-Main evaluation 2017-2022,DEV_FOLD_2019,3,outer training,2017-08,2017-12,2019-01,True
-Main evaluation 2017-2022,DEV_FOLD_2019,3,calibration,2018-08,2018-12,2019-01,True
-Main evaluation 2017-2022,DEV_FOLD_2019,3,expanding-calibration history,2018-08,2018-12,2019-01,True
-Main evaluation 2017-2022,DEV_FOLD_2019,3,inner fold 1,2014-09,2015-01,2015-02,True
-Main evaluation 2017-2022,DEV_FOLD_2019,3,inner fold 2,2015-05,2015-09,2015-10,True
-Main evaluation 2017-2022,DEV_FOLD_2019,3,inner fold 3,2016-01,2016-05,2016-06,True
-Main evaluation 2017-2022,DEV_FOLD_2019,6,outer training,2017-08,2018-03,2019-01,True
-Main evaluation 2017-2022,DEV_FOLD_2019,6,calibration,2018-05,2018-12,2019-01,True
-Main evaluation 2017-2022,DEV_FOLD_2019,6,expanding-calibration history,2018-05,2018-12,2019-01,True
-Main evaluation 2017-2022,DEV_FOLD_2019,6,inner fold 1,2014-06,2015-01,2015-02,True
-Main evaluation 2017-2022,DEV_FOLD_2019,6,inner fold 2,2015-02,2015-09,2015-10,True
-Main evaluation 2017-2022,DEV_FOLD_2019,6,inner fold 3,2015-10,2016-05,2016-06,True
-Main evaluation 2017-2022,DEV_FOLD_2020,3,outer training,2018-08,2018-12,2020-01,True
-Main evaluation 2017-2022,DEV_FOLD_2020,3,calibration,2019-08,2019-12,2020-01,True
-Main evaluation 2017-2022,DEV_FOLD_2020,3,expanding-calibration history,2019-08,2019-12,2020-01,True
-Main evaluation 2017-2022,DEV_FOLD_2020,3,inner fold 1,2015-04,2015-08,2015-09,True
-Main evaluation 2017-2022,DEV_FOLD_2020,3,inner fold 2,2016-01,2016-05,2016-06,True
-Main evaluation 2017-2022,DEV_FOLD_2020,3,inner fold 3,2016-11,2017-03,2017-04,True
-Main evaluation 2017-2022,DEV_FOLD_2020,6,outer training,2018-08,2019-03,2020-01,True
-Main evaluation 2017-2022,DEV_FOLD_2020,6,calibration,2019-05,2019-12,2020-01,True
-Main evaluation 2017-2022,DEV_FOLD_2020,6,expanding-calibration history,2019-05,2019-12,2020-01,True
-Main evaluation 2017-2022,DEV_FOLD_2020,6,inner fold 1,2015-01,2015-08,2015-09,True
-Main evaluation 2017-2022,DEV_FOLD_2020,6,inner fold 2,2015-10,2016-05,2016-06,True
-Main evaluation 2017-2022,DEV_FOLD_2020,6,inner fold 3,2016-08,2017-03,2017-04,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,3,outer training,2019-08,2019-12,2021-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,3,calibration,2020-08,2020-12,2021-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,3,expanding-calibration history,2020-08,2020-12,2021-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,3,inner fold 1,2015-10,2016-02,2016-03,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,3,inner fold 2,2016-09,2017-01,2017-02,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,3,inner fold 3,2017-08,2017-12,2018-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,6,outer training,2019-08,2020-03,2021-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,6,calibration,2020-05,2020-12,2021-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,6,expanding-calibration history,2020-05,2020-12,2021-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,6,inner fold 1,2015-07,2016-02,2016-03,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,6,inner fold 2,2016-06,2017-01,2017-02,True
-Main evaluation 2017-2022,LOCKED_TEST_2021,6,inner fold 3,2017-05,2017-12,2018-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,3,outer training,2020-08,2020-12,2022-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,3,calibration,2021-08,2021-12,2022-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,3,expanding-calibration history,2021-08,2021-12,2022-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,3,inner fold 1,2016-05,2016-09,2016-10,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,3,inner fold 2,2017-05,2017-09,2017-10,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,3,inner fold 3,2018-06,2018-10,2018-11,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,6,outer training,2020-08,2021-03,2022-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,6,calibration,2021-05,2021-12,2022-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,6,expanding-calibration history,2021-05,2021-12,2022-01,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,6,inner fold 1,2016-02,2016-09,2016-10,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,6,inner fold 2,2017-02,2017-09,2017-10,True
-Main evaluation 2017-2022,LOCKED_TEST_2022,6,inner fold 3,2018-03,2018-10,2018-11,True
-Post-hoc rerun 2023-2025,CONF_2021,3,outer training,2019-08,2019-12,2021-01,True
-Post-hoc rerun 2023-2025,CONF_2021,3,calibration,2020-08,2020-12,2021-01,True
-Post-hoc rerun 2023-2025,CONF_2021,3,expanding-calibration history,2020-08,2020-12,2021-01,True
-Post-hoc rerun 2023-2025,CONF_2021,3,inner fold 1,2015-10,2016-02,2016-03,True
-Post-hoc rerun 2023-2025,CONF_2021,3,inner fold 2,2016-09,2017-01,2017-02,True
-Post-hoc rerun 2023-2025,CONF_2021,3,inner fold 3,2017-08,2017-12,2018-01,True
-Post-hoc rerun 2023-2025,CONF_2022,3,outer training,2020-08,2020-12,2022-01,True
-Post-hoc rerun 2023-2025,CONF_2022,3,calibration,2021-08,2021-12,2022-01,True
-Post-hoc rerun 2023-2025,CONF_2022,3,expanding-calibration history,2021-08,2021-12,2022-01,True
-Post-hoc rerun 2023-2025,CONF_2022,3,inner fold 1,2016-05,2016-09,2016-10,True
-Post-hoc rerun 2023-2025,CONF_2022,3,inner fold 2,2017-05,2017-09,2017-10,True
-Post-hoc rerun 2023-2025,CONF_2022,3,inner fold 3,2018-06,2018-10,2018-11,True
-Post-hoc rerun 2023-2025,CONF_2023,3,outer training,2021-08,2021-12,2023-01,True
-Post-hoc rerun 2023-2025,CONF_2023,3,calibration,2022-08,2022-12,2023-01,True
-Post-hoc rerun 2023-2025,CONF_2023,3,expanding-calibration history,2022-08,2022-12,2023-01,True
-Post-hoc rerun 2023-2025,CONF_2023,3,inner fold 1,2016-11,2017-03,2017-04,True
-Post-hoc rerun 2023-2025,CONF_2023,3,inner fold 2,2018-01,2018-05,2018-06,True
-Post-hoc rerun 2023-2025,CONF_2023,3,inner fold 3,2019-03,2019-07,2019-08,True
-Post-hoc rerun 2023-2025,CONF_2024,3,outer training,2022-08,2022-12,2024-01,True
-Post-hoc rerun 2023-2025,CONF_2024,3,calibration,2023-08,2023-12,2024-01,True
-Post-hoc rerun 2023-2025,CONF_2024,3,expanding-calibration history,2023-08,2023-12,2024-01,True
-Post-hoc rerun 2023-2025,CONF_2024,3,inner fold 1,2017-06,2017-10,2017-11,True
-Post-hoc rerun 2023-2025,CONF_2024,3,inner fold 2,2018-09,2019-01,2019-02,True
-Post-hoc rerun 2023-2025,CONF_2024,3,inner fold 3,2020-01,2020-05,2020-06,True
-Post-hoc rerun 2023-2025,CONF_2025,3,outer training,2023-08,2023-12,2025-01,True
-Post-hoc rerun 2023-2025,CONF_2025,3,calibration,2024-08,2024-12,2025-01,True
-Post-hoc rerun 2023-2025,CONF_2025,3,expanding-calibration history,2024-08,2024-12,2025-01,True
-Post-hoc rerun 2023-2025,CONF_2025,3,inner fold 1,2018-01,2018-05,2018-06,True
-Post-hoc rerun 2023-2025,CONF_2025,3,inner fold 2,2019-05,2019-09,2019-10,True
-Post-hoc rerun 2023-2025,CONF_2025,3,inner fold 3,2020-10,2021-02,2021-03,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,outer training,2019-08,2019-12,2021-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,calibration,2020-08,2020-12,2021-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,expanding-calibration history,2020-08,2020-12,2021-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,inner fold 1,2015-11,2016-03,2016-03,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,inner fold 2,2016-10,2017-02,2017-02,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,inner fold 3,2017-09,2018-01,2018-01,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,outer training,2020-08,2020-12,2022-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,calibration,2021-08,2021-12,2022-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,expanding-calibration history,2021-08,2021-12,2022-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,inner fold 1,2016-06,2016-10,2016-10,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,inner fold 2,2017-06,2017-10,2017-10,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,inner fold 3,2018-07,2018-11,2018-11,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,outer training,2021-08,2021-12,2023-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,calibration,2022-08,2022-12,2023-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,expanding-calibration history,2022-08,2022-12,2023-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,inner fold 1,2016-12,2017-04,2017-04,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,inner fold 2,2018-02,2018-06,2018-06,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,inner fold 3,2019-04,2019-08,2019-08,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,outer training,2022-08,2022-12,2024-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,calibration,2023-08,2023-12,2024-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,expanding-calibration history,2023-08,2023-12,2024-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,inner fold 1,2017-07,2017-11,2017-11,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,inner fold 2,2018-10,2019-02,2019-02,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,inner fold 3,2020-02,2020-06,2020-06,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,outer training,2023-08,2023-12,2025-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,calibration,2024-08,2024-12,2025-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,expanding-calibration history,2024-08,2024-12,2025-01,True
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,inner fold 1,2018-02,2018-06,2018-06,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,inner fold 2,2019-06,2019-10,2019-10,False
-"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,inner fold 3,2020-11,2021-03,2021-03,False
+scope,split_id,h,stage,last_origin,target_published,first_evaluated_month,published_before,event_threshold_from
+Main evaluation 2017-2022,DEV_FOLD_2017,3,outer training,2015-08,2015-12,2017-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,3,calibration,2016-08,2016-12,2017-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,3,expanding-calibration history,2016-08,2016-12,2017-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2017,3,inner fold 1,2013-08,2013-12,2014-01,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,3,inner fold 2,2014-01,2014-05,2014-06,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,3,inner fold 3,2014-06,2014-10,2014-11,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,6,outer training,2015-08,2016-03,2017-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,6,calibration,2016-05,2016-12,2017-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,6,expanding-calibration history,2016-05,2016-12,2017-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2017,6,inner fold 1,2013-05,2013-12,2014-01,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,6,inner fold 2,2013-10,2014-05,2014-06,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2017,6,inner fold 3,2014-03,2014-10,2014-11,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,3,outer training,2016-08,2016-12,2018-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,3,calibration,2017-08,2017-12,2018-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,3,expanding-calibration history,2017-08,2017-12,2018-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2018,3,inner fold 1,2014-02,2014-06,2014-07,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,3,inner fold 2,2014-09,2015-01,2015-02,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,3,inner fold 3,2015-04,2015-08,2015-09,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,6,outer training,2016-08,2017-03,2018-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,6,calibration,2017-05,2017-12,2018-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,6,expanding-calibration history,2017-05,2017-12,2018-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2018,6,inner fold 1,2013-11,2014-06,2014-07,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,6,inner fold 2,2014-06,2015-01,2015-02,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2018,6,inner fold 3,2015-01,2015-08,2015-09,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,3,outer training,2017-08,2017-12,2019-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,3,calibration,2018-08,2018-12,2019-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,3,expanding-calibration history,2018-08,2018-12,2019-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2019,3,inner fold 1,2014-09,2015-01,2015-02,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,3,inner fold 2,2015-05,2015-09,2015-10,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,3,inner fold 3,2016-01,2016-05,2016-06,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,6,outer training,2017-08,2018-03,2019-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,6,calibration,2018-05,2018-12,2019-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,6,expanding-calibration history,2018-05,2018-12,2019-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2019,6,inner fold 1,2014-06,2015-01,2015-02,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,6,inner fold 2,2015-02,2015-09,2015-10,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2019,6,inner fold 3,2015-10,2016-05,2016-06,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,3,outer training,2018-08,2018-12,2020-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,3,calibration,2019-08,2019-12,2020-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,3,expanding-calibration history,2019-08,2019-12,2020-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2020,3,inner fold 1,2015-04,2015-08,2015-09,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,3,inner fold 2,2016-01,2016-05,2016-06,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,3,inner fold 3,2016-11,2017-03,2017-04,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,6,outer training,2018-08,2019-03,2020-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,6,calibration,2019-05,2019-12,2020-01,True,outer training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,6,expanding-calibration history,2019-05,2019-12,2020-01,True,current outer fold
+Main evaluation 2017-2022,DEV_FOLD_2020,6,inner fold 1,2015-01,2015-08,2015-09,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,6,inner fold 2,2015-10,2016-05,2016-06,True,inner training targets
+Main evaluation 2017-2022,DEV_FOLD_2020,6,inner fold 3,2016-08,2017-03,2017-04,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,3,outer training,2019-08,2019-12,2021-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,3,calibration,2020-08,2020-12,2021-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,3,expanding-calibration history,2020-08,2020-12,2021-01,True,current outer fold
+Main evaluation 2017-2022,LOCKED_TEST_2021,3,inner fold 1,2015-10,2016-02,2016-03,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,3,inner fold 2,2016-09,2017-01,2017-02,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,3,inner fold 3,2017-08,2017-12,2018-01,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,6,outer training,2019-08,2020-03,2021-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,6,calibration,2020-05,2020-12,2021-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,6,expanding-calibration history,2020-05,2020-12,2021-01,True,current outer fold
+Main evaluation 2017-2022,LOCKED_TEST_2021,6,inner fold 1,2015-07,2016-02,2016-03,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,6,inner fold 2,2016-06,2017-01,2017-02,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2021,6,inner fold 3,2017-05,2017-12,2018-01,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,3,outer training,2020-08,2020-12,2022-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,3,calibration,2021-08,2021-12,2022-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,3,expanding-calibration history,2021-08,2021-12,2022-01,True,current outer fold
+Main evaluation 2017-2022,LOCKED_TEST_2022,3,inner fold 1,2016-05,2016-09,2016-10,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,3,inner fold 2,2017-05,2017-09,2017-10,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,3,inner fold 3,2018-06,2018-10,2018-11,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,6,outer training,2020-08,2021-03,2022-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,6,calibration,2021-05,2021-12,2022-01,True,outer training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,6,expanding-calibration history,2021-05,2021-12,2022-01,True,current outer fold
+Main evaluation 2017-2022,LOCKED_TEST_2022,6,inner fold 1,2016-02,2016-09,2016-10,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,6,inner fold 2,2017-02,2017-09,2017-10,True,inner training targets
+Main evaluation 2017-2022,LOCKED_TEST_2022,6,inner fold 3,2018-03,2018-10,2018-11,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2021,3,outer training,2019-08,2019-12,2021-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2021,3,calibration,2020-08,2020-12,2021-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2021,3,expanding-calibration history,2020-08,2020-12,2021-01,True,not used (raw probabilities)
+Post-hoc rerun 2023-2025,CONF_2021,3,inner fold 1,2015-10,2016-02,2016-03,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2021,3,inner fold 2,2016-09,2017-01,2017-02,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2021,3,inner fold 3,2017-08,2017-12,2018-01,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2022,3,outer training,2020-08,2020-12,2022-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2022,3,calibration,2021-08,2021-12,2022-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2022,3,expanding-calibration history,2021-08,2021-12,2022-01,True,not used (raw probabilities)
+Post-hoc rerun 2023-2025,CONF_2022,3,inner fold 1,2016-05,2016-09,2016-10,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2022,3,inner fold 2,2017-05,2017-09,2017-10,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2022,3,inner fold 3,2018-06,2018-10,2018-11,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2023,3,outer training,2021-08,2021-12,2023-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2023,3,calibration,2022-08,2022-12,2023-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2023,3,expanding-calibration history,2022-08,2022-12,2023-01,True,not used (raw probabilities)
+Post-hoc rerun 2023-2025,CONF_2023,3,inner fold 1,2016-11,2017-03,2017-04,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2023,3,inner fold 2,2018-01,2018-05,2018-06,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2023,3,inner fold 3,2019-03,2019-07,2019-08,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2024,3,outer training,2022-08,2022-12,2024-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2024,3,calibration,2023-08,2023-12,2024-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2024,3,expanding-calibration history,2023-08,2023-12,2024-01,True,not used (raw probabilities)
+Post-hoc rerun 2023-2025,CONF_2024,3,inner fold 1,2017-06,2017-10,2017-11,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2024,3,inner fold 2,2018-09,2019-01,2019-02,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2024,3,inner fold 3,2020-01,2020-05,2020-06,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2025,3,outer training,2023-08,2023-12,2025-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2025,3,calibration,2024-08,2024-12,2025-01,True,outer training targets
+Post-hoc rerun 2023-2025,CONF_2025,3,expanding-calibration history,2024-08,2024-12,2025-01,True,not used (raw probabilities)
+Post-hoc rerun 2023-2025,CONF_2025,3,inner fold 1,2018-01,2018-05,2018-06,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2025,3,inner fold 2,2019-05,2019-09,2019-10,True,inner training targets
+Post-hoc rerun 2023-2025,CONF_2025,3,inner fold 3,2020-10,2021-02,2021-03,True,inner training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,outer training,2019-08,2019-12,2021-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,calibration,2020-08,2020-12,2021-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,expanding-calibration history,2020-08,2020-12,2021-01,True,not used (raw probabilities)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,inner fold 1,2015-11,2016-03,2016-03,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,inner fold 2,2016-10,2017-02,2017-02,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2021,3,inner fold 3,2017-09,2018-01,2018-01,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,outer training,2020-08,2020-12,2022-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,calibration,2021-08,2021-12,2022-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,expanding-calibration history,2021-08,2021-12,2022-01,True,not used (raw probabilities)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,inner fold 1,2016-06,2016-10,2016-10,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,inner fold 2,2017-06,2017-10,2017-10,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2022,3,inner fold 3,2018-07,2018-11,2018-11,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,outer training,2021-08,2021-12,2023-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,calibration,2022-08,2022-12,2023-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,expanding-calibration history,2022-08,2022-12,2023-01,True,not used (raw probabilities)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,inner fold 1,2016-12,2017-04,2017-04,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,inner fold 2,2018-02,2018-06,2018-06,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2023,3,inner fold 3,2019-04,2019-08,2019-08,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,outer training,2022-08,2022-12,2024-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,calibration,2023-08,2023-12,2024-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,expanding-calibration history,2023-08,2023-12,2024-01,True,not used (raw probabilities)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,inner fold 1,2017-07,2017-11,2017-11,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,inner fold 2,2018-10,2019-02,2019-02,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2024,3,inner fold 3,2020-02,2020-06,2020-06,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,outer training,2023-08,2023-12,2025-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,calibration,2024-08,2024-12,2025-01,True,outer training targets
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,expanding-calibration history,2024-08,2024-12,2025-01,True,not used (raw probabilities)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,inner fold 1,2018-02,2018-06,2018-06,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,inner fold 2,2019-06,2019-10,2019-10,False,outer training targets (incl. inner validation)
+"Frozen confirmation 2023-2025 (original code, disclosed)",CONF_2025,3,inner fold 3,2020-11,2021-03,2021-03,False,outer training targets (incl. inner validation)

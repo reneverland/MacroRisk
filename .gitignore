@@ -5,3 +5,4 @@ __pycache__/
 data/raw/historylab/*.xlsx
 # anonymized review archive, rebuilt from the repository
 manuscript/*.zip
+review_inputs/
