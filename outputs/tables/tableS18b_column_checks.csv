@@ -1,0 +1,13 @@
+dataset,column,role,source_file,construction,countries,n_compared,share_matched,interpolation
+Panel A,本国货币外汇衍生品交易额,not used,全球外汇衍生品交易份额_货币_月度频率.xlsx,"currency turnover / TO1 total, same month",6,678,1.0,
+Panel A,未偿余额,not used,国际债券和票据_未偿余额和发行量.xlsx,"RMB outstanding, quarter-end",1,12,1.0,linear interpolation within quarters (22 of 22 other months)
+Panel A,公布发行额,not used,国际债券和票据_未偿余额和发行量.xlsx,"RMB announced issuance, quarter-end",1,12,1.0,linear interpolation within quarters (22 of 22 other months)
+Panel A,外汇储备总额,not used,外汇储备总额_币种.xlsx,"RMB / all allocated reserves, quarter-end",1,21,1.0,linear interpolation within quarters (40 of 40 other months)
+Panel A,对外贷款,not used,境外贷款人民币.xlsx; 全球对外信贷其它货币份额.xlsx,monthly overseas RMB loans (CNY 100 m) / all-currency cross-border credit (USD m); no unit conversion,1,113,1.0,quarterly denominator backward-filled to months
+Panel A,新兴国家 / 收入组别,not used,货币与国家.xlsx,currency-country lookup,6,6,1.0,
+Panel B,本国货币外汇衍生品交易额,"CI, Panel B",全球外汇衍生品交易份额_货币_月度频率.xlsx,"currency turnover / TO1 total, same month",9,1188,1.0,
+Panel B,未偿余额,not used,国际债券和票据_未偿余额和发行量.xlsx,"RMB outstanding, quarter-end",1,14,1.0,linear interpolation within quarters (26 of 26 other months)
+Panel B,公布发行额,not used,国际债券和票据_未偿余额和发行量.xlsx,"RMB announced issuance, quarter-end",1,14,1.0,linear interpolation within quarters (26 of 26 other months)
+Panel B,外汇储备总额,not used,外汇储备总额_币种.xlsx,"RMB / all allocated reserves, quarter-end",1,25,1.0,linear interpolation within quarters (48 of 48 other months)
+Panel B,对外贷款,not used,境外贷款人民币.xlsx; 全球对外信贷其它货币份额.xlsx,monthly overseas RMB loans (CNY 100 m) / all-currency cross-border credit (USD m); no unit conversion,1,132,1.0,quarterly denominator backward-filled to months
+Panel B,新兴国家 / 收入组别,not used,货币与国家.xlsx,currency-country lookup,9,9,1.0,

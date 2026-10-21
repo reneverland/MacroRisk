@@ -1,5 +1,5 @@
-A reproducibility audit connects threshold evidence with stress prediction
-Only one of 18 CI or IQ additions reaches a 0.02 gain in average precision
-Model rankings change across periods, countries and stress definitions
-Simulated review gains depend on reviewer errors, fees and the comparison policy
-A refitted fallback keeps persistence and misses XGBoost gains in core economies
+Currency internationalization and governance are tested as FX stress indicators
+Internationalization adds no detectable warning value beyond macro indicators
+Its signal mainly separates countries rather than timing stress episodes
+Institutional quality: small, imprecise AP gains; lower expected cost in 2023-25
+Persistence and country risk levels should anchor exchange-rate warning systems

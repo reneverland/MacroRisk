@@ -2,11 +2,11 @@
 
 Code, data and outputs for the manuscript
 
-> *Do institutional thresholds improve exchange-rate stress early warning? An auditable replication-to-prediction evaluation* (target journal: Expert Systems with Applications).
+> *Do currency internationalization and institutional quality add early-warning value for exchange-rate risk? Evidence from emerging economies* (target journal: Expert Systems with Applications).
 
 The study has three parts:
 
-1. **Internal replication of the reported panel threshold regressions** (Hansen fixed-effects single threshold, IQ as threshold variable) from an earlier, unpublished working paper with overlapping authorship (*Does Currency Internationalization increase Macro Risk in Emerging Markets? Nonlinear Evidence from Institutional Quality*, drafts 2023-2025). Its datasets (stored in `data/raw/historylab/`, not redistributed) were exported from the Wind Economic Database: Panel A uses the SWIFT payment share as CI (6 countries, N = 678), Panel B the FX-turnover share (9 countries, N = 1,188; ER_Vol only for 8 countries, N = 1,056).
+1. **Internal replication of the reported panel threshold regressions** (Hansen fixed-effects single threshold, IQ as threshold variable) from an earlier, unpublished working paper with overlapping authorship (*Does Currency Internationalization increase Macro Risk in Emerging Markets? Nonlinear Evidence from Institutional Quality*, drafts 2023-2025). Its datasets (stored in `data/raw/historylab/`, not redistributed) were exported from the Wind Economic Database: Panel A uses the SWIFT payment share as CI (6 countries, N = 678), Panel B the currency's share of total monthly FX-derivatives turnover from a BIS export, reproduced exactly by `step0b` (9 countries, N = 1,188; ER_Vol only for 8 countries, N = 1,056).
 2. **Release-lag-adjusted early warning** of three-month REER stress: development folds 2017-2020 and retrospective test folds 2021-2022, with persistence, country-identity, linear, threshold, random forest, XGBoost and EBM models, paired block-bootstrap intervals and equivalence tests against a smallest effect of interest (ΔAP = 0.02), episode coverage, strict early warning, onset evaluation, and a decision layer (calibration, costs, analyst-review scenarios under several reviewer-error models).
 3. **A retrospective extension, 2023-2025** (15 countries, macro and IQ features, frozen fallback rule), frozen with a recorded SHA-256 hash and scored once, plus a separately labelled post-hoc rerun with the corrected tuning code.
 
@@ -17,9 +17,10 @@ Every number in the manuscript comes from `outputs/manuscript_numbers.json`, whi
 ```
 data/raw/                     BIS, IMF and World Bank downloads; vintage_202610/ holds the IMF IRFCL reserve extension
 data/raw/historylab/          original regression datasets (compiled from Wind on 2023-06-13; licensed, not included) + SHA256SUMS.txt
+data/raw/original_exports/    the 9 Wind/BIS/SAFE exports (2023-05-31 to 2023-06-02) behind the currency-use columns (licensed, not included) + SHA256SUMS.txt
 data/processed/               panel_pseudo_realtime.csv (country x month, publication lags applied), 2010-01 to 2026-08
 src/                          pipeline (see below); common.py holds shared settings, splits, maturity rules, metrics and the timing audit
-outputs/tables/               all result tables (CSV), including tableS16_timing_audit.csv, tableS17_countries_by_fold.csv, table_change_v1_v2.csv
+outputs/tables/               all result tables (CSV), including tableS16_timing_audit.csv, tableS17_countries_by_fold.csv, tableS18_export_inventory.csv, tableS18b_column_checks.csv, table_change_v1_v2.csv
 outputs/figures/              fig1-fig8 (PDF + PNG)
 outputs/predictions/master/   row-level predictions with labels of every experiment; predictions_master.parquet assembles them
 outputs/confirmation/         frozen protocol, its hash, SCORED.lock, frozen predictions, post-freeze change log
@@ -27,7 +28,7 @@ outputs/archive_v1/           first-draft tables, predictions, numbers and sourc
 outputs/manuscript_numbers.json, consistency_audit_checks.csv, AUDIT_STATUS
 outputs/split_manifest.csv, experiment_config.yaml, data_dictionary.csv, availability_audit.csv
 manuscript/                   ESWA_Manuscript_anonymized.tex (elsarticle) / .docx / .md / _preview.pdf,
-                              Supplementary_Material.docx/.md (Tables S1-S17), Title_Page.docx, Highlights.docx, highlights.txt, figures/
+                              Supplementary_Material.docx/.md (Tables S1-S18), Title_Page.docx, Highlights.docx, highlights.txt, figures/
 MANIFEST.sha256               checksums of every file in the package
 ```
 
@@ -46,6 +47,7 @@ Every process runs single-threaded (`OMP_NUM_THREADS=1` etc.); parallelism is ac
 
 | Step | Script | Content | Main outputs |
 |---|---|---|---|
+| 0b | `step0b_provenance_audit.py` | Inventory of the original exports (indicator names, coverage, workbook dates, checksums) and reconstruction of the dataset columns from them; skipped when the licensed exports are absent | `tableS18_export_inventory.csv`, `tableS18b_column_checks.csv` |
 | 1 | `step1_fetch_and_build_panel.py` | Builds the country-month panel; REER, NEER, CPI, reserves and CI lagged one month; quarterly credit +2 months; year-Y WGI and annual controls from September Y+1 | `data/processed/panel_pseudo_realtime.csv`, `data_dictionary.csv` |
 | 2 | `step2_e01_e02_audit_and_feasibility.py` | E01 discrepancy audit of the original drafts, E02 feasibility, frozen splits | `e01_*`, `e02_*`, `split_manifest.csv` |
 | 2b | `step2b_threshold_replication.py` | Threshold replication: specification search, 12 regressions, regime coefficients, WGI dimensions, lag-adjusted version, trimming sensitivity; country-block residual bootstrap, p = (1+k)/(B+1), B = 1,999 | `e01b_*`, `table2a-2c`, `tableA1-A3`, `fig8` |
@@ -69,7 +71,7 @@ Every process runs single-threaded (`OMP_NUM_THREADS=1` etc.); parallelism is ac
 ## Honesty notes
 
 - **Corrections after the first draft (v1 to v2).** The inner tuning folds used a fixed 3-month gap (h = 3 needs 4 months, h = 6 needs 7) and the imputer and scaler were fitted on the whole training window; the expanding calibration history kept each earlier fold's own event threshold. A later audit (October 2026) found that the inner tuning labels used the outer-fold threshold, whose sample includes the inner validation ranges; inner labels now use the 80th percentile of the inner training targets. All of these were corrected and every learned-model experiment, including the post-hoc extension, was rerun. `outputs/tables/table_change_v1_v2.csv` lists every audited number of both versions; `outputs/archive_v1/` holds the v1 outputs and code. Two v1 conclusions changed: the CI x IQ interaction is no longer equivalent to the additive EBM in 2021-2022, and the random forest's gain over persistence is no longer distinguishable from zero.
-- **Main findings.** No CI or IQ addition in the main FX-share specification raises AP by 0.02, but 9 of 18 paired intervals cannot exclude such a gain; the CI x IQ interaction is not shown to be equivalent to the additive model; no learned model beats persistence over six folds with an interval above zero; C1 and B0 lead in 2021-2022. Learned models do beat persistence under q90 and country-specific thresholds.
+- **Main findings.** Adding CI lowers AP in all six model-window cells; only IQ in the additive EBM reaches a 0.02 AP gain in point estimate (+0.021, 95% interval -0.001 to 0.037), and 6 of 18 paired intervals cannot exclude such a gain; the CI x IQ interaction is not shown to be equivalent to the additive model; no learned model beats persistence over six folds with an interval above zero; C1 and B0 lead in 2021-2022. Learned models do beat persistence under q90 and country-specific thresholds.
 - **Retrospective extension.** The frozen fallback kept the persistence rule in all three years; XGBoost would have improved AP in the Core-9 countries. The frozen result was scored with the v1 tuning code and was not rescored (its inner folds fail the timing audit, disclosed in Table S16). In the post-hoc rerun with corrected tuning, adding IQ to the macro EBM lowers expected cost (-9.1 per 100 forecasts, 95% interval -19.1 to -3.7) but its AP interval includes zero (+0.040, -0.060 to 0.106); XGBoost shows no IQ increment. The archived comparisons reuse the bootstrap seed of the original scoring, so they reproduce its intervals; the multi-candidate monitor was defined after the frozen result and is labelled exploratory.
 - 2021-2022 had been examined while the study was designed, so it is called a retrospective test; 2023-2025 is also historical and is called a retrospective extension.
 - Three reported coefficients are classified as suspected transcription errors and seven regime cells are not reproduced (`table2c_published_vs_replicated.csv`).
@@ -87,4 +89,5 @@ Every process runs single-threaded (`OMP_NUM_THREADS=1` etc.); parallelism is ac
 ```bash
 sha256sum -c MANIFEST.sha256                                  # all files except the licensed Wind exports
 cd data/raw/historylab && sha256sum -c SHA256SUMS.txt          # Wind exports, if you hold a licensed copy
+cd data/raw/original_exports && sha256sum -c SHA256SUMS.txt    # original Wind/BIS/SAFE exports, if held
 ```

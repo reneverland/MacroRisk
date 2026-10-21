@@ -1,0 +1,10 @@
+file,content,source,sheets,n_series,example_indicator,frequency,coverage_from,coverage_to,workbook_created,workbook_modified,sha256
+中国国际投资头寸表.xlsx,China international investment position,SAFE (published table),4,60,,annual and quarterly (year-end positions),2004-12,2022-12,2006-09-18,2023-05-31,d2c8ac35f5dde984fe190c4d1f93225705c88a3a16700347d93774f73f69d7d6
+中国季度GDP.xlsx,China quarterly GDP (USD),Wind (reformatted),1,162,2009-12-31 00:00:00,quarterly (zeros in other months),2009-12,2023-05,2023-06-02,2023-06-02,2c52f2e5d52d3b978507878e4881561737795b4cf2fc71a9a5ce54247f16219d
+全球外汇衍生品交易份额_货币_月度频率.xlsx,FX-derivatives turnover by currency,BIS Statistics Explorer,1,360,1993-01-01 00:00:00,monthly,1993-01,2022-12,2023-05-31,2023-06-01,26001ce11cea94b67c6a6dc52f3fc4b337bf38bcfb96df0759c4362b8538480d
+全球对外信贷其它货币份额.xlsx,Cross-border credit by currency denomination,BIS (reformatted export),1,6,GBP:Pound (sterling),quarterly,1977-12,2022-12,2023-06-01,2023-06-01,e49148cb22cf7da4fa0db5292dac231a2bcaee53fcef6392b81eba525264bc3e
+国际债券和票据_未偿余额和发行量.xlsx,International bonds and notes: outstanding and announced issuance,Wind (indicator-name layout),1,102,国际债券和票据:未偿余额:发行货币:阿根廷比索,quarterly,1993-09,2015-06,2023-05-31,2023-06-01,5844d5682e2f431e5394bccbff5d40ab65728535565dc6ceb29a7a8e59f8cf27
+境外贷款人民币.xlsx,Overseas RMB loans of Chinese financial institutions,Wind,1,1,中国:金融机构:人民币:资金运用:各项贷款:境外贷款,monthly,2010-01,2023-04,2023-05-31,,76562bc610b81cb03edf0c2aa6f24e70e86379240ddcaf07a17df48bef4e6b16
+外汇储备总额_币种.xlsx,Allocated official FX reserves by currency (COFER),Wind (indicator-name layout),1,10,外汇储备总额:全球:币种确认官方储备:美元,quarterly,1999-03,2022-12,2023-05-31,2023-06-02,7851165e74ddb7094fefe5250fffd6384e585fc00979a48f1a1d55148cb742e3
+直接投资结算.xlsx,RMB direct-investment settlement and OFDI stock,Wind (indicator-name layout),1,81,中国:人民币直接投资结算业务:当月值,monthly,1980-12,2023-04,2023-05-31,2023-06-02,9ea980ef24fe535aa62ac15bb6b56f871473a4536c1ab61d86b03396759ea3b8
+货币与国家.xlsx,Currency-country mapping with emerging flag and income group,authors' mapping,1,21,,,,,2015-06-05,2023-06-07,6845b2f218874d45a64c4a916c53ac8e94e939333cf9f6c5ccef5bae72172a7f

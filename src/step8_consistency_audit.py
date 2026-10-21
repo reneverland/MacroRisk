@@ -480,6 +480,9 @@ def build_numbers():
     V["e21_not_excl_list"] = "; ".join(f"{nm[r.model]} {r.comparison} ({wl[r.evaluation_window]}; upper limit {f3(r.Delta_AP_CI95_High)})"
                                        for r in fa[~fa["AP_CI95_excludes_plus_SESOI"]].itertuples()) or "none"
     V["e21_max_hi"] = f3(fa["Delta_AP_CI95_High"].max())
+    ci_only = fa[fa.comparison == "+CI vs macro"]
+    V["e21_ci_n"], V["e21_ci_n_excl_plus"] = len(ci_only), int(ci_only["AP_CI95_excludes_plus_SESOI"].sum())
+    V["e21_ci_max_hi"] = f3(ci_only["Delta_AP_CI95_High"].max())
     for r in fa.itertuples():
         k = f"e21_{nm[r.model].lower()}_{r.comparison.split(' ')[0].replace('+', '').lower()}_{'all' if r.evaluation_window == A[0] else 'lock'}"
         V[k], V[k + "_lo"], V[k + "_hi"] = f3(r.Delta_AP_Point), f3(r.Delta_AP_CI95_Low), f3(r.Delta_AP_CI95_High)
@@ -611,6 +614,20 @@ def build_numbers():
     V["ext_last_origin"], V["ext_outcome_to"] = "2025-12", last["target_3m_release_ym"].max()
     V["reer_last_obs"] = panel[panel.country.isin(ext) & panel.reer_index.notna()].groupby("country")["ym"].max().min()
     check("all 15 targets of the last extension origin observed", int(last["target_reer_vol_3m"].notna().sum()), 15, 0)
+
+    # provenance of the original exports (step0b)
+    inv, cc = rd("tableS18_export_inventory.csv"), rd("tableS18b_column_checks.csv")
+    ci = cc[cc.column == "本国货币外汇衍生品交易额"]
+    for r in ci.itertuples():
+        check(f"CI reproduced from the BIS export ({r.dataset})", r.share_matched, 1.0, 0)
+    V["prov_ci_n"] = f"{int(ci[ci.dataset == 'Panel B'].n_compared.iloc[0]):,}"
+    V["prov_ci_countries"] = int(ci[ci.dataset == "Panel B"].countries.iloc[0])
+    V["prov_n_files"] = len(inv)
+    V["prov_export_from"], V["prov_export_to"] = inv.workbook_created.loc[inv.workbook_created >= "2023"].min(), inv.workbook_created.max()
+    V["prov_n_cols_verified"] = int(cc.loc[cc.share_matched == 1.0, "column"].nunique())
+    V["prov_n_cols_checked"] = int(cc["column"].nunique())
+    bis = inv[inv.source == "BIS Statistics Explorer"].iloc[0]
+    V["prov_bis_from"], V["prov_bis_to"], V["prov_bis_date"] = bis.coverage_from, bis.coverage_to, bis.workbook_created
     return V
 
 

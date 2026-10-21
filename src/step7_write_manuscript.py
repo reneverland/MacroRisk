@@ -46,33 +46,33 @@ def fill(t):
 # ------------------------------------------------------------------------------------------
 # Front matter
 # ------------------------------------------------------------------------------------------
-TITLE = "Do institutional thresholds improve exchange-rate stress early warning? An auditable replication-to-prediction evaluation"
+TITLE = "Do currency internationalization and institutional quality add early-warning value for exchange-rate risk? Evidence from emerging economies"
 
 ABSTRACT = fill(
-    "Institutional thresholds estimated in panel regressions may motivate early-warning features without establishing their predictive or "
-    "decision value. We present an auditable workflow linking internal replication, release-lag-adjusted prediction and decision-cost "
-    "simulation. Across panels of six and nine emerging economies, a compatible calculation reproduces all {n_f_exact} reported threshold F "
-    "statistics, while {n_lost15} of {n_sig1} nominally significant tests lose significance under 15% trimming. The forecasting evaluation over "
-    "2017-2022 contains {n_pos_all} high-risk real-effective-exchange-rate windows. In the main FX-share comparisons, only one of 18 "
-    "currency-internationalization or institutional-quality additions, institutional quality in the additive model, reaches a point-estimate "
-    "gain of {sesoi} average precision (AP), with an interval that includes zero; {e21_n_not_excl_plus} paired intervals cannot exclude such a gain. Equivalence between the institution-conditioned interaction and the "
-    "additive model is not established. In 2021-2022, country identity plus persistence achieves AP {c1_lock}, compared with {b0_lock} for "
-    "persistence alone. Eight-month recalibration worsens Brier scores for all {n_models_cal} benchmark models. Simulated review benefits depend "
-    "on reviewer errors, fees and the comparison policy. In an exploratory 2023-2025 rerun with corrected tuning, institutional quality lowers "
-    "the additive model's expected cost, but its AP interval includes zero, and XGBoost shows no detected increment. The refitted fallback retains "
-    "persistence throughout, while corrected XGBoost achieves higher AP in the core economies. The findings support explicit audits of "
-    "information timing and decision assumptions; they do not establish real-time deployment performance or a general absence of "
-    "institutional information.")
+    "Wider international use of a currency changes how its issuing economy is exposed to global capital flows, and institutional quality is "
+    "often argued to determine whether that exposure stabilizes or destabilizes the exchange rate. Both are thus candidate exchange-rate risk "
+    "indicators. We ask whether they add short-term early-warning value beyond conventional macroeconomic indicators. Using "
+    "monthly data for nine emerging economies over 2012-2022, extended to fifteen economies for 2023-2025, we re-estimate earlier panel "
+    "threshold evidence and then forecast three-month real-effective-exchange-rate stress under publication lags, comparing models against "
+    "persistence, country-identity and macro-only benchmarks by average precision (AP) and expected decision loss. Three findings emerge. "
+    "First, the institutional threshold is reproducible but fragile: {n_lost15} of {n_sig1} significant tests lose significance under wider "
+    "trimming. Second, currency-internationalization measures add no detectable warning value: they lower AP in {n_ci_neg} of 6 comparisons, and their "
+    "signal mainly reflects persistent cross-country differences. Institutional quality yields a small, imprecise AP gain ({d_m0_iq_all}) and, "
+    "in 2023-2025, lowers an interpretable model's expected cost. Third, stress persistence and country-specific risk levels are hard to beat: "
+    "in 2021-2022 they reach AP {c1_lock}, against {b0_lock} for persistence alone. Structural internationalization and governance indicators "
+    "appear better suited to deciding which economies warrant closer monitoring than to timing alarms, and candidate indicators should be "
+    "benchmarked against persistence under publication lags and decision costs. The evidence is predictive, not causal, and concerns "
+    "short-horizon stress in emerging economies.")
 
-KEYWORDS = ["Early warning system", "Explainable boosting machine", "Panel threshold regression", "Replication",
-            "Pseudo-real-time evaluation", "Selective prediction"]
+KEYWORDS = ["Currency internationalization", "Institutional quality", "Exchange-rate risk", "Early warning system",
+            "Explainable boosting machine", "Decision cost"]
 
 HIGHLIGHTS = [
-    "A reproducibility audit connects threshold evidence with stress prediction",
-    "Only one of 18 CI or IQ additions reaches a 0.02 gain in average precision",
-    "Model rankings change across periods, countries and stress definitions",
-    "Simulated review gains depend on reviewer errors, fees and the comparison policy",
-    "A refitted fallback keeps persistence and misses XGBoost gains in core economies",
+    "Currency internationalization and governance are tested as FX stress indicators",
+    "Internationalization adds no detectable warning value beyond macro indicators",
+    "Its signal mainly separates countries rather than timing stress episodes",
+    "Institutional quality: small, imprecise AP gains; lower expected cost in 2023-25",
+    "Persistence and country risk levels should anchor exchange-rate warning systems",
 ]
 
 # ------------------------------------------------------------------------------------------
@@ -151,39 +151,50 @@ EXCL0_SENTENCE = ("No interval excludes zero." if not _items else
                   f"{'a loss' if len(_items) == 1 else 'losses'} ({'; '.join(_items)}).")
 
 H1("Introduction")
-P("Early-warning systems for exchange-rate and balance-of-payments stress are decision-support tools. A model ranks countries or months by "
-  "risk, and analysts decide where to spend limited monitoring capacity [kaminsky1998; holopainen2017]. Their value depends on out-of-sample "
-  "ranking quality, on the calibration of the probabilities shown to users and on the cost of the actions they trigger, not on in-sample fit. "
-  "Candidate early-warning variables are nevertheless often motivated by in-sample regressions. The unpublished study examined here uses "
-  "fixed-effects panel threshold models to investigate whether the association between currency internationalization (CI) and macroeconomic "
-  "risk varies with institutional quality (IQ). [hansen1999] provides the non-dynamic threshold framework used as its starting point.")
-P("This paper asks whether such threshold evidence survives the move from a regression table to an early-warning system. We organise the study "
-  "around three questions.")
-BUL(["RQ1 (replication): Can the reported threshold estimates be reproduced from the original data, and how sensitive are they to estimation "
-     "choices that are rarely reported, such as the trimming of the threshold grid and the timing of information?",
-     "RQ2 (forecast value): Under explicit information-release assumptions, do CI, IQ and their interaction improve the prediction of future REER "
-     "stress relative to persistence, country-identity and macro-only benchmarks, using {sesoi} AP as a smallest effect of interest?",
-     "RQ3 (decision value): How do calibration, analyst-routing and fallback policies compare under explicit decision-cost assumptions, and how do "
-     "their rankings change in a later retrospective evaluation period?"])
-P("We use data from an earlier unpublished working paper on CI, IQ and six macroeconomic risks, with overlapping authorship: a SWIFT-share panel "
-  "of six countries and an FX-turnover-share panel of nine countries. This is an internal replication. We reconstruct the reported threshold "
-  "tests and regime coefficients, then evaluate related features in a release-lag-adjusted backtest for three-month real-effective-exchange-rate "
-  "(REER) stress. The 2017-2020 folds support development; 2021-2022 had been inspected during study design and are treated as retrospective "
-  "test folds. A later evaluation covers 2023-2025. An implementation audit identified timing problems in its original run, so the extension "
-  "evidence in the main text uses a corrected, explicitly exploratory rerun. The original run and protocol chronology are retained in Appendix A. "
-  "None of these historical samples is represented as an untouched prospective test.")
-P("The evidence is heterogeneous. The reported F statistics can be reconstructed, but sensitivity to trimming and inference assumptions limits "
-  "their use as predictive justification. In the main FX-share comparisons, estimated gains reach the chosen {sesoi} AP margin only for IQ in "
-  "the additive model, and uncertainty often remains too large to exclude or confirm such gains. Equivalence of the interaction and additive models is not established. Benchmark "
-  "rankings also change across evaluation periods and target definitions. The study makes three contributions:")
-BUL(["An auditable workflow linking reconstruction of regression evidence to information-timing checks, out-of-time prediction and simulated "
-     "decisions. The contribution is the integrated evaluation and documentation of these stages.",
-     "A matched assessment of CI and IQ information using persistence and country-identity benchmarks, feature and interaction ablations, paired "
-     "uncertainty intervals and event-level warning measures.",
-     "A comparative evaluation of calibration, analyst-routing assumptions and fallback policies, showing how predictive gains and simulated "
-     "decision benefits depend on the target, period and policy design."])
+P("Exchange-rate stress remains one of the main macro-financial risks for emerging economies, and monitoring agencies look for indicators "
+  "that signal it early enough to act [kaminsky1998; frankel1996]. Two structural features of these economies have attracted growing "
+  "attention. As an emerging-market currency is used more widely in invoicing, payments and financial transactions, the issuing economy "
+  "becomes more exposed to shifts in global portfolios and funding conditions [eichengreen2018], and policies that promote "
+  "internationalization change how currencies co-move [an2024]. Whether this exposure stabilizes or destabilizes the exchange rate is often "
+  "argued to depend on institutional quality: sound institutions can anchor expectations and shape how financial openness is absorbed "
+  "[chinn2006; aman2024]. These arguments make currency internationalization (CI) and institutional quality (IQ) natural candidates for "
+  "exchange-rate risk monitoring, alongside conventional indicators such as reserves, inflation, credit and past exchange-rate movements.")
+P("Most of the supporting evidence, however, comes from in-sample panel regressions. An unpublished working paper with overlapping authorship, "
+  "for example, uses fixed-effects panel threshold models [hansen1999] to argue that the association between CI and six macroeconomic risks "
+  "changes once IQ crosses a threshold. Such estimates use contemporaneous regressors and annual governance scores assigned to months of the "
+  "same year; they describe associations rather than information a monitoring agency would have held at the time [croushore2001]. Whether "
+  "the economic information carried by CI and IQ translates into warning value therefore remains open. This paper asks: can the information "
+  "contained in currency internationalization and institutional quality be turned into early-warning value for short-term exchange-rate risk, "
+  "beyond what conventional macroeconomic indicators and the persistence of stress already provide? We answer it in three steps.")
+BUL(["Is the reported institutional threshold a stable basis for a warning rule? We re-estimate the original threshold tests and examine their "
+     "sensitivity to grid trimming, inference assumptions and information timing.",
+     "Does CI or IQ information improve forecasts of three-month real-effective-exchange-rate (REER) stress relative to persistence, "
+     "country-identity and macro-only benchmarks under explicit publication lags? We treat a gain of {sesoi} in average precision (AP) as the "
+     "smallest gain of practical interest.",
+     "Does any predictive gain change decisions? We compare expected losses under asymmetric costs, analyst-review capacity and fallback rules, "
+     "including a later evaluation period, 2023-2025."])
+P("The data are the two regression datasets of the working paper, a SWIFT-share panel of six emerging economies and an FX-turnover-share panel "
+  "of nine, extended into a release-lag-adjusted country-month panel that adds six further emerging markets. The 2017-2020 folds support model "
+  "development, 2021-2022 had been inspected during study design and is treated as a retrospective test, and 2023-2025 is a later evaluation "
+  "whose main-text results come from a corrected, explicitly exploratory rerun (Appendix A documents the original run). None of these "
+  "historical samples is an untouched prospective test.")
+P("The answers are largely negative for the timing of stress and more informative for the design of monitoring. The institutional threshold "
+  "can be reproduced, but it is sensitive to trimming and inference assumptions, so it is a weak basis for an alarm rule. CI adds no "
+  "detectable ranking value beyond macro indicators, and the part of its signal that the models use reflects persistent differences between "
+  "countries rather than changes within them, consistent with internationalization being a slow-moving structural attribute. IQ gives a "
+  "small and imprecise ranking gain in an additive model and, in 2023-2025, a lower expected decision cost. Short-horizon REER stress is "
+  "dominated by persistence and country-specific risk levels, which simple benchmarks capture. The study makes three contributions:")
+BUL(["An economic test: it asks whether two widely discussed structural determinants of exchange-rate risk carry short-term warning "
+     "information once publication lags, persistence and country identity are accounted for, and shows that the information they carry is "
+     "mainly cross-sectional and largely captured by macro indicators and country-specific risk levels.",
+     "An evaluation design: it links reconstruction of the regression evidence to out-of-time prediction and decision-loss evaluation, with "
+     "paired uncertainty intervals and event-level measures, so that the step from an in-sample association to a monitoring indicator is "
+     "explicit and auditable.",
+     "Design implications: it shows how calibration, analyst review and fallback rules change the decision value of the same forecasts, and "
+     "draws bounded implications for indicator selection and early-warning system design."])
 P("Section 2 reviews related work. Section 3 describes the data and the replication design, Section 4 the forecasting and decision framework and "
-  "Section 5 the results. Section 6 discusses the decision rules and limitations, and Section 7 concludes.")
+  "Section 5 the results. Section 6 interprets the findings economically, draws policy implications and states the limitations, and Section 7 "
+  "concludes.")
 
 H1("Related work")
 H2("Currency internationalization, institutions and exchange-rate risk")
@@ -216,14 +227,17 @@ H2("Original study and data")
 P("The internal replication uses the two regression datasets of the earlier unpublished working paper. The working paper exists as a long draft "
   "(file created 15 November 2023, last revised 14 October 2024) and a shortened draft (23 July 2025); both report the threshold estimates "
   "replicated here, and Supplementary Table S11 lists the discrepancies identified in them. According to the drafts, the SWIFT shares come from "
-  "SWIFT's monthly reports, the FX-turnover shares from the BIS and the World Bank, and the other macro series from the World Bank and the Wind "
-  "Economic Database; quarterly GDP was converted to months by backward filling. The series were compiled into the two regression datasets on "
-  "13 June 2023 (file metadata). The Wind series codes, the exact definition of the turnover share and any interpolation were not retained. The "
-  "Panel B CI column is labelled as domestic-currency FX-derivatives turnover and varies from month to month in every country (apart from runs "
-  "of zeros for Russia), so it is not a step-filled triennial survey value, but its construction cannot be verified. Supplementary Table S15 "
-  "documents the variables by their dataset column names, and SHA-256 checksums of the files are recorded in the reproduction archive.")
+  "SWIFT's monthly reports and the other macro series from the World Bank and the Wind Economic Database; quarterly GDP was converted to months "
+  "by backward filling. The series were compiled into the two regression datasets on 13 June 2023 (file metadata). The {prov_n_files} source "
+  "exports from which the currency-use columns were built have been retained (workbooks created {prov_export_from} to {prov_export_to}; "
+  "Supplementary Table S18). They show that the Panel B CI measure is the domestic currency's share of total monthly FX-derivatives turnover "
+  "across all currencies, taken from a BIS Statistics Explorer export of {prov_bis_date} that covers {prov_bis_from} to {prov_bis_to}. "
+  "Recomputing this ratio reproduces all {prov_ci_n} Panel B values for the {prov_ci_countries} countries exactly, so the series is a monthly "
+  "turnover share rather than a step-filled triennial survey value. The SWIFT shares of Panel A cannot be re-derived from the retained exports, "
+  "and the exports record Wind indicator names but not Wind series codes. Supplementary Table S15 documents every dataset column with its source "
+  "export and reconstruction check, and SHA-256 checksums of all files are recorded in the reproduction archive.")
 P("Panel A measures CI by the currency's share of SWIFT payments for China, Hungary, Mexico, Poland, the Russian Federation and South Africa "
-  "(2012-08 to 2021-12, N = 678). Panel B measures CI by the domestic currency's share of FX-turnover and adds Brazil, India and Korea (2012-01 to "
+  "(2012-08 to 2021-12, N = 678). Panel B measures CI by the domestic currency's share of FX-derivatives turnover and adds Brazil, India and Korea (2012-01 to "
   "2022-12, N = 1,188). IQ is the mean of the six WGI dimensions. The six risk indicators are CPI volatility (CPI_Vol), FX-reserve volatility "
   "(FX_Vol), consumption volatility (CE_Vol), real exchange-rate volatility (ER_Vol), the credit-to-GDP gap (CG_Gap) and unemployment (Unemp). "
   "The Panel B ER_Vol series is available for only {B_er_countries} of the nine countries, so that regression uses N = {B_er_n}. [[tab:data]] "
@@ -263,7 +277,8 @@ P("For forecasting we build a country-by-month panel for the nine Panel B econom
   "months after the quarter; and year-$Y$ WGI and macro controls from September of year $Y+1$, with the age of the latest release as a feature "
   "(Supplementary Table S12). These are release-lag assumptions rather than a reconstruction of every historical release. Two specific limits "
   "apply. First, the WGI are revised retroactively and we use the current vintage, so the IQ series is pseudo-real-time in timing but not in "
-  "values. Second, the construction and release calendar of the FX-share series are not documented, so we assess assumed CI release lags of "
+  "values. Second, the construction of the FX-share series is verified (Section 3.1), but its historical release calendar is not documented, "
+  "so we assess assumed CI release lags of "
   "3, 6 and 12 months and a CI frozen at the training cut-off (Section 5.7). When the CI coverage ends the last release is held forward with its "
   "age. [[fig:fig1]] summarises the information set and the folds.")
 P("The analysis is a release-lag-adjusted backtest using available data vintages. Shifting a revised series by a nominal lag does not "
@@ -406,8 +421,9 @@ P("The extension is retrospective and was not independently preregistered. The p
   "frozen result was known and is a new policy, not part of the protocol.")
 
 H1("Results")
-H2("Replication of the threshold evidence")
-P("[[tab:thresh]] compares the replicated threshold tests with the reported values. With Hansen's residual variance the replicated F statistics "
+H2("The institutional threshold is reproducible")
+P("The reported threshold statistics can be reconstructed from the original data, but only under a specific variance convention. "
+  "[[tab:thresh]] compares the replicated threshold tests with the reported values. With Hansen's residual variance the replicated F statistics "
   "exceed the reported ones by a factor determined by the panel dimensions: reported/replicated = {ratio_A} in all six Panel A regressions, "
   "{ratio_B_other} in the five nine-country Panel B regressions and {ratio_B_er} in the eight-country Panel B ER_Vol regression. Dividing "
   "instead by $T(N-1)$ reproduces {n_f_exact} of the 12 reported F statistics to two decimals, which identifies a compatible convention without "
@@ -416,18 +432,22 @@ P("[[tab:thresh]] compares the replicated threshold tests with the reported valu
   "{n_trans} differ from our estimates only by a digit or a sign and are classified as suspected transcription errors, although we cannot rule "
   "out other causes without the original code (Supplementary Table S1).")
 TBL("thresh")
-H2("Threshold robustness")
-P("The thresholds are often extreme. In {n_edge} of 12 regressions fewer than 10% of observations fall in the low-IQ regime; for Panel A CPI_Vol "
+H2("The threshold is fragile and a weak basis for alarms")
+P("The estimated thresholds lie near the edge of the IQ distribution, and half of the significant tests lose significance under modest "
+  "changes in estimation choices. In {n_edge} of 12 regressions fewer than 10% of observations fall in the low-IQ regime; for Panel A CPI_Vol "
   "the low regime contains {A_cpi_share}% of observations. With 1% trimming {n_sig1} of 12 tests are significant at 5%; with 15% trimming "
   "{n_lost15} of these lose significance (Panel A CPI_Vol: p = {A_cpi_p15}), leaving {robust_list}. In a pseudo-real-time version that lags CI by "
   "one month and uses IQ and annual controls only after their release, {n_sig_prt} tests are significant and {n_both} of the originally "
   "significant ones survive ({both_list}). With single WGI dimensions as threshold variables, {wgi_sig_A} of {wgi_n} Panel A and {wgi_sig_B} of "
-  "{wgi_n} Panel B tests are significant (Supplementary Tables S3-S5). [[fig:fig8]] summarises the evidence. The answer to RQ1 is that the "
-  "reported statistics can be reconstructed under a compatible calculation, but their specification sensitivity and inferential limitations "
-  "prevent them from establishing a stable predictive or causal mechanism.")
+  "{wgi_n} Panel B tests are significant (Supplementary Tables S3-S5). [[fig:fig8]] summarises the evidence. The first question therefore has "
+  "a qualified answer: the reported statistics can be reconstructed, but their specification sensitivity and inferential limitations prevent "
+  "them from establishing a stable predictive or causal mechanism. For monitoring, a threshold that places few observations in one regime and "
+  "weakens under wider trimming cannot define a stable alarm trigger; at most it motivates CI and IQ as candidate variables to be tested out of "
+  "sample, which the following sections do.")
 FIGR("fig8")
-H2("Forecasting benchmark")
-P("[[tab:bench]] reports the benchmark. Over all six folds (pooled AP, base rate {base_all}) the random forest leads with {b3_all}, followed by "
+H2("Persistence and country risk levels dominate short-run stress")
+P("Simple benchmarks that encode the persistence of stress and the typical stress level of each country are hard to beat; over six "
+  "folds even the strongest tree ensembles do not improve on persistence with an interval that excludes zero. [[tab:bench]] reports the benchmark. Over all six folds (pooled AP, base rate {base_all}) the random forest leads with {b3_all}, followed by "
   "C1 ({c1_all}), XGBoost ({b4_all}) and the persistence rule B0 ({b0_all}); the EBMs reach {m0_all} (M0) and {m1_all} (M1). The ranking is not "
   "stable. In the development folds the random forest is best ({b3_dev}) and B0 weak ({b0_dev}); in the retrospective test C1 reaches "
   "{c1_lock} and B0 {b0_lock}, above the other multivariable models in [[tab:bench]] (at most {max_learned_lock}), and the EBMs fall to about "
@@ -435,11 +455,17 @@ P("[[tab:bench]] reports the benchmark. Over all six folds (pooled AP, base rate
   "gain is {bt_b3b0_all_L12} [{bt_b3b0_all_L12_lo}, {bt_b3b0_all_L12_hi}] and XGBoost's {bt_b4b0_all_L12} [{bt_b4b0_all_L12_lo}, "
   "{bt_b4b0_all_L12_hi}]. Country identity alone (C0) reaches {c0_all}, close to the EBMs, which is consistent with cross-country differences "
   "contributing to discrimination, without quantifying how much of each model's skill is attributable to country identity ([[fig:fig3]]).")
+P("Economically, this pattern reflects volatility clustering in exchange rates and stable differences in how volatile each economy's real "
+  "exchange rate typically is: an economy that is under stress, or that is structurally more volatile, is likely to remain so over the next "
+  "quarter. A structural indicator is useful for warning only if it adds information beyond these two components, so the comparisons that "
+  "follow are made against them.")
 TBL("bench")
 FIGR("fig3")
-H2("Incremental information from CI and IQ")
-P("[[tab:ablation]] compares CI and IQ additions in the main FX-share specification. Adding CI to the macro feature set lowers pooled AP in "
-  "{n_ci_neg} of 6 model-window cells. Only one of the 18 additions raises AP by {sesoi} or more: IQ in M0 over six folds ({d_m0_iq_all}), "
+H2("CI adds no detectable warning value; IQ adds little")
+P("Neither CI nor the CI x IQ interaction improves the ranking of high-risk windows beyond macro indicators, and IQ helps only the additive "
+  "model, imprecisely. [[tab:ablation]] compares CI and IQ additions in the main FX-share specification. Adding CI to the macro feature set "
+  "lowers pooled AP in {n_ci_neg} of 6 model-window cells, and {e21_ci_n_excl_plus} of these {e21_ci_n} paired intervals exclude a gain of "
+  "{sesoi} (largest upper limit {e21_ci_max_hi}). Only one of the 18 additions raises AP by {sesoi} or more: IQ in M0 over six folds ({d_m0_iq_all}), "
   "with a paired 95% interval of [{e21_m0_iq_all_lo}, {e21_m0_iq_all_hi}] ([[tab:intervals]]). Relative to M0, the "
   "CI x IQ interaction changes AP by {e05_m1_all} over all folds and {e05_m1_lock} in the retrospective test, a placebo macro interaction by "
   "{e05_plac_all} and {e05_plac_lock}, and an unrestricted EBM by {e05_unr_all} and {e05_unr_lock}. These are original-sample differences "
@@ -462,9 +488,17 @@ P("The EBM explanations ([[fig:fig5]]) rank the FX share {e09_rank_fx} of {e09_n
   "between x IQ pair gives {dec_within_all} and {dec_between_all}. The between component carries {imp_between}% of total EBM importance against "
   "{imp_within}% for the within component (Supplementary Table S14). This decomposition is consistent with part of the CI signal reflecting "
   "persistent country differences; importance shares do not establish that CI is only a country identifier or identify a causal channel.")
+P("Economically, these results suggest that CI behaves like a slow-moving structural exposure attribute. The share of a currency in global "
+  "FX-derivatives turnover differs widely between economies but changes little from month to month within one, so a model can use it to "
+  "separate economies by their typical risk level. That information largely duplicates what macro indicators, country identity and "
+  "persistence already provide, which is consistent with CI ranking high in the EBM explanations yet lowering AP when added. It does not indicate when "
+  "stress begins. IQ is annual, revised and slowly changing as well; its modest gain in the additive model is consistent with an adjustment of "
+  "each economy's baseline risk rather than a timing signal. The near-parallel CI response across IQ levels gives no predictive support for "
+  "the threshold mechanism.")
 FIGR("fig5")
-H2("Events, onsets and direction")
-P("[[tab:events]] moves from windows to episodes. Over six folds there are {n_episodes_all} episodes ({n_episodes_lock} in 2021-2022); the "
+H2("Warnings track continuing stress; onsets are harder")
+P("At the episode level, persistence alone flags most episodes in advance, much like the multivariable models, whereas precision falls for "
+  "every model once origins already in stress are removed. [[tab:events]] moves from windows to episodes. Over six folds there are {n_episodes_all} episodes ({n_episodes_lock} in 2021-2022); the "
   "fold-specific counts in [[tab:folds]] sum to {n_ep_fold_sum} because {n_ep_cont} runs continue across a year boundary and are counted once "
   "here. At $C_{FN} = 5$, B0 covers {ep_rec_b0_all}% of episodes with {ep_fa_b0_all} false alarms per country-year, XGBoost {ep_rec_b4_all}% "
   "with {ep_fa_b4_all} and M1 {ep_rec_m1_all}% with {ep_fa_m1_all}; in the retrospective test M1 covers {ep_rec_m1_lock}%. Under the strict "
@@ -477,9 +511,14 @@ P("[[tab:events]] moves from windows to episodes. Over six folds there are {n_ep
   "({on_npos_lock} onset windows). Over six folds B0 and M1 predict depreciation and appreciation windows with AP {dep_b0_all} and "
   "{app_b0_all} (B0) and {dep_m1_all} and {app_m1_all} (M1). In 2021-2022 the persistence-based models detect the {dep_npos_lock} "
   "depreciation windows better (B0 {dep_b0_lock}, C1 {dep_c1_lock}) than the EBMs (M1 {dep_m1_lock}).")
+P("For a monitoring agency the most valuable signal is the onset of stress in an economy that is currently calm. That every model loses "
+  "precision there, and that country identity plus persistence still leads in the onset windows of 2021-2022, indicates that the evaluated "
+  "structural indicators do not supply the missing onset information. Because the episodes are labelled from REER movements rather than dated "
+  "crises, these leads describe the anticipation of stress windows, not of policy events.")
 TBL("events")
-H2("Calibration and the decision layer")
-P("Platt scaling on the eight-month window worsens the pooled Brier score for {n_platt8_worse_all} of {n_models_cal} models (M1: "
+H2("Decision value depends on costs and review, not ranking alone")
+P("Rankings by expected decision cost differ from rankings by AP and change between periods, and the value of analyst review depends on "
+  "assumed reviewer errors. Platt scaling on the eight-month window worsens the pooled Brier score for {n_platt8_worse_all} of {n_models_cal} models (M1: "
   "{m1_brier_raw_all} raw, {m1_brier_platt_8m_all} with eight-month Platt, {m1_brier_platt_expanding_all} with expanding Platt); calibration "
   "windows contain as few as {cal_pos_2020} events. In the automated setting M1 costs {e15_m1auto_b0auto_all_A} per 100 forecasts against "
   "{e15_m1auto_b0auto_all_B} for B0 over six folds (difference {e15_m1auto_b0auto_all} [{e15_m1auto_b0auto_all_lo}, "
@@ -503,14 +542,22 @@ P("[[tab:reviewerr]] examines the reviewer-error assumptions. With perfect revie
   "imperfect-review comparisons, low-confidence routing beats random routing in {e23_n_lc_rand_better}, but none of its intervals establishes a "
   "reduction relative to no review and " + LC_WORSE + ". Review value depends on the fee, error model, calibration and "
   "comparison policy.")
+P("Economically, choosing a warning model is therefore a choice about the loss function and the institutional setting. Over six folds the "
+  "additive model with the CI x IQ term has a lower AP than persistence but a lower point estimate of expected cost, whereas in 2021-2022 it is "
+  "clearly more costly, so the same forecasts can look preferable or inferior depending on the period and on how missed episodes are weighed "
+  "against false alarms. Likewise, scarce analyst capacity adds value only if analysts correct the model more often than they err, which the "
+  "simulation must assume rather than observe.")
 TBL("reviewerr")
 FIGR("fig4")
 FIGR("fig7")
-H2("Robustness and information timing")
-P("The reported EBM results are sensitive to information timing. Using month-$t$ REER values, which are not published at the end of month $t$, "
+H2("Publication lags matter; CI timing hardly does")
+P("Apparent skill depends heavily on when exchange-rate information becomes available, whereas the assumed timing of CI hardly matters. "
+  "Using month-$t$ REER values, which are not published at the end of month $t$, "
   "raises the pooled AP of M1 from {m1_all} to {spot_m1_all} and of M0 from {m0_all} to {spot_m0_all}; an evaluation without the one-month "
   "REER lag would therefore overstate the EBMs' skill. Under longer assumed CI release lags of 3, 6 and 12 months M1 reaches {cilag3_m1_all}, "
-  "{cilag6_m1_all} and {cilag12_m1_all} over six folds, and freezing CI at the training cut-off gives {cifrozen_m1_all}. Other variations "
+  "{cilag6_m1_all} and {cilag12_m1_all} over six folds, and freezing CI at the training cut-off gives {cifrozen_m1_all}, with no systematic "
+  "decline as the lag grows. This is consistent with CI carrying slow-moving rather than timely information: what the models use from CI is "
+  "still available a year later. Other variations "
   "(Supplementary Table S6) change model rankings: with a q75 threshold B0, XGBoost and M1 reach {q75_b0_all}, {q75_b4_all} and {q75_m1_all}; "
   "with q90 ({q90_npos_all} high-risk windows) {q90_b0_all}, {q90_b4_all} and {q90_m1_all}; with country-specific q80 thresholds "
   "{cty_b0_all}, {cty_b4_all} and {cty_m1_all}; at a six-month horizon {h6_b0_all}, {h6_b4_all} and {h6_m1_all}. Single WGI dimensions give M1 "
@@ -522,33 +569,41 @@ P("Paired intervals qualify these comparisons. Of {e21_rob_n} model-versus-B0 co
   "multiplicity-adjusted evidence of general superiority. In the matched Core-6 sample ({c6_npos_all} high-risk windows in {c6_n_all} "
   "country-months) M1 reaches {c6_sw_m1_all} with SWIFT features and {c6_noci_m1_all} without CI, a difference of {e21_c6_m1_swift} "
   "[{e21_c6_m1_swift_lo}, {e21_c6_m1_swift_hi}]; " + _c6 + ". The main FX-share ablations do not show a {sesoi} AP gain from CI, but this result "
-  "should not be generalized to every CI measure or risk definition.")
-H2("Corrected retrospective extension for 2023-2025")
-P("The corrected extension covers {conf_all15_n} country-months and {conf_all15_npos} high-risk windows across 15 economies ([[tab:ext]]). All "
+  "should not be generalized to every CI measure or risk definition; the payment-based SWIFT measure can be evaluated only in this smaller "
+  "matched sample.")
+H2("2023-2025: flexible-model gains concentrate in core economies")
+P("In the later period a flexible model outperforms persistence in the nine core economies but not across all fifteen. The corrected "
+  "extension covers {conf_all15_n} country-months and {conf_all15_npos} high-risk windows across 15 economies ([[tab:ext]]). All "
   "estimates in this section are exploratory because the rerun followed inspection of earlier extension outputs. Macro-only XGBoost has pooled "
   "AP {ph_all15_b4mac} and cost {ph_all15_b4mac_cost} per 100 forecasts, compared with {ph_all15_b0} and {ph_all15_b0_cost} for B0. Macro+IQ "
   "XGBoost has AP {ph_all15_b4} and cost {ph_all15_b4_cost}. Its paired differences from B0 are {pd_all15_b4_b0_ap} [{pd_all15_b4_b0_ap_lo}, "
   "{pd_all15_b4_b0_ap_hi}] in AP and {pd_all15_b4_b0_cost} [{pd_all15_b4_b0_cost_lo}, {pd_all15_b4_b0_cost_hi}] in cost ([[tab:extdiff]]), so "
   "the full-sample intervals do not establish superiority. In Core-9, however, macro+IQ XGBoost exceeds B0 by {pd_core9_b4_b0_ap} AP "
   "[{pd_core9_b4_b0_ap_lo}, {pd_core9_b4_b0_ap_hi}]; in External-6 the difference is {pd_ext6_b4_b0_ap} [{pd_ext6_b4_b0_ap_lo}, "
-  "{pd_ext6_b4_b0_ap_hi}]. External-6 is an out-of-time subset of the pooled training design, not a set of unseen training countries.")
+  "{pd_ext6_b4_b0_ap_hi}]. External-6 is an out-of-time subset of the pooled training design, not a set of unseen training countries. "
+  "This heterogeneity suggests that the mapping from macro conditions to REER stress differs across groups of economies, so a single pooled "
+  "model does not dominate persistence everywhere; the period is too short to attribute the difference to specific shocks.")
 TBL("ext")
-H2("Institutional information and fallback policies in the extension")
-P("Adding IQ to the corrected macro EBM changes pooled AP by {pd_all15_iq_m0_ap} [{pd_all15_iq_m0_ap_lo}, {pd_all15_iq_m0_ap_hi}] over 15 "
+H2("IQ lowers cost more than it improves ranking; fallback forgoes gains")
+P("In the later period, adding IQ to the additive model reduces expected decision cost, whereas its ranking gain is imprecise. "
+  "Adding IQ to the corrected macro EBM changes pooled AP by {pd_all15_iq_m0_ap} [{pd_all15_iq_m0_ap_lo}, {pd_all15_iq_m0_ap_hi}] over 15 "
   "countries, {pd_core9_iq_m0_ap} [{pd_core9_iq_m0_ap_lo}, {pd_core9_iq_m0_ap_hi}] in Core-9 and {pd_ext6_iq_m0_ap} [{pd_ext6_iq_m0_ap_lo}, "
   "{pd_ext6_iq_m0_ap_hi}] in External-6; only the External-6 interval excludes zero. The XGBoost increment is {pd_all15_iq_b4_ap} "
   "[{pd_all15_iq_b4_ap_lo}, {pd_all15_iq_b4_ap_hi}]. For the EBM, the Brier difference is {pd_all15_iq_m0_brier} [{pd_all15_iq_m0_brier_lo}, "
   "{pd_all15_iq_m0_brier_hi}] and the expected-cost difference is {pd_all15_iq_m0_cost} [{pd_all15_iq_m0_cost_lo}, {pd_all15_iq_m0_cost_hi}] "
   "per 100 forecasts. These exploratory estimates suggest that IQ helps the additive model in this period more clearly at the cost threshold "
   "than in ranking; the AP intervals are wide, the result does not carry over to XGBoost, and macro+IQ EBM AP remains below B0 "
-  "({ph_all15_m0} versus {ph_all15_b0}).")
+  "({ph_all15_m0} versus {ph_all15_b0}). One reading consistent with Section 5.4 is that IQ shifts the level of predicted risk across "
+  "economies, moving probabilities across the cost threshold, rather than reordering months by risk; this reading is not tested directly.")
 P("The refitted single-candidate fallback deploys B0 in every year and therefore yields no improvement over always using B0. The monitored macro "
   "EBM's AP differences from B0 on the latest matured origins are {ph_fb_gain_list} for {ph_fb_years}, none reaching $\\delta$. The exploratory multi-candidate monitor "
   "{ph_mon_switch}. Its AP difference from B0 is {pd_all15_mon_b0_ap} [{pd_all15_mon_b0_ap_lo}, {pd_all15_mon_b0_ap_hi}] over 15 countries and "
   "{pd_core9_mon_b0_ap} [{pd_core9_mon_b0_ap_lo}, {pd_core9_mon_b0_ap_hi}] in Core-9." + MON_NOTE + " Relative to always using macro+IQ XGBoost, its Core-9 "
   "difference is {pd_core9_mon_b4_ap} [{pd_core9_mon_b4_ap_lo}, {pd_core9_mon_b4_ap_hi}]. With annual updates and a lagged monitoring window, "
   "response depends on when model rankings change and when outcomes mature; these results do not establish a universal one-year delay or the "
-  "performance of more frequent monitoring.")
+  "performance of more frequent monitoring. The economic trade-off is between protection against unreliable models and the opportunity cost "
+  "of ignoring a model that has become informative, and the candidate set, update frequency and evaluation window determine where a fallback "
+  "rule sits on that trade-off.")
 TBL("extdiff")
 
 H1("Discussion")
@@ -558,16 +613,39 @@ P("[[tab:rules]] translates the results into conditional design considerations. 
   "does not provide the chosen AP gain in the main comparison, CI does not in the main FX-share ablations, and the IQ gain for the EBM reaches "
   "the margin only in point estimate. The paired intervals, the sensitivity results and the post-hoc IQ results for the EBM prevent a blanket "
   "rejection of institutional or CI "
-  "information. The policy results answer RQ3 comparatively: no evaluated decision rule is uniformly best across periods and assumptions.")
+  "information. The decision results answer the third question comparatively: no evaluated decision rule is uniformly best across periods and "
+  "assumptions.")
 TBL("rules")
-H2("Implications for expert and decision-support systems")
-P("The applied contribution is a workflow for assessing whether regression-motivated variables deserve a role in predictive decision support. "
-  "It separates reconstruction of the original estimates, out-of-time feature evaluation and policy comparisons under explicit loss "
-  "assumptions. Information timing changes the EBM estimates materially and must be checked within nested tuning and calibration as well as at "
-  "the outer test boundary. Ranking, calibration and cost can support different model choices. Review policies inherit uncertainty from "
-  "probability estimates and assumed human errors; some no-review outcomes follow directly from the loss parameters. Fallback policies also "
-  "depend on the monitored candidate set and update schedule. These findings support transparent comparative evaluation, but do not validate an "
-  "optimal algorithm or a deployed warning service.")
+H2("Economic interpretation and policy implications")
+P("Taken together, the results point to a distinction between structural and timing information. CI and IQ describe slow-moving "
+  "characteristics of an economy: how widely its currency is used in international transactions and how strong its institutions are. Such "
+  "characteristics plausibly shape how exposed an economy is to global shocks and hence its typical level of exchange-rate risk, which is "
+  "consistent with the dominance of the between-country component of CI and with the level-type gain from IQ. They change too slowly, and are "
+  "published too late, to indicate when a particular quarter of stress begins; in the short-horizon task studied here, timing information "
+  "comes mainly from the recent behaviour of the real exchange rate itself. This does not contradict the view that internationalization and "
+  "institutions matter for exchange-rate risk. It is more consistent with their influence operating through the level of exposure than "
+  "through short-run triggers that a monthly warning system could exploit.")
+P("These findings have bounded implications for indicator selection and the design of early-warning systems.")
+BUL(["Prioritization rather than alarms. Internationalization and governance indicators are better suited to setting cross-sectional "
+     "monitoring priorities, that is, deciding which economies deserve closer attention, than to triggering month-level alarms.",
+     "Benchmark before adoption. A candidate structural indicator should improve on persistence and country-specific baselines, evaluated under "
+     "realistic publication lags, before it enters a warning model. In this sample neither CI nor the CI x IQ term passes that test.",
+     "Judge by decision cost as well as ranking. IQ can be retained as a low-cost conditioning variable in interpretable additive models, but its "
+     "value appears in expected cost more than in ranking and should be assessed against the agency's own loss function and review capacity.",
+     "No direct translation of threshold regressions. An in-sample threshold that is sensitive to trimming and places few observations in one "
+     "regime does not define a stable alarm trigger; it motivates candidate variables that still require out-of-sample validation.",
+     "Fallback design as an economic trade-off. Conservative fallback rules protect against unreliable models but forgo gains when a model "
+     "becomes informative, as in the core economies in 2023-2025; the candidate set and the update frequency should be evaluated explicitly."])
+P("For decision-support systems more generally, the workflow separates reconstruction of the original estimates, out-of-time feature "
+  "evaluation and policy comparison under explicit loss assumptions. Information timing must be checked within nested tuning and calibration "
+  "as well as at the outer test boundary, ranking, calibration and cost can support different model choices, and review policies inherit "
+  "uncertainty from probability estimates and assumed human errors. These findings support transparent comparative evaluation; they do not "
+  "validate an optimal algorithm or a deployed warning service.")
+P("The implications are limited in scope. They rest on fifteen emerging economies observed between 2012 and 2025, on a three-month REER stress "
+  "measure rather than dated currency crises, and on predictive comparisons without causal identification; CI observations end in 2022. They "
+  "do not cover issuers of reserve currencies, longer horizons at which structural exposure may matter more, or the question of whether CI and "
+  "IQ cause exchange-rate risk. That these indicators add little short-term warning value is compatible with their being important "
+  "determinants of long-run exposure.")
 H2("Limitations")
 P("The primary forecasting panel contains nine countries over eleven years, with {n_episodes_all} labelled episodes in the evaluated folds. "
   "Overlapping targets, common shocks and the limited number of country clusters constrain inference; short evaluation windows yield few "
@@ -575,8 +653,9 @@ P("The primary forecasting panel contains nine countries over eleven years, with
   "selection and retrospective inspection of 2021-2022 limit claims of untouched testing. The 2023-2025 extension is historical and cannot test "
   "updated CI. Its primary estimates come from a corrected exploratory rerun after prior target-summary and model-output inspection; the "
   "superseded implementation is retained in Appendix A solely as an audit record. The data are release-lag adjusted rather than fully vintage "
-  "reconstructed; current-vintage revisions and uncertain source calendars remain limitations. The Wind series codes and the construction of "
-  "the CI series could not be re-verified, and changing a nominal lag does not resolve provenance or measurement validity. The replication "
+  "reconstructed; current-vintage revisions and uncertain source calendars remain limitations. The FX-share construction is reproduced from "
+  "the retained BIS export, but the SWIFT shares and the Wind series codes cannot be re-verified, and the historical release dates of the CI "
+  "series are assumed; changing a nominal lag does not resolve this timing uncertainty. The replication "
   "preserves a dynamic fixed-effects specification, so Nickell bias [nickell1981] and the applicability of non-dynamic threshold-test inference "
   "require caution; the country-block bootstrap holds the lagged dependent variable fixed and rests on six, eight or nine resampling units. A "
   "search for specifications that reproduce earlier tables is not an independent hypothesis test. Expanding calibration assumes that scores "
@@ -585,19 +664,24 @@ P("The primary forecasting panel contains nine countries over eleven years, with
   "margin and comparison, and is not evidence of economic equivalence or policy causality.")
 
 H1("Conclusion")
-P("This study traces institution-conditioned currency-internationalization evidence from internal replication to predictive and simulated "
-  "decision evaluation. A compatible implementation reconstructs the reported threshold statistics, but several findings are sensitive to "
-  "trimming and inference assumptions. In the main FX-share comparisons, adding CI lowers AP, and only the IQ gain for the additive EBM reaches "
-  "the chosen AP margin in point estimate, while uncertainty frequently prevents either the exclusion or the confirmation of such gains. Results vary with the target, model and sample, including an exploratory reduction in the "
-  "additive EBM's expected cost from IQ in the corrected 2023-2025 evaluation. Persistence remains a strong benchmark, but neither it nor the evaluated review and "
-  "fallback policies is uniformly preferable. The contribution is an auditable workflow that separates reproducibility, predictive value and "
-  "decision assumptions, with explicit information-timing checks and bounded conclusions.")
+P("This study asks whether the economic information in currency internationalization and institutional quality can be turned into "
+  "early-warning value for short-term exchange-rate risk. For the emerging economies and period studied, the answer is mostly negative for "
+  "the timing of stress and informative for the design of monitoring. The reported institutional threshold can be reconstructed but is "
+  "sensitive to trimming and inference assumptions. Currency internationalization adds no detectable ranking value beyond macro indicators, "
+  "and its signal is largely cross-sectional. Institutional quality gives a small, imprecise ranking gain and, in the exploratory 2023-2025 "
+  "evaluation, a lower expected cost for an interpretable additive model. Persistence and country-specific risk levels remain strong "
+  "benchmarks, but neither they nor the evaluated review and fallback policies are uniformly preferable. Structural indicators are therefore "
+  "better used to decide which economies to watch than when to raise an alarm, and any new indicator should be judged against persistence "
+  "under realistic publication lags and decision costs. The auditable workflow linking reproduction, prediction and decision evaluation makes "
+  "these conclusions, and their limits, explicit.")
 
-DATA("BIS, IMF and World Bank data are public. The regression datasets of the original working paper, compiled on 13 June 2023, include "
-     "licensed Wind series and are not redistributed here. Supplementary Table S15 documents their variables, and the reproduction archive "
-     "records file checksums; the original Wind series codes were not retained. The anonymized reproduction materials are organized as "
-     "MacroRisk_reproduction_anonymized.zip and comprise code, split definitions, the protocol and change log, timing audits, row-level "
-     "predictions and labels, archived outputs, Supplementary Tables S1-S17 and the run_all.sh entry script. The BIS REER data used run through "
+DATA("BIS, IMF and World Bank data are public. The regression datasets of the original working paper, compiled on 13 June 2023, and the "
+     "{prov_n_files} Wind, BIS and SAFE exports from which their currency-use columns were built include licensed Wind series and are not "
+     "redistributed here. Supplementary Tables S15 and S18 document their variables, indicator names, export dates and reconstruction checks, and "
+     "the reproduction archive records file checksums; the exports contain Wind indicator names but not Wind series codes. The anonymized "
+     "reproduction materials are organized as MacroRisk_reproduction_anonymized.zip and comprise code, split definitions, the protocol and "
+     "change log, timing audits, the provenance audit, row-level predictions and labels, archived outputs, Supplementary Tables S1-S18 and the "
+     "run_all.sh entry script. The BIS REER data used run through "
      "{reer_last_obs}. Public-source forecasting components and archived predictions support parts of the evaluation; full reconstruction of the "
      "historical regressions additionally requires authorized access to the exact licensed inputs. The manuscript's audit history distinguishes "
      "corrected results from superseded outputs.")
@@ -661,6 +745,15 @@ CLAIMS = {
     "extension: no IQ increment for XGBoost": not excl0("pd_all15_iq_b4_ap"),
     "extension: macro+IQ EBM below B0": num("ph_all15_m0") < num("ph_all15_b0"),
     "extension: refitted fallback keeps B0": all(x.endswith("B0") for x in V["ph_fb_deployed"].split(", ")),
+    "half of the significant threshold tests lose significance at 15% trimming": 2 * int(V["n_lost15"]) == int(V["n_sig1"]),
+    "CI decomposition: between component dominates importance": num("imp_between") > num("imp_within"),
+    "CI ranks high in the EBM explanations": int(V["e09_rank_fx"]) <= 5,
+    "CI-alone: no interval lies above zero": V["e21_ci_n_excl_plus"] >= V["e21_ci_n"] - 1 and V["n_ci_neg"] == V["e21_ci_n"],
+    "persistence alone warns ahead of most episodes": num("e22_b0_tau_all") > 50,
+    "M1: lower AP but lower point cost than B0 over six folds, higher cost in 2021-2022": num("m1_all") < num("b0_all") and num("e15_m1auto_b0auto_all") < 0 and num("e15_m1auto_b0auto_lock_lo") > 0,
+    "no systematic decline of M1 AP with CI lag": not (num("cilag3_m1_all") > num("cilag6_m1_all") > num("cilag12_m1_all"))
+                                                 and min(num(k) for k in ["cilag3_m1_all", "cilag6_m1_all", "cilag12_m1_all", "cifrozen_m1_all"]) > num("m1_all") - num("sesoi"),
+    "month-t REER raises M1 AP": num("spot_m1_all") > num("m1_all"),
 }
 bad = [k for k, ok in CLAIMS.items() if not ok]
 if bad:
@@ -694,7 +787,7 @@ TABLES, SUPP = {}, {}
 
 TABLES["data"] = dict(caption="Samples.", header=["Sample", "Countries", "Period", "N", "CI measure", "Use"], rows=[
     ["Panel A", "CHN, HUN, MEX, POL, RUS, ZAF", "2012-08 to 2021-12", "678", "SWIFT payment share", "Threshold replication"],
-    ["Panel B", "Panel A + BRA, IND, KOR", "2012-01 to 2022-12", "1,188", "FX-turnover share", "Threshold replication"],
+    ["Panel B", "Panel A + BRA, IND, KOR", "2012-01 to 2022-12", "1,188", "FX-derivatives turnover share", "Threshold replication"],
     ["Core-9", "Panel B countries", "2012-01 to 2022-12", "1,188 origins", "FX share; assumed 1-month lag", "Forecasting, 2017-2022 folds"],
     ["External-6", "CHL, COL, IDN, MYS, THA, TUR", "2012-01 to 2022-12", "792 origins", "none", "Transfer"],
     ["Later evaluation", "Core-9 + External-6", "2023-01 to 2025-12", "540 origins", "none", "Retrospective extension"]],
@@ -868,15 +961,15 @@ TABLES["archdiff"] = dict(caption="Archived policy comparisons from the supersed
                     ("Always B1 vs frozen fallback", "Always B1 vs frozen fallback")]),
     notes=f"All rows use the archived predictions of the superseded implementation, with the original fallback equal to B0. The bootstrap reuses the seed of the original scoring, so the AP and cost intervals reproduce the original comparison table (Monte Carlo variation between bootstrap seeds is of the order of 1-2 cost units for these intervals). Protocol SHA-256: {V['proto_hash']}. Corrected comparisons are in Table 11.")
 
-TABLES["rules"] = dict(caption="Conditional design considerations derived from the reported evaluation.", header=["Decision", "Rule", "Evidence"], rows=[
+TABLES["rules"] = dict(caption="Implications for indicator selection and early-warning design derived from the reported evaluation.", header=["Decision", "Implication", "Evidence"], rows=[
     [fill(x) for x in row] for row in [
-        ["Feature set", "Evaluate incremental CI and IQ information against a matched macro baseline with paired intervals", "Main FX-share ablations: 1 of 18 point estimates reaches {sesoi} (IQ in M0: {e21_m0_iq_all} [{e21_m0_iq_all_lo}, {e21_m0_iq_all_hi}]); {e21_n_not_excl_plus} of {e21_n_abl} intervals cannot exclude such a gain; post-hoc 2023-2025 IQ effect for the EBM: AP {pd_all15_iq_m0_ap} [{pd_all15_iq_m0_ap_lo}, {pd_all15_iq_m0_ap_hi}], cost {pd_all15_iq_m0_cost} [{pd_all15_iq_m0_cost_lo}, {pd_all15_iq_m0_cost_hi}]"],
-        ["Interaction", "Validate the CI-by-IQ term before retaining it", "M1 - M0: {e05_m1_all}, paired 95% interval [{bt_m1m0_all_L12_lo}, {bt_m1m0_all_L12_hi}]; equivalence within +/-{sesoi} not established"],
-        ["Benchmarks", "Include persistence and country identity plus persistence", "Retrospective AP: C1 {c1_lock}; B0 {b0_lock}; highest other multivariable AP {max_learned_lock}"],
-        ["Timing", "Document release assumptions; enforce the maturity condition in every nested tuning and calibration stage", "Using month-t REER changes M1 AP from {m1_all} to {spot_m1_all}; {chg_n_changed} of {chg_n_keys} audited numbers changed after the nested-stage corrections"],
+        ["Indicator role", "Use CI and IQ to prioritise economies for monitoring; add them to warning models only if they beat a matched macro baseline with paired intervals", "Main FX-share ablations: 1 of 18 point estimates reaches {sesoi} (IQ in M0: {e21_m0_iq_all} [{e21_m0_iq_all_lo}, {e21_m0_iq_all_hi}]); {e21_n_not_excl_plus} of {e21_n_abl} intervals cannot exclude such a gain; post-hoc 2023-2025 IQ effect for the EBM: AP {pd_all15_iq_m0_ap} [{pd_all15_iq_m0_ap_lo}, {pd_all15_iq_m0_ap_hi}], cost {pd_all15_iq_m0_cost} [{pd_all15_iq_m0_cost_lo}, {pd_all15_iq_m0_cost_hi}]"],
+        ["Threshold mechanism", "Do not turn the CI-by-IQ threshold into an alarm rule without out-of-sample validation", "M1 - M0: {e05_m1_all}, paired 95% interval [{bt_m1m0_all_L12_lo}, {bt_m1m0_all_L12_hi}]; equivalence within +/-{sesoi} not established"],
+        ["Baseline", "Anchor the system on the persistence of stress and country-specific risk levels", "Retrospective AP: C1 {c1_lock}; B0 {b0_lock}; highest other multivariable AP {max_learned_lock}"],
+        ["Publication lags", "Document release assumptions; enforce the maturity condition in every nested tuning and calibration stage", "Using month-t REER changes M1 AP from {m1_all} to {spot_m1_all}; {chg_n_changed} of {chg_n_keys} audited numbers changed after the nested-stage corrections"],
         ["Calibration", "Select calibration using earlier out-of-sample predictions relabelled to the current event", "Eight-month Platt worsens Brier in {n_platt8_worse_all} of {n_models_cal} models"],
         ["Analyst review", "Compare routing at explicit fees and reviewer-error rates; distinguish capacity from actual review volume", "LC vs random under oracle review: {e15_m1rev_rand_all} [{e15_m1rev_rand_all_lo}, {e15_m1rev_rand_all_hi}]; fixed imperfect-review scenarios can imply zero review benefit algebraically"],
-        ["Fallback", "Evaluate the opportunity cost of the monitored candidate set, not only protection against weak models", "Corrected 2023-2025 fallback selects B0 throughout; macro+IQ XGBoost gains {pd_core9_b4_b0_ap} AP [{pd_core9_b4_b0_ap_lo}, {pd_core9_b4_b0_ap_hi}] in Core-9"],
+        ["Model switching", "Weigh protection against weak models against the opportunity cost of ignoring a model that has become informative", "Corrected 2023-2025 fallback selects B0 throughout; macro+IQ XGBoost gains {pd_core9_b4_b0_ap} AP [{pd_core9_b4_b0_ap_lo}, {pd_core9_b4_b0_ap_hi}] in Core-9"],
     ]], notes="Numbers are pooled over six folds unless stated; intervals are 95% paired block-bootstrap intervals.")
 
 # Supplementary tables
@@ -932,24 +1025,40 @@ SUPP["S13"] = dict(caption="Hyperparameter grids, seeds and software.", header=[
 dc = rd("table14_e20_ci_decomposition.csv")
 SUPP["S14"] = dict(caption="Within/between decomposition of the FX share.", header=["Window", "Variant", "Model", "AP pooled", "AP fold mean", "Brier", "Cost"],
                    rows=[["all" if r.evaluation_window == WA else "retro", r.variant.replace("_", " "), MLAB.get(r.model, r.model), f3(r.AP), f3(r.AP_fold_mean), f3(r.Brier), f1(r.Cost_C5_per100)] for r in dc.itertuples()], notes="")
+cc = rd("tableS18b_column_checks.csv")
+def _chk(col):
+    r = cc[(cc.column == col) & (cc.dataset == "Panel B")]
+    n, m = int(r.n_compared.sum()), int(round((r.n_compared * r.share_matched).sum()))
+    scope = "all countries" if r.countries.iloc[-1] > 1 else "China only"
+    return f"reproduced, {m:,} of {n:,} values ({scope}){'; ' + r.interpolation.iloc[-1] if isinstance(r.interpolation.iloc[-1], str) else ''}"
+_NO = "no export retained"
 WIND_COLS = [
-    ("货币", "Currency", "identifier"), ("date", "Month", "identifier"), ("国家 / country", "Country", "identifier"),
-    ("SWIFT交易份额", "Share of the currency in SWIFT payments (%)", "CI, Panel A"),
-    ("本国货币外汇衍生品交易额", "Domestic-currency FX-derivatives turnover (share)", "CI, Panel B"),
-    ("未偿余额", "Outstanding balance (literal translation)", "not used"), ("公布发行额", "Announced issuance amount (literal translation)", "not used"),
-    ("对外贷款", "External lending (literal translation)", "not used"), ("外汇储备总额", "Total FX reserves", "not used"),
-    ("新兴国家 / 收入组别", "Emerging-market flag / income group", "not used"),
-    ("cpi_vol, fxr_vol, consump_volnew, real_ex_vol, credit_gdp_gap, unemp", "Risk indicators CPI_Vol, FX_Vol, CE_Vol, ER_Vol, CG_Gap, Unemp", "dependent variables / other risks"),
-    ("consump_vol, ex_vol", "Alternative CE_Vol and ER_Vol series", "specification search"),
-    ("*_lag1", "Six-month lagged risk indicators", "lagged dependent variable"),
-    ("pergdp_ppp, gdp_grow, pop, stockvalue_gdp, fin_open1, tra", "GDP per capita (PPP), GDP growth, population, financial depth, financial openness, trade openness", "controls"),
-    ("gdp_gvol, cpi, tra_ad, ka_open, IFS_Code, year", "Other macro series and identifiers", "not used"),
-    ("VoiceandAccountability ... ControlofCorruption", "Six WGI dimensions", "threshold variable (single dimensions)"),
-    ("ins_quality", "Mean of the six WGI dimensions (IQ)", "threshold variable"),
+    ("货币", "Currency", "identifier", "", ""), ("date", "Month", "identifier", "", ""), ("国家 / country", "Country", "identifier", "", ""),
+    ("SWIFT交易份额", "Share of the currency in SWIFT payments (%)", "CI, Panel A", "SWIFT monthly reports (per drafts)", "not verifiable; " + _NO),
+    ("本国货币外汇衍生品交易额", "Currency's share of total monthly FX-derivatives turnover", "CI, Panel B", "全球外汇衍生品交易份额_货币_月度频率.xlsx (BIS)", _chk("本国货币外汇衍生品交易额") + "; turnover / all-currency total"),
+    ("未偿余额", "RMB international bonds and notes outstanding", "not used", "国际债券和票据_未偿余额和发行量.xlsx (Wind)", _chk("未偿余额")),
+    ("公布发行额", "RMB international bonds and notes, announced issuance", "not used", "国际债券和票据_未偿余额和发行量.xlsx (Wind)", _chk("公布发行额")),
+    ("对外贷款", "Overseas RMB loans relative to all-currency cross-border credit", "not used", "境外贷款人民币.xlsx (Wind); 全球对外信贷其它货币份额.xlsx (BIS)", _chk("对外贷款") + "; ratio of CNY 100 m to USD m, no unit conversion"),
+    ("外汇储备总额", "RMB share of allocated official FX reserves", "not used", "外汇储备总额_币种.xlsx (Wind)", _chk("外汇储备总额")),
+    ("新兴国家 / 收入组别", "Emerging-market flag / income group", "not used", "货币与国家.xlsx (authors' mapping)", _chk("新兴国家 / 收入组别")),
+    ("cpi_vol, fxr_vol, consump_volnew, real_ex_vol, credit_gdp_gap, unemp", "Risk indicators CPI_Vol, FX_Vol, CE_Vol, ER_Vol, CG_Gap, Unemp", "dependent variables / other risks", "World Bank and Wind (per drafts)", _NO),
+    ("consump_vol, ex_vol", "Alternative CE_Vol and ER_Vol series", "specification search", "World Bank and Wind (per drafts)", _NO),
+    ("*_lag1", "Six-month lagged risk indicators", "lagged dependent variable", "derived in the dataset", ""),
+    ("pergdp_ppp, gdp_grow, pop, stockvalue_gdp, fin_open1, tra", "GDP per capita (PPP), GDP growth, population, financial depth, financial openness, trade openness", "controls", "World Bank and Wind (per drafts)", _NO),
+    ("gdp_gvol, cpi, tra_ad, ka_open, IFS_Code, year", "Other macro series and identifiers", "not used", "World Bank and Wind (per drafts)", _NO),
+    ("VoiceandAccountability ... ControlofCorruption", "Six WGI dimensions", "threshold variable (single dimensions)", "World Bank WGI (public)", ""),
+    ("ins_quality", "Mean of the six WGI dimensions (IQ)", "threshold variable", "derived in the dataset", ""),
 ]
-SUPP["S15"] = dict(caption="Variables of the original regression datasets (compiled on 13 June 2023).", header=["Column name(s)", "Content", "Use in this study"],
+SUPP["S15"] = dict(caption="Variables of the original regression datasets (compiled on 13 June 2023), their source exports and reconstruction checks.",
+                   header=["Column name(s)", "Content", "Use in this study", "Source export", "Reconstruction check"],
                    rows=[list(r) for r in WIND_COLS],
-                   notes="Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata; SHA-256 checksums in the reproduction archive. Sources stated in the working-paper drafts: SWIFT monthly reports (SWIFT share), BIS and World Bank (FX-turnover share), World Bank and Wind (other macro series); quarterly GDP backward-filled to months. The Wind series codes, the definition of the turnover share and any interpolation were not retained, so the construction of the CI series cannot be verified. The Panel B CI column varies from month to month in every country (Russia has runs of zeros).")
+                   notes=fill("Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata; SHA-256 checksums in the reproduction archive. "
+                              "Source exports are listed in Supplementary Table S18. Counts refer to Panel B; the Panel A rows, a subset of the same months, are reproduced as well. A value is reproduced when it equals the recomputed value to a relative tolerance of 1e-6; quarter-end values are compared for quarterly sources. "
+                              "The CI column is also shipped in Panel A, where it is not used. The exports record Wind indicator names but not Wind series codes; quarterly GDP was backward-filled to months according to the drafts."))
+inv = rd("tableS18_export_inventory.csv")
+SUPP["S18"] = dict(caption="Original source exports of the currency-use variables.", header=["File", "Content", "Source", "Frequency", "Coverage", "Workbook created", "SHA-256 (first 12)"],
+                   rows=[[r.file, r.content, r.source, r.frequency if isinstance(r.frequency, str) else "", f"{r.coverage_from} to {r.coverage_to}" if isinstance(r.coverage_from, str) else "", r.workbook_created, r.sha256[:12]] for r in inv.itertuples()],
+                   notes="Creation dates are read from the workbook metadata (docProps/core.xml), because file-system timestamps change on copying; the SAFE table and the mapping file reuse older templates, so their creation dates precede the export. Coverage of the SAFE table refers to year-end positions. The exports contain licensed Wind data and are not redistributed; full SHA-256 checksums are in data/raw/original_exports/SHA256SUMS.txt.")
 ta = rd("tableS16_timing_audit.csv")
 SUPP["S16"] = dict(caption="Timing audit of every estimation stage.", header=["Scope", "Fold", "h", "Stage", "Last origin", "Target published", "First evaluated month", "Event threshold from", "Passes"],
                    rows=[[r.scope, r.split_id, str(r.h), r.stage, r.last_origin, r.target_published, r.first_evaluated_month, r.event_threshold_from, "yes" if r.published_before else "no"] for r in ta.itertuples()],
@@ -958,6 +1067,7 @@ s17 = rd("tableS17_countries_by_fold.csv")
 SUPP["S17"] = dict(caption="Training, calibration and test countries by design and fold.", header=["Design", "Fold", "Train countries", "Train origins", "Calibration origins", "Test countries", "Test origins", "Threshold"],
                    rows=[[r.design, r.split_id, r.train_countries, r.train_origins, r.calibration_origins, r.test_countries, r.test_origins, r.threshold] for r in s17.itertuples()],
                    notes="Calibration countries equal the training countries in every design. Origin ranges are truncated to the h = 3 maturity cap. Because the 2023-2025 designs train on all 15 countries, External-6 is evaluated out of time but is not an unseen-country transfer; the E13 Transfer_Core9_only regime is the only unseen-country design.")
+SUPP["S18"] = SUPP.pop("S18")
 SUPP_FIGS = {"S1": ("fig6_e14_adaptive_weighting", "Training-weight schemes: development-fold mean AP and retrospective AP.")}
 
 FIGS = {
@@ -1202,7 +1312,7 @@ def title_page_md():
                       "**Declaration of competing interest.** [To be completed and confirmed by the authors.]", "",
                       "**Funding.** [To be completed by the authors.]", "",
                       "**Acknowledgements.** [To be completed by the authors.]", "",
-                      "**Data availability.** BIS, IMF and World Bank data are public. The regression datasets of the original working paper were compiled on 13 June 2023 from SWIFT reports, BIS, World Bank and Wind series (variables documented by column name in Supplementary Table S15; the original Wind series codes were not retained); Wind data are licensed and cannot be redistributed. Code, split definitions, the frozen confirmation protocol and all row-level predictions are available at https://github.com/reneverland/MacroRisk.", "",
+                      fill("**Data availability.** BIS, IMF and World Bank data are public. The regression datasets of the original working paper were compiled on 13 June 2023 from SWIFT reports, BIS, World Bank and Wind series; the {prov_n_files} source exports of their currency-use columns (created {prov_export_from} to {prov_export_to}) are retained, and Supplementary Tables S15 and S18 document the variables, indicator names, export dates and reconstruction checks. Wind data are licensed and cannot be redistributed, and the exports record Wind indicator names but not series codes.") + " Code, split definitions, the frozen confirmation protocol and all row-level predictions are available at https://github.com/reneverland/MacroRisk.", "",
                       "**Original study.** The threshold estimates replicated in this paper come from an earlier working paper involving the second author, 'Does Currency Internationalization increase Macro Risk in Emerging Markets? Nonlinear Evidence from Institutional Quality' (drafts dated November 2023 to July 2025), which was neither submitted nor published.", "",
                       "**Declaration of generative AI and AI-assisted technologies in the writing process.** [Draft for the authors to confirm or edit:] During the preparation of this work the authors used an AI coding and writing assistant to write and audit analysis scripts, run consistency checks and draft and revise parts of the text. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.", ""])
 
@@ -1221,9 +1331,18 @@ def author_responses_md():
         "macro series); quarterly GDP backward-filled to months.",
         f"- Files: reg_fxshare_20230613.xlsx (SHA-256 {sums['reg_fxshare_20230613.xlsx']}) and reg_swiftnew_20230613.xlsx "
         f"(SHA-256 {sums['reg_swiftnew_20230613.xlsx']}), compiled 13 June 2023 (file metadata).",
-        "- Not recoverable: the Wind series codes, the exact turnover definition and any interpolation. The Panel B CI column (labelled "
-        "domestic-currency FX-derivatives turnover) varies monthly in every country (Russia has runs of zeros), so it is not a step-filled "
-        "triennial survey value, but its construction is stated as unverified (Sections 3.1, 6.3; Table S15).", "",
+        R("- Original exports (manuscript/original, now data/raw/original_exports with SHA256SUMS.txt; not redistributed): {prov_n_files} "
+          "workbooks created {prov_export_from} to {prov_export_to} according to their internal metadata. The file-system timestamps of the "
+          "copies show the copying date, so the export dates are taken from docProps/core.xml (Table S18)."),
+        R("- CI construction, now verified: the Panel B CI column equals the currency's monthly FX-derivatives turnover divided by the "
+          "'TO1: Total all currencies' row of a BIS Statistics Explorer export of {prov_bis_date} ({prov_bis_from} to {prov_bis_to}); all "
+          "{prov_ci_n} values of the {prov_ci_countries} countries match, and the same column in Panel A matches as well. The China-only columns "
+          "(international bonds outstanding and issuance, RMB reserve share, overseas RMB loans relative to cross-border credit) and the "
+          "emerging/income flags are also reproduced; quarterly sources were linearly interpolated or backward-filled to months (Table S15). "
+          "These columns are not used in the analysis. The lending ratio divides CNY 100 m by USD m without conversion."),
+        "- Still not recoverable: the SWIFT share series (no export retained) and Wind series codes (the exports carry indicator names only). "
+        "Sections 3.1, 3.3 and 6.3, the data availability statement and Table S15 were revised accordingly; step0b_provenance_audit.py "
+        "reproduces the checks and the consistency audit fails if the CI match is not exact.", "",
         "## 2. Episode counts (34 vs 31)", "",
         R("- Table 2 counts runs of consecutive high-risk origins within each fold: sum {n_ep_fold_sum}. {n_ep_cont} of these runs continue from "
           "December of the previous fold. The pooled event evaluation joins them, giving {n_episodes_all} episodes; in 2021-2022, "
@@ -1244,7 +1363,7 @@ def author_responses_md():
           "corrected runs pass, and the {timing_frozen_fail} failures of the archived run are listed."),
         R("- REER data run through {reer_last_obs} for all 15 economies. The last origin {ext_last_origin} needs outcomes through 2026-03, "
           "published under the one-month lag in {ext_outcome_to}; all 15 targets are observed (audit check)."),
-        "- S1-S17 are in Supplementary_Material.docx; S12-S17 are regenerated from the corrected outputs.", "",
+        "- S1-S18 are in Supplementary_Material.docx; S12-S18 are regenerated from the corrected outputs.", "",
         "## 5. Expanding calibration: scores or labels?", "",
         "- Only the labels are recomputed with the current fold's threshold; the historical scores are the stored out-of-sample predictions and "
         "are not regenerated. Section 4.4 states the score-transfer assumption and Section 6.3 lists it as a limitation.", "",
@@ -1256,7 +1375,7 @@ def author_responses_md():
         "than B0 (C1, B1 and the macro-only and macro + IQ EBMs and XGBoost models). Both use the latest twelve matured origins, up to August of "
         "T-1, whose targets are published by December.", "",
         "## 7. Submission package", "",
-        "- MacroRisk_reproduction_anonymized.zip (code, splits, protocol, timing audit, row-level predictions, S1-S17) is rebuilt with this "
+        "- MacroRisk_reproduction_anonymized.zip (code, splits, protocol, timing audit, row-level predictions, S1-S18) is rebuilt with this "
         "revision. The manuscript is generated from code, so the editorial comments are not carried over. Title_Page.docx is separate; the "
         "declarations and the anonymous mirror link still need the authors.", "",
         "## 8. Archived XGBoost cost interval", "",
@@ -1265,6 +1384,19 @@ def author_responses_md():
           "comparisons, and the audit checks that Table A2 reproduces the original table."), "",
         "## 9. Fig. 4", "",
         "- Panel (a) legend moved below the bars, outside the plotting area, font size 10.5.", "",
+        "## 10. Abstract and economic framing (comments of 21 October 2026)", "",
+        "- Title now states the economic question. The abstract follows background, question, design, three findings and implications with "
+        "scope, and keeps only a few numbers; it remains within 230 words.",
+        "- Introduction: economic motivation first; one main question (can the information in CI and IQ be turned into short-term warning "
+        "value beyond macro indicators and persistence?) with three steps. The replication is now the first step of the design, not a "
+        "separate research question.",
+        "- Results 5.1-5.9: each subsection opens with the finding in its heading and first sentence, then gives the metrics, then a short "
+        "economic interpretation (volatility clustering and country risk levels; CI as a slow-moving cross-sectional exposure attribute; IQ "
+        "as a baseline-risk adjustment; onsets; loss functions; timing; heterogeneity; fallback trade-off). New build-time claims guard the "
+        "new directional statements.",
+        "- Section 6.2 'Economic interpretation and policy implications' replaces the decision-support implications subsection: five bounded "
+        "implications (prioritisation rather than alarms; benchmark before adoption; judge by cost as well as ranking; no direct translation "
+        "of threshold regressions; fallback as a trade-off) and an explicit scope paragraph. Table 12 and the conclusion use the same framing.", "",
         "## Results that changed with the inner-threshold correction", "",
         R("- 2023-2025, macro EBM +IQ: AP {pd_all15_iq_m0_ap} [{pd_all15_iq_m0_ap_lo}, {pd_all15_iq_m0_ap_hi}] over 15 countries (previously "
           "+0.029 [0.002, 0.042]); expected cost {pd_all15_iq_m0_cost} [{pd_all15_iq_m0_cost_lo}, {pd_all15_iq_m0_cost_hi}]. The abstract, "

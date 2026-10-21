@@ -7,7 +7,9 @@ Not for submission. Every number below is read from outputs/manuscript_numbers.j
 - Versions: long draft, file created 15 November 2023 and last revised 14 October 2024; shortened draft dated 23 July 2025. Both report the threshold estimates replicated in the manuscript; Supplementary Table S11 maps every discrepancy found in them.
 - Sources stated in the drafts: SWIFT monthly reports (SWIFT share), BIS and World Bank (FX-turnover share), World Bank and Wind (other macro series); quarterly GDP backward-filled to months.
 - Files: reg_fxshare_20230613.xlsx (SHA-256 c74aa39b54eda74482b067765a94ae4abeea6f8bbacd39f98cdd009d0c9702cf) and reg_swiftnew_20230613.xlsx (SHA-256 74f746775af0b94679847cbd23899917b2c59afdddb18a236a5f75b1554e51b1), compiled 13 June 2023 (file metadata).
-- Not recoverable: the Wind series codes, the exact turnover definition and any interpolation. The Panel B CI column (labelled domestic-currency FX-derivatives turnover) varies monthly in every country (Russia has runs of zeros), so it is not a step-filled triennial survey value, but its construction is stated as unverified (Sections 3.1, 6.3; Table S15).
+- Original exports (manuscript/original, now data/raw/original_exports with SHA256SUMS.txt; not redistributed): 9 workbooks created 2023-05-31 to 2023-06-02 according to their internal metadata. The file-system timestamps of the copies show the copying date, so the export dates are taken from docProps/core.xml (Table S18).
+- CI construction, now verified: the Panel B CI column equals the currency's monthly FX-derivatives turnover divided by the 'TO1: Total all currencies' row of a BIS Statistics Explorer export of 2023-05-31 (1993-01 to 2022-12); all 1,188 values of the 9 countries match, and the same column in Panel A matches as well. The China-only columns (international bonds outstanding and issuance, RMB reserve share, overseas RMB loans relative to cross-border credit) and the emerging/income flags are also reproduced; quarterly sources were linearly interpolated or backward-filled to months (Table S15). These columns are not used in the analysis. The lending ratio divides CNY 100 m by USD m without conversion.
+- Still not recoverable: the SWIFT share series (no export retained) and Wind series codes (the exports carry indicator names only). Sections 3.1, 3.3 and 6.3, the data availability statement and Table S15 were revised accordingly; step0b_provenance_audit.py reproduces the checks and the consistency audit fails if the CI match is not exact.
 
 ## 2. Episode counts (34 vs 31)
 
@@ -24,7 +26,7 @@ Not for submission. Every number below is read from outputs/manuscript_numbers.j
 - Inner tuning labels previously used the outer-fold threshold, whose estimation sample includes the inner validation ranges. Each inner fold now uses the 80th percentile of its own training targets (country-specific and reference-subset rules analogously). Steps 3-6b and the corrected extension (step 10) were rerun; the change is disclosed in Section 4.5 and Appendix A1.
 - Supplementary Table S16 adds the column 'Event threshold from' for every stage; all 102 checks of the main and corrected runs pass, and the 15 failures of the archived run are listed.
 - REER data run through 2026-08 for all 15 economies. The last origin 2025-12 needs outcomes through 2026-03, published under the one-month lag in 2026-04; all 15 targets are observed (audit check).
-- S1-S17 are in Supplementary_Material.docx; S12-S17 are regenerated from the corrected outputs.
+- S1-S18 are in Supplementary_Material.docx; S12-S18 are regenerated from the corrected outputs.
 
 ## 5. Expanding calibration: scores or labels?
 
@@ -37,7 +39,7 @@ Not for submission. Every number below is read from outputs/manuscript_numbers.j
 
 ## 7. Submission package
 
-- MacroRisk_reproduction_anonymized.zip (code, splits, protocol, timing audit, row-level predictions, S1-S17) is rebuilt with this revision. The manuscript is generated from code, so the editorial comments are not carried over. Title_Page.docx is separate; the declarations and the anonymous mirror link still need the authors.
+- MacroRisk_reproduction_anonymized.zip (code, splits, protocol, timing audit, row-level predictions, S1-S18) is rebuilt with this revision. The manuscript is generated from code, so the editorial comments are not carried over. Title_Page.docx is separate; the declarations and the anonymous mirror link still need the authors.
 
 ## 8. Archived XGBoost cost interval
 
@@ -46,6 +48,13 @@ Not for submission. Every number below is read from outputs/manuscript_numbers.j
 ## 9. Fig. 4
 
 - Panel (a) legend moved below the bars, outside the plotting area, font size 10.5.
+
+## 10. Abstract and economic framing (comments of 21 October 2026)
+
+- Title now states the economic question. The abstract follows background, question, design, three findings and implications with scope, and keeps only a few numbers; it remains within 230 words.
+- Introduction: economic motivation first; one main question (can the information in CI and IQ be turned into short-term warning value beyond macro indicators and persistence?) with three steps. The replication is now the first step of the design, not a separate research question.
+- Results 5.1-5.9: each subsection opens with the finding in its heading and first sentence, then gives the metrics, then a short economic interpretation (volatility clustering and country risk levels; CI as a slow-moving cross-sectional exposure attribute; IQ as a baseline-risk adjustment; onsets; loss functions; timing; heterogeneity; fallback trade-off). New build-time claims guard the new directional statements.
+- Section 6.2 'Economic interpretation and policy implications' replaces the decision-support implications subsection: five bounded implications (prioritisation rather than alarms; benchmark before adoption; judge by cost as well as ranking; no direct translation of threshold regressions; fallback as a trade-off) and an explicit scope paragraph. Table 12 and the conclusion use the same framing.
 
 ## Results that changed with the inner-threshold correction
 

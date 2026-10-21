@@ -8,6 +8,7 @@ PY="$(pwd)/.venv/bin/python"
 mkdir -p outputs/logs
 run() { echo "== $*"; (cd src && "$PY" -u "$@") 2>&1 | tee "outputs/logs/$(echo "$*" | tr ' ' '_').txt"; }
 
+run step0b_provenance_audit.py
 run step1_fetch_and_build_panel.py
 run step2_e01_e02_audit_and_feasibility.py
 run step2b_threshold_replication.py

@@ -1,6 +1,6 @@
 # Supplementary material
 
-*Do institutional thresholds improve exchange-rate stress early warning? An auditable replication-to-prediction evaluation*
+*Do currency internationalization and institutional quality add early-warning value for exchange-rate risk? Evidence from emerging economies*
 
 **Table S1. Regime coefficients: reported versus replicated.**
 
@@ -700,30 +700,30 @@
 | retro | CI decomposed betweenxIQ | M1 EBM + CI x IQ | 0.359 | 0.373 | 0.133 | 56.0 |
 
 
-**Table S15. Variables of the original regression datasets (compiled on 13 June 2023).**
+**Table S15. Variables of the original regression datasets (compiled on 13 June 2023), their source exports and reconstruction checks.**
 
-| Column name(s) | Content | Use in this study |
-|---|---|---|
-| 货币 | Currency | identifier |
-| date | Month | identifier |
-| 国家 / country | Country | identifier |
-| SWIFT交易份额 | Share of the currency in SWIFT payments (%) | CI, Panel A |
-| 本国货币外汇衍生品交易额 | Domestic-currency FX-derivatives turnover (share) | CI, Panel B |
-| 未偿余额 | Outstanding balance (literal translation) | not used |
-| 公布发行额 | Announced issuance amount (literal translation) | not used |
-| 对外贷款 | External lending (literal translation) | not used |
-| 外汇储备总额 | Total FX reserves | not used |
-| 新兴国家 / 收入组别 | Emerging-market flag / income group | not used |
-| cpi_vol, fxr_vol, consump_volnew, real_ex_vol, credit_gdp_gap, unemp | Risk indicators CPI_Vol, FX_Vol, CE_Vol, ER_Vol, CG_Gap, Unemp | dependent variables / other risks |
-| consump_vol, ex_vol | Alternative CE_Vol and ER_Vol series | specification search |
-| *_lag1 | Six-month lagged risk indicators | lagged dependent variable |
-| pergdp_ppp, gdp_grow, pop, stockvalue_gdp, fin_open1, tra | GDP per capita (PPP), GDP growth, population, financial depth, financial openness, trade openness | controls |
-| gdp_gvol, cpi, tra_ad, ka_open, IFS_Code, year | Other macro series and identifiers | not used |
-| VoiceandAccountability ... ControlofCorruption | Six WGI dimensions | threshold variable (single dimensions) |
-| ins_quality | Mean of the six WGI dimensions (IQ) | threshold variable |
+| Column name(s) | Content | Use in this study | Source export | Reconstruction check |
+|---|---|---|---|---|
+| 货币 | Currency | identifier |  |  |
+| date | Month | identifier |  |  |
+| 国家 / country | Country | identifier |  |  |
+| SWIFT交易份额 | Share of the currency in SWIFT payments (%) | CI, Panel A | SWIFT monthly reports (per drafts) | not verifiable; no export retained |
+| 本国货币外汇衍生品交易额 | Currency's share of total monthly FX-derivatives turnover | CI, Panel B | 全球外汇衍生品交易份额_货币_月度频率.xlsx (BIS) | reproduced, 1,188 of 1,188 values (all countries); turnover / all-currency total |
+| 未偿余额 | RMB international bonds and notes outstanding | not used | 国际债券和票据_未偿余额和发行量.xlsx (Wind) | reproduced, 14 of 14 values (China only); linear interpolation within quarters (26 of 26 other months) |
+| 公布发行额 | RMB international bonds and notes, announced issuance | not used | 国际债券和票据_未偿余额和发行量.xlsx (Wind) | reproduced, 14 of 14 values (China only); linear interpolation within quarters (26 of 26 other months) |
+| 对外贷款 | Overseas RMB loans relative to all-currency cross-border credit | not used | 境外贷款人民币.xlsx (Wind); 全球对外信贷其它货币份额.xlsx (BIS) | reproduced, 132 of 132 values (China only); quarterly denominator backward-filled to months; ratio of CNY 100 m to USD m, no unit conversion |
+| 外汇储备总额 | RMB share of allocated official FX reserves | not used | 外汇储备总额_币种.xlsx (Wind) | reproduced, 25 of 25 values (China only); linear interpolation within quarters (48 of 48 other months) |
+| 新兴国家 / 收入组别 | Emerging-market flag / income group | not used | 货币与国家.xlsx (authors' mapping) | reproduced, 9 of 9 values (all countries) |
+| cpi_vol, fxr_vol, consump_volnew, real_ex_vol, credit_gdp_gap, unemp | Risk indicators CPI_Vol, FX_Vol, CE_Vol, ER_Vol, CG_Gap, Unemp | dependent variables / other risks | World Bank and Wind (per drafts) | no export retained |
+| consump_vol, ex_vol | Alternative CE_Vol and ER_Vol series | specification search | World Bank and Wind (per drafts) | no export retained |
+| *_lag1 | Six-month lagged risk indicators | lagged dependent variable | derived in the dataset |  |
+| pergdp_ppp, gdp_grow, pop, stockvalue_gdp, fin_open1, tra | GDP per capita (PPP), GDP growth, population, financial depth, financial openness, trade openness | controls | World Bank and Wind (per drafts) | no export retained |
+| gdp_gvol, cpi, tra_ad, ka_open, IFS_Code, year | Other macro series and identifiers | not used | World Bank and Wind (per drafts) | no export retained |
+| VoiceandAccountability ... ControlofCorruption | Six WGI dimensions | threshold variable (single dimensions) | World Bank WGI (public) |  |
+| ins_quality | Mean of the six WGI dimensions (IQ) | threshold variable | derived in the dataset |  |
 
 
-*Note:* Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata; SHA-256 checksums in the reproduction archive. Sources stated in the working-paper drafts: SWIFT monthly reports (SWIFT share), BIS and World Bank (FX-turnover share), World Bank and Wind (other macro series); quarterly GDP backward-filled to months. The Wind series codes, the definition of the turnover share and any interpolation were not retained, so the construction of the CI series cannot be verified. The Panel B CI column varies from month to month in every country (Russia has runs of zeros).
+*Note:* Files: reg_swiftnew_20230613.xlsx (Panel A) and reg_fxshare_20230613.xlsx (Panel B); creation date from the file metadata; SHA-256 checksums in the reproduction archive. Source exports are listed in Supplementary Table S18. Counts refer to Panel B; the Panel A rows, a subset of the same months, are reproduced as well. A value is reproduced when it equals the recomputed value to a relative tolerance of 1e-6; quarter-end values are compared for quarterly sources. The CI column is also shipped in Panel A, where it is not used. The exports record Wind indicator names but not Wind series codes; quarterly GDP was backward-filled to months according to the drafts.
 
 **Table S16. Timing audit of every estimation stage.**
 
@@ -905,6 +905,23 @@
 
 
 *Note:* Calibration countries equal the training countries in every design. Origin ranges are truncated to the h = 3 maturity cap. Because the 2023-2025 designs train on all 15 countries, External-6 is evaluated out of time but is not an unseen-country transfer; the E13 Transfer_Core9_only regime is the only unseen-country design.
+
+**Table S18. Original source exports of the currency-use variables.**
+
+| File | Content | Source | Frequency | Coverage | Workbook created | SHA-256 (first 12) |
+|---|---|---|---|---|---|---|
+| 中国国际投资头寸表.xlsx | China international investment position | SAFE (published table) | annual and quarterly (year-end positions) | 2004-12 to 2022-12 | 2006-09-18 | d2c8ac35f5dd |
+| 中国季度GDP.xlsx | China quarterly GDP (USD) | Wind (reformatted) | quarterly (zeros in other months) | 2009-12 to 2023-05 | 2023-06-02 | 2c52f2e5d52d |
+| 全球外汇衍生品交易份额_货币_月度频率.xlsx | FX-derivatives turnover by currency | BIS Statistics Explorer | monthly | 1993-01 to 2022-12 | 2023-05-31 | 26001ce11cea |
+| 全球对外信贷其它货币份额.xlsx | Cross-border credit by currency denomination | BIS (reformatted export) | quarterly | 1977-12 to 2022-12 | 2023-06-01 | e49148cb22cf |
+| 国际债券和票据_未偿余额和发行量.xlsx | International bonds and notes: outstanding and announced issuance | Wind (indicator-name layout) | quarterly | 1993-09 to 2015-06 | 2023-05-31 | 5844d5682e2f |
+| 境外贷款人民币.xlsx | Overseas RMB loans of Chinese financial institutions | Wind | monthly | 2010-01 to 2023-04 | 2023-05-31 | 76562bc610b8 |
+| 外汇储备总额_币种.xlsx | Allocated official FX reserves by currency (COFER) | Wind (indicator-name layout) | quarterly | 1999-03 to 2022-12 | 2023-05-31 | 7851165e74dd |
+| 直接投资结算.xlsx | RMB direct-investment settlement and OFDI stock | Wind (indicator-name layout) | monthly | 1980-12 to 2023-04 | 2023-05-31 | 9ea980ef24fe |
+| 货币与国家.xlsx | Currency-country mapping with emerging flag and income group | authors' mapping |  |  | 2015-06-05 | 6845b2f21887 |
+
+
+*Note:* Creation dates are read from the workbook metadata (docProps/core.xml), because file-system timestamps change on copying; the SAFE table and the mapping file reuse older templates, so their creation dates precede the export. Coverage of the SAFE table refers to year-end positions. The exports contain licensed Wind data and are not redistributed; full SHA-256 checksums are in data/raw/original_exports/SHA256SUMS.txt.
 
 ![Fig. S1. Training-weight schemes: development-fold mean AP and retrospective AP.](figures/FigS1.png){width=100%}
 

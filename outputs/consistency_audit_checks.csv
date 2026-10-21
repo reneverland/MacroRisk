@@ -1879,3 +1879,5 @@ episodes: pooled = fold sum - continuations (2021-2022),10.0,10.0,True
 M1-M0 Table 5 = bootstrap point estimate (All six out-of-time folds 2017-2022),-0.010341,-0.01034092,True
 M1-M0 Table 5 = bootstrap point estimate (Retrospective test 2021-2022),0.001382,0.00138167,True
 all 15 targets of the last extension origin observed,15.0,15.0,True
+CI reproduced from the BIS export (Panel A),1.0,1.0,True
+CI reproduced from the BIS export (Panel B),1.0,1.0,True
